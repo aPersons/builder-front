@@ -1,0 +1,1841 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>repl.it</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link rel="icon" href="assets/oci_ogol.ico">
+  </head>
+  <body>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <script src="script.js"></script>
+    <div class="container-fluid">
+      <div class="container-block-header">
+        <div class="header-top">
+          <div class="top-logo"><img src="assets/logo_2020.png"></div>
+          <div class="search-field">
+            <input type="text" id="ls_query" name="keywords" autocomplete="off">
+          </div>
+        </div>
+        <div class="header-navbar">
+          <div>Ψηφιακή Μέριμνα</div>
+          <div>Desktop</div>
+          <div>Laptop - Tablet</div>
+          <div>Περιφερειακά</div>
+          <div>Εκτυπωτές - Αναλώσιμα</div>
+          <div>Gaming</div>
+        </div>
+      </div>
+      <div class="modal fade" id="build-modal"tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Msystems Ryzen Gaming</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              <div class="modal-table">                
+                <div class="modal-tb-head">
+                  <div class="modal-cat-header">Κατηγορία</div>
+                  <div class="modal-prnum-header">Κωδικός</div>
+                  <div class="modal-product-header">Προϊόν</div>
+                  <div class="modal-quant-header">Τμχ.</div>
+                  <div class="modal-price-header">Τιμή</div>
+                  <div class="modal-total-header">Σύνολο</div>
+                </div>
+                <div class="modal-prod"></div>
+                <div class="modal-tb-footer">
+                  <div class="modal-total-title">Σύνολο:</div>
+                  <div class="modal-total-num"><span></span> €</div>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="footer-text">Για να αποθηκεύσετε το σύστημα με τις επιλογές που έχετε κάνει αποθηκεύστε τον παρακάτω σύνδεσμο</div>
+              <div class="footer-link-body"></div>
+              <div class="footer-interface">
+                <button class="btn btn-primary btn-copy-link">Αντιγραφή συνδέσμου στο Clipboard</button>
+                <button class="btn btn-success btn-print-pg" onclick="window.print()">Εκτύπωση</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="builder-body-container">
+        <h4>Msystems AMD Entry Gaming</h4><hr/>
+        <div class="row cont-head">
+          <div class="col-md-5 head-cont-img">
+            <div class="cont-img-inner">
+              <img src="assets/18.png" width="100%">
+              <span class="product-prod-sku">#Κωδικός Msystems: <br><span class="text-primary">500-00018</span></span>
+            </div>
+          </div>
+          <div class="col-md-7 head-cont-descr">
+            <div class="cont-descr-inner">
+              <h5>Εκπληκτικές επιδόσεις σε εκπληκτική τιμή!</h5>
+              <p>Σχεδιασμένο για αυτούς που δεν θέλουν να κάνουν συμβιβασμούς στις επιδόσεις χωρίς να ξοδέψουν παραπάνω από όσο χρειάζεται,
+                το <b>Msystems AMD Entry Gaming</b> προσφέρει <b>μεγάλη επεκτασιμότητα</b> και είναι σίγουρο πως θα σας κρατήσει καθηλωμένους με τις 
+                <b>εκρηκτικές επιδόσεις του!!!</b></p>
+                Με τον επεξεργαστή της <b>AMD Ryzen 3 3200G</b> με <b>SSD δίσκο</b> ή/και με δυνατότητα προσθήκης <b>δίσκου SSD M.2</b>
+                και με την μνήμη RAM να μπορεί να φτάσει μέχρι και <b>64GB</b>, αποτελεί μια επένδυση για το μέλλον!
+            </div>
+          </div>
+        </div>
+        <div class="row cont-body">
+          <div class="col-md-5 order-md-2 builder-product">
+            <div class="builder-product-inner">
+              <a class="btn btn-info build-faq" href="/page/systems-faq" target="_blank" title="Συχνές Ερωτήσεις">Έχεις απορίες? Δες εδώ τις συχνές ερωτήσεις</a>
+              <a class="btn btn-primary build-photos" href="/page/build-of-the-day" target="_blank" title="φωτογραφίες από τα Builds μας">Δες φωτογραφίες από μερικά από τα Builds μας</a>
+              <div class="build-modal-bt">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#build-modal">
+                  Σύνοψη & Αποθήκευση
+                </button>
+              </div>
+              <div class="build-add-to-cart">
+                <span class="build-price-total"><strong><span>0.00</span>€</strong></span>
+                <button type="button" class="btn btn-success">
+                  Προσθήκη στο καλάθι
+                  </button>
+              </div>
+              <div id="performance-carousel" class="carousel slide build-expected-performance" data-ride="carousel">
+                <!-- Indicators -->
+                <ul class="carousel-indicators">
+                  <li data-target="#performance-carousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#performance-carousel" data-slide-to="1"></li>
+                  <li data-target="#performance-carousel" data-slide-to="2"></li>
+                  <li data-target="#performance-carousel" data-slide-to="3"></li>
+                  <li data-target="#performance-carousel" data-slide-to="4"></li>
+                </ul>
+
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="assets/fortnite-game.jpg">
+                      <source media="(min-width: 769px)" srcset="assets/fortnite-game-wide.jpg">
+                      <img src="assets/fortnite-game.jpg" alt="fortnite">
+                    </picture>
+                    <div class="carousel-overlay">
+                      <div class="c-overlay-inner fortnite_game">
+                        <div class="carousel-title">Εκτιμώμενη Απόδοση</div>
+      <div class="carousel-1080p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1080p: <span>?</span></div>
+      <div class="carousel-1440p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1440p: <span>?</span></div>
+      <div class="carousel-4k under" data-toggle="tooltip" data-placement="auto" data-html="true" title>4k: <span>?</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="assets/lol-game.jpg">
+                      <source media="(min-width: 769px)" srcset="assets/lol-game-wide.jpg">
+                      <img src="assets/lol-game.jpg" alt="League of Legends">
+                    </picture>
+                    <div class="carousel-overlay">
+                      <div class="c-overlay-inner lol_game">
+                        <div class="carousel-title">Εκτιμώμενη Απόδοση</div>
+      <div class="carousel-1080p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1080p: <span>?</span></div>
+      <div class="carousel-1440p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1440p: <span>?</span></div>
+      <div class="carousel-4k under" data-toggle="tooltip" data-placement="auto" data-html="true" title>4k: <span>?</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="assets/sottr-game.jpg">
+                      <source media="(min-width: 769px)" srcset="assets/sottr-game-wide.jpg">
+                      <img src="assets/sottr-game.jpg" alt="Shadow of the Tomb Raider">
+                    </picture>
+                    <div class="carousel-overlay">
+                      <div class="c-overlay-inner sottr_game">
+                        <div class="carousel-title">Εκτιμώμενη Απόδοση</div>
+      <div class="carousel-1080p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1080p: <span>?</span></div>
+      <div class="carousel-1440p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1440p: <span>?</span></div>
+      <div class="carousel-4k under" data-toggle="tooltip" data-placement="auto" data-html="true" title>4k: <span>?</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="assets/control-game.jpg">
+                      <source media="(min-width: 769px)" srcset="assets/control-game-wide.jpg">
+                      <img src="assets/control-game.jpg" alt="Control">
+                    </picture>
+                    <div class="carousel-overlay">
+                      <div class="c-overlay-inner control_game">
+                        <div class="carousel-title">Εκτιμώμενη Απόδοση</div>
+      <div class="carousel-1080p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1080p: <span>?</span></div>
+      <div class="carousel-1440p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1440p: <span>?</span></div>
+      <div class="carousel-4k under" data-toggle="tooltip" data-placement="auto" data-html="true" title>4k: <span>?</span></div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="carousel-item">
+                    <picture>
+                      <source media="(max-width: 768px)" srcset="assets/fs2020-game.jpg">
+                      <source media="(min-width: 769px)" srcset="assets/fs2020-game-wide.jpg">
+                      <img src="assets/fs2020-game.jpg" alt="Microsoft Flight Simulator">
+                    </picture>
+                    <div class="carousel-overlay">
+                      <div class="c-overlay-inner fs2020_game">
+                        <div class="carousel-title">Εκτιμώμενη Απόδοση</div>
+      <div class="carousel-1080p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1080p: <span>?</span></div>
+      <div class="carousel-1440p under" data-toggle="tooltip" data-placement="auto" data-html="true" title>1440p: <span>?</span></div>
+      <div class="carousel-4k under" data-toggle="tooltip" data-placement="auto" data-html="true" title>4k: <span>?</span></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#performance-carousel" data-slide="prev">
+                  <span class="carousel-control-prev-icon"></span>
+                </a>
+                <a class="carousel-control-next" href="#performance-carousel" data-slide="next">
+                  <span class="carousel-control-next-icon"></span>
+                </a>
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-7 order-md-1 builder-parts">
+            
+            <div class="builder-part-category kouti">
+                <div class="part-category-head">Κουτί</div>
+                <div class="part-category-description">Το σπίτι του νέου σας συστήματος. Επιλέξτε το μοντέλο και το χρώμα που προτιμάτε!</div>
+            <input type="radio" class="part-rd-bt" id="kouti0" name="kouti" value="emptyval"checked data-erp="-" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς κουτί</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti1" name="kouti" value="kouti1" data-erp="001-46638" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Kolink KLA-002 Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="2590">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti2" name="kouti" value="kouti2" data-erp="001-22344" data-mobo-size="Mini-ITX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master Elite 342</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="3490">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti3" name="kouti" value="kouti3" data-erp="001-36239" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cougar MX330-X Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4490">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti4" name="kouti" value="kouti4" data-erp="001-46640" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Kolink Inspire K1 RGB Windowed Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4690">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti5" name="kouti" value="kouti5" data-erp="001-29549" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair Carbide Series 100R Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4700">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti6" name="kouti" value="kouti6" data-erp="001-46274" data-mobo-size="Mini-ITX,Micro ATX,ATX,E-ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Kolink StrongHold Windowed Mid-Tower Case Tempered Glass - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4700">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti7" name="kouti" value="kouti7" data-erp="001-29549" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair Carbide Series 100R Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5090">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti8" name="kouti" value="kouti8" data-erp="001-26678" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair Carbide Series SPEC-01 Red LED Mid-Tower Gaming Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5140">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti9" name="kouti" value="kouti9" data-erp="001-48026" data-mobo-size="Mini-ITX,Micro ATX,ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti9">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti9.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair Carbide SPEC-05 Windowed Mid-Tower Case</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5290">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti9">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="kouti10" name="kouti" value="kouti10" data-erp="001-50726" data-mobo-size="Mini-ITX,Micro ATX,ATX,E-ATX">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="kouti10">
+                <div class="part-img">
+                  <img class="build-img" src="assets/kouti10.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Deepcool Matrexx 55 Mesh Windowed Mid-Tower Case Tempered Glass</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5490">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="kouti10">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="kouti0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+            <div class="builder-part-category mitriki">
+                <div class="part-category-head">Μητρική</div>
+                <div class="part-category-description">Η μητρική επιτρέπει στα διάφορα μέρη του συστήματος να επικοινωνούν μεταξύ τους. Σκεφθείτε να επιλέξετε καλύτερο μοντέλο αν χρειάζεστε έξτρα επεκτασιμότητα</div>
+            <input type="radio" class="part-rd-bt" id="mitriki0" name="mitriki" value="emptyval"checked data-erp="-" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς μητρική</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki1" name="mitriki" value="mitriki1" data-erp="001-35424" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus Prime A320M-K</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5150">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki2" name="mitriki" value="mitriki2" data-erp="001-50794" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte A520M H rev. 1.0</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="6450">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki3" name="mitriki" value="mitriki3" data-erp="001-49659" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte A520M S2H rev. 1.0</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="6990">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki4" name="mitriki" value="mitriki4" data-erp="001-50195" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte B450M DS3H V2 rev.1.0</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="7090">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki5" name="mitriki" value="mitriki5" data-erp="001-49654" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus Prime A520M-K</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="7690">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki6" name="mitriki" value="mitriki6" data-erp="001-49658" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus Prime A520M-E</div><div class="prod-av-2">Μικρή διαθεσιμότητα</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="7690">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki7" name="mitriki" value="mitriki7" data-erp="001-49657" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus Prime A520M-A</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="8150">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki8" name="mitriki" value="mitriki8" data-erp="001-50197" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus Prime B450M-A II</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="8690">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki9" name="mitriki" value="mitriki9" data-erp="001-44643" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki9">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki9.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte B450 AORUS M</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki9">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="mitriki10" name="mitriki" value="mitriki10" data-erp="001-47746" data-mobo-size="Micro ATX"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="mitriki10">
+                <div class="part-img">
+                  <img class="build-img" src="assets/mitriki10.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte B550M DS3H</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9990">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="mitriki10">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="mitriki0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+            <div class="builder-part-category cpu">
+                <div class="part-category-head">Επεξεργαστής</div>
+                <div class="part-category-description">Ο εγκέφαλος του συστήματός σας, όσο πιο δυνατό μοντέλο επιλέξετε τόσο πιο γρήγορη θα είναι η απόκριση του συστήματος σε απαιτητικές εργασίες.</div>
+            <input type="radio" class="part-rd-bt" id="cpu0" name="cpu" value="emptyval"checked data-erp="-" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς επεξεργαστή</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu1" name="cpu" value="cpu1" data-erp="001-38621" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 5 2600X with Wraith Spire Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="17250">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu2" name="cpu" value="cpu2" data-erp="001-44415" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 5 3600 with Wraith Stealth Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="19990">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu3" name="cpu" value="cpu3" data-erp="001-44416" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 5 3600X with Wraith Spire Cooler</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="29500">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu4" name="cpu" value="cpu4" data-erp="001-44417" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 7 3700X with Wraith Pirsm Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="31990">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu5" name="cpu" value="cpu5" data-erp="001-49550" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 5 5600X with Wraith Stealth Cooler</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="32890">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu6" name="cpu" value="cpu6" data-erp="001-44418" data-perf_fortnite_game="1" data-perf_lol_game="1" data-perf_control_game="1" data-perf_sottr_game="1"data-perf_fs2020_game="1"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 7 3800X with Wraith Prism Cooler</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="36900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu7" name="cpu" value="cpu7" data-erp="001-49551" data-perf_fortnite_game="2" data-perf_lol_game="2" data-perf_control_game="2" data-perf_sottr_game="2"data-perf_fs2020_game="2"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 7 5800X</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="48890">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="cpu8" name="cpu" value="cpu8" data-erp="001-44419" data-perf_fortnite_game="3" data-perf_lol_game="3" data-perf_control_game="3" data-perf_sottr_game="3"data-perf_fs2020_game="3"data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="cpu8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/cpu8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">AMD Ryzen 9 3900X with Wraith Prism Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="49900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="cpu8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="cpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+            <div class="builder-part-category psiktra">
+                <div class="part-category-head">Ψύξη επεξεργαστή</div>
+                <div class="part-category-description">Διατηρήστε τις θερμοκρασίες του επεξεργαστή σας σε χαμηλά επίπεδα προσφέροντας του μακροζωία και δυνατότητα για Overclocking στα μοντέλα που το υποστηρίζουν.</div>
+            <input type="radio" class="part-rd-bt" id="psiktra0" name="psiktra" value="emptyval"checked data-erp="-" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς ψύξη επεξεργαστή</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra1" name="psiktra" value="psiktra1" data-erp="001-38104" data-socket="775,1150,1151,1155,1156,1200,AM2,AM2+,AM3,AM3+,FM2,AM4,FM1">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Deepcool CPU Cooler GAMMAXX 200T</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="1790">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra2" name="psiktra" value="psiktra2" data-erp="001-50571" data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer A13X Compact AMD CPU Cooler</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="2150">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra3" name="psiktra" value="psiktra3" data-erp="001-50572" data-socket="AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer A13X CO Compact AMD CPU Cooler - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="2290">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra4" name="psiktra" value="psiktra4" data-erp="001-43629" data-socket="1150,1151,1155,1156,1200,2011,2011v3,2066,AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer 34 CPU Cooler</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="2990">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra5" name="psiktra" value="psiktra5" data-erp="001-46414" data-socket="775,1150,1151,1155,1156,1200,1366,2011,2011v3,2066,AM2,AM3,FM2,AM4,FM1,FM2+">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer XTREME Rev.2</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="3390">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra6" name="psiktra" value="psiktra6" data-erp="001-50103" data-socket="1150,1151,1155,1200,2011,2011v3,2066,AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer 34 eSports CPU Cooler - Grey / Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="3590">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra7" name="psiktra" value="psiktra7" data-erp="001-49075" data-socket="775,1150,1151,1155,1156,1200,AM2,AM2+,AM3,AM3+,FM2,AM4,FM1">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Thermaltake Thermaltake CPU Cooler UX200 ARGB</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="3650">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra8" name="psiktra" value="psiktra8" data-erp="001-47470" data-socket="1150,1151,1155,1200,2011,2011v3,2066,AM3,AM3+,AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Be Quiet! CPU Cooler Pure Rock 2</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="3900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra9" name="psiktra" value="psiktra9" data-erp="001-41281" data-socket="1150,1151,1155,1156,1200,1366,2011,2011v3,2066,AM2,AM2+,AM3,AM3+,FM2,AM4,FM1,FM2+">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra9">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra9.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master CPU Cooler Hyper 212 Black Edition</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4090">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra9">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psiktra10" name="psiktra" value="psiktra10" data-erp="001-47471" data-socket="1150,1151,1155,1200,2011,2011v3,2066,AM3,AM3+,AM4">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psiktra10">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psiktra10.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Be Quiet! CPU Cooler Pure Rock 2 - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4250">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psiktra10">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psiktra0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+            <div class="builder-part-category ram">
+                <div class="part-category-head">Μνήμη RAM</div>
+                <div class="part-category-description">Μνήμη υψηλής ταχύτητας για τα Windows, τις εφαρμογές και τα παιχνίδια, επιλέξτε μεγαλύτερη χωρητικότητα για μια πιο ομαλή λειτουργία σε συνθήκες Multi-tasking.</div>
+            <input type="radio" class="part-rd-bt" id="ram0" name="ram" value="emptyval"checked data-erp="-" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς μνήμη RAM</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram1" name="ram" value="ram1" data-erp="001-44813" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">HyperX 8GB Fury DDR4 2666MHz Non-ECC CL16 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5350">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram1-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram2" name="ram" value="ram2" data-erp="001-48164" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair Vengeance LPX 8GB DDR4 2666MHz (Kit of 2) - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5590">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram2-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram3" name="ram" value="ram3" data-erp="001-44848" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">HyperX 8GB Fury DDR4 3200MHz Non-ECC CL16 (Kit of 2)</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5750">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram3-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram4" name="ram" value="ram4" data-erp="001-37409" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">G.Skill 8GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black</div><div class="prod-av-1">10-15 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="6500">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram4-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram5" name="ram" value="ram5" data-erp="001-36989" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">G.Skill 16GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9190">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram5-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram6" name="ram" value="ram6" data-erp="001-44811" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">HyperX 16GB Fury DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9280">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram6-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram7" name="ram" value="ram7" data-erp="001-44846" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">HyperX 16GB Fury DDR4 3200MHz 1Rx8 Non-ECC CL16 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9580">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram7-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram8" name="ram" value="ram8" data-erp="001-37928" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair Vengeance LPX 16GB DDR4 3200MHz (Kit of 2) - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9590">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram8-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram9" name="ram" value="ram9" data-erp="001-35523" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram9">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram9.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">HyperX 16GB Predator DDR4 2666MHz Non-ECC CL13 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="9970">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram9-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram9">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="ram10" name="ram" value="ram10" data-erp="001-44807" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="ram10">
+                <div class="part-img">
+                  <img class="build-img" src="assets/ram10.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">HyperX 16GB Fury RGB DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="10100">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="ram10-quantity" name="ram-quantity" min="1" max="4" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="ram10">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="ram0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+            <div class="builder-part-category gpu">
+                <div class="part-category-head">Κάρτα Γραφικών</div>
+                <div class="part-category-description">Το πιο σημαντικό κομμάτι του Gaming συστήματός σας, επιλέξτε πιο δυνατό μοντέλο για καλύτερα frame rates και υποστήριξη οθονών με αναλύσεις μέχρι και 4K.</div>
+            <input type="radio" class="part-rd-bt" id="gpu0" name="gpu" value="emptyval"checked data-erp="-" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς κάρτα Γραφικών</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu1" name="gpu" value="gpu1" data-erp="001-51785" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1650 TUF 4GB D6</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="29900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu1-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu2" name="gpu" value="gpu2" data-erp="001-45582" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte GeForce GTX 1660 SUPER OC 6G</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="44900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu2-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu3" name="gpu" value="gpu3" data-erp="001-42726" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte GeForce GTX 1660 OC 6G</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="47900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu3-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu4" name="gpu" value="gpu4" data-erp="001-46520" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1660 SUPER TUF Gaming 6GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="49900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu4-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu5" name="gpu" value="gpu5" data-erp="001-49652" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1660 SUPER TUF Gaming OC 6GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="49900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu5-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu6" name="gpu" value="gpu6" data-erp="001-45422" data-perf_fortnite_game="0" data-perf_lol_game="0" data-perf_control_game="0" data-perf_sottr_game="0"data-perf_fs2020_game="0">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1660 SUPER Dual EVO OC 6GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="49900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu6-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu7" name="gpu" value="gpu7" data-erp="001-41910" data-perf_fortnite_game="1" data-perf_lol_game="1" data-perf_control_game="1" data-perf_sottr_game="1"data-perf_fs2020_game="1">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte GeForce RTX 2060 OC 6G</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="55900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu7-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu8" name="gpu" value="gpu8" data-erp="001-51385" data-perf_fortnite_game="2" data-perf_lol_game="2" data-perf_control_game="2" data-perf_sottr_game="2"data-perf_fs2020_game="2">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte AORUS GeForce RTX 3060 Elite 12GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="69900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu8-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="gpu9" name="gpu" value="gpu9" data-erp="001-51297" data-perf_fortnite_game="3" data-perf_lol_game="3" data-perf_control_game="3" data-perf_sottr_game="3"data-perf_fs2020_game="3">
+            <div class="listed-part">
+              <label class="listed-part-inner" for="gpu9">
+                <div class="part-img">
+                  <img class="build-img" src="assets/gpu9.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte Radeon RX 6700 XT Eagle 12GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="89900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <div class="part-number-input">
+                    <input type="number" class="part-quantity"id="gpu9-quantity" name="gpu-quantity" min="1" max="2" value="0">
+                    <div class="part-num-decr"><div>-</div></div>
+                    <div class="part-num-decr-unavailable"><div>-</div></div>
+                    <div class="quantity-display"><div>0</div></div>
+                    <div class="part-num-incr"><div>+</div></div>
+                    <div class="part-num-incr-unavailable"><div>+</div></div>
+                  </div>
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="gpu9">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="gpu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+            <div class="builder-part-category psu">
+                <div class="part-category-head">Τροφοδοτικό</div>
+                <div class="part-category-description">Το τροφοδοτικό αναλαμβάνει την σταθερή παροχή ρεύματος σε όλα τα μέρη του συστήματος. Επιλέξτε καλύτερο μοντέλο για χαμηλότερη κατανάλωση, θόρυβο και θερμοκρασία.</div>
+            <input type="radio" class="part-rd-bt" id="psu0" name="psu" value="emptyval"checked data-erp="-" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu0">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu0.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Χωρίς τροφοδοτικό</div><div class="prod-av-null"></div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="0000">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu0">Επιλογή</label>
+                  <label class="btn btn-primary disabled" >Επιλεγμένο</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu1" name="psu" value="psu1" data-erp="001-37982" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu1">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu1.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master Elite V3 500W</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4390">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu1">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu2" name="psu" value="psu2" data-erp="001-50665" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu2">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu2.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master MWE 500W V2 Bronze Rated Power Supply - Bulk</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4750">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu2">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu3" name="psu" value="psu3" data-erp="001-47075" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu3">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu3.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair CV Series CV550 550W Bronze Rated Power Supply</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="4990">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu3">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu4" name="psu" value="psu4" data-erp="001-44606" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu4">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu4.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master MWE 500 V2 White Rated Power Supply</div><div class="prod-av-2">Μικρή διαθεσιμότητα</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5090">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu4">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu5" name="psu" value="psu5" data-erp="001-48186" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu5">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu5.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte Power Supply GP-P550B 550W 80+ Bronze</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5450">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu5">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu6" name="psu" value="psu6" data-erp="001-50108" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu6">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu6.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Corsair CV Series CV650 650W Bronze Rated Power Supply</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5590">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu6">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu7" name="psu" value="psu7" data-erp="001-50669" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu7">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu7.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master MWE 600W V2 Bronze Rated Power Supply - Bulk</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5600">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu7">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu8" name="psu" value="psu8" data-erp="001-37983" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu8">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu8.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Cooler Master Elite V3 600W</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5690">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu8">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu9" name="psu" value="psu9" data-erp="001-49364" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu9">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu9.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Force Power Supply 850W - 80plus Bronze</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="5900">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu9">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            <input type="radio" class="part-rd-bt" id="psu10" name="psu" value="psu10" data-erp="001-40247" >
+            <div class="listed-part">
+              <label class="listed-part-inner" for="psu10">
+                <div class="part-img">
+                  <img class="build-img" src="assets/psu10.jpg" width="100%">
+                </div>
+                <div class="part-text"><div class="part-text-head">Gigabyte Power Supply GP-P650B 650W 80+ Bronze</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
+                <div class="part-price">
+                  <span class="price-main" data-priceval="6070">0,00€</span>
+                  <span class="price-difference">(+0,00€)</span>
+                </div>
+                <div class="part-btn">
+                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
+                  <label class="btn btn-primary btn-select" for="psu10">Επιλογή</label>
+                  <label class="btn btn-warning btn-cancel" for="psu0">Ακύρωση</label>
+                  <div class="disabled-part">disabled</div>
+                </div>                
+              </label>
+            </div>
+            </div>
+
+          </div>
+        </div>
+        <script>$('.c-overlay-inner [data-toggle="tooltip"]').tooltip();createListeners();initParts()</script>
+      </div>
+      <div class="container-block-footer">
+        <div>
+          <p><strong>Πληροφορίες</strong></p>
+          <p>Η Εταιρεία</p>
+          <p>Αξιολογήσεις Πελατών</p>
+          <p>Υπηρεσίες Τεχνικού Τμήματος</p>
+          <p>Όροι Χρήσης</p>
+          <p>Ευκαιρίες Καριέρας</p>
+          <p>Ρυθμίσεις Cookies</p>
+          <p><strong>Ωράριο Καταστήματος</strong></p>
+          <p>Δευτέρα - Τετάρτη: XX:XX-XX:XX</p>
+          <p>Τρίτη - Πέμπτη - Παρασκευή: XX:XX-XX:XX</p>
+          <p>Σάββατο: XX:XX-XX:XX</p>
+        </div>
+        <div>
+          <p><strong>Βοήθεια</strong></p>
+          <p>Εγγύηση / Επιστροφές Προϊόντων</p>
+          <p>Τρόποι Παραγγελίας</p>
+          <p>Τρόποι Πληρωμής</p>
+          <p>Τρόποι Αποστολής</p>
+        </div>
+        <div>
+          <p><strong>Κατάστημα</strong></p>
+          <p>Kapou Kapou XX Kapou</p>
+          <p>Αθήνα, ΤΚ: XXXXX, Ελλάδα</p>
+          <p>Προβολή στον Χάρτη</p>
+          <p><strong>Service Center</strong></p>
+          <p>Kapou Kapou XX Kapou alou</p>
+          <p>Αθήνα, ΤΚ: XXXXX, Ελλάδα</p>
+        </div>
+        <div>
+          <p><strong>Επικοινωνία</strong></p>
+          <p>XXX-XXXXXXX</p>
+          <p><strong>Email</strong></p>
+          <p>Πωλήσεις: sales@xxxxx.gr</p>
+          <p>Υποστήριξη: support@xxxxx.gr</p>
+          <p>Λογιστήριο: backoffice@xxxxx.gr</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
