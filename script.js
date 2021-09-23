@@ -1,4 +1,3 @@
-//test commit
 function wtDedimal(wholeNum){
   if(Number.isSafeInteger(Number(wholeNum))){
     var wholeStr = Number(wholeNum).toString();
