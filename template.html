@@ -13,23 +13,23 @@
   <body>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="script.js"></script>
-    <div class="container-fluid">
-      <div class="container-block-header">
-        <div class="header-top">
-          <div class="top-logo"><img src="assets/logo_2020.png"></div>
-          <div class="search-field">
-            <input type="text" id="ls_query" name="keywords" autocomplete="off">
-          </div>
-        </div>
-        <div class="header-navbar">
-          <div>Ψηφιακή Μέριμνα</div>
-          <div>Desktop</div>
-          <div>Laptop - Tablet</div>
-          <div>Περιφερειακά</div>
-          <div>Εκτυπωτές - Αναλώσιμα</div>
-          <div>Gaming</div>
+    <div class="container-block-header">
+      <div class="header-top">
+        <div class="top-logo"><img src="assets/logo_2020.png"></div>
+        <div class="search-field">
+          <input type="text" id="ls_query" name="keywords" autocomplete="off">
         </div>
       </div>
+      <div class="header-navbar">
+        <div>Ψηφιακή Μέριμνα</div>
+        <div>Desktop</div>
+        <div>Laptop - Tablet</div>
+        <div>Περιφερειακά</div>
+        <div>Εκτυπωτές - Αναλώσιμα</div>
+        <div>Gaming</div>
+      </div>
+    </div>
+    <div class="container-fluid">
       <div class="modal fade" id="build-modal"tabindex="-1" role="dialog">
         <div class="modal-dialog modal-dialog-centered" role="document">
           <div class="modal-content">
@@ -88,7 +88,7 @@
           </div>
         </div>
         <div class="row cont-body">
-          <div class="col-md-5 order-md-2 builder-product">
+          <div class="col-lg-4 order-lg-2 builder-product">
             <div class="builder-product-inner">
               <a class="btn btn-info build-faq" href="/page/systems-faq" target="_blank" title="Συχνές Ερωτήσεις">Έχεις απορίες? Δες εδώ τις συχνές ερωτήσεις</a>
               <a class="btn btn-primary build-photos" href="/page/build-of-the-day" target="_blank" title="φωτογραφίες από τα Builds μας">Δες φωτογραφίες από μερικά από τα Builds μας</a>
@@ -204,14 +204,16 @@
             </div>
           </div>
 
-          <div class="col-md-7 order-md-1 builder-parts">
+          <div class="col-lg-8 order-lg-1 builder-parts">
             {fill_part_list}
 
           </div>
         </div>
         <script>$('.c-overlay-inner [data-toggle="tooltip"]').tooltip();createListeners();initParts()</script>
       </div>
-      <div class="container-block-footer">
+    </div>
+    <div class="container-block-footer">
+      <div class="footer-inner">
         <div>
           <p><strong>Πληροφορίες</strong></p>
           <p>Η Εταιρεία</p>
@@ -250,6 +252,6 @@
           <p>Λογιστήριο: backoffice@xxxxx.gr</p>
         </div>
       </div>
-    </div>
+    </div>    
   </body>
 </html>
