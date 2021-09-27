@@ -555,3 +555,8 @@ function createListeners(){
     });
   }
 }
+document.addEventListener("DOMContentLoaded", function(){
+  $('.c-overlay-inner [data-toggle="tooltip"]').tooltip();
+  createListeners();
+  initParts();}
+)
