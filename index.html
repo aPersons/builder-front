@@ -16,65 +16,92 @@
     <script src="script.js" defer></script>
     <div class="header-top">
       <div class="header-top-inner">
-        <span class="header-phone">(+XX) XXX XX XX XXX</span>
+        <span class="header-phone">
+          <i class="bi bi-telephone mt-n1"></i>
+          (+XX) XXX XX XX XXX
+        </span>
         <span class="header-order">
-          <span class="header-compare">Σύγκριση</span>
-          <span class="header-cart">Εξέλιξη Παραγγελίας</span>
+          <span class="header-compare">
+            <i class="bi bi-arrow-repeat mt-n1"></i>
+            Σύγκριση
+          </span>
+          <span class="header-cart">
+            <i class="bi bi-geo-alt mt-n1"></i>
+            Εξέλιξη Παραγγελίας
+          </span>
         </span>
       </div>
     </div>
     <div class="header-main">
       <div class="header-mid">
         <img src="assets/logo_2020.png" width="142" alt="Msystems">
+        <i class="bi bi-list align-middle mt-n1 me-2"></i>
+        <span class="header-search">
+          <i class="bi bi-search position-absolute top-50 start-0 translate-middle-y ms-3"></i>
+          <input class="form-control rounded-start w-100" type="text" name="" id="" placeholder="Αναζήτησε εδώ ότι ψάχνεις...">          
+        </span>
       </div>
       <div class="header-end">
-        <span>Προϊόντα</span>
+        <span>
+          <i class="bi bi-list align-middle mt-n1 me-2"></i>
+          Προϊόντα
+          <i class="bi bi-caret-down-fill"></i>
+        </span>
         <span>Ψηφιακή Μέριμνα</span>
         <span>Νέα Προϊόντα</span>
         <span>Προσφορές</span>
         <span>Υπηρεσίες</span>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="modal fade" id="build-modal"tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Msystems Ryzen Gaming</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-              <div class="modal-table">                
-                <div class="modal-tb-head">
-                  <div class="modal-cat-header">Κατηγορία</div>
-                  <div class="modal-prnum-header">Κωδικός</div>
-                  <div class="modal-product-header">Προϊόν</div>
-                  <div class="modal-quant-header">Τμχ.</div>
-                  <div class="modal-price-header">Τιμή</div>
-                  <div class="modal-total-header">Σύνολο</div>
-                </div>
-                <div class="modal-prod"></div>
-                <div class="modal-tb-footer">
-                  <div class="modal-total-title">Σύνολο:</div>
-                  <div class="modal-total-num"><span></span> €</div>
-                </div>
+    <div class="modal fade" id="build-modal"tabindex="-1" role="dialog">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Msystems Ryzen Gaming</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+            <div class="modal-table">                
+              <div class="modal-tb-head">
+                <div class="modal-cat-header">Κατηγορία</div>
+                <div class="modal-prnum-header">Κωδικός</div>
+                <div class="modal-product-header">Προϊόν</div>
+                <div class="modal-quant-header">Τμχ.</div>
+                <div class="modal-price-header">Τιμή</div>
+                <div class="modal-total-header">Σύνολο</div>
+              </div>
+              <div class="modal-prod"></div>
+              <div class="modal-tb-footer">
+                <div class="modal-total-title">Σύνολο:</div>
+                <div class="modal-total-num"><span></span> €</div>
               </div>
             </div>
-            <div class="modal-footer">
-              <div class="footer-text">Για να αποθηκεύσετε το σύστημα με τις επιλογές που έχετε κάνει αποθηκεύστε τον παρακάτω σύνδεσμο</div>
-              <div class="footer-link-body"></div>
-              <div class="footer-interface">
-                <button class="btn btn-primary btn-copy-link">Αντιγραφή συνδέσμου στο Clipboard</button>
-                <button class="btn btn-success btn-print-pg" onclick="window.print()">Εκτύπωση</button>
-              </div>
+          </div>
+          <div class="modal-footer">
+            <div class="footer-text">Για να αποθηκεύσετε το σύστημα με τις επιλογές που έχετε κάνει αποθηκεύστε τον παρακάτω σύνδεσμο</div>
+            <div class="footer-link-body"></div>
+            <div class="footer-interface">
+              <button class="btn btn-primary btn-copy-link">Αντιγραφή συνδέσμου στο Clipboard</button>
+              <button class="btn btn-success btn-print-pg" onclick="window.print()">Εκτύπωση</button>
             </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="body-title">
+      <div class="body-title-inner">
+        <h4>Msystems AMD Entry Gaming</h4>
+        <span class="breadcrumps">
+          <i class="bi bi-house"></i>
+          <i class="bi bi-chevron-right"></i>
+          Κουτιά
+        </span>
+      </div>
+    </div>
+    <div class="container-fluid">    
       <div class="builder-body-container">
-        <h4>Msystems AMD Entry Gaming</h4><hr/>
         <div class="row cont-head">
           <div class="col-md-5 head-cont-img">
             <div class="cont-img-inner">
@@ -94,7 +121,7 @@
           </div>
         </div>
         <div class="row cont-body">
-          <div class="col-lg-4 order-lg-2 builder-product">
+          <div class="col-lg-4 col-md-5 order-md-2 builder-product">
             <div class="builder-product-inner">
               <a class="btn btn-info build-faq" href="/page/systems-faq" target="_blank" title="Συχνές Ερωτήσεις">Έχεις απορίες? Δες εδώ τις συχνές ερωτήσεις</a>
               <a class="btn btn-primary build-photos" href="/page/build-of-the-day" target="_blank" title="φωτογραφίες από τα Builds μας">Δες φωτογραφίες από μερικά από τα Builds μας</a>
@@ -123,8 +150,8 @@
                 <div class="carousel-inner">
                   <div class="carousel-item active">
                     <picture>
-                      <source media="(max-width: 768px)" srcset="assets/fortnite-game.jpg">
-                      <source media="(min-width: 769px)" srcset="assets/fortnite-game-wide.jpg">
+                      <source media="(max-width: 767px)" srcset="assets/fortnite-game.jpg">
+                      <source media="(min-width: 768px)" srcset="assets/fortnite-game-wide.jpg">
                       <img src="assets/fortnite-game.jpg" alt="fortnite">
                     </picture>
                     <div class="carousel-overlay">
@@ -138,8 +165,8 @@
                   </div>
                   <div class="carousel-item">
                     <picture>
-                      <source media="(max-width: 768px)" srcset="assets/lol-game.jpg">
-                      <source media="(min-width: 769px)" srcset="assets/lol-game-wide.jpg">
+                      <source media="(max-width: 767px)" srcset="assets/lol-game.jpg">
+                      <source media="(min-width: 768px)" srcset="assets/lol-game-wide.jpg">
                       <img src="assets/lol-game.jpg" alt="League of Legends">
                     </picture>
                     <div class="carousel-overlay">
@@ -153,8 +180,8 @@
                   </div>
                   <div class="carousel-item">
                     <picture>
-                      <source media="(max-width: 768px)" srcset="assets/sottr-game.jpg">
-                      <source media="(min-width: 769px)" srcset="assets/sottr-game-wide.jpg">
+                      <source media="(max-width: 767px)" srcset="assets/sottr-game.jpg">
+                      <source media="(min-width: 768px)" srcset="assets/sottr-game-wide.jpg">
                       <img src="assets/sottr-game.jpg" alt="Shadow of the Tomb Raider">
                     </picture>
                     <div class="carousel-overlay">
@@ -168,8 +195,8 @@
                   </div>
                   <div class="carousel-item">
                     <picture>
-                      <source media="(max-width: 768px)" srcset="assets/control-game.jpg">
-                      <source media="(min-width: 769px)" srcset="assets/control-game-wide.jpg">
+                      <source media="(max-width: 767px)" srcset="assets/control-game.jpg">
+                      <source media="(min-width: 768px)" srcset="assets/control-game-wide.jpg">
                       <img src="assets/control-game.jpg" alt="Control">
                     </picture>
                     <div class="carousel-overlay">
@@ -183,8 +210,8 @@
                   </div>
                   <div class="carousel-item">
                     <picture>
-                      <source media="(max-width: 768px)" srcset="assets/fs2020-game.jpg">
-                      <source media="(min-width: 769px)" srcset="assets/fs2020-game-wide.jpg">
+                      <source media="(max-width: 767px)" srcset="assets/fs2020-game.jpg">
+                      <source media="(min-width: 768px)" srcset="assets/fs2020-game-wide.jpg">
                       <img src="assets/fs2020-game.jpg" alt="Microsoft Flight Simulator">
                     </picture>
                     <div class="carousel-overlay">
@@ -210,7 +237,7 @@
             </div>
           </div>
 
-          <div class="col-lg-8 order-lg-1 builder-parts">
+          <div class="col-lg-8 col-md-7 order-lg-1 builder-parts">
             
             <div class="builder-part-category kouti">
                 <div class="part-category-head">Κουτί</div>
