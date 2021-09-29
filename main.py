@@ -32,7 +32,7 @@ prod_template = """
                   <span class="price-main" data-priceval="{part_price}">0,00€</span>
                   <span class="price-difference">(+0,00€)</span>
                 </div>
-                <div class="part-btn">{use_num_input}
+                <div class="part-btn">{see_more}{use_num_input}
                   <label class="btn btn-primary btn-change" >Αλλαγή</label>
                   <label class="btn btn-primary btn-select" for="{part_id}">Επιλογή</label>
                   {sec_btn}
@@ -67,9 +67,12 @@ for category in prodlist:
                 part_min = product["prod-min"],
                 part_max = product["prod-max"]
             )
-        get_av = ""
-        if "prod-av" in product:
-            get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
+        #get_av = ""
+        #if "prod-av" in product:
+            #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
+        seeMore = ""
+        if product["prod-av"] != "":
+          seeMore = '<a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
 
         perf_list=""
         if category["cat-code"] == "cpu" or category["cat-code"] == "gpu":
@@ -102,6 +105,7 @@ for category in prodlist:
             part_erp = product["prod-erp"],
             part_title = product["prod-name"],
             part_av = av_template[product["prod-av"]],
+            see_more = seeMore,
             part_price = product["prod-price"],
             use_num_input = num_input_res,
             sec_btn = secbtn
