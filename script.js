@@ -223,7 +223,7 @@ function updatePerfCarousel(){
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "Yes";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("over");
       }else{
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "Yes";
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("under");
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-original-title", perfText.substring(0,perfText.length-5))
       }
@@ -235,7 +235,7 @@ function updatePerfCarousel(){
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "Yes";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("over");
       }else{
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "Yes";
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("under");
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-original-title", perfText.substring(0,perfText.length-5))
       }
@@ -247,7 +247,7 @@ function updatePerfCarousel(){
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "Yes";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("over");
       }else{
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "Yes";
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("under");
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-original-title", perfText.substring(0,perfText.length-5))
       }
