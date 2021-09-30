@@ -436,7 +436,7 @@ function createListeners(){
   for (let i = 0; i < acc.length; i++) {
     acc[i].addEventListener("click", function() {
       var gtopen = document.querySelectorAll(".builder-part-category.lp-show");      
-      var part_category = this.parentElement.parentElement.parentElement.parentElement;
+      var part_category = this.parentElement.parentElement.parentElement.parentElement.parentElement;
       if(part_category.classList.contains("builder-part-category")){
         part_category.classList.toggle("lp-show");
       }

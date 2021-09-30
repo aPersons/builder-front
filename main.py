@@ -18,7 +18,10 @@ num_input = """
 cat_template="""
             <div class="builder-part-category {cat_name}">
                 <div class="part-category-head">{cat_title}</div>
-                <div class="part-category-description">{cat_descr}</div>{part_list}
+                <div class="part-category-description">{cat_descr}</div>
+                <div class="part-list-containter">
+                  {part_list}
+                </div>
             </div>"""
 prod_template = """
             <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked} data-erp="{part_erp}" {part_perf}{part_filters}>
