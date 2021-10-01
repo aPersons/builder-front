@@ -25,7 +25,7 @@ cat_template="""
             </div>"""
 prod_template = """
             <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked} data-erp="{part_erp}" {part_perf}{part_filters}>
-            <div class="listed-part">
+            <div class="listed-part">              
               <label class="listed-part-inner" for="{part_id}">
                 <div class="part-img">
                   <img class="build-img" src="assets/{img_src}.jpg" width="100%">
@@ -42,6 +42,7 @@ prod_template = """
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>
+              <div class="border-top pt-3 mt-3"></div>
             </div>"""
 av_template={
   "":'<div class="prod-av-null"></div>',
