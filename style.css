@@ -2,7 +2,7 @@
 /* Page Wrapper - Temp Contents*/
 
 body{
-  background-color: #f6f6f6;
+  background-color: #f6f6f6!important;
 }
 .header-top{
   background-color: rgb(0,95,171);
@@ -228,7 +228,6 @@ body{
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 .builder-body-container{
-  max-width: 1170px;
   margin-top: -78px;
 }
 
@@ -282,14 +281,17 @@ body{
 .builder-product .build-faq{
   grid-area: build-faq;
   margin-bottom: 5px;
+  white-space: normal;
 }
 .builder-product .build-photos{
   grid-area: build-photos;
   margin-bottom: 5px;
+  white-space: normal;
 }
 .builder-product .build-modal-bt{
   grid-area: build-modal-bt;
   margin-bottom: 5px;
+  white-space: normal;
 }
 .builder-product .build-modal-bt button{
   width: 100%;
@@ -300,6 +302,7 @@ body{
   display: flex;
   justify-content: end;
   align-items: center;
+  white-space: normal;
 }
 .builder-product .build-add-to-cart .build-price-total{
   padding:0 5px;
@@ -323,6 +326,7 @@ body{
 }
 .builder-product .build-expected-performance{
   grid-area: build-performance;
+  white-space: normal;
 }
 #performance-carousel .carousel-control-prev,
 #performance-carousel .carousel-control-next{
