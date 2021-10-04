@@ -462,7 +462,7 @@ body{
 .builder-part-category .listed-part > .border-top {
   display: none;
 }
-.builder-part-category.lp-show .listed-part:nth-last-child(n+1) > .border-top{
+.builder-part-category.lp-show .listed-part:nth-last-of-type(n+2) > .border-top{
   display: block;
 }
 .builder-part-category .listed-part-inner{
