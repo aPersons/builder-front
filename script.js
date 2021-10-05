@@ -172,9 +172,9 @@ function updatePerfCarousel(){
     perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.remove("over","under","err");
     perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.remove("over","under","err");
     perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.remove("over","under","err");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-original-title","");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-original-title","");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-original-title","");
+    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title","");
+    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title","");
+    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title","");
   }
   var sel_mb = document.querySelector(".builder-parts .builder-part-category.mitriki input:checked");
   var sel_cpu = document.querySelector(".builder-parts .builder-part-category.cpu input:checked");
@@ -209,9 +209,9 @@ function updatePerfCarousel(){
       perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("under");
       perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("under");
       perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("under");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-original-title",missingText.substring(0,missingText.length-5));
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-original-title",missingText.substring(0,missingText.length-5));
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-original-title",missingText.substring(0,missingText.length-5));
+      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
+      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
+      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
     }
   }else{
     for(gName of gList){
@@ -225,7 +225,7 @@ function updatePerfCarousel(){
       }else{
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-original-title", perfText.substring(0,perfText.length-5))
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5))
       }
       //1440p
       perfText = "";
@@ -237,7 +237,7 @@ function updatePerfCarousel(){
       }else{
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-original-title", perfText.substring(0,perfText.length-5))
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5))
       }
       //4k
       perfText = "";
@@ -249,7 +249,7 @@ function updatePerfCarousel(){
       }else{
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-original-title", perfText.substring(0,perfText.length-5))
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5))
       }
     }
   }  
@@ -266,9 +266,9 @@ function catRedirect(nextCat) {
     nextCat.classList.toggle("lp-show",true);
   }
   if(window.innerWidth > 991){
-    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-85);
+    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-140);
   }else{
-    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-123);
+    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-129);
   }
 }
 function avCompatible(){
@@ -425,9 +425,9 @@ function createListeners(){
           gtopen[y].classList.remove("lp-show");
         }
       }if(window.innerWidth>991){
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-85)
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-140)
       }else{
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-123)
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-129)
       }
     })
   }
@@ -446,9 +446,9 @@ function createListeners(){
         }
       }
       if(window.innerWidth>991){
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-85);
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-140);
       }else{
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-123);
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-129);
       }
     })
   }
@@ -571,7 +571,10 @@ function createListeners(){
   })
 }
 document.addEventListener("DOMContentLoaded", function(){
-  $('.c-overlay-inner [data-toggle="tooltip"]').tooltip();
+  var tooltipTriggerList = [].slice.call(document.querySelectorAll('.c-overlay-inner [data-bs-toggle="tooltip"]'))
+  var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl)
+  })
   createListeners();
   initParts();}
 )
