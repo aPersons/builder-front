@@ -175,6 +175,9 @@ function updatePerfCarousel(){
     perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title","");
     perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title","");
     perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title","");
+    new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`));
+    new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`));
+    new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`));
   }
   var sel_mb = document.querySelector(".builder-parts .builder-part-category.mitriki input:checked");
   var sel_cpu = document.querySelector(".builder-parts .builder-part-category.cpu input:checked");
@@ -212,6 +215,9 @@ function updatePerfCarousel(){
       perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
       perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
       perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
+      new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`));
+      new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`));
+      new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`));
     }
   }else{
     for(gName of gList){
@@ -225,7 +231,8 @@ function updatePerfCarousel(){
       }else{
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5))
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5));
+        new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`));
       }
       //1440p
       perfText = "";
@@ -237,7 +244,8 @@ function updatePerfCarousel(){
       }else{
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5))
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5));
+        new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`));
       }
       //4k
       perfText = "";
@@ -249,7 +257,8 @@ function updatePerfCarousel(){
       }else{
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "No";
         perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5))
+        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5));
+        new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`));
       }
     }
   }  
@@ -266,9 +275,9 @@ function catRedirect(nextCat) {
     nextCat.classList.toggle("lp-show",true);
   }
   if(window.innerWidth > 991){
-    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-140);
+    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-138);
   }else{
-    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-129);
+    window.scrollTo(0,nextCat.getBoundingClientRect().top+window.pageYOffset-128);
   }
 }
 function avCompatible(){
@@ -425,9 +434,9 @@ function createListeners(){
           gtopen[y].classList.remove("lp-show");
         }
       }if(window.innerWidth>991){
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-140)
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-138)
       }else{
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-129)
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.pageYOffset-128)
       }
     })
   }
@@ -446,9 +455,9 @@ function createListeners(){
         }
       }
       if(window.innerWidth>991){
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-140);
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-138);
       }else{
-        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-129);
+        window.scrollTo(0,part_category.getBoundingClientRect().top+window.scrollY-128);
       }
     })
   }
@@ -555,20 +564,6 @@ function createListeners(){
       } catch (err) { }
     });
   }
-
-  //temp
-  document.addEventListener("scroll",function(){
-    var navbar = document.querySelector(".header-main");
-    if(navbar.classList.contains("nav-fix-top") && window.scrollY > 130 && window.innerWidth > 991){
-      navbar.classList.add("nav-fix-top");
-    }else if(window.scrollY > 190 && window.innerWidth > 991){
-      navbar.classList.add("nav-fix-top");
-    }else if(window.scrollY > 167 && window.innerWidth < 992){
-      navbar.classList.add("nav-fix-top");
-    }else{
-      navbar.classList.remove("nav-fix-top");
-    }
-  })
 }
 document.addEventListener("DOMContentLoaded", function(){
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('.c-overlay-inner [data-bs-toggle="tooltip"]'))

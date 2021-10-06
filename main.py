@@ -16,7 +16,7 @@ num_input = """
                   </div>"""
 
 cat_template="""
-            <div class="builder-part-category {cat_name}">
+            <div class="builder-part-category {cat_name}" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
                 <div class="part-category-description">{cat_descr}</div>
                 <div class="part-list-containter">
@@ -41,9 +41,8 @@ prod_template = """
                   {sec_btn}
                   <div class="disabled-part">disabled</div>
                 </div>                
-              </label>
-              <div class="border-top pt-3 mt-3"></div>
-            </div>"""
+              </label>              
+            </div><div class="border-top pt-3 mt-3"></div>"""
 av_template={
   "":'<div class="prod-av-null"></div>',
   "Μη διαθέσιμο":'<div class="prod-av-0">Μη διαθέσιμο</div>',
@@ -118,7 +117,7 @@ for category in prodlist:
         cat_name = category["cat-code"],
         cat_title = category["cat-name"],
         cat_descr = category["cat-desc"],
-        part_list = catres
+        part_list = catres[:len(catres)-40]
     )
 with open("template.html","r",encoding="UTF-8") as readtemp:
     results = readtemp.read().format(fill_part_list = results)
