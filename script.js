@@ -102,7 +102,7 @@ function updateFinalPrice(){
     linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;
   }  
   var sum = 0;
-  var priceEl = document.querySelector(".builder-product-inner .build-price-total strong span"); 
+  var priceEl = document.querySelector(".builder-product-cart .build-price-total strong span"); 
   var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
   if(getCats && (priceEl || modTable)){
     for(let i = 0; i< getCats.length; i++){
@@ -154,6 +154,27 @@ function updateFinalPrice(){
                                             <div class="modal-total-num"><span>${sum}</span> €</div>`)
     document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = linktext;
   }
+}
+function updateProdNav(){
+  var navBody = document.querySelector(".builder-product .prod-navigation");
+  if(!navBody){return}
+
+  var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
+  var endList = "";
+  for(let i = 0;i< getCats.length;i++){
+    var price = "?";
+    var nameText = getCats[i].querySelector(".part-category-head").innerText;
+    var catTarget = getCats[i].id;
+    var wProduct = getCats[i].querySelector("input:checked");
+    if(!wProduct){
+      endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>
+        ${i+1<getCats.length ?'<div class="border-top pt-3 mt-3"></div>':""}`;
+    }else{
+      endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>0,00€</span></div>
+      ${i+1<getCats.length ?'<div class="border-top pt-3 mt-3"></div>':""}`;
+    }
+  }
+  navBody.innerHTML = endList;
 }
 function updatePerfCarousel(){
   var perf_carousel = document.querySelector("#performance-carousel");
@@ -417,6 +438,7 @@ function initParts(){
   }  
   avCompatible();
   updateFinalPrice();
+  updateProdNav();
   updatePerfCarousel();
 }
 
@@ -472,6 +494,7 @@ function createListeners(){
       }      
       avCompatible();
       updateFinalPrice();
+      updateProdNav();
       updatePerfCarousel();
     })
   }
@@ -510,7 +533,8 @@ function createListeners(){
       }
       loctemp.querySelector(".quantity-display div").innerHTML = inputValue.value;
       updateFinalPrice();
-      updatePerfCarousel()
+      updateProdNav();
+      updatePerfCarousel();
     })
   }
 
@@ -548,7 +572,8 @@ function createListeners(){
       }
       loctemp.querySelector(".quantity-display div").innerHTML = inputValue.value;
       updateFinalPrice();
-      updatePerfCarousel()
+      updateProdNav();
+      updatePerfCarousel();
     })
   }
   var copy_btn = document.querySelector("#build-modal .footer-interface .btn-copy-link")
