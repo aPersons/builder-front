@@ -276,15 +276,14 @@ body{
 }
 .builder-product .prod-navigation .prod-navigator{
   border-radius: 0.4375rem;
-  padding: 10px 0;
+  padding: 5px;
 }
 .builder-product .prod-navigation .prod-navigator:hover{
-  background-color: #f6f6f6;
+  background-color: #f6f6f6 !important;
   cursor: pointer;
 }
 .builder-product .prod-navigation .prod-navigator i{margin-right: 10px;}
 .builder-product .prod-navigation .prod-navigator span{float: right;}
-.builder-product .prod-navigation div.border-top{margin-top: 1px !important;padding-top: 1px !important;}
 
 .builder-product-cart{  
   display: grid;
