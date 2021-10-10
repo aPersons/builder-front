@@ -57,6 +57,25 @@ function updatePartPrice(partDom){
     partDifference.classList.remove("price-lower","price-higher");
   }
 }
+function updateNumberInput(partDom, action="update"){
+  var inputHead = partDom.querySelector(".part-number-input");
+  var inputValue = inputHead.querySelector(".part-quantity");
+  var inputMin = Number(inputValue.min);
+  var inputMax = Number(inputValue.max);
+  if(!partDom.previousElementSibling.checked){
+    inputHead.classList.remove("decr-av","incr-av");
+    inputValue.disabled = true;
+    inputValue.value = "0";
+  }else{
+    
+  }
+  inputHead.querySelector(".quantity-display div").innerHTML = inputValue.value;
+}
+
+//@@@@@@@@@@@@@@@@@
+//@@@@@@@@@@@@@@@@@
+//@@@@@@@@@@@@@@@@@
+
 function updateNumberInput(partDom){
   if(partDom.querySelector(".part-number-input")){
     var inputHead = partDom.querySelector(".part-number-input");
@@ -323,16 +342,16 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   var catPosBot = wCat.getBoundingClientRect().bottom;
   var selprod = wCat.querySelector("input:checked + .listed-part");
   if(!catState || focus == "cat" || !selprod){
-    window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128));
+    window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 139 : 129));
   }else{
     var selprodTop = selprod.getBoundingClientRect().top;
     var selprodBot = selprod.getBoundingClientRect().bottom;
     if((window.innerHeight/2-140)>selprodTop-catPosTop){
-      window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128));
+      window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 139 : 129));
     }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
       window.scrollTo(0,catPosBot+window.pageYOffset-window.innerHeight+50);
     }else{
-      window.scrollTo(0,selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2);
+      window.scrollTo(0,selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 139 : 129))/2);
     }
   }
   updateProdNav();

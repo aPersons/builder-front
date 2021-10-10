@@ -5,31 +5,7 @@ body{
   background-color: #f6f6f6!important;
   height: auto !important;;
 }
-.header-top{
-  background-color: rgb(0,95,171);
-}
-.header-top-inner{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  max-width: 1170px;
-  width: 100%;
-  margin: auto;
-  color:#fff;
-  padding: 10px 15px;
-}
-.header-top .header-cart{
-  border-left-style: solid;
-  border-left-color: #fff;
-  border-left-width: 1px;
-  margin-left: 16px;
-  padding-left: 16px;
-}
-@media only screen and (max-width: 767px){
-  .header-top-inner .header-order i,
-  .header-top-inner .header-phone {display: none;}
-  .header-top-inner{justify-content: end;}
-}
+
 .header-main{
   position: sticky;
   width: 100%;
@@ -38,140 +14,6 @@ body{
   background-color: #fff;
   box-shadow: 0 0.25rem 0.5625rem -0.0625rem rgb(0 0 0 / 3%),
   0 0.275rem 1.25rem -0.0625rem rgb(0 0 0 / 5%);
-}
-.header-main .header-mid{
-  max-width: 1170px;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  align-items: center;
-  padding: 12px 15px;
-  justify-content: space-between;
-}
-
-.header-main .header-mid img{
-  padding: 10px 0;
-  margin-right: 16px;
-}
-.header-main .header-mid .bi-list{
-  display:none;
-}
-.header-main .header-mid .header-search{
-  margin: 0 24px;
-  width: 100%;
-  display: flex;
-  align-items: center;
-}
-
-.header-main .header-mid i{
-  margin-left: 16px;
-  z-index: 5;
-}
-.header-main .header-mid .header-search input{
-  padding: 10px 16px 10px 40px;
-  margin-left: -1px;
-  position: relative;
-}
-.header-main .header-end{
-  max-width: 1170px;
-  width: 100%;
-  margin: auto;
-  display: flex;
-  justify-content: start;
-  padding: 0 15px;
-  margin-top: -8px;
-  padding-bottom: 8px;
-}
-.header-main .header-end span{
-  padding: 18px;
-  padding-bottom: 14px;
-}
-.header-main .header-end span:first-child{
-  padding: 18px 24px 14px 0;
-  margin-right: 8px;
-  position: relative;
-}
-.header-main .header-end span:first-child:after{
-  display: block;
-  background-color: #e3e9ef;
-  position: absolute;
-  top: 50%;
-  right: 0;
-  -webkit-transform: translateY(-50%);
-  transform: translateY(-50%);
-  width: 1px;
-  height: 1.875rem;
-  content: "";
-}
-@media only screen and (max-width: 991px) {
-  .header-main .header-mid{flex-wrap: wrap;}
-  .header-main .header-mid .bi-list{
-    display: inline-block;
-  }
-  .header-main .header-end{
-    display: none;
-  }
-}
-.body-title{
-  background-color: rgb(0,95,171);
-  padding-top: 24px;
-  padding-bottom: 102px;
-}
-.body-title-inner{
-  color: #fff;
-  max-width: 1170px;
-  width: 100%;
-  margin: auto;
-  padding: 0 15px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;  
-}
-.body-title-inner > h4:first-child{
-  color: #fff;
-}
-@media only screen and (max-width: 991px){
-  .body-title-inner{
-    flex-direction: column-reverse;
-    text-align: center;
-  }
-}
-.container-block-footer{
-  background-color: #005fab;
-  margin-top: 5px;
-  padding-top: 48px;
-}
-.container-block-footer .footer-inner{
-  color: #fff;
-  margin:auto;
-  max-width: 1170px;
-}
-.container-block-footer .footer-inner .footer-col .footer-block{
-  padding-bottom: 8px;
-  margin-bottom: 24px;
-}
-.container-block-footer .footer-inner .footer-col h5{
-  margin-bottom: 18px;
-}
-.container-block-footer .footer-inner .footer-col a{  
-  color: rgba(255,255,255,0.65);
-  transition: color 0.25s;
-}
-.container-block-footer .footer-inner .footer-col a:hover{
-  text-decoration: none;
-  color: #ffffff;
-}
-.footer-end{
-  background-color: #2b3445;
-  padding-top: 48px;
-}
-.footer-end .footer-end-inner{
-  color: #fff;
-  margin:auto;
-  max-width: 1170px;
-}
-.footer-end .end-block div{
-  color: rgba(255,255,255,0.12);
 }
 
 /* Actual Content */
@@ -228,7 +70,7 @@ body{
 /*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 
 .builder-body-container{
-  margin-top: -78px;
+  margin-top: -4.875rem;
 }
 
 /* Head - Description */
@@ -456,7 +298,7 @@ body{
   font-size: 13px;
   color: #777;
 }
-@media only screen and(max-width: 991px) {
+@media only screen and (max-width: 991px){
   .builder-part-category.lp-show .part-category-head{
     top: 129px;
   }
