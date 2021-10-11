@@ -59,51 +59,31 @@ function updatePartPrice(partDom){
 }
 function updateNumberInput(partDom, action="update"){
   var inputHead = partDom.querySelector(".part-number-input");
+  if(!inputHead){return;}
   var inputValue = inputHead.querySelector(".part-quantity");
   var inputMin = Number(inputValue.min);
   var inputMax = Number(inputValue.max);
+  inputHead.classList.remove("decr-av","incr-av");
   if(!partDom.previousElementSibling.checked){
-    inputHead.classList.remove("decr-av","incr-av");
     inputValue.disabled = true;
-    inputValue.value = "0";
+    inputValue.value = 0;
   }else{
-    
+    inputValue.disabled = false;
+    if(inputValue.value < inputMin || inputValue.value > inputMax){
+      inputValue.value = inputMin;
+    }else if(action == "increment" && inputValue.value < inputMax){
+      inputValue.value++;
+    }else if(action == "decrement" && inputValue.value > inputMin){
+      inputValue.value--;
+    }
+    if(inputValue.value > inputMin){
+      inputHead.classList.add("decr-av");
+    }
+    if(inputValue.value < inputMax){
+      inputHead.classList.add("incr-av");
+    }     
   }
   inputHead.querySelector(".quantity-display div").innerHTML = inputValue.value;
-}
-
-//@@@@@@@@@@@@@@@@@
-//@@@@@@@@@@@@@@@@@
-//@@@@@@@@@@@@@@@@@
-
-function updateNumberInput(partDom){
-  if(partDom.querySelector(".part-number-input")){
-    var inputHead = partDom.querySelector(".part-number-input");
-    var inputValue = inputHead.querySelector(".part-quantity");
-    var inputMin = Number(inputValue.min);
-    var inputMax = Number(inputValue.max);
-    if(partDom.previousElementSibling.checked){
-      inputValue.disabled = false;
-      if(inputValue.value < inputMin || inputValue.value > inputMax){
-        inputValue.value = inputMin;
-      }
-      if(inputValue.value > inputMin){
-        inputHead.classList.add("decr-av");
-      }else{
-        inputHead.classList.remove("decr-av");
-      }
-      if(inputValue.value < inputMax){
-        inputHead.classList.add("incr-av");
-      }else{
-        inputHead.classList.remove("incr-av");
-      }      
-    }else{
-      inputHead.classList.remove("decr-av","incr-av");
-      inputValue.disabled = true;
-      inputValue.value = "0";
-    }
-    inputHead.querySelector(".quantity-display div").innerHTML = inputValue.value;
-  }
 }
 
 function updateFinalPrice(){
@@ -491,7 +471,7 @@ function initParts(){
   for(let i=0;i< getParts.length;i++){
     updateNumberInput(getParts[i]);
     updatePartPrice(getParts[i]);
-  }  
+  }
   avCompatible();
   updateFinalPrice();
   updateProdNav();
@@ -532,38 +512,9 @@ function createListeners(){
   for(let i = 0; i < acc.length; i++){
     acc[i].addEventListener("click", function() {
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
-      var inputHead = loctemp.querySelector(".part-number-input");
-      var inputValue = inputHead.querySelector(".part-quantity");
-      var inputMin = Number(inputValue.min);
-      var inputMax = Number(inputValue.max);
-      if(loctemp.previousElementSibling.checked){
-        inputValue.disabled = false;
-        if(inputValue.value >= inputMin && inputValue.value <= inputMax){
-          if(inputValue.value > inputMin){
-            inputValue.value--;
-          }
-        }else{
-          inputValue.value = inputMin;
-        }
-        if(inputValue.value > inputMin){
-          inputHead.classList.add("decr-av");
-        }else{
-          inputHead.classList.remove("decr-av");
-        }
-        if(inputValue.value < inputMax){
-          inputHead.classList.add("incr-av");
-        }else{
-          inputHead.classList.remove("incr-av");
-        }
-      }else{
-        inputHead.classList.remove("decr-av","incr-av");
-        inputValue.disabled = true
-        inputValue.value = "0";
-      }
-      loctemp.querySelector(".quantity-display div").innerHTML = inputValue.value;
+      updateNumberInput(loctemp,"decrement");
       updateFinalPrice();
       updateProdNav();
-      updatePerfCarousel();
     })
   }
 
@@ -571,40 +522,12 @@ function createListeners(){
   for(let i = 0; i < acc.length; i++){
     acc[i].addEventListener("click", function() {
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
-      var inputHead = loctemp.querySelector(".part-number-input");
-      var inputValue = inputHead.querySelector(".part-quantity");
-      var inputMin = Number(inputValue.min);
-      var inputMax = Number(inputValue.max);
-      if(loctemp.previousElementSibling.checked){
-        inputValue.disabled = false;
-        if(inputValue.value >= inputMin && inputValue.value <= inputMax){
-          if(inputValue.value < inputMax){
-            inputValue.value++;
-          }
-        }else{
-          inputValue.value = inputMin;
-        }
-        if(inputValue.value > inputMin){
-          inputHead.classList.add("decr-av");
-        }else{
-          inputHead.classList.remove("decr-av");
-        }
-        if(inputValue.value < inputMax){
-          inputHead.classList.add("incr-av");
-        }else{
-          inputHead.classList.remove("incr-av");
-        }
-      }else{
-        inputHead.classList.remove("decr-av","incr-av");
-        inputValue.disabled = true;
-        inputValue.value = "0";
-      }
-      loctemp.querySelector(".quantity-display div").innerHTML = inputValue.value;
+      updateNumberInput(loctemp,"increment");
       updateFinalPrice();
       updateProdNav();
-      updatePerfCarousel();
     })
   }
+  
   var copy_btn = document.querySelector("#build-modal .footer-interface .btn-copy-link")
   if (copy_btn) {
     copy_btn.addEventListener("click", function () {

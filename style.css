@@ -547,9 +547,10 @@ body{
 
 
 @media print{
-  .header-top,.header-main,
-  .body-title,
-  .container-block-footer,.footer-end{
+  .topbar,
+  .header-main,
+  .page-title-overlap,
+  footer{
     display:none;
   }
   .builder-body-container{
