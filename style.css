@@ -257,6 +257,34 @@ body{
     margin: auto;
   }
 }
+/* Carousel Alt */
+.perf-carousel{
+  padding-bottom: 20px;
+}
+.perf-carousel .carousel-control-prev,
+.perf-carousel .carousel-control-next{
+  width: 20px;
+  height: 50%;
+  align-items: center;
+}
+/*.perf-carousel .carousel-control-prev span,
+.perf-carousel .carousel-control-next span{
+  height: 60%;
+}*/
+.perf-carousel .carousel-indicators{
+  margin-bottom: 0;
+}
+/*.perf-carousel .accordion-item{
+  margin: 0 20px;  
+}*/
+.perf-carousel .accordion-header .accordion-button:after{
+  width: calc(2.125rem*0.8);
+  height: calc(2.125rem*0.8);
+}
+.perf-carousel .accordion-header .accordion-button,
+.perf-carousel .accordion-collapse .accordion-body{
+  padding: 5px;  
+}
 
 /* Part List */
 @media only screen and (min-width:768px){
