@@ -134,11 +134,9 @@ body{
 
 .builder-product-cart{  
   display: grid;
-  grid-template-areas:  'build-faq'
-                        'build-photos'
-                        'build-modal-bt'
-                        'add-to-cart'
-                        'build-performance';
+  grid-template-areas: 'build-modal-bt'
+                       'add-to-cart'
+                       'build-performance';
 }
 .builder-product .build-faq{
   grid-area: build-faq;
