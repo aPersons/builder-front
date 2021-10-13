@@ -261,25 +261,38 @@ body{
 .perf-carousel{
   padding-bottom: 20px;
 }
+.perf-carousel img{
+  width: 100%;
+  border-radius: 0.4375rem;
+}
 .perf-carousel .carousel-control-prev,
 .perf-carousel .carousel-control-next{
   width: 20px;
-  height: 50%;
-  align-items: center;
+  /*height: 50%;*/
+  align-items: end;
 }
-/*.perf-carousel .carousel-control-prev span,
+.perf-carousel .carousel-control-prev span,
 .perf-carousel .carousel-control-next span{
-  height: 60%;
-}*/
+  height:50%;
+  width: 100%;
+}
 .perf-carousel .carousel-indicators{
   margin-bottom: 0;
 }
 /*.perf-carousel .accordion-item{
   margin: 0 20px;  
 }*/
+.perf-carousel .accordion{
+  margin:0 20px;
+}
 .perf-carousel .accordion-header .accordion-button:after{
+  display: none;
   width: calc(2.125rem*0.8);
   height: calc(2.125rem*0.8);
+  margin: 0;
+}
+.perf-carousel .accordion-header .accordion-button{
+  justify-content: center;
 }
 .perf-carousel .accordion-header .accordion-button,
 .perf-carousel .accordion-collapse .accordion-body{

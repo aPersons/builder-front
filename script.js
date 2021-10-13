@@ -196,6 +196,11 @@ function updateProdNav(forceInit=false){
   }
 }
 function updatePerfCarousel(){
+  /*
+  <i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>
+  <i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>
+  <i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>
+  */
   var perf_carousel = document.querySelector("#performance-carousel");
   if(!perf_carousel){return;}
   var gList = [
@@ -322,16 +327,16 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   var catPosBot = wCat.getBoundingClientRect().bottom;
   var selprod = wCat.querySelector("input:checked + .listed-part");
   if(!catState || focus == "cat" || !selprod){
-    window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 139 : 129));
+    window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128));
   }else{
     var selprodTop = selprod.getBoundingClientRect().top;
     var selprodBot = selprod.getBoundingClientRect().bottom;
     if((window.innerHeight/2-140)>selprodTop-catPosTop){
-      window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 139 : 129));
+      window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128));
     }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
       window.scrollTo(0,catPosBot+window.pageYOffset-window.innerHeight+50);
     }else{
-      window.scrollTo(0,selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 139 : 129))/2);
+      window.scrollTo(0,selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2);
     }
   }
   updateProdNav();
