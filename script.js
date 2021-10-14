@@ -195,12 +195,89 @@ function updateProdNav(forceInit=false){
     }
   }
 }
-function updatePerfCarousel(){
+function updatePerfCarousel(){//alt goes here
   /*
   <i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>
   <i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>
   <i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>
   */
+  var perf_carousel = document.querySelector("#performance-carousel-1");
+  if(!perf_carousel){return;}
+  var gList = [
+    "lol_game",
+    "fortnite_game",
+    "control_game",
+    "fs2020_game",
+    "sottr_game"
+  ]
+  for(gName of gList){
+    perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1080p"] i`).outerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>`;
+    perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1440p"] i`).outerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>`;
+    perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>`;
+    perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = "error";
+    perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = "error";
+    perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = "error";
+  }
+  var sel_mb = document.querySelector(".builder-parts .builder-part-category.mitriki input:checked");
+  var sel_cpu = document.querySelector(".builder-parts .builder-part-category.cpu input:checked");
+  var sel_ram = document.querySelector(".builder-parts .builder-part-category.ram input:checked");
+  var sel_gpu = document.querySelector(".builder-parts .builder-part-category.gpu input:checked");
+  if(!(sel_mb && sel_cpu && sel_ram && sel_gpu)){
+    return;
+  }
+  if((sel_mb.disabled || sel_cpu.disabled || sel_ram.disabled || sel_gpu.disabled)){
+    return;
+  }
+  var missingText = "";
+  if(sel_mb.value == "emptyval"){missingText += "Χρειάζεσαι Μητρική<br/>";}
+  if(sel_cpu.value == "emptyval"){missingText += "Χρειάζεσαι Επεξεργαστή<br/>";}
+  if(sel_ram.value == "emptyval"){missingText += "Χρειάζεσαι Μνήμη RAM<br/>";}
+  if(sel_gpu.value == "emptyval"){missingText += "Χρειάζεσαι Κάρτα Γραφικών<br/>";}
+  if(missingText.length){
+    for(gName of gList){
+      perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = missingText.substring(0,missingText.length-5);
+      perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = missingText.substring(0,missingText.length-5);
+      perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = missingText.substring(0,missingText.length-5);
+    }
+  }else{
+    for(gName of gList){
+      //1080p
+      var perfText = "";
+      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 1){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
+      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 1){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
+      if(!perfText.length){
+        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = "Ready for 1080p";
+      }else{
+        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1080p"] i`).outerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>`;
+        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = perfText.substring(0,perfText.length-5);
+      }
+      //1440p
+      perfText = "";
+      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 2){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
+      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 2){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
+      if(!perfText.length){
+        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1440p"] i`).outerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = "Ready for 1080p";
+      }else{
+        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1440p"] i`).outerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>`;
+        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = perfText.substring(0,perfText.length-5);
+      }
+      //4k
+      perfText = "";
+      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 3){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
+      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 3){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
+      if(!perfText.length){
+        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = "Ready for 4K";
+      }else{
+        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>`;
+        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = perfText.substring(0,perfText.length-5);
+      }
+    }
+  }  
+}/*
+function updatePerfCarousel(){
   var perf_carousel = document.querySelector("#performance-carousel");
   if(!perf_carousel){return;}
   var gList = [
@@ -307,7 +384,7 @@ function updatePerfCarousel(){
       }
     }
   }  
-}
+}*/
 
 function catRedirect(wCat, action="toggle",focus="prod") {   
   var gtopen = document.querySelectorAll(".builder-parts .builder-part-category");
