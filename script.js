@@ -195,13 +195,8 @@ function updateProdNav(forceInit=false){
     }
   }
 }
-function updatePerfCarousel(){//alt goes here
-  /*
-  <i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>
-  <i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>
-  <i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>
-  */
-  var perf_carousel = document.querySelector("#performance-carousel-1");
+function updatePerfCarousel(){//alt
+  var perf_carousel = document.querySelector("#performance-carousel-2");
   if(!perf_carousel){return;}
   var gList = [
     "lol_game",
@@ -210,13 +205,12 @@ function updatePerfCarousel(){//alt goes here
     "fs2020_game",
     "sottr_game"
   ]
+  var redStr = `<a class="category-link"onclick="catRedirect(document.querySelector('#cat-!!!'),'open')">@@@</a>`;
   for(gName of gList){
-    perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1080p"] i`).outerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>`;
-    perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1440p"] i`).outerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>`;
-    perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;"></i>`;
-    perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = "error";
-    perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = "error";
-    perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = "error";
+    perf_carousel.querySelector(`#perf-${gName} .perf-1080p span`).innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+    perf_carousel.querySelector(`#perf-${gName} .perf-1440p span`).innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+    perf_carousel.querySelector(`#perf-${gName} .perf-4k span`).innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+    perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "error";
   }
   var sel_mb = document.querySelector(".builder-parts .builder-part-category.mitriki input:checked");
   var sel_cpu = document.querySelector(".builder-parts .builder-part-category.cpu input:checked");
@@ -229,170 +223,60 @@ function updatePerfCarousel(){//alt goes here
     return;
   }
   var missingText = "";
-  if(sel_mb.value == "emptyval"){missingText += "Χρειάζεσαι Μητρική<br/>";}
-  if(sel_cpu.value == "emptyval"){missingText += "Χρειάζεσαι Επεξεργαστή<br/>";}
-  if(sel_ram.value == "emptyval"){missingText += "Χρειάζεσαι Μνήμη RAM<br/>";}
-  if(sel_gpu.value == "emptyval"){missingText += "Χρειάζεσαι Κάρτα Γραφικών<br/>";}
+  if(sel_mb.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}<br/>`;}
+  if(sel_cpu.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστή")}<br/>`;}
+  if(sel_ram.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","ram").replace("@@@","Μνήμη RAM")}<br/>`;}
+  if(sel_gpu.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")}<br/>`;}
   if(missingText.length){
     for(gName of gList){
-      perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = missingText.substring(0,missingText.length-5);
-      perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = missingText.substring(0,missingText.length-5);
-      perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = missingText.substring(0,missingText.length-5);
+      perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = missingText.substring(0,missingText.length-5);
     }
   }else{
     for(gName of gList){
       //1080p
       var perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 1){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 1){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
+      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 1){perfText += `Ο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστής")}Επεξεργαστής είναι ανεπαρκής<br/>`;}
+      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 1){perfText += `Η <a ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")} είναι ανεπαρκής</a><br/>`;}
       if(!perfText.length){
-        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = "Ready for 1080p";
+        perf_carousel.querySelector(`#perf-${gName} .perf-1080p span`).innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "Ready for 1080p";
       }else{
-        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1080p"] i`).outerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>`;
-        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1080p .accordion-body`).innerHTML = perfText.substring(0,perfText.length-5);
+        perf_carousel.querySelector(`#perf-${gName} .perf-1080p span`).innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = perfText.substring(0,perfText.length-5);
       }
       //1440p
       perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 2){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 2){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
+      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 2){perfText += `Ο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστής")}Επεξεργαστής είναι ανεπαρκής<br/>`;}
+      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 2){perfText += `Η <a ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")} είναι ανεπαρκής</a><br/>`;}
       if(!perfText.length){
-        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1440p"] i`).outerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = "Ready for 1080p";
+        perf_carousel.querySelector(`#perf-${gName} .perf-1440p span`).innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "Ready for 1440p";
       }else{
-        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-1440p"] i`).outerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>`;
-        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-1440p .accordion-body`).innerHTML = perfText.substring(0,perfText.length-5);
+        perf_carousel.querySelector(`#perf-${gName} .perf-1440p span`).innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = perfText.substring(0,perfText.length-5);
       }
       //4k
       perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 3){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 3){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
+      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 3){perfText += `Ο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστής")}Επεξεργαστής είναι ανεπαρκής<br/>`;}
+      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 3){perfText += `Η <a ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")} είναι ανεπαρκής</a><br/>`;}
       if(!perfText.length){
-        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = "Ready for 4K";
+        perf_carousel.querySelector(`#perf-${gName} .perf-4k span`).innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "Ready for 4K";
       }else{
-        perf_carousel.querySelector(`button[data-bs-target="#perf-${gName}-4k"] i`).outerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;></i>`;
-        perf_carousel.querySelector(`#perf-${gName} perf-${gName}-4k .accordion-body`).innerHTML = perfText.substring(0,perfText.length-5);
+        perf_carousel.querySelector(`#perf-${gName} .perf-4k span`).innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = perfText.substring(0,perfText.length-5);
       }
     }
   }  
-}/*
-function updatePerfCarousel(){
-  var perf_carousel = document.querySelector("#performance-carousel");
-  if(!perf_carousel){return;}
-  var gList = [
-    "lol_game",
-    "fortnite_game",
-    "control_game",
-    "fs2020_game",
-    "sottr_game"
-  ]
-  for(gName of gList){
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "?";
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "?";
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "?";
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.remove("over","under","err");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.remove("over","under","err");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.remove("over","under","err");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title","");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title","");
-    perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title","");
-    new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`));
-    new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`));
-    new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`));
-  }
-  var sel_mb = document.querySelector(".builder-parts .builder-part-category.mitriki input:checked");
-  var sel_cpu = document.querySelector(".builder-parts .builder-part-category.cpu input:checked");
-  var sel_ram = document.querySelector(".builder-parts .builder-part-category.ram input:checked");
-  var sel_gpu = document.querySelector(".builder-parts .builder-part-category.gpu input:checked");
-  if(!(sel_mb && sel_cpu && sel_ram && sel_gpu)){
-    for(gName of gList){
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("err");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("err");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("err");
-    }
-    return;
-  }
-  if((sel_mb.disabled || sel_cpu.disabled || sel_ram.disabled || sel_gpu.disabled)){
-    for(gName of gList){
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("err");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("err");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("err");
-    }
-    return;
-  }
-  var missingText = "";
-  if(sel_mb.value == "emptyval"){missingText += "Χρειάζεσαι Μητρική<br/>";}
-  if(sel_cpu.value == "emptyval"){missingText += "Χρειάζεσαι Επεξεργαστή<br/>";}
-  if(sel_ram.value == "emptyval"){missingText += "Χρειάζεσαι Μνήμη RAM<br/>";}
-  if(sel_gpu.value == "emptyval"){missingText += "Χρειάζεσαι Κάρτα Γραφικών<br/>";}
-  if(missingText.length){
-    for(gName of gList){
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "No";
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "No";
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "No";  
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("under");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("under");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("under");
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
-      perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title",missingText.substring(0,missingText.length-5));
-      new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`));
-      new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`));
-      new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`));
-    }
-  }else{
-    for(gName of gList){
-      //1080p
-      var perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 1){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 1){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
-      if(!perfText.length){
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "Yes";
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("over");
-      }else{
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p span`).innerHTML = "No";
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5));
-        new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1080p`));
-      }
-      //1440p
-      perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 2){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 2){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
-      if(!perfText.length){
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "Yes";
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("over");
-      }else{
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p span`).innerHTML = "No";
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5));
-        new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-1440p`));
-      }
-      //4k
-      perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 3){perfText += "Ο Επεξεργαστής είναι ανεπαρκής<br/>";}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 3){perfText += "Η Κάρτα Γραφικών είναι ανεπαρκής<br/>";}
-      if(!perfText.length){
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "Yes";
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("over");
-      }else{
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k span`).innerHTML = "No";
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).classList.add("under");
-        perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`).setAttribute("data-bs-original-title", perfText.substring(0,perfText.length-5));
-        new bootstrap.Tooltip(perf_carousel.querySelector(`.c-overlay-inner.${gName} .carousel-4k`));
-      }
-    }
-  }  
-}*/
+}
 
 function catRedirect(wCat, action="toggle",focus="prod") {   
   var gtopen = document.querySelectorAll(".builder-parts .builder-part-category");
   for (let y = 0; y < gtopen.length; y++) {
     if(gtopen[y] === wCat){
       switch(action){
-        case "open": wCat.classList.toggle("lp-show");break;
-        case "close": wCat.classList.toggle("lp-show");break;
+        case "open": wCat.classList.toggle("lp-show",true);break;
+        case "close": wCat.classList.toggle("lp-show",false);break;
         default: wCat.classList.toggle("lp-show");//toggle
       }
     }else{
@@ -420,6 +304,7 @@ function catRedirect(wCat, action="toggle",focus="prod") {
 }
 
 function avCompatible(){
+  var redStr = `<a class="category-link"onclick="catRedirect(document.querySelector('#cat-!!!'),'open')">@@@</a>`;
   var getCats = document.querySelectorAll(`.builder-parts .builder-part-category.kouti,
                                              .builder-parts .builder-part-category.mitriki,
                                              .builder-parts .builder-part-category.cpu,
@@ -440,10 +325,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! partList[y].getAttribute("data-mobo-size").split(",").includes(partCheck.getAttribute("data-mobo-size"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη <span>Μητρική</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.mitriki"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}.`;
                 }
               }
             }
@@ -454,10 +336,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! partCheck.getAttribute("data-mobo-size").split(",").includes(partList[y].getAttribute("data-mobo-size"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με το επιλεγμένο <span>Κουτί</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.kouti"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με το επιλεγμένο ${redStr.replace("!!!","kouti").replace("@@@","Κουτί")}.`;
                   break;
                 }
               }
@@ -467,10 +346,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! (partList[y].getAttribute("data-socket") == partCheck.getAttribute("data-socket"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με τον επιλεγμένο <span>Επεξεργαστή</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.cpu"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστή")}.`;
                   break;
                 }
               }
@@ -480,10 +356,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! partCheck.getAttribute("data-socket").split(",").includes(partList[y].getAttribute("data-socket"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη <span>Ψύξη επεξεργαστή</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.psiktra"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","psiktra").replace("@@@","Ψύξη επεξεργαστή")}.`;
                 }
               }
             }
@@ -494,10 +367,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(!(partList[y].getAttribute("data-socket") == partCheck.getAttribute("data-socket"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη <span>Μητρική</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.mitriki"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}.`;
                   break;
                 }
               }
@@ -507,10 +377,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! partCheck.getAttribute("data-socket").split(",").includes(partList[y].getAttribute("data-socket"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη <span>Ψύξη επεξεργαστή</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.psiktra"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","psiktra").replace("@@@","Ψύξη επεξεργαστή")}.`;
                 }
               }
             }
@@ -521,10 +388,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! partList[y].getAttribute("data-socket").split(",").includes(partCheck.getAttribute("data-socket"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με τον επιλεγμένο <span>Επεξεργαστή</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.cpu"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστή")}.`;
                   break;
                 }
               }
@@ -534,10 +398,7 @@ function avCompatible(){
               if(partCheck.value != "emptyval"){
                 if(! partList[y].getAttribute("data-socket").split(",").includes(partCheck.getAttribute("data-socket"))){
                   partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη <span>Μητρική</span>.`;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part span").addEventListener("click",function(){
-                    catRedirect(document.querySelector(".builder-part-category.mitriki"));
-                  });
+                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}.`;
                 }
               }
             }
@@ -610,6 +471,17 @@ function createListeners(){
     })
   }
   
+  var carousel = document.querySelector("#performance-carousel-1")
+  if (carousel) {    
+    carousel.addEventListener('slide.bs.carousel', function () {
+      var cList =this.querySelectorAll(".collapse");
+      for(let i=0;i<cList.length;i++){
+        if(bootstrap.Collapse.getInstance(cList[i])){
+          bootstrap.Collapse.getInstance(cList[i]).hide();
+        }
+      }
+    })
+  }
   var copy_btn = document.querySelector("#build-modal .footer-interface .btn-copy-link")
   if (copy_btn) {
     copy_btn.addEventListener("click", function () {
