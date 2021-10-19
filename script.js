@@ -302,8 +302,94 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   }
   updateProdNav();
 }
-
 function avCompatible(){
+  //"Το προϊόν δεν είναι συμβατό με την επιλεγμένη <a class="category-link" onclick="catRedirect(document.querySelector('#cat-mitriki'),'open')">Μητρική</a>."
+  var compConfig = {
+    "kouti": {
+      "mitriki":{
+        "cType":"reverse",
+        "attrA":"0",
+        "attrB":"0",
+        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+      }
+    },
+    "mitriki": {
+      "kouti":{
+        "cType":"normal",
+        "attrA":"1",
+        "attrB":"0",
+        "errM":"Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
+      },
+      "cpu":{
+        "cType":"normal",
+        "attrA":"1",
+        "attrB":"0",
+        "errM":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+      },
+      "psiktra":{
+        "cType":"normal",
+        "attrA":"1",
+        "attrB":"0",
+        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+      }
+    },
+    "cpu": {
+      "mitriki":{
+        "cType":"normal",
+        "attrA":"0",
+        "attrB":"1",
+        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+      },
+      "psiktra":{
+        "cType":"normal",
+        "attrA":"0",
+        "attrB":"0",
+        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+      }      
+    },
+    "psiktra": {
+      "mitriki":{
+        "cType":"reverse",
+        "attrA":"0",
+        "attrB":"1",
+        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+      },
+      "cpu":{
+        "cType":"reverse",
+        "attrA":"0",
+        "attrB":"0",
+        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+      }
+    }
+  }
+  var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
+  for (const [cat, rCats] of Object.entries(compConfig)) {
+    var products = document.querySelectorAll(`#cat-${Cat} .part-list-containter input.part-rd-bt`);
+    break_point:
+    for(let i=0;i<products.length;i++){
+      if(products[i].value =="emptyval"){continue}
+      products[i].disabled = false;
+      var attributesA = products[i].dataset.compattr.split(";");
+      for (const [rCat, cconfig] of Object.entries(rCats)) {
+        var selSubProd = document.querySelector(`#cat-${rCat} .part-list-containter input.part-rd-bt:checked`);
+        if(!selSubProd){continue}
+        if(selSubProd.value=="emptyval"){continue}
+        var attributesB = selSubProd.dataset.compattr.split(";");
+        switch(cconfig.cType){
+          case "normal":case "reverse":
+            if(cconfig.cType=="normal"){var attributeA = attributesA[cconfig.attrA]; var attributeB = attributesB[cconfig.attrB].split(",");}
+                                   else{var attributeA = attributesB[cconfig.attrB]; var attributeB = attributesA[cconfig.attrA].split(",");}
+            if(!attributeB.contains(attributeA)){
+              products[i].disabled = true;
+              products[i].nextElementSibling,querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]);
+              continue break_point;
+            }break;
+        }
+      }
+    }
+  }  
+}
+function avCompatible(){  
   var redStr = `<a class="category-link"onclick="catRedirect(document.querySelector('#cat-!!!'),'open')">@@@</a>`;
   var getCats = document.querySelectorAll(`.builder-parts .builder-part-category.kouti,
                                              .builder-parts .builder-part-category.mitriki,
@@ -468,18 +554,6 @@ function createListeners(){
       updateNumberInput(loctemp,"increment");
       updateFinalPrice();
       updateProdNav();
-    })
-  }
-  
-  var carousel = document.querySelector("#performance-carousel-1")
-  if (carousel) {    
-    carousel.addEventListener('slide.bs.carousel', function () {
-      var cList =this.querySelectorAll(".collapse");
-      for(let i=0;i<cList.length;i++){
-        if(bootstrap.Collapse.getInstance(cList[i])){
-          bootstrap.Collapse.getInstance(cList[i]).hide();
-        }
-      }
     })
   }
   var copy_btn = document.querySelector("#build-modal .footer-interface .btn-copy-link")
