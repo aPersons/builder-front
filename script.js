@@ -114,7 +114,7 @@ function updateFinalPrice(){
       if(sel_prod){
         prod_name = sel_prod.nextElementSibling.querySelector(".part-text-head").innerHTML;
         if(sel_prod.value != "emptyval"){
-          erp_pn = sel_prod.dataset.erp;
+          if(sel_prod.dataset.erp){erp_pn = sel_prod.dataset.erp;}
           prod_price = sel_prod.nextElementSibling.querySelector(".price-main").dataset.priceval;
           prod_quant = sel_prod.nextElementSibling.querySelector(".part-number-input .part-quantity");
           if(prod_quant){
@@ -196,6 +196,77 @@ function updateProdNav(forceInit=false){
   }
 }
 function updatePerfCarousel(){//alt
+  var perf_carousel = document.querySelector("#performance-carousel-2");
+  if(!perf_carousel){return}
+  perfConfig = {
+    "lol_game":{
+      "cType":"normal",
+      "cpu":{
+        "required":"yes",
+        "attr": "0"
+      },
+      "gpu":{
+        "required":"yes",
+        "attr": "0"
+      }
+    },
+    "fortnite_game":{
+      "cType":"normal",
+      "cpu":{
+        "required":"yes",
+        "attr": "1"
+      },
+      "gpu":{
+        "required":"yes",
+        "attr": "1"
+      }
+    },
+    "control_game":{
+      "cType":"normal",
+      "cpu":{
+        "required":"yes",
+        "attr": "2"
+      },
+      "gpu":{
+        "required":"yes",
+        "attr": "2"
+      }
+    },
+    "fs2020_game":{
+      "cType":"normal",
+      "cpu":{
+        "required":"yes",
+        "attr": "3"
+      },
+      "gpu":{
+        "required":"yes",
+        "attr": "3"
+      }
+    },
+    "sottr_game":{
+      "cType":"normal",
+      "cpu":{
+        "required":"yes",
+        "attr": "4"
+      },
+      "gpu":{
+        "required":"yes",
+        "attr": "4"
+      }
+    }
+  }
+  var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
+  for (const [game, gConfig] of Object.entries(perfConfig)){
+    var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)
+    if(!gameDisplay){continue}
+    icon_1080p = gameDisplay.querySelector(".perf-1080p span");
+    icon_1440p = gameDisplay.querySelector(".perf-1440p span");
+    icon_4k = gameDisplay.querySelector(".perf-4k span");
+    perf_body = gameDisplay.querySelector(".perf-body");
+    icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+  }
+}
+function updatePerfCarousel(){
   var perf_carousel = document.querySelector("#performance-carousel-2");
   if(!perf_carousel){return;}
   var gList = [
@@ -303,7 +374,6 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   updateProdNav();
 }
 function avCompatible(){
-  //"Το προϊόν δεν είναι συμβατό με την επιλεγμένη <a class="category-link" onclick="catRedirect(document.querySelector('#cat-mitriki'),'open')">Μητρική</a>."
   var compConfig = {
     "kouti": {
       "mitriki":{
@@ -316,7 +386,7 @@ function avCompatible(){
     "mitriki": {
       "kouti":{
         "cType":"normal",
-        "attrA":"1",
+        "attrA":"0",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
       },
@@ -358,13 +428,13 @@ function avCompatible(){
         "cType":"reverse",
         "attrA":"0",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+        "errM":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
       }
     }
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
   for (const [cat, rCats] of Object.entries(compConfig)) {
-    var products = document.querySelectorAll(`#cat-${Cat} .part-list-containter input.part-rd-bt`);
+    var products = document.querySelectorAll(`#cat-${cat} .part-list-containter input.part-rd-bt`);
     break_point:
     for(let i=0;i<products.length;i++){
       if(products[i].value =="emptyval"){continue}
@@ -379,120 +449,15 @@ function avCompatible(){
           case "normal":case "reverse":
             if(cconfig.cType=="normal"){var attributeA = attributesA[cconfig.attrA]; var attributeB = attributesB[cconfig.attrB].split(",");}
                                    else{var attributeA = attributesB[cconfig.attrB]; var attributeB = attributesA[cconfig.attrA].split(",");}
-            if(!attributeB.contains(attributeA)){
+            if(!attributeB.includes(attributeA)){
               products[i].disabled = true;
-              products[i].nextElementSibling,querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]);
+              products[i].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]);
               continue break_point;
             }break;
         }
       }
     }
   }  
-}
-function avCompatible(){  
-  var redStr = `<a class="category-link"onclick="catRedirect(document.querySelector('#cat-!!!'),'open')">@@@</a>`;
-  var getCats = document.querySelectorAll(`.builder-parts .builder-part-category.kouti,
-                                             .builder-parts .builder-part-category.mitriki,
-                                             .builder-parts .builder-part-category.cpu,
-                                             .builder-parts .builder-part-category.ram,
-                                             .builder-parts .builder-part-category.gpu,
-                                             .builder-parts .builder-part-category.psiktra`);
-
-  for(let i=0;i<getCats.length;i++){
-    var partList = getCats[i].querySelectorAll("input.part-rd-bt");
-    for(let y=0;y<partList.length;y++){
-      partList[y].disabled = false;
-      partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = "";
-      if(partList[y].value != "emptyval" && partList[y].checked != true){
-        switch (partList[y].name){
-          case "kouti":
-            var partCheck = document.querySelector(".builder-parts .builder-part-category.mitriki input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! partList[y].getAttribute("data-mobo-size").split(",").includes(partCheck.getAttribute("data-mobo-size"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}.`;
-                }
-              }
-            }
-          break;
-          case "mitriki":
-            var partCheck = document.querySelector(".builder-parts .builder-part-category.kouti input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! partCheck.getAttribute("data-mobo-size").split(",").includes(partList[y].getAttribute("data-mobo-size"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με το επιλεγμένο ${redStr.replace("!!!","kouti").replace("@@@","Κουτί")}.`;
-                  break;
-                }
-              }
-            }
-            partCheck = document.querySelector(".builder-parts .builder-part-category.cpu input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! (partList[y].getAttribute("data-socket") == partCheck.getAttribute("data-socket"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστή")}.`;
-                  break;
-                }
-              }
-            }
-            partCheck = document.querySelector(".builder-parts .builder-part-category.psiktra input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! partCheck.getAttribute("data-socket").split(",").includes(partList[y].getAttribute("data-socket"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","psiktra").replace("@@@","Ψύξη επεξεργαστή")}.`;
-                }
-              }
-            }
-          break;
-          case "cpu":
-            var partCheck = document.querySelector(".builder-parts .builder-part-category.mitriki input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(!(partList[y].getAttribute("data-socket") == partCheck.getAttribute("data-socket"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}.`;
-                  break;
-                }
-              }
-            }
-            partCheck = document.querySelector(".builder-parts .builder-part-category.psiktra input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! partCheck.getAttribute("data-socket").split(",").includes(partList[y].getAttribute("data-socket"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","psiktra").replace("@@@","Ψύξη επεξεργαστή")}.`;
-                }
-              }
-            }
-          break;
-          case "psiktra":
-            var partCheck = document.querySelector(".builder-parts .builder-part-category.cpu input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! partList[y].getAttribute("data-socket").split(",").includes(partCheck.getAttribute("data-socket"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστή")}.`;
-                  break;
-                }
-              }
-            }
-            partCheck = document.querySelector(".builder-parts .builder-part-category.mitriki input.part-rd-bt:checked");
-            if(partCheck){
-              if(partCheck.value != "emptyval"){
-                if(! partList[y].getAttribute("data-socket").split(",").includes(partCheck.getAttribute("data-socket"))){
-                  partList[y].disabled = true;
-                  partList[y].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = `Το προϊόν δεν είναι συμβατό με την επιλεγμένη ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}.`;
-                }
-              }
-            }
-          break;
-        }
-      }
-    }
-  }
 }
 
 function initParts(){

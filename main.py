@@ -24,7 +24,7 @@ cat_template="""
                 </div>
             </div>"""
 prod_template = """
-            <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked} data-erp="{part_erp}" {part_perf}{part_filters}>
+            <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{part_perf}{perfattr}{compattr}>
             <div class="listed-part">              
               <label class="listed-part-inner" for="{part_id}">
                 <div class="part-img">
@@ -57,7 +57,7 @@ for category in prodlist:
     catres=""
     for product in category["product-list"]:        
         if category["init-prod"] == product["prod-code"]:
-            ischecked = "checked"
+            ischecked = " checked"
             secbtn = selected
         else:
             ischecked = ""
@@ -79,23 +79,28 @@ for category in prodlist:
 
         perf_list=""
         if category["cat-code"] == "cpu" or category["cat-code"] == "gpu":
-          perf_list ='data-perf_fortnite_game="{fortnite}" '.format(fortnite = product["game-perf"]["fortnite_game"])
+          perf_list =' data-perf_fortnite_game="{fortnite}" '.format(fortnite = product["game-perf"]["fortnite_game"])
           perf_list +='data-perf_lol_game="{lol}" '.format(lol = product["game-perf"]["lol_game"])
           perf_list +='data-perf_control_game="{control}" '.format(control = product["game-perf"]["control_game"])
-          perf_list +='data-perf_sottr_game="{sottr}"'.format(sottr = product["game-perf"]["sottr_game"])
+          perf_list +='data-perf_sottr_game="{sottr}" '.format(sottr = product["game-perf"]["sottr_game"])
           perf_list +='data-perf_fs2020_game="{fs2020}"'.format(fs2020 = product["game-perf"]["fs2020_game"])
 
-        filterList = ""
-        if "compatibility" in product and "emptyval" not in product:
-          for filter, value in product["compatibility"].items():
-            filterList += "data-"+filter
-            if type(value) == str:
-              filterList += '="{0}"'.format(value)
-            elif type(value) == list:
-              filterList += '="'
-              for val in value:
-                filterList += val+","
-              filterList = filterList[0:len(filterList)-1] + '"'
+        perfAttributes = ""
+        perfres = ""
+        if "perf-data" in product and "emptyval" not in product:
+          for atr in product["perf-data"]:
+            perfAttributes += atr+","
+          perfres =' data-perfattr="'+perfAttributes[:len(perfAttributes)-1]+'"'
+
+
+        compAttributes = ""
+        compres = ""
+        if "comp-data" in product and "emptyval" not in product:
+          for fltr in product["comp-data"]:
+            for atr in fltr:
+              compAttributes += atr+","
+            compAttributes = compAttributes[:len(compAttributes)-1]+";"
+          compres =' data-compattr="'+compAttributes[:len(compAttributes)-1]+'"'
 
         catres += prod_template.format(
             part_id = product["prod-code"],
@@ -103,9 +108,10 @@ for category in prodlist:
             part_value = (product["prod-code"],"emptyval")["emptyval" in product],
             is_checked = ischecked,
             part_perf = perf_list,
-            part_filters = filterList,
+            perfattr = perfres,
+            compattr = compres,
             img_src = product["prod-code"],
-            part_erp = product["prod-erp"],
+            part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
             part_title = product["prod-name"],
             part_av = av_template[product["prod-av"]],
             see_more = seeMore,
