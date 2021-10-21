@@ -199,64 +199,93 @@ function updatePerfCarousel(){//alt
   var perf_carousel = document.querySelector("#performance-carousel-2");
   if(!perf_carousel){return}
   perfConfig = {
-    "lol_game":{
-      "cType":"normal",
-      "cpu":{
-        "required":"yes",
-        "attr": "0"
-      },
-      "gpu":{
-        "required":"yes",
-        "attr": "0"
-      }
+    "dictionary":{
+      "lol_game":"League of legends",
+      "fortnite_game":"Fortnite",
+      "control_game":"Control",
+      "fs2020_game":"MS Flight Simulator 2021",
+      "sottr_game":"Shadow of the Tomb Raider",
+      "cpu":["τον ", "Επεξεργαστή"],
+      "cpu":["την ", "Κάρτα Γραφικών"],
+      "required":["Το σύστημα χρειάζεται @@@.", " και ", ", "],
+      "perfReady":"Το σύστημα είναι κατάλληλο για @@@ μέχρι ### ανάλυση.",
+      "result": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι."
     },
-    "fortnite_game":{
-      "cType":"normal",
-      "cpu":{
-        "required":"yes",
-        "attr": "1"
+    "checkList":["cpu","gpu"],
+    "gameList":{
+      "lol_game":{
+        "cType":"normal",
+        "safe": ["$afe","cpu","gpu"],
+        "cpu":{
+          "required":"yes",
+          "attr": "0"
+        },
+        "gpu":{
+          "required":"yes",
+          "attr": "0"
+        }
       },
-      "gpu":{
-        "required":"yes",
-        "attr": "1"
-      }
-    },
-    "control_game":{
-      "cType":"normal",
-      "cpu":{
-        "required":"yes",
-        "attr": "2"
+      "fortnite_game":{
+        "cType":"normal",
+        "safe": ["$afe","cpu","gpu"],
+        "cpu":{
+          "required":"yes",
+          "attr": "1"
+        },
+        "gpu":{
+          "required":"yes",
+          "attr": "1"
+        }
       },
-      "gpu":{
-        "required":"yes",
-        "attr": "2"
-      }
-    },
-    "fs2020_game":{
-      "cType":"normal",
-      "cpu":{
-        "required":"yes",
-        "attr": "3"
+      "control_game":{
+        "cType":"normal",
+        "safe": ["$afe","cpu","gpu"],
+        "cpu":{
+          "required":"yes",
+          "attr": "2"
+        },
+        "gpu":{
+          "required":"yes",
+          "attr": "2"
+        }
       },
-      "gpu":{
-        "required":"yes",
-        "attr": "3"
-      }
-    },
-    "sottr_game":{
-      "cType":"normal",
-      "cpu":{
-        "required":"yes",
-        "attr": "4"
+      "fs2020_game":{
+        "cType":"normal",
+        "safe": ["$afe","cpu","gpu"],
+        "cpu":{
+          "required":"yes",
+          "attr": "3"
+        },
+        "gpu":{
+          "required":"yes",
+          "attr": "3"
+        }
       },
-      "gpu":{
-        "required":"yes",
-        "attr": "4"
+      "sottr_game":{
+        "cType":"normal",
+        "safe": ["$afe","cpu","gpu"],
+        "cpu":{
+          "required":"yes",
+          "attr": "4"
+        },
+        "gpu":{
+          "required":"yes",
+          "attr": "4"
+        }
       }
     }
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
-  for (const [game, gConfig] of Object.entries(perfConfig)){
+  var catList = {};
+  for (const [category] of perfConfig.checkList){
+    let temp = document.querySelector(`#cat-${category}`);
+    if(temp){
+      catList[category]=temp.document,querySelector("input.part-rd-bt:cheked");
+    }else{
+      return;
+    }
+  }
+  for (const [game, gConfig] of Object.entries(perfConfig.gameList)){
     var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)
     if(!gameDisplay){continue}
     icon_1080p = gameDisplay.querySelector(".perf-1080p span");
@@ -264,6 +293,29 @@ function updatePerfCarousel(){//alt
     icon_4k = gameDisplay.querySelector(".perf-4k span");
     perf_body = gameDisplay.querySelector(".perf-body");
     icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+    var missingProd = [];
+    for(const [category,product] of Object.entries()){
+      if(product.value == "emptyval" && gConfig[category].hasOwnProperty("required")){
+        missingProd.push(category);
+      }
+    }
+    if(missingProd.length){
+      let result = "";
+      if(missingProd.length = 1){
+        result = perfConfig.dictionary[missingProd[0]][1];
+      }else{     
+        for(let i=0; i < missingProd.length;i++){
+          if(i == missingProd.length-1){
+            result += perfConfig.dictionary[missingProd[0]][1];
+          }if(i == missingProd.length-2){
+            result += perfConfig.dictionary[missingProd[0]][1]+perfConfig.dictionary.required[1];
+          }else{
+            result += perfConfig.dictionary[missingProd[0]][1]+perfConfig.dictionary.required[2];
+          }
+        }
+      }
+      perf_body.innerHTML = perfConfig.dictionary.required[0].replace("@@@","");
+    }
   }
 }
 function updatePerfCarousel(){
@@ -353,7 +405,8 @@ function catRedirect(wCat, action="toggle",focus="prod") {
     }else{
       gtopen[y].classList.remove("lp-show");
     }
-  } 
+  }
+  if(focus=="none"){return}
   var catState = wCat.classList.contains("lp-show");
   var catPosTop = wCat.getBoundingClientRect().top;
   var catPosBot = wCat.getBoundingClientRect().bottom;
@@ -377,7 +430,8 @@ function avCompatible(){
   var compConfig = {
     "kouti": {
       "mitriki":{
-        "cType":"reverse",
+        "cType":"normal",
+        "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
@@ -386,18 +440,21 @@ function avCompatible(){
     "mitriki": {
       "kouti":{
         "cType":"normal",
+        "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
       },
       "cpu":{
         "cType":"normal",
+        "safe":"$afe",
         "attrA":"1",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
       },
       "psiktra":{
         "cType":"normal",
+        "safe":"$afe",
         "attrA":"1",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
@@ -406,12 +463,14 @@ function avCompatible(){
     "cpu": {
       "mitriki":{
         "cType":"normal",
+        "safe":"$afe",
         "attrA":"0",
         "attrB":"1",
         "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
       },
       "psiktra":{
         "cType":"normal",
+        "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
@@ -419,13 +478,15 @@ function avCompatible(){
     },
     "psiktra": {
       "mitriki":{
-        "cType":"reverse",
+        "cType":"normal",
+        "safe":"$afe",
         "attrA":"0",
         "attrB":"1",
         "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
       },
       "cpu":{
-        "cType":"reverse",
+        "cType":"normal",
+        "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
         "errM":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
@@ -446,14 +507,25 @@ function avCompatible(){
         if(selSubProd.value=="emptyval"){continue}
         var attributesB = selSubProd.dataset.compattr.split(";");
         switch(cconfig.cType){
-          case "normal":case "reverse":
-            if(cconfig.cType=="normal"){var attributeA = attributesA[cconfig.attrA]; var attributeB = attributesB[cconfig.attrB].split(",");}
-                                   else{var attributeA = attributesB[cconfig.attrB]; var attributeB = attributesA[cconfig.attrA].split(",");}
-            if(!attributeB.includes(attributeA)){
+          case "normal":
+            var listA = attributesA[cconfig.attrA].split(",");
+            var listB = attributesB[cconfig.attrB].split(",");
+            if(cconfig.hasOwnProperty("safe")){
+              if(listA.includes(cconfig.safe)||listB.includes(cconfig.safe)){
+                break;
+              }
+            }
+            var compatible = false;
+            for(const attrA of listA){
+              if(listB.includes(attrA)){
+                compatible = true;
+                break;
+              }
+            }
+            if(compatible){break}
               products[i].disabled = true;
               products[i].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]);
               continue break_point;
-            }break;
         }
       }
     }
