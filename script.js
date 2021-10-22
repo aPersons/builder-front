@@ -206,16 +206,17 @@ function updatePerfCarousel(){//alt
       "fs2020_game":"MS Flight Simulator 2021",
       "sottr_game":"Shadow of the Tomb Raider",
       "cpu":["τον ", "Επεξεργαστή"],
-      "cpu":["την ", "Κάρτα Γραφικών"],
+      "gpu":["την ", "Κάρτα Γραφικών"],
       "required":["Το σύστημα χρειάζεται @@@.", " και ", ", "],
       "perfReady":"Το σύστημα είναι κατάλληλο για @@@ μέχρι ### ανάλυση.",
-      "result": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι."
+      "result": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι.",
+      "recommend":""
     },
     "checkList":["cpu","gpu"],
     "gameList":{
       "lol_game":{
         "cType":"normal",
-        "safe": ["$afe","cpu","gpu"],
+        "safe": ["$","cpu","gpu"],
         "cpu":{
           "required":"yes",
           "attr": "0"
@@ -227,7 +228,7 @@ function updatePerfCarousel(){//alt
       },
       "fortnite_game":{
         "cType":"normal",
-        "safe": ["$afe","cpu","gpu"],
+        "safe": ["$","cpu","gpu"],
         "cpu":{
           "required":"yes",
           "attr": "1"
@@ -239,7 +240,7 @@ function updatePerfCarousel(){//alt
       },
       "control_game":{
         "cType":"normal",
-        "safe": ["$afe","cpu","gpu"],
+        "safe": ["$","cpu","gpu"],
         "cpu":{
           "required":"yes",
           "attr": "2"
@@ -251,7 +252,7 @@ function updatePerfCarousel(){//alt
       },
       "fs2020_game":{
         "cType":"normal",
-        "safe": ["$afe","cpu","gpu"],
+        "safe": ["$","cpu","gpu"],
         "cpu":{
           "required":"yes",
           "attr": "3"
@@ -263,7 +264,7 @@ function updatePerfCarousel(){//alt
       },
       "sottr_game":{
         "cType":"normal",
-        "safe": ["$afe","cpu","gpu"],
+        "safe": ["$","cpu","gpu"],
         "cpu":{
           "required":"yes",
           "attr": "4"
@@ -277,10 +278,11 @@ function updatePerfCarousel(){//alt
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
   var catList = {};
-  for (const [category] of perfConfig.checkList){
+  for (const category of perfConfig.checkList){
     let temp = document.querySelector(`#cat-${category}`);
     if(temp){
-      catList[category]=temp.document,querySelector("input.part-rd-bt:cheked");
+      catList[category]=temp.querySelector("input.part-rd-bt:checked");
+      if(!catList[category]){return;}
     }else{
       return;
     }
@@ -292,32 +294,61 @@ function updatePerfCarousel(){//alt
     icon_1440p = gameDisplay.querySelector(".perf-1440p span");
     icon_4k = gameDisplay.querySelector(".perf-4k span");
     perf_body = gameDisplay.querySelector(".perf-body");
+    perf_body.innerHTML = "err";
     icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
     var missingProd = [];
-    for(const [category,product] of Object.entries()){
+    for(const [category,product] of Object.entries(catList)){
       if(product.value == "emptyval" && gConfig[category].hasOwnProperty("required")){
         missingProd.push(category);
       }
     }
     if(missingProd.length){
       let result = "";
-      if(missingProd.length = 1){
-        result = perfConfig.dictionary[missingProd[0]][1];
+      if(missingProd.length == 1){
+        result = msg[0]+missingProd[0]+msg[1]+perfConfig.dictionary[missingProd[0]][1]+msg[2];
       }else{     
         for(let i=0; i < missingProd.length;i++){
           if(i == missingProd.length-1){
-            result += perfConfig.dictionary[missingProd[0]][1];
-          }if(i == missingProd.length-2){
-            result += perfConfig.dictionary[missingProd[0]][1]+perfConfig.dictionary.required[1];
+            result += msg[0]+missingProd[i]+msg[1]+perfConfig.dictionary[missingProd[i]][1]+msg[2];
+          }else if(i == missingProd.length-2){
+            result += msg[0]+missingProd[i]+msg[1]+perfConfig.dictionary[missingProd[i]][1]+msg[2]+perfConfig.dictionary.required[1];
           }else{
-            result += perfConfig.dictionary[missingProd[0]][1]+perfConfig.dictionary.required[2];
+            result += msg[0]+missingProd[i]+msg[1]+perfConfig.dictionary[missingProd[i]][1]+msg[2]+perfConfig.dictionary.required[2];
           }
         }
       }
-      perf_body.innerHTML = perfConfig.dictionary.required[0].replace("@@@","");
+      perf_body.innerHTML = perfConfig.dictionary.required[0].replace("@@@",result);
+      continue;
+    }
+    var minscore = 3;
+    for(const [category,product] of Object.entries(catList)){
+      if(!product.dataset.perfattr && gConfig[category].hasOwnProperty("attr")){minscore="err";break;}
+      var perfval = product.dataset.perfattr.split(",")[gConfig[category].attr];
+      if(gConfig.hasOwnProperty("safe")){
+        if(gConfig.safe.includes(category) && gConfig.safe.includes(perfval)){
+          continue;
+        }
+      }
+      if(perfval < minscore){minscore = perfval;}
+    }
+    switch(minscore){
+      case 0:
+        icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        break;
+      case 1:
+        icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        break;
+      case 2:
+        icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        break;
+      case 3:
+        icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        break;
     }
   }
-}
+}/*
 function updatePerfCarousel(){
   var perf_carousel = document.querySelector("#performance-carousel-2");
   if(!perf_carousel){return;}
@@ -391,7 +422,7 @@ function updatePerfCarousel(){
       }
     }
   }  
-}
+}*/
 
 function catRedirect(wCat, action="toggle",focus="prod") {   
   var gtopen = document.querySelectorAll(".builder-parts .builder-part-category");
