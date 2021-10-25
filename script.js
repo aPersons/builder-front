@@ -216,62 +216,67 @@ function updatePerfCarousel(){//alt
     "gameList":{
       "lol_game":{
         "cType":"normal",
-        "safe": ["$","cpu","gpu"],
-        "cpu":{
-          "required":"yes",
-          "attr": "0"
-        },
-        "gpu":{
-          "required":"yes",
-          "attr": "0"
+        "parts":{
+          "cpu":{
+            "safe":"$",
+            "attr": "0"
+          },
+          "gpu":{
+            "safe":"$",
+            "attr": "0"
+          }          
         }
       },
       "fortnite_game":{
         "cType":"normal",
-        "safe": ["$","cpu","gpu"],
-        "cpu":{
-          "required":"yes",
-          "attr": "1"
-        },
-        "gpu":{
-          "required":"yes",
-          "attr": "1"
+        "parts":{
+          "cpu":{
+            "safe":"$",
+            "attr": "1"
+          },
+          "gpu":{
+            "safe":"$",
+            "attr": "1"
+          }          
         }
       },
       "control_game":{
         "cType":"normal",
-        "safe": ["$","cpu","gpu"],
-        "cpu":{
-          "required":"yes",
-          "attr": "2"
-        },
-        "gpu":{
-          "required":"yes",
-          "attr": "2"
+        "parts":{
+          "cpu":{
+            "safe":"$",
+            "attr": "2"
+          },
+          "gpu":{
+            "safe":"$",
+            "attr": "2"
+          }          
         }
       },
       "fs2020_game":{
         "cType":"normal",
-        "safe": ["$","cpu","gpu"],
-        "cpu":{
-          "required":"yes",
-          "attr": "3"
-        },
-        "gpu":{
-          "required":"yes",
-          "attr": "3"
+        "parts":{
+          "cpu":{
+            "safe":"$",
+            "attr": "3"
+          },
+          "gpu":{
+            "safe":"$",
+            "attr": "3"
+          }          
         }
       },
       "sottr_game":{
         "cType":"normal",
-        "safe": ["$","cpu","gpu"],
-        "cpu":{
-          "required":"yes",
-          "attr": "4"
-        },
-        "gpu":{
-          "required":"yes",
-          "attr": "4"
+        "parts":{
+          "cpu":{
+            "safe":"$",
+            "attr": "4"
+          },
+          "gpu":{
+            "safe":"$",
+            "attr": "4"
+          }          
         }
       }
     }
@@ -280,7 +285,8 @@ function updatePerfCarousel(){//alt
 
   for (const [game, gConfig] of Object.entries(perfConfig.gameList)){
     switch(gConfig.cType){
-      case "normal": var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)
+      case "normal":
+        var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)        
         if(!gameDisplay){continue}
         var icon_1080p = gameDisplay.querySelector(".perf-1080p span");
         var icon_1440p = gameDisplay.querySelector(".perf-1440p span");
@@ -288,7 +294,56 @@ function updatePerfCarousel(){//alt
         var perf_body = gameDisplay.querySelector(".perf-body");
         perf_body.innerHTML = "err";
         icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
-
+        var missRes = [];
+        for (let cat of Object.keys(gConfig.parts)){
+          var findpart = document.querySelector(`#cat-${cat} input.part-rd-bt:checked`);          
+          if(!findpart){
+            missRes.push([cat, perfConfig.dictionary[cat][1]]);
+          }else if(findpart.value=="emptyval"){
+            missRes.push([cat, perfConfig.dictionary[cat][1]]);            
+          }
+        }        
+        if(missRes.length){
+          let txtRes = ""
+          if(missRes.length == 1){
+            txtRes = msg[0]+missRes[0][0]+msg[1]+missRes[0][1]+msg[2];
+          }else{     
+            for(let i=0; i < missRes.length;i++){
+              if(i == missRes.length-1){
+                txtRes += msg[0]+missRes[i][0]+msg[1]+missRes[i][1]+msg[2];
+              }else if(i == missRes.length-2){
+                txtRes += msg[0]+missRes[i][0]+msg[1]+missRes[i][1]+msg[2]+perfConfig.dictionary.required[1];
+              }else{
+                txtRes += msg[0]+missRes[i][0]+msg[1]+missRes[i][1]+msg[2]+perfConfig.dictionary.required[2];
+              }
+            }
+          }
+          perf_body.innerHTML = perfConfig.dictionary.required[0].replace("@@@",txtRes);
+          break;
+        }
+        var minScore = "3";
+        for (let [cat, settings] of Object.entries(gConfig.parts)){
+          if(settings.hasOwnProperty("attr")){
+            var findpart = document.querySelector(`#cat-${cat} input.part-rd-bt:checked`);
+            if(settings.hasOwnProperty("safe")){if(findpart.dataset.perfattr.split(",")[settings.attr]==settings.safe){continue}}
+          }
+          if(findpart.dataset.perfattr.split(",")[settings.attr] < minScore){minScore = findpart.dataset.perfattr.split(",")[settings.attr]}
+        }
+        switch(minScore){
+          case "0":
+            icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            break;
+          case "1":
+            icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            break;
+          case "2":
+            icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            break;
+          case "3":
+            icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        }
         break;
     }
   }

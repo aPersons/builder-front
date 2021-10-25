@@ -788,8 +788,8 @@
                     "fs2020_game":"3",
                     "sottr_game":"3"
                 },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
-                "perf-data":["3","3","3","3","3"]
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
+                "perf-data":["3","3","3","3"]
             }
         ]
     },{
