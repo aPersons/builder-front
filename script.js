@@ -277,6 +277,23 @@ function updatePerfCarousel(){//alt
     }
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
+
+  for (const [game, gConfig] of Object.entries(perfConfig.gameList)){
+    switch(gConfig.cType){
+      case "normal": var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)
+        if(!gameDisplay){continue}
+        var icon_1080p = gameDisplay.querySelector(".perf-1080p span");
+        var icon_1440p = gameDisplay.querySelector(".perf-1440p span");
+        var icon_4k = gameDisplay.querySelector(".perf-4k span");
+        var perf_body = gameDisplay.querySelector(".perf-body");
+        perf_body.innerHTML = "err";
+        icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+
+        break;
+    }
+  }
+  
+  /*
   var catList = {};
   for (const category of perfConfig.checkList){
     let temp = document.querySelector(`#cat-${category}`);
@@ -347,7 +364,7 @@ function updatePerfCarousel(){//alt
         icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
         break;
     }
-  }
+  }*/
 }/*
 function updatePerfCarousel(){
   var perf_carousel = document.querySelector("#performance-carousel-2");
