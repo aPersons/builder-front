@@ -69,7 +69,9 @@ body{
 #build-modal .footer-link-body{
   align-self: center;
   padding: 5px;
-  margin-right: auto;
+  flex-grow: 1;
+  overflow-y: auto;
+  max-height: 3.5rem;
 }
 #build-modal .footer-interface button{
   border-style: none;
@@ -327,6 +329,7 @@ body{
   display: grid;
   border-radius: 0.4375rem;
   margin: 0;
+  padding: 0 5px;
   min-height: 99px;
   grid-template-columns: 74px auto 100px;
   grid-template-rows: auto minmax(36px, auto);
@@ -384,7 +387,8 @@ body{
   flex-wrap: wrap;
   justify-content: end;
   align-items: center;
-  padding: 5px;
+  gap: 5px;
+  padding: 5px;  
   grid-area:part-btn;
 }
 @media only screen and (max-width: 575px) {
@@ -448,8 +452,9 @@ body{
 .part-btn .part-number-input{
   display: flex;
   width: 92px;
-  height: 26px;
-  margin-right:5px;  
+  height: 24px;
+  padding: 0;
+  border: none;
 }
 .part-btn .part-number-input input{display: none;}
 
@@ -529,7 +534,7 @@ body{
 @media only screen and (max-width: 575px) {
   .listed-part-inner .part-btn label.btn,
   .listed-part-inner .part-btn .part-number-input{
-    width: 49%;
+    flex-grow: 1;
   }
 }
 

@@ -200,19 +200,18 @@ function updatePerfCarousel(){//alt
   if(!perf_carousel){return}
   perfConfig = {
     "dictionary":{
-      "lol_game":"League of legends",
+      "lol_game":"League of Legends",
       "fortnite_game":"Fortnite",
       "control_game":"Control",
       "fs2020_game":"MS Flight Simulator 2021",
       "sottr_game":"Shadow of the Tomb Raider",
-      "cpu":["τον ", "Επεξεργαστή"],
-      "gpu":["την ", "Κάρτα Γραφικών"],
+      "cpu":["Επεξεργαστή"],
+      "gpu":["Κάρτα Γραφικών"],
       "required":["Το σύστημα χρειάζεται @@@.", " και ", ", "],
       "perfReady":"Το σύστημα είναι κατάλληλο για @@@ μέχρι ### ανάλυση.",
-      "result": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι.",
-      "recommend":""
+      "perfNotReady": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι.",
+      "recommend": ["<br/>Αλλάξτε @@@ για καλύτερη απόδοση."]
     },
-    "checkList":["cpu","gpu"],
     "gameList":{
       "lol_game":{
         "cType":"normal",
@@ -298,13 +297,13 @@ function updatePerfCarousel(){//alt
         for (let cat of Object.keys(gConfig.parts)){
           var findpart = document.querySelector(`#cat-${cat} input.part-rd-bt:checked`);          
           if(!findpart){
-            missRes.push([cat, perfConfig.dictionary[cat][1]]);
+            missRes.push([cat, perfConfig.dictionary[cat][0]]);
           }else if(findpart.value=="emptyval"){
-            missRes.push([cat, perfConfig.dictionary[cat][1]]);            
+            missRes.push([cat, perfConfig.dictionary[cat][0]]);            
           }
         }        
         if(missRes.length){
-          let txtRes = ""
+          let txtRes = "";
           if(missRes.length == 1){
             txtRes = msg[0]+missRes[0][0]+msg[1]+missRes[0][1]+msg[2];
           }else{     
@@ -322,179 +321,53 @@ function updatePerfCarousel(){//alt
           break;
         }
         var minScore = "3";
+        var textList = [];
         for (let [cat, settings] of Object.entries(gConfig.parts)){
           if(settings.hasOwnProperty("attr")){
             var findpart = document.querySelector(`#cat-${cat} input.part-rd-bt:checked`);
             if(settings.hasOwnProperty("safe")){if(findpart.dataset.perfattr.split(",")[settings.attr]==settings.safe){continue}}
           }
           if(findpart.dataset.perfattr.split(",")[settings.attr] < minScore){minScore = findpart.dataset.perfattr.split(",")[settings.attr]}
+          textList.push([cat,perfConfig.dictionary[cat][0]]);
         }
         switch(minScore){
           case "0":
             icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfNotReady;
             break;
           case "1":
             icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
             icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1080p");
             break;
           case "2":
             icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
             icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1440p");
             break;
           case "3":
             icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","4K");
         }
-        break;
-    }
-  }
-  
-  /*
-  var catList = {};
-  for (const category of perfConfig.checkList){
-    let temp = document.querySelector(`#cat-${category}`);
-    if(temp){
-      catList[category]=temp.querySelector("input.part-rd-bt:checked");
-      if(!catList[category]){return;}
-    }else{
-      return;
-    }
-  }
-  for (const [game, gConfig] of Object.entries(perfConfig.gameList)){
-    var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)
-    if(!gameDisplay){continue}
-    icon_1080p = gameDisplay.querySelector(".perf-1080p span");
-    icon_1440p = gameDisplay.querySelector(".perf-1440p span");
-    icon_4k = gameDisplay.querySelector(".perf-4k span");
-    perf_body = gameDisplay.querySelector(".perf-body");
-    perf_body.innerHTML = "err";
-    icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
-    var missingProd = [];
-    for(const [category,product] of Object.entries(catList)){
-      if(product.value == "emptyval" && gConfig[category].hasOwnProperty("required")){
-        missingProd.push(category);
-      }
-    }
-    if(missingProd.length){
-      let result = "";
-      if(missingProd.length == 1){
-        result = msg[0]+missingProd[0]+msg[1]+perfConfig.dictionary[missingProd[0]][1]+msg[2];
-      }else{     
-        for(let i=0; i < missingProd.length;i++){
-          if(i == missingProd.length-1){
-            result += msg[0]+missingProd[i]+msg[1]+perfConfig.dictionary[missingProd[i]][1]+msg[2];
-          }else if(i == missingProd.length-2){
-            result += msg[0]+missingProd[i]+msg[1]+perfConfig.dictionary[missingProd[i]][1]+msg[2]+perfConfig.dictionary.required[1];
-          }else{
-            result += msg[0]+missingProd[i]+msg[1]+perfConfig.dictionary[missingProd[i]][1]+msg[2]+perfConfig.dictionary.required[2];
+        let txtRes = "";
+        if(textList.length == 1){
+          txtRes = msg[0]+textList[0][0]+msg[1]+textList[0][1]+msg[2];
+        }else{     
+          for(let i=0; i < textList.length;i++){
+            if(i == textList.length-1){
+              txtRes += msg[0]+textList[i][0]+msg[1]+textList[i][1]+msg[2];
+            }else if(i == textList.length-2){
+              txtRes += msg[0]+textList[i][0]+msg[1]+textList[i][1]+msg[2]+perfConfig.dictionary.required[1];
+            }else{
+              txtRes += msg[0]+textList[i][0]+msg[1]+textList[i][1]+msg[2]+perfConfig.dictionary.required[2];
+            }
           }
         }
-      }
-      perf_body.innerHTML = perfConfig.dictionary.required[0].replace("@@@",result);
-      continue;
-    }
-    var minscore = 3;
-    for(const [category,product] of Object.entries(catList)){
-      if(!product.dataset.perfattr && gConfig[category].hasOwnProperty("attr")){minscore="err";break;}
-      var perfval = product.dataset.perfattr.split(",")[gConfig[category].attr];
-      if(gConfig.hasOwnProperty("safe")){
-        if(gConfig.safe.includes(category) && gConfig.safe.includes(perfval)){
-          continue;
-        }
-      }
-      if(perfval < minscore){minscore = perfval;}
-    }
-    switch(minscore){
-      case 0:
-        icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        break;
-      case 1:
-        icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        break;
-      case 2:
-        icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        break;
-      case 3:
-        icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        perf_body.innerHTML = perf_body.innerHTML + perfConfig.dictionary.recommend[0].replace("@@@",txtRes);
         break;
     }
-  }*/
-}/*
-function updatePerfCarousel(){
-  var perf_carousel = document.querySelector("#performance-carousel-2");
-  if(!perf_carousel){return;}
-  var gList = [
-    "lol_game",
-    "fortnite_game",
-    "control_game",
-    "fs2020_game",
-    "sottr_game"
-  ]
-  var redStr = `<a class="category-link"onclick="catRedirect(document.querySelector('#cat-!!!'),'open')">@@@</a>`;
-  for(gName of gList){
-    perf_carousel.querySelector(`#perf-${gName} .perf-1080p span`).innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
-    perf_carousel.querySelector(`#perf-${gName} .perf-1440p span`).innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
-    perf_carousel.querySelector(`#perf-${gName} .perf-4k span`).innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
-    perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "error";
   }
-  var sel_mb = document.querySelector(".builder-parts .builder-part-category.mitriki input:checked");
-  var sel_cpu = document.querySelector(".builder-parts .builder-part-category.cpu input:checked");
-  var sel_ram = document.querySelector(".builder-parts .builder-part-category.ram input:checked");
-  var sel_gpu = document.querySelector(".builder-parts .builder-part-category.gpu input:checked");
-  if(!(sel_mb && sel_cpu && sel_ram && sel_gpu)){
-    return;
-  }
-  if((sel_mb.disabled || sel_cpu.disabled || sel_ram.disabled || sel_gpu.disabled)){
-    return;
-  }
-  var missingText = "";
-  if(sel_mb.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","mitriki").replace("@@@","Μητρική")}<br/>`;}
-  if(sel_cpu.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστή")}<br/>`;}
-  if(sel_ram.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","ram").replace("@@@","Μνήμη RAM")}<br/>`;}
-  if(sel_gpu.value == "emptyval"){missingText += `Χρειάζεσαι ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")}<br/>`;}
-  if(missingText.length){
-    for(gName of gList){
-      perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = missingText.substring(0,missingText.length-5);
-    }
-  }else{
-    for(gName of gList){
-      //1080p
-      var perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 1){perfText += `Ο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστής")}Επεξεργαστής είναι ανεπαρκής<br/>`;}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 1){perfText += `Η <a ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")} είναι ανεπαρκής</a><br/>`;}
-      if(!perfText.length){
-        perf_carousel.querySelector(`#perf-${gName} .perf-1080p span`).innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "Ready for 1080p";
-      }else{
-        perf_carousel.querySelector(`#perf-${gName} .perf-1080p span`).innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = perfText.substring(0,perfText.length-5);
-      }
-      //1440p
-      perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 2){perfText += `Ο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστής")}Επεξεργαστής είναι ανεπαρκής<br/>`;}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 2){perfText += `Η <a ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")} είναι ανεπαρκής</a><br/>`;}
-      if(!perfText.length){
-        perf_carousel.querySelector(`#perf-${gName} .perf-1440p span`).innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "Ready for 1440p";
-      }else{
-        perf_carousel.querySelector(`#perf-${gName} .perf-1440p span`).innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = perfText.substring(0,perfText.length-5);
-      }
-      //4k
-      perfText = "";
-      if(sel_cpu.getAttribute(`data-perf_${gName}`) < 3){perfText += `Ο ${redStr.replace("!!!","cpu").replace("@@@","Επεξεργαστής")}Επεξεργαστής είναι ανεπαρκής<br/>`;}
-      if(sel_gpu.getAttribute(`data-perf_${gName}`) < 3){perfText += `Η <a ${redStr.replace("!!!","gpu").replace("@@@","Κάρτα Γραφικών")} είναι ανεπαρκής</a><br/>`;}
-      if(!perfText.length){
-        perf_carousel.querySelector(`#perf-${gName} .perf-4k span`).innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = "Ready for 4K";
-      }else{
-        perf_carousel.querySelector(`#perf-${gName} .perf-4k span`).innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-        perf_carousel.querySelector(`#perf-${gName} .perf-body`).innerHTML = perfText.substring(0,perfText.length-5);
-      }
-    }
-  }  
-}*/
+}
 
 function catRedirect(wCat, action="toggle",focus="prod") {   
   var gtopen = document.querySelectorAll(".builder-parts .builder-part-category");

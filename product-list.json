@@ -248,28 +248,14 @@
                 "emptyval":"emptyval",
                 "prod-price":"0000",
                 "prod-av":"",
-                "prod-name":"Χωρίς επεξεργαστή",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                }
+                "prod-name":"Χωρίς επεξεργαστή"
             },{
                 "prod-code":"cpu1",
                 "prod-erp":"001-38621",
                 "prod-price":"17250",
                 "prod-av":"Μη διαθέσιμο",
                 "prod-name":"AMD Ryzen 5 2600X with Wraith Spire Cooler",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -281,14 +267,7 @@
                 "prod-price":"19990",
                 "prod-av":"Μη διαθέσιμο",
                 "prod-name":"AMD Ryzen 5 3600 with Wraith Stealth Cooler",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -300,14 +279,7 @@
                 "prod-price":"29500",
                 "prod-av":"1-2 εργάσιμες",
                 "prod-name":"AMD Ryzen 5 3600X with Wraith Spire Cooler",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -319,14 +291,7 @@
                 "prod-price":"31990",
                 "prod-av":"Μη διαθέσιμο",
                 "prod-name":"AMD Ryzen 7 3700X with Wraith Pirsm Cooler",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -338,14 +303,7 @@
                 "prod-price":"32890",
                 "prod-av":"Άμεσα διαθέσιμο",
                 "prod-name":"AMD Ryzen 5 5600X with Wraith Stealth Cooler",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -357,14 +315,7 @@
                 "prod-price":"36900",
                 "prod-av":"1-3 εργάσιμες",
                 "prod-name":"AMD Ryzen 7 3800X with Wraith Prism Cooler",
-                "game-perf":{
-                    "lol_game":"1",
-                    "fortnite_game":"1",
-                    "control_game":"1",
-                    "fs2020_game":"1",
-                    "sottr_game":"1"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["1","1","1","1","1"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -376,14 +327,7 @@
                 "prod-price":"48890",
                 "prod-av":"Άμεσα διαθέσιμο",
                 "prod-name":"AMD Ryzen 7 5800X",
-                "game-perf":{
-                    "lol_game":"2",
-                    "fortnite_game":"2",
-                    "control_game":"2",
-                    "fs2020_game":"2",
-                    "sottr_game":"2"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["2","2","2","2","2"],
                 "comp-index": ["socket"],
                 "comp-data": [
@@ -395,14 +339,7 @@
                 "prod-price":"49900",
                 "prod-av":"Μη διαθέσιμο",
                 "prod-name":"AMD Ryzen 9 3900X with Wraith Prism Cooler",
-                "game-perf":{
-                    "lol_game":"3",
-                    "fortnite_game":"3",
-                    "control_game":"3",
-                    "fs2020_game":"3",
-                    "sottr_game":"3"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["3","3","3","3","3"],
                 "comp-index": "socket",
                 "comp-data": [
@@ -629,14 +566,7 @@
                 "emptyval":"emptyval",
                 "prod-price":"0000",
                 "prod-av":"",
-                "prod-name":"Χωρίς κάρτα Γραφικών",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                }
+                "prod-name":"Χωρίς κάρτα Γραφικών"
             },{
                 "prod-code":"gpu1",
                 "prod-erp":"001-51785",
@@ -645,14 +575,7 @@
                 "prod-name":"Asus GeForce GTX 1650 TUF 4GB D6",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"]
             },{
                 "prod-code":"gpu2",
@@ -662,15 +585,8 @@
                 "prod-name":"Gigabyte GeForce GTX 1660 SUPER OC 6G",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]                
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
+                "perf-data":["0","0","0","0","0"]
             },{
                 "prod-code":"gpu3",
                 "prod-erp":"001-42726",
@@ -679,14 +595,7 @@
                 "prod-name":"Gigabyte GeForce GTX 1660 OC 6G",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"]
             },{
                 "prod-code":"gpu4",
@@ -696,14 +605,7 @@
                 "prod-name":"Asus GeForce GTX 1660 SUPER TUF Gaming 6GB",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"]
             },{
                 "prod-code":"gpu5",
@@ -713,14 +615,7 @@
                 "prod-name":"Asus GeForce GTX 1660 SUPER TUF Gaming OC 6GB",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"]
             },{
                 "prod-code":"gpu6",
@@ -730,14 +625,7 @@
                 "prod-name":"Asus GeForce GTX 1660 SUPER Dual EVO OC 6GB",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"0",
-                    "fortnite_game":"0",
-                    "control_game":"0",
-                    "fs2020_game":"0",
-                    "sottr_game":"0"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["0","0","0","0","0"]
             },{
                 "prod-code":"gpu7",
@@ -747,14 +635,7 @@
                 "prod-name":"Gigabyte GeForce RTX 2060 OC 6G",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"1",
-                    "fortnite_game":"1",
-                    "control_game":"1",
-                    "fs2020_game":"1",
-                    "sottr_game":"1"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["1","1","1","1","1"]
             },{
                 "prod-code":"gpu8",
@@ -764,14 +645,7 @@
                 "prod-name":"Gigabyte AORUS GeForce RTX 3060 Elite 12GB",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"2",
-                    "fortnite_game":"2",
-                    "control_game":"2",
-                    "fs2020_game":"2",
-                    "sottr_game":"2"
-                },
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","fs2020_game","sottr_game"],
+                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
                 "perf-data":["2","2","2","2","2"]
             },{
                 "prod-code":"gpu9",
@@ -781,15 +655,8 @@
                 "prod-name":"Gigabyte Radeon RX 6700 XT Eagle 12GB",
                 "prod-min":"1",
                 "prod-max":"2",
-                "game-perf":{
-                    "lol_game":"3",
-                    "fortnite_game":"3",
-                    "control_game":"3",
-                    "fs2020_game":"3",
-                    "sottr_game":"3"
-                },
                 "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["3","3","3","3"]
+                "perf-data":["3","3","3","3","3"]
             }
         ]
     },{

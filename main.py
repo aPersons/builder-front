@@ -24,7 +24,7 @@ cat_template="""
                 </div>
             </div>"""
 prod_template = """
-            <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{part_perf}{perfattr}{compattr}>
+            <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
             <div class="listed-part">              
               <label class="listed-part-inner" for="{part_id}">
                 <div class="part-img">
@@ -77,14 +77,6 @@ for category in prodlist:
         if product["prod-av"] != "":
           seeMore = '<a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
 
-        perf_list=""
-        if category["cat-code"] == "cpu" or category["cat-code"] == "gpu":
-          perf_list =' data-perf_fortnite_game="{fortnite}" '.format(fortnite = product["game-perf"]["fortnite_game"])
-          perf_list +='data-perf_lol_game="{lol}" '.format(lol = product["game-perf"]["lol_game"])
-          perf_list +='data-perf_control_game="{control}" '.format(control = product["game-perf"]["control_game"])
-          perf_list +='data-perf_sottr_game="{sottr}" '.format(sottr = product["game-perf"]["sottr_game"])
-          perf_list +='data-perf_fs2020_game="{fs2020}"'.format(fs2020 = product["game-perf"]["fs2020_game"])
-
         perfAttributes = ""
         perfres = ""
         if "perf-data" in product and "emptyval" not in product:
@@ -107,7 +99,6 @@ for category in prodlist:
             part_cat = category["cat-code"],
             part_value = (product["prod-code"],"emptyval")["emptyval" in product],
             is_checked = ischecked,
-            part_perf = perf_list,
             perfattr = perfres,
             compattr = compres,
             img_src = product["prod-code"],
