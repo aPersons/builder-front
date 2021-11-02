@@ -1,4 +1,4 @@
-function wtDedimal(wholeNum){
+function wtDecimal(wholeNum){
   if(Number.isSafeInteger(Number(wholeNum))){
     var wholeStr = Number(wholeNum).toString();
     if(wholeNum >= 0){
@@ -34,7 +34,7 @@ function updatePartPrice(partDom){
   var partPriceValue = partPrice.dataset.priceval;
   var partDifference = partDom.querySelector(".part-price .price-difference");
 
-  partPrice.innerHTML = `${wtDedimal(partPriceValue)}€`; 
+  partPrice.innerHTML = `${wtDecimal(partPriceValue)}€`; 
 
   if(selectedPart){
     var selectedPriceValue = selectedPart.querySelector(".part-price .price-main").dataset.priceval;
@@ -44,11 +44,11 @@ function updatePartPrice(partDom){
       partDifference.classList.add("price-lower");
       partDifference.classList.remove("price-higher");
     }else if(result < 0){
-      partDifference.innerHTML = `(${wtDedimal(result)}€)`;
+      partDifference.innerHTML = `(${wtDecimal(result)}€)`;
       partDifference.classList.add("price-lower");
       partDifference.classList.remove("price-higher");
     }else{
-      partDifference.innerHTML = `(+${wtDedimal(result)}€)`;
+      partDifference.innerHTML = `(+${wtDecimal(result)}€)`;
       partDifference.classList.add("price-higher");
       partDifference.classList.remove("price-lower");
     }
@@ -85,75 +85,71 @@ function updateNumberInput(partDom, action="update"){
   }
   inputHead.querySelector(".quantity-display div").innerHTML = inputValue.value;
 }
+function updateFinalPrice(){//ALT
+  var objList = document.querySelectorAll(".build-price-total span");
+  if(!objList.length){return}
+  var sum = 0;
+  var getSelected = document.querySelectorAll(".builder-part-category input.part-rd-bt:checked");
+  for(let i=0; i < getSelected.length; i++){
+    if(getSelected[i].value=="emptyval"){continue}
+    var multiplier = getSelected[i].nextElementSibling.querySelector(".part-quantity")?getSelected[i].nextElementSibling.querySelector(".part-quantity").value:1;
+    sum += Number(multiplier) * getSelected[i].nextElementSibling.querySelector(".price-main").dataset.priceval;
+  }
+  for(let i=0; i < objList.length; i++){
+    objList[i].innerHTML = wtDecimal(sum);
+  }  
+}
 
-function updateFinalPrice(){
-  //var modTable = document.querySelector("#build-modal .modal-table .modal-prod");
+function updateModal(){//ALT
   var modTable = document.querySelector("#build-modal .modal-table");
-  if(modTable){
-    //modTable.innerHTML = "";
-    modTable.innerHTML = `<div class="modal-cat-header">Κατηγορία</div>
+  if(!modTable){return}
+  modTable.innerHTML = `<div class="modal-cat-header">Κατηγορία</div>
                           <div class="modal-prnum-header">Κωδικός</div>
                           <div class="modal-product-header">Προϊόν</div>
                           <div class="modal-quant-header">Τμχ.</div>
                           <div class="modal-price-header">Τιμή</div>
                           <div class="modal-total-header">Σύνολο</div>`;
-    var linktext = window.location.href.split('&');
-    linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;
-  }  
-  var sum = 0;
-  var priceEl = document.querySelector(".builder-product-cart .build-price-total strong span"); 
+  var linktext = window.location.href.split('&');
+  linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;  
   var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
-  if(getCats && (priceEl || modTable)){
-    for(let i = 0; i< getCats.length; i++){
-      var sel_prod = getCats[i].querySelector("input:checked");
-      var prod_price = 0;
-      var prod_price_total = 0;
-      var prod_quant = 0;
-      var erp_pn = "-";
-      var prod_name = "-";
-      if(sel_prod){
-        prod_name = sel_prod.nextElementSibling.querySelector(".part-text-head").innerHTML;
-        if(sel_prod.value != "emptyval"){
-          if(sel_prod.dataset.erp){erp_pn = sel_prod.dataset.erp;}
-          prod_price = sel_prod.nextElementSibling.querySelector(".price-main").dataset.priceval;
-          prod_quant = sel_prod.nextElementSibling.querySelector(".part-number-input .part-quantity");
-          if(prod_quant){
-            prod_quant = prod_quant.value;
-          }else{
-            prod_quant = 1;
-          }
-          prod_price_total = Number(prod_price) * prod_quant;
-          sum += prod_price_total;
-          if(modTable){
-            linktext += `&o${i}=${sel_prod.value}&q${i}=${prod_quant}`;
-          }
+  var sum = 0;
+  for(let i = 0; i< getCats.length; i++){
+    var sel_prod = getCats[i].querySelector("input:checked");
+    var prod_price = 0;
+    var prod_price_total = 0;
+    var prod_quant = 0;
+    var erp_pn = "-";
+    var prod_name = "-";
+    if(sel_prod){
+      prod_name = sel_prod.nextElementSibling.querySelector(".part-text-head").innerHTML;
+      if(sel_prod.value != "emptyval"){
+        if(sel_prod.dataset.erp){erp_pn = sel_prod.dataset.erp;}
+        prod_price = sel_prod.nextElementSibling.querySelector(".price-main").dataset.priceval;
+        prod_quant = sel_prod.nextElementSibling.querySelector(".part-number-input .part-quantity");
+        if(prod_quant){
+          prod_quant = prod_quant.value;
+        }else{
+          prod_quant = 1;
         }
-      }      
-      if(modTable){        
-        modTable.insertAdjacentHTML("beforeend",`<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
-                                                 <div class="erp-pn">${erp_pn}</div>
-                                                 <div class="prod-nm">${prod_name}</div>
-                                                 <div class="prod-quant">${prod_quant}x</div>
-                                                 <div class="prod-price">${wtDedimal(prod_price)} €</div>
-                                                 <div class="prod-price-total">${wtDedimal(prod_price_total)} €</div>`);
+        prod_price_total = Number(prod_price) * prod_quant;
+        sum += prod_price_total;
+        linktext += `&o${i}=${sel_prod.value}&q${i}=${prod_quant}`;
       }
     }
+    modTable.insertAdjacentHTML("beforeend",`<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
+                                               <div class="erp-pn">${erp_pn}</div>
+                                               <div class="prod-nm">${prod_name}</div>
+                                               <div class="prod-quant">${prod_quant}x</div>
+                                               <div class="prod-price">${wtDecimal(prod_price)} €</div>
+                                               <div class="prod-price-total">${wtDecimal(prod_price_total)} €</div>`);    
   }
-  sum = wtDedimal(sum);
-  if(priceEl){    
-    priceEl.innerHTML = sum;
-  }
-  if(modTable){
-    //modTable.parentElement.querySelector(".modal-total-num span").innerHTML = sum;
-    modTable.insertAdjacentHTML("beforeend",`<div class="modal-total-title">Σύνολο:</div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div></div>
-                                            <div class="modal-total-num"><span>${sum}</span> €</div>`)
-    document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = linktext;
-  }
+  sum = wtDecimal(sum);
+  modTable.insertAdjacentHTML("beforeend",`<div class="modal-total-title">Σύνολο:</div>
+                                          <div></div><div></div><div></div><div></div>
+                                          <div class="modal-total-num"><span>${sum}</span> €</div>`)
+  document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = linktext;
 }
+
 function updateProdNav(forceInit=false){
   var navBody = document.querySelector(".builder-product .prod-navigation");
   if(!navBody){return}
@@ -191,7 +187,7 @@ function updateProdNav(forceInit=false){
     }else{
       var price = Number(selected.nextElementSibling.querySelector(".price-main").dataset.priceval);
       var quant = selected.nextElementSibling.querySelector("input.part-quantity");
-      priceBox.innerHTML = `${wtDedimal(price*(quant?Number(quant.value):1))}€`;
+      priceBox.innerHTML = `${wtDecimal(price*(quant?Number(quant.value):1))}€`;
     }
   }
 }
@@ -516,6 +512,7 @@ function initParts(){
   }
   avCompatible();
   updateFinalPrice();
+  updateModal()
   updateProdNav();
   updatePerfCarousel();
 }
@@ -545,6 +542,7 @@ function createListeners(){
       }      
       avCompatible();
       updateFinalPrice();
+      updateModal()
       updateProdNav();
       updatePerfCarousel();
     })
@@ -556,6 +554,7 @@ function createListeners(){
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
       updateNumberInput(loctemp,"decrement");
       updateFinalPrice();
+      updateModal()
       updateProdNav();
     })
   }
@@ -566,6 +565,7 @@ function createListeners(){
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
       updateNumberInput(loctemp,"increment");
       updateFinalPrice();
+      updateModal()
       updateProdNav();
     })
   }

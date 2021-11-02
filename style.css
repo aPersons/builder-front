@@ -440,7 +440,7 @@ body{
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn part-number-input{
   display: none;
 }
-.builder-part-category .listed-part .part-btn .disabled-part{display: none;}
+.builder-part-category .listed-part .part-btn .disabled-part{margin-right: auto;display: none;}
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn .disabled-part{display: inline-block;}
 
 /*num Button */
