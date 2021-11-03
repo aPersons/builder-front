@@ -3,8 +3,8 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
-selected = '<label class="btn btn-primary disabled" >Επιλεγμένο</label>'
-cancel = '<label class="btn btn-warning btn-cancel" for="{sel_init}">Ακύρωση</label>'
+selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
+cancel = '<label class="btn btn-primary btn-cancel" for="{sel_init}">Ακύρωση</label>'
 num_input = """
                   <div class="part-number-input">
                     <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
@@ -14,6 +14,18 @@ num_input = """
                     <div class="part-num-incr"><div>+</div></div>
                     <div class="part-num-incr-unavailable"><div>+</div></div>
                   </div>"""
+num_input_alt = """
+  <div class="part-number-input">
+    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
+    <svg fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
+      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+    </svg>
+    <span class="quantity-display"><span>
+    <svg fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
+      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+    </svg>
+  </div>
+"""
 
 cat_template="""
             <div class="builder-part-category {cat_name}" id="cat-{cat_name}">
@@ -36,8 +48,8 @@ prod_template = """
                   <span class="price-difference">(+0,00€)</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
-                  <label class="btn btn-primary btn-change" >Αλλαγή</label>
-                  <label class="btn btn-primary btn-select" for="{part_id}">Επιλογή</label>
+                  <label class="btn btn-success btn-change" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select" for="{part_id}">Επιλογή</label>
                   {sec_btn}
                   <div class="disabled-part">disabled</div>
                 </div>                
