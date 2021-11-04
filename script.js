@@ -83,7 +83,7 @@ function updateNumberInput(partDom, action="update"){
       inputHead.classList.add("incr-av");
     }     
   }
-  inputHead.querySelector(".quantity-display div").innerHTML = inputValue.value;
+  inputHead.querySelector(".quantity-display").innerHTML = inputValue.value;
 }
 function updateFinalPrice(){//ALT
   var objList = document.querySelectorAll(".build-price-total span");
@@ -406,7 +406,7 @@ function avCompatible(){
         "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
       }
     },
     "mitriki": {
@@ -415,21 +415,21 @@ function avCompatible(){
         "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
       },
       "cpu":{
         "cType":"normal",
         "safe":"$afe",
         "attrA":"1",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
       },
       "psiktra":{
         "cType":"normal",
         "safe":"$afe",
         "attrA":"1",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
       }
     },
     "cpu": {
@@ -438,14 +438,14 @@ function avCompatible(){
         "safe":"$afe",
         "attrA":"0",
         "attrB":"1",
-        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
       },
       "psiktra":{
         "cType":"normal",
         "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
       }      
     },
     "psiktra": {
@@ -454,18 +454,18 @@ function avCompatible(){
         "safe":"$afe",
         "attrA":"0",
         "attrB":"1",
-        "errM":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
       },
       "cpu":{
         "cType":"normal",
         "safe":"$afe",
         "attrA":"0",
         "attrB":"0",
-        "errM":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+        "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
       }
     }
   }
-  var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
+  var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
   for (const [cat, rCats] of Object.entries(compConfig)) {
     var products = document.querySelectorAll(`#cat-${cat} .part-list-containter input.part-rd-bt`);
     break_point:
@@ -496,7 +496,7 @@ function avCompatible(){
             }
             if(compatible){break}
               products[i].disabled = true;
-              products[i].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]);
+              products[i].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]).replace("$$",msg[3]);
               continue break_point;
         }
       }

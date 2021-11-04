@@ -5,25 +5,12 @@ with open("product-list.json","r",encoding="UTF-8") as rawjson:
 
 selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
 cancel = '<label class="btn btn-primary btn-cancel" for="{sel_init}">Ακύρωση</label>'
-num_input = """
-                  <div class="part-number-input">
-                    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
-                    <div class="part-num-decr"><div>-</div></div>
-                    <div class="part-num-decr-unavailable"><div>-</div></div>
-                    <div class="quantity-display"><div>0</div></div>
-                    <div class="part-num-incr"><div>+</div></div>
-                    <div class="part-num-incr-unavailable"><div>+</div></div>
-                  </div>"""
 num_input_alt = """
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
-    <svg fill="currentColor" class="bi bi-dash-square" viewBox="0 0 16 16">
-      <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-    </svg>
-    <span class="quantity-display"><span>
-    <svg fill="currentColor" class="bi bi-plus-square" viewBox="0 0 16 16">
-      <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-    </svg>
+    <i class="bi bi-dash part-num-decr" style=""></i>
+    <span class="quantity-display"></span>
+    <i class="bi bi-plus part-num-incr" style=""></i>
   </div>
 """
 
@@ -76,7 +63,7 @@ for category in prodlist:
             secbtn = cancel.format(sel_init = category["init-prod"])
         num_input_res = ""
         if "prod-min" in product and "prod-max" in product:
-            num_input_res = num_input.format(
+            num_input_res = num_input_alt.format(
                 part_id = product["prod-code"],
                 part_cat = category["cat-code"],
                 part_min = product["prod-min"],
