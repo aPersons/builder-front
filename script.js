@@ -384,16 +384,28 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   var catPosBot = wCat.getBoundingClientRect().bottom;
   var selprod = wCat.querySelector("input:checked + .listed-part");
   if(!catState || focus == "cat" || !selprod){
-    window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128));
+    window.scrollTo({
+      top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
+      behavior: 'smooth'
+    });
   }else{
     var selprodTop = selprod.getBoundingClientRect().top;
     var selprodBot = selprod.getBoundingClientRect().bottom;
     if((window.innerHeight/2-140)>selprodTop-catPosTop){
-      window.scrollTo(0,catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128));
+      window.scrollTo({
+        top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
+        behavior: 'smooth'
+      });
     }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-      window.scrollTo(0,catPosBot+window.pageYOffset-window.innerHeight+50);
+      window.scrollTo({
+        top:catPosBot+window.pageYOffset-window.innerHeight+50,
+        behavior: 'smooth'
+    });
     }else{
-      window.scrollTo(0,selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2);
+      window.scrollTo({
+        top:selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2,
+        behavior: 'smooth'
+      });
     }
   }
   updateProdNav();
