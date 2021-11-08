@@ -85,9 +85,10 @@ function updateNumberInput(partDom, action="update"){
   }
   inputHead.querySelector(".quantity-display").innerHTML = inputValue.value;
 }
-function updateFinalPrice(){//ALT
-  var objList = document.querySelectorAll(".build-price-total span");
-  if(!objList.length){return}
+function updateFinalPrice(){
+  var objList = document.querySelectorAll(".build-price-total");
+  var objListTaxLess = document.querySelectorAll(".build-price-taxless");
+  if(!(objList.length || objListTaxLess.length)){return}
   var sum = 0;
   var getSelected = document.querySelectorAll(".builder-part-category input.part-rd-bt:checked");
   for(let i=0; i < getSelected.length; i++){
@@ -98,9 +99,12 @@ function updateFinalPrice(){//ALT
   for(let i=0; i < objList.length; i++){
     objList[i].innerHTML = wtDecimal(sum);
   }  
+  for(let i=0; i < objListTaxLess.length; i++){
+    objListTaxLess[i].innerHTML = wtDecimal(Math.floor(sum/1.24));
+  }  
 }
 
-function updateModal(){//ALT
+function updateModal(){
   var modTable = document.querySelector("#build-modal .modal-table");
   if(!modTable){return}
   modTable.innerHTML = `<div class="modal-cat-header">Κατηγορία</div>

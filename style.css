@@ -10,7 +10,7 @@ body{
   position: sticky;
   width: 100%;
   top: 0;
-  z-index: 3;
+  z-index: 20;
   background-color: #fff;
   box-shadow: 0 0.25rem 0.5625rem -0.0625rem rgb(0 0 0 / 3%),
   0 0.275rem 1.25rem -0.0625rem rgb(0 0 0 / 5%);
@@ -92,29 +92,12 @@ body{
 
 /* Head - Description */
 
-.builder-body-container .cont-head{
+.builder-body-container .cont-descr{
   background-color: #fff;
   border-radius: 0.4375rem;
   margin: 0px;
   margin-bottom: 15px;
   box-shadow: 0 0.3rem 1.525rem -0.375rem rgba(0,0,0,0.1);
-}
-.builder-body-container .cont-head .head-cont-img{
-  padding: 15px;
-}
-.builder-body-container .cont-head .head-cont-img img{
-  max-width: 475.5px;
-  margin: auto;
-  display: block;
-}
-.builder-body-container .cont-head .head-cont-img span{
-  text-align: center;
-  max-width: 475.5px;
-  margin: auto;
-  margin-top: 5px;
-  display: block;
-}
-.builder-body-container .cont-head .head-cont-descr{
   padding: 15px;
   text-align: justify;
 }
@@ -180,10 +163,6 @@ body{
   justify-content: end;
   align-items: center;
   white-space: normal;
-}
-.builder-product .build-add-to-cart .build-price-total{
-  padding:0 5px;
-  font-size: 23px;
 }
 @media only screen and (max-width: 767px){
   .builder-product{
@@ -425,6 +404,7 @@ body{
   padding-left: 3px;
   padding-right: 3px;
   width: 92px;
+  box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
   display: none;
 }
 .part-btn label.btn-change{display: inline-block;}
@@ -453,12 +433,12 @@ body{
   padding: 0;
   border: none;
   text-align: center;
+  box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
 }
 .part-btn .part-number-input input{
   display: none;
 }
 .part-btn .part-number-input .quantity-display{
-  background-color:#f6f6f6;
   flex-grow: 1;
   opacity: 0.65;
   transition: opacity 0.25s ease-in-out;
@@ -466,7 +446,7 @@ body{
 .part-btn .part-number-input .part-num-decr,
 .part-btn .part-number-input .part-num-incr{
   border-radius:.25rem 0 0 .25rem;
-  background-color: #42d697;
+  background-color:#d0d0d0;
   color: #fff;
   padding: 0 0.5ch;
   opacity: 0.65;
@@ -488,7 +468,7 @@ body{
 }
 .part-btn .part-number-input.decr-av .part-num-decr:hover,
 .part-btn .part-number-input.incr-av .part-num-incr:hover{
-  background-color: #29bc7d;
+  background-color: #c0c0c0;
 }
 
 @media only screen and (max-width: 575px) {

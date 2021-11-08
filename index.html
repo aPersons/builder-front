@@ -729,27 +729,113 @@
 		</div>
 	</div>
 	<div class="container builder-body-container">
-		<div class="row cont-head">
-			<div class="col-md-5 head-cont-img">
-				<div class="cont-img-inner">
-					<img src="assets/18.png" width="100%">
+		<div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-3">
+			<div class="px-lg-3">
+				<div class="row">
+					<div class="col-lg-7 pe-lg-0 pt-lg-4">
+						<div class="product-gallery">
+							<div class="product-gallery-preview order-sm-2">
+								<div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="assets/18.png" data-zoom="assets/18.png" alt="Msystems AMD Entry Gaming">
+									<div class="image-zoom-pane"></div>
+								</div>
+							</div>
+							<div class="product-gallery-thumblist order-sm-1">
+								<a class="product-gallery-thumblist-item active" href="#first">
+									<img src="assets/18.png" alt="Msystems AMD Entry Gaming">
+								</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-5 pt-4 pt-lg-0">
+						<div class="product-details ms-auto pb-3">
+							<div class="d-flex justify-content-between align-items-center mb-2">
+								<div class="mb-3">
+									<span class="h3 fw-normal me-1"><strong><span class="build-price-total">--</span> €</strong></span><br>
+									<span class="text-muted fs-xs">Χωρίς ΦΠΑ: <span class="build-price-taxless">--</span> €</span>
+							</div>
+							<div class="mt-n5">
+								<button class="btn-wishlist btn-sm me-0 me-lg-n4 mt-n5" type="button" id="prd_addtowishlist" data-bs-toggle="tooltip" title="" data-bs-original-title="Προσθήκη στην wishlist" aria-label="Προσθήκη στην wishlist"><i class="ci-heart"></i></button>
+							</div>
+						</div>
+							<div class="mb-3">
+								<button class="btn btn-success btn-shadow d-block w-100" type="submit" id="prd_addtocart"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
+							</div>
+							<h5 class="h6 mb-2 pb-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Πληροφορίες</h5>
+							<div class="fs-sm mb-1"><strong>Κωδικός Msystems: </strong>500-xxxxx</div>
+							<div class="fs-sm mb-1"><strong>Part Number: </strong>xxxxxxxxxxxx</div>
+							<div class="fs-sm mb-3"><strong>Εγγύηση: </strong>Lifetime</div>
+							<div class="accordion mb-4" id="productPanels">
+								<div class="accordion-item">
+									<h3 class="accordion-header"><a class="accordion-button collapsed" href="#shippingOptions" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="shippingOptions"><i class="ci-delivery text-muted lead align-middle mt-n1 me-2"></i>Ενδεικτικά μεταφορικά</a></h3>
+									<div class="accordion-collapse collapse" id="shippingOptions" data-bs-parent="#productPanels">
+										<div class="accordion-body fs-sm">
+											<div class="d-flex justify-content-between border-bottom pb-2">
+												<div>
+													<div class="fw-semibold">Εντός Αττικής</div>
+													<div class="fs-sm text-muted">1 - 2 Ημέρες</div>
+												</div>
+												<div>Δωρεάν</div>
+											</div>
+											<div class="d-flex justify-content-between border-bottom pb-2">
+												<div>
+													<div class="fw-semibold">Εκτός Αττικής με Courier (1 Kg)</div>
+													<div class="fs-sm text-muted">1 - 3 Ημέρες</div>
+												</div>
+												<div>3,00 €</div>
+											</div>
+											<div class="d-flex justify-content-between border-bottom py-2">
+												<div>
+													<div class="fw-semibold">Παραλαβή από το κατάστημα</div>
+													<div class="fs-sm text-muted">-</div>
+												</div>
+												<div>Δωρεάν</div>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="accordion-item">
+									<h3 class="accordion-header"><a class="accordion-button collapsed" href="#doseis" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="doseis"><i class="bi bi-currency-euro text-muted lead align-middle mt-n1 me-2"></i>Δόσεις</a></h3>
+									<div class="accordion-collapse collapse" id="doseis" data-bs-parent="#productPanels">
+										<div class="accordion-body fs-sm">
+											<div class="d-flex justify-content-between border-bottom pb-2">
+												<div>
+													<div class="fw-semibold">Courier</div>
+													<div class="fs-sm text-muted">1 - 2 Ημέρες</div>
+												</div>
+												<div>26,50 €</div>
+											</div>
+											<div class="d-flex justify-content-between border-bottom py-2">
+												<div>
+													<div class="fw-semibold">Μεταφορική</div>
+													<div class="fs-sm text-muted">1 - 4 Ημέρες</div>
+												</div>
+												<div>5-10 €</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<label class="form-label d-inline-block align-middle my-2 me-1">Μοιράσου το:</label>
+							<a class="btn-share btn-facebook me-1" href="#"><i class="ci-facebook me-0"></i><span class="ms-1 d-none d-lg-inline-block">Facebook</span></a>
+							<a class="btn-share btn-twitter me-1" href="#"><i class="ci-twitter me-0"></i><span class="ms-1 d-none d-lg-inline-block">Twitter</span></a>
+							<a class="btn-share btn-instagram" href="#"><i class="ci-mail me-0"></i><span class="ms-1 d-none d-lg-inline-block">Email</span></a>
+						</div>
+					</div>
 				</div>
-				<span class="product-prod-sku">#Κωδικός Msystems: <br><span class="text-primary">500-00018</span></span>
 			</div>
-			<div class="col-md-7 head-cont-descr">
-				<div class="cont-descr-inner">
-					<h5>Εκπληκτικές επιδόσεις σε εκπληκτική τιμή!</h5>
-					<p>Σχεδιασμένο για αυτούς που δεν θέλουν να κάνουν συμβιβασμούς στις επιδόσεις χωρίς να ξοδέψουν παραπάνω από
-						όσο χρειάζεται,
-						το <b>Msystems AMD Entry Gaming</b> προσφέρει <b>μεγάλη επεκτασιμότητα</b> και είναι σίγουρο πως θα σας
-						κρατήσει καθηλωμένους με τις
-						<b>εκρηκτικές επιδόσεις του!!!</b>
-					</p>
-					Με τον επεξεργαστή της <b>AMD Ryzen 3 3200G</b> με <b>SSD δίσκο</b> ή/και με δυνατότητα προσθήκης <b>δίσκου
-						SSD M.2</b>
-					και με την μνήμη RAM να μπορεί να φτάσει μέχρι και <b>64GB</b>, αποτελεί μια επένδυση για το μέλλον!
-				</div>
-			</div>
+		</div>
+		<div class="cont-descr">
+			<legend class="col-12 border-bottom pb-2 mb-4"><strong>Περιγραφή</strong></legend>
+			<h5>Εκπληκτικές επιδόσεις σε εκπληκτική τιμή!</h5>
+			<p>Σχεδιασμένο για αυτούς που δεν θέλουν να κάνουν συμβιβασμούς στις επιδόσεις χωρίς να ξοδέψουν παραπάνω από
+				όσο χρειάζεται,
+				το <b>Msystems AMD Entry Gaming</b> προσφέρει <b>μεγάλη επεκτασιμότητα</b> και είναι σίγουρο πως θα σας
+				κρατήσει καθηλωμένους με τις
+				<b>εκρηκτικές επιδόσεις του!!!</b>
+			</p>
+			Με τον επεξεργαστή της <b>AMD Ryzen 3 3200G</b> με <b>SSD δίσκο</b> ή/και με δυνατότητα προσθήκης <b>δίσκου
+				SSD M.2</b>
+			και με την μνήμη RAM να μπορεί να φτάσει μέχρι και <b>64GB</b>, αποτελεί μια επένδυση για το μέλλον!
 		</div>
 		<div class="row cont-body">
 			<div class="col-lg-4 col-md-5 order-md-2 builder-product">
@@ -772,7 +858,7 @@
 								</button>
 							</div>
 							<div class="build-add-to-cart">
-								<span class="build-price-total"><strong><span>0.00</span>€</strong></span>
+								<strong><span class="build-price-total">0.00</span>€</strong>
 								<button type="button" class="btn btn-success">
 									Προσθήκη στο καλάθι
 								</button>
