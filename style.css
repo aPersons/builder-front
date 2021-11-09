@@ -132,22 +132,6 @@ body{
 .builder-product .prod-navigation .prod-navigator i{margin-right: 10px;}
 .builder-product .prod-navigation .prod-navigator span{float: right;}
 
-.builder-product-cart{  
-  display: grid;
-  grid-template-areas: 'build-modal-bt'
-                       'add-to-cart'
-                       'build-performance';
-}
-.builder-product .build-faq{
-  grid-area: build-faq;
-  margin-bottom: 5px;
-  white-space: normal;
-}
-.builder-product .build-photos{
-  grid-area: build-photos;
-  margin-bottom: 5px;
-  white-space: normal;
-}
 .builder-product .build-modal-bt{
   grid-area: build-modal-bt;
   margin-bottom: 5px;
@@ -156,30 +140,7 @@ body{
 .builder-product .build-modal-bt button{
   width: 100%;
 }
-.builder-product .build-add-to-cart{
-  grid-area: add-to-cart;
-  margin-bottom: 5px;
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  white-space: normal;
-}
-@media only screen and (max-width: 767px){
-  .builder-product{
-    z-index: 2;
-  }
-  .builder-product .build-add-to-cart{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    left: 0;
-    justify-content: center;
-    z-index: 20;
-    margin: 0;
-    padding: 5px 0;
-    background-color: #eee;
-  }
-}
+
 /* Carousel */
 .builder-product .perf-carousel{
   grid-area: build-performance;
@@ -483,6 +444,8 @@ body{
   .topbar,
   .header-main,
   .page-title-overlap,
+  .btn-scroll-top,
+  .bottom-toolbar,
   footer{
     display:none;
   }
