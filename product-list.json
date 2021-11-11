@@ -733,5 +733,73 @@
                 "prod-name":"Gigabyte Power Supply GP-P650B 650W 80+ Bronze"
             }
         ]
+    },{
+        "cat-code":"m2ssd",
+        "cat-name":"Δίσκος SSD M.2",
+        "cat-desc":"Η τελευταία τεχνολογία των δίσκων SSD, η επικοινωνία γίνεται μέσω των γρήγορων PCIe lanes αντί των θυρών SATA με αποτέλεσμα πολύ υψηλότερες ταχύτητες ανάγνωσης και εγγραφής.",
+        "init-prod":"m2ssd0",
+        "product-list":[
+            {
+                "prod-code":"m2ssd0",
+                "emptyval":"emptyval",
+                "prod-price":"0000",
+                "prod-av":"",
+                "prod-name":"Χωρίς Δίσκο SSD M.2"
+            },{
+                "prod-code":"m2ssd1",
+                "prod-erp":"001-47240",
+                "prod-price":"4150",
+                "prod-av":"1-2 εργάσιμες",
+                "prod-name":"Kingston 250GB KC2500 NVMe M.2 PCI-Express SSD"
+            },{
+                "prod-code":"m2ssd2",
+                "prod-erp":"001-45387",
+                "prod-price":"4490",
+                "prod-av":"Μικρή διαθεσιμότητα",
+                "prod-name":"Gigabyte 256GB M.2 PCIe NVMe SSD"
+            },{
+                "prod-code":"m2ssd3",
+                "prod-erp":"001-49274",
+                "prod-price":"4690",
+                "prod-av":"10-15 εργάσιμες",
+                "prod-name":"Western Digital Blue SN550 M.2 250GB NVMe SSD"
+            },{
+                "prod-code":"m2ssd4",
+                "prod-erp":"001-51445",
+                "prod-price":"5050",
+                "prod-av":"Άμεσα διαθέσιμο",
+                "prod-name":"Samsung 250GB NVMe SSD 980 Series M.2 PCI-Express"
+            },{
+                "prod-code":"m2ssd5",
+                "prod-erp":"001-51631",
+                "prod-price":"5270",
+                "prod-av":"Άμεσα διαθέσιμο",
+                "prod-name":"Kingston 500GB NV1 NVMe M.2 PCI-Express SSD"
+            },{
+                "prod-code":"m2ssd6",
+                "prod-erp":"001-48155",
+                "prod-price":"5590",
+                "prod-av":"10-15 εργάσιμες",
+                "prod-name":"Corsair Force Series MP510 240GB NVMe M.2 PCI-Express SSD"
+            },{
+                "prod-code":"m2ssd7",
+                "prod-erp":"001-42920",
+                "prod-price":"6150",
+                "prod-av":"Άμεσα διαθέσιμο",
+                "prod-name":"Samsung 250GB NVMe SSD 970 Evo Plus Series M.2 PCI-Express"
+            },{
+                "prod-code":"m2ssd8",
+                "prod-erp":"001-48953",
+                "prod-price":"6200",
+                "prod-av":"10-15 εργάσιμες",
+                "prod-name":"Western Digital Blue SN550 M.2 500GB NVMe SSD [WDS500G2B0C]"
+            },{
+                "prod-code":"m2ssd9",
+                "prod-erp":"001-43489",
+                "prod-price":"6490",
+                "prod-av":"5-10 εργάσιμες",
+                "prod-name":"Western Digital SN750 Black M.2 250GB PCIe NVMe SSD"
+            }
+        ]
     }
 ]
