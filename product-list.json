@@ -737,6 +737,7 @@
         "cat-code":"m2ssd",
         "cat-name":"Δίσκος SSD M.2",
         "cat-desc":"Η τελευταία τεχνολογία των δίσκων SSD, η επικοινωνία γίνεται μέσω των γρήγορων PCIe lanes αντί των θυρών SATA με αποτέλεσμα πολύ υψηλότερες ταχύτητες ανάγνωσης και εγγραφής.",
+        "multi-sel":"0",
         "init-prod":"m2ssd0",
         "product-list":[
             {
@@ -792,7 +793,7 @@
                 "prod-erp":"001-48953",
                 "prod-price":"6200",
                 "prod-av":"10-15 εργάσιμες",
-                "prod-name":"Western Digital Blue SN550 M.2 500GB NVMe SSD [WDS500G2B0C]"
+                "prod-name":"Western Digital Blue SN550 M.2 500GB NVMe SSD"
             },{
                 "prod-code":"m2ssd9",
                 "prod-erp":"001-43489",

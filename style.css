@@ -245,14 +245,16 @@ body{
 .builder-part-category .part-list-containter{
   padding:10px;
 }
-.builder-part-category .part-rd-bt{
+.builder-part-category .part-rd-bt,
+.builder-part-category .part-checkbox{
   display: none;
 }
 .builder-part-category .listed-part{  
   display: none;
 }
 .builder-part-category.lp-show .listed-part,
-.part-rd-bt:checked + .listed-part{
+.part-rd-bt:checked + .listed-part,
+.part-checkbox:checked + .listed-part{
   display: block;
 }
 .builder-part-category .part-list-containter .border-top {
@@ -273,13 +275,19 @@ body{
   grid-template-areas: 'part-img part-text part-price'
                       'part-img part-btn part-btn';
 }
+.builder-part-category.lp-show .part-checkbox:checked +
+.listed-part .listed-part-inner,
 .builder-part-category.lp-show .part-rd-bt:checked +
 .listed-part .listed-part-inner{
   box-shadow: 0 0 1.125rem -0.3rem rgb(66 214 151 / 90%);
 }
 .builder-part-category .part-rd-bt:disabled +
+.listed-part .listed-part-inner > div,
+.builder-part-category .part-checkbox:disabled +
 .listed-part .listed-part-inner > div{opacity: 0.5;}
 .builder-part-category .part-rd-bt:disabled +
+.listed-part .listed-part-inner > div.part-btn,
+.builder-part-category .part-checkbox:disabled +
 .listed-part .listed-part-inner > div.part-btn{opacity: 1;}
 @media only screen and (max-width: 575px) {
   .builder-part-category .listed-part-inner{
@@ -292,7 +300,6 @@ body{
 }
 
 /* Inner Parts */
-
 
 .listed-part-inner .part-img{
   display: flex;
@@ -316,6 +323,7 @@ body{
   grid-area:part-price;
   padding: 5px;
 }
+.part-rd-bt + .listed-part .price-main{display: none;}
 .part-rd-bt:checked + .listed-part .price-difference{display: none;}
 .listed-part .price-difference.price-lower{color:#14c714;}
 .listed-part .price-difference.price-higher{color:#ff1b1b;}
@@ -350,7 +358,8 @@ body{
   text-decoration: none;
   color: #eabe4b;
 }
-.builder-part-category .part-rd-bt:disabled + .listed-part .prod-quick-view{
+.builder-part-category .part-rd-bt:disabled + .listed-part .prod-quick-view,
+.builder-part-category .part-checkbox:disabled + .listed-part .prod-quick-view{
   display: none;
 }
 @media only screen and (max-width: 991px){
@@ -372,17 +381,24 @@ body{
 .builder-part-category.lp-show .listed-part .part-btn label.btn-change{display:none;}
 
 .builder-part-category.lp-show .listed-part .part-btn label.btn-select{display: inline-block;}
+.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn label.btn-select,
 .builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn label.btn-select{display: none;}
 
+.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.btn-cancel,
+.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.btn-disabled,
 .builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > label.btn-cancel,
 .builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > label.disabled{display: inline-block;}
 
+.builder-part-category .part-checkbox:disabled + .listed-part .part-btn,
+.builder-part-category .part-checkbox:disabled + .listed-part .part-btn label.btn,
+.builder-part-category .part-checkbox:disabled + .listed-part .part-btn label.btn.btn-cancel,
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn label.btn,
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn label.btn.btn-cancel,
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn part-number-input{
   display: none;
 }
 .builder-part-category .listed-part .part-btn .disabled-part{margin-right: auto;display: none;}
+.builder-part-category .part-checkbox:disabled + .listed-part .part-btn .disabled-part,
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn .disabled-part{display: inline-block;}
 
 /*num Button */
@@ -416,6 +432,8 @@ body{
 .part-btn .part-number-input .part-num-incr{
   border-radius: 0 .25rem .25rem 0;
 }
+.part-checkbox:checked + .listed-part
+.part-btn .part-number-input .quantity-display,
 .part-rd-bt:checked + .listed-part
 .part-btn .part-number-input .quantity-display{opacity: 1;}
 .part-btn .part-number-input.decr-av .part-num-decr,

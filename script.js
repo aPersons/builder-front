@@ -28,32 +28,33 @@ function wtDecimal(wholeNum){
 }
 
 function updatePartPrice(partDom){
-  var selectedPart = partDom.parentElement.querySelector("input.part-rd-bt:checked + div.listed-part");
 
   var partPrice = partDom.querySelector(".part-price .price-main");
   var partPriceValue = partPrice.dataset.priceval;
+  partPrice.innerHTML = `${wtDecimal(partPriceValue)}€`;
+  
+  if(!partDom.previousElementSibling.classList.contains("part-rd-bt")){return}
+
+  var selectedPart = partDom.parentElement.querySelector("input.part-rd-bt:checked + div.listed-part");
   var partDifference = partDom.querySelector(".part-price .price-difference");
-
-  partPrice.innerHTML = `${wtDecimal(partPriceValue)}€`; 
-
   if(selectedPart){
     var selectedPriceValue = selectedPart.querySelector(".part-price .price-main").dataset.priceval;
     var result = partPriceValue - selectedPriceValue;
     if(result == 0){
-      partDifference.innerHTML = `(+0,00€)`;
+      partDifference.innerHTML = `+0,00€`;
       partDifference.classList.add("price-lower");
       partDifference.classList.remove("price-higher");
     }else if(result < 0){
-      partDifference.innerHTML = `(${wtDecimal(result)}€)`;
+      partDifference.innerHTML = `${wtDecimal(result)}€`;
       partDifference.classList.add("price-lower");
       partDifference.classList.remove("price-higher");
     }else{
-      partDifference.innerHTML = `(+${wtDecimal(result)}€)`;
+      partDifference.innerHTML = `+${wtDecimal(result)}€`;
       partDifference.classList.add("price-higher");
       partDifference.classList.remove("price-lower");
     }
   }else{
-    partDifference.innerHTML = "(+0,00€)";
+    partDifference.innerHTML = "+0,00€";
     partDifference.classList.remove("price-lower","price-higher");
   }
 }
@@ -90,7 +91,7 @@ function updateFinalPrice(){
   var objListTaxLess = document.querySelectorAll(".build-price-taxless");
   if(!(objList.length || objListTaxLess.length)){return}
   var sum = 0;
-  var getSelected = document.querySelectorAll(".builder-part-category input.part-rd-bt:checked");
+  var getSelected = document.querySelectorAll(".builder-part-category input.part-rd-bt:checked, .builder-part-category input.part-checkbox:checked");
   for(let i=0; i < getSelected.length; i++){
     if(getSelected[i].value=="emptyval"){continue}
     var multiplier = getSelected[i].nextElementSibling.querySelector(".part-quantity")?getSelected[i].nextElementSibling.querySelector(".part-quantity").value:1;
@@ -118,18 +119,27 @@ function updateModal(){
   var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
   var sum = 0;
   for(let i = 0; i< getCats.length; i++){
-    var sel_prod = getCats[i].querySelector("input:checked");
-    var prod_price = 0;
-    var prod_price_total = 0;
-    var prod_quant = 0;
-    var erp_pn = "-";
-    var prod_name = "-";
-    if(sel_prod){
-      prod_name = sel_prod.nextElementSibling.querySelector(".part-text-head").innerHTML;
-      if(sel_prod.value != "emptyval"){
-        if(sel_prod.dataset.erp){erp_pn = sel_prod.dataset.erp;}
-        prod_price = sel_prod.nextElementSibling.querySelector(".price-main").dataset.priceval;
-        prod_quant = sel_prod.nextElementSibling.querySelector(".part-number-input .part-quantity");
+    var sel_prod = getCats[i].querySelectorAll("input.part-rd-bt:checked, input.part-checkbox:checked");
+    if(!sel_prod.length){modTable.insertAdjacentHTML("beforeend",
+      `<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
+        <div class="erp-pn">-</div>
+        <div class="prod-nm">-</div>
+        <div class="prod-quant">0x</div>
+        <div class="prod-price">0,00 €</div>
+        <div class="prod-price-total">0,00 €</div>`
+      );
+    }
+    for(let x = 0; x < sel_prod.length; x++){
+      var prod_price = 0;
+      var prod_price_total = 0;
+      var prod_quant = 0;
+      var erp_pn = "-";
+      var prod_name = "-";
+      prod_name = sel_prod[x].nextElementSibling.querySelector(".part-text-head").innerHTML;
+      if(sel_prod[x].value != "emptyval"){
+        if(sel_prod[x].dataset.erp){erp_pn = sel_prod[x].dataset.erp;}
+        prod_price = sel_prod[x].nextElementSibling.querySelector(".price-main").dataset.priceval;
+        prod_quant = sel_prod[x].nextElementSibling.querySelector(".part-number-input .part-quantity");
         if(prod_quant){
           prod_quant = prod_quant.value;
         }else{
@@ -137,20 +147,24 @@ function updateModal(){
         }
         prod_price_total = Number(prod_price) * prod_quant;
         sum += prod_price_total;
-        linktext += `&o${i}=${sel_prod.value}&q${i}=${prod_quant}`;
-      }
+        linktext += `&o${i}=${sel_prod[x].value}&q${i}=${prod_quant}`;
+      }      
+      modTable.insertAdjacentHTML("beforeend",
+      `<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
+        <div class="erp-pn">${erp_pn}</div>
+        <div class="prod-nm">${prod_name}</div>
+        <div class="prod-quant">${prod_quant}x</div>
+        <div class="prod-price">${wtDecimal(prod_price)} €</div>
+        <div class="prod-price-total">${wtDecimal(prod_price_total)} €</div>`
+      );
     }
-    modTable.insertAdjacentHTML("beforeend",`<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
-                                               <div class="erp-pn">${erp_pn}</div>
-                                               <div class="prod-nm">${prod_name}</div>
-                                               <div class="prod-quant">${prod_quant}x</div>
-                                               <div class="prod-price">${wtDecimal(prod_price)} €</div>
-                                               <div class="prod-price-total">${wtDecimal(prod_price_total)} €</div>`);    
   }
   sum = wtDecimal(sum);
-  modTable.insertAdjacentHTML("beforeend",`<div class="modal-total-title">Σύνολο:</div>
-                                          <div></div><div></div><div></div><div></div>
-                                          <div class="modal-total-num"><span>${sum}</span> €</div>`)
+  modTable.insertAdjacentHTML("beforeend",
+    `<div class="modal-total-title">Σύνολο:</div>
+      <div></div><div></div><div></div><div></div>
+      <div class="modal-total-num"><span>${sum}</span> €</div>`
+    );
   document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = linktext;
 }
 
@@ -182,17 +196,21 @@ function updateProdNav(forceInit=false){
       }
     }
   for(let i = 0;i< navList.length;i++){
-    var selected = document.querySelector(`.builder-part-category#${navList[i].dataset.navdest} input:checked`);
+    var selected = document.querySelectorAll(`.builder-part-category#${navList[i].dataset.navdest} input.part-rd-bt:checked, .builder-part-category#${navList[i].dataset.navdest} input.part-checkbox:checked`);
     var priceBox = navList[i].querySelector(`span`);
-    if(!selected){
-      priceBox.innerHTML = "-,--€";
-    }else if(selected.value == "emptyval"){
-      priceBox.innerHTML = "0,00€";
-    }else{
-      var price = Number(selected.nextElementSibling.querySelector(".price-main").dataset.priceval);
-      var quant = selected.nextElementSibling.querySelector("input.part-quantity");
-      priceBox.innerHTML = `${wtDecimal(price*(quant?Number(quant.value):1))}€`;
+    var sum = 0;
+    for(let x = 0; x < selected.length; x++){
+      if(selected[x].value != "emptyval"){
+        var price = Number(selected[x].nextElementSibling.querySelector(".price-main").dataset.priceval);
+        var quant = selected[x].nextElementSibling.querySelector("input.part-quantity");
+        sum += price*(quant?Number(quant.value):1);
+      }
     }
+    if(!selected.length){
+      priceBox.innerHTML = "-,--€";
+    }else{
+      priceBox.innerHTML = `${wtDecimal(sum)}€`
+    }    
   }
 }
 function updatePerfCarousel(){//alt
@@ -386,7 +404,7 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   var catState = wCat.classList.contains("lp-show");
   var catPosTop = wCat.getBoundingClientRect().top;
   var catPosBot = wCat.getBoundingClientRect().bottom;
-  var selprod = wCat.querySelector("input:checked + .listed-part");
+  var selprod = wCat.querySelector("input.part-rd-bt:checked + .listed-part, input.part-checkbox:checked + .listed-part");
   if(!catState || focus == "cat" || !selprod){
     window.scrollTo({
       top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128)
@@ -483,41 +501,56 @@ function avCompatible(){
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
   for (const [cat, rCats] of Object.entries(compConfig)) {
-    var products = document.querySelectorAll(`#cat-${cat} .part-list-containter input.part-rd-bt`);
+    var products = document.querySelectorAll(`#cat-${cat} .part-list-containter input.part-rd-bt, #cat-${cat} .part-list-containter input.part-checkbox`);
     break_point:
     for(let i=0;i<products.length;i++){
       if(products[i].value =="emptyval"){continue}
       products[i].disabled = false;
       var attributesA = products[i].dataset.compattr.split(";");
       for (const [rCat, cconfig] of Object.entries(rCats)) {
-        var selSubProd = document.querySelector(`#cat-${rCat} .part-list-containter input.part-rd-bt:checked`);
-        if(!selSubProd){continue}
-        if(selSubProd.value=="emptyval"){continue}
-        var attributesB = selSubProd.dataset.compattr.split(";");
-        switch(cconfig.cType){
-          case "normal":
-            var listA = attributesA[cconfig.attrA].split(",");
-            var listB = attributesB[cconfig.attrB].split(",");
-            if(cconfig.hasOwnProperty("safe")){
-              if(listA.includes(cconfig.safe)||listB.includes(cconfig.safe)){
-                break;
+        var selSubProd = document.querySelectorAll(`#cat-${rCat} .part-list-containter input.part-rd-bt:checked, #cat-${rCat} .part-list-containter input.part-checkbox:checked`);
+        for(let x=0;x<selSubProd.length;x++){
+          if(selSubProd[x].value=="emptyval"){continue}
+          var attributesB = selSubProd[x].dataset.compattr.split(";");
+          switch(cconfig.cType){
+            case "normal":
+              var listA = attributesA[cconfig.attrA].split(",");
+              var listB = attributesB[cconfig.attrB].split(",");
+              if(cconfig.hasOwnProperty("safe")){
+                if(listA.includes(cconfig.safe)||listB.includes(cconfig.safe)){
+                  break;
+                }
               }
-            }
-            var compatible = false;
-            for(const attrA of listA){
-              if(listB.includes(attrA)){
-                compatible = true;
-                break;
+              var compatible = false;
+              for(const attrA of listA){
+                if(listB.includes(attrA)){
+                  compatible = true;
+                  break;
+                }
               }
-            }
-            if(compatible){break}
-              products[i].disabled = true;
-              products[i].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]).replace("$$",msg[3]);
-              continue break_point;
+              if(compatible){break}
+                products[i].disabled = true;
+                products[i].nextElementSibling.querySelector(".part-btn .disabled-part").innerHTML = cconfig.errM.replace("!!",msg[0]).replace("@@",msg[1]).replace("##",msg[2]).replace("$$",msg[3]);
+                continue break_point;
+          }
         }
       }
     }
   }  
+}
+function checkMulti(wElement){
+  if(!wElement.classList.contains("part-checkbox")){return}
+  var parentCat = wElement.parentElement.parentElement;
+  var getSelected = parentCat.querySelectorAll("input.part-checkbox:checked");
+  var emptyval = [...parentCat.querySelectorAll("input.part-checkbox")].filter(partDom => partDom.value == "emptyval")[0]  
+  if(!getSelected.length){
+    emptyval.checked = true;
+  }else if(wElement.value == "emptyval"){
+    emptyval.checked = true;
+    [...parentCat.querySelectorAll("input.part-checkbox")].map(partDom => partDom.value != "emptyval"?partDom.checked = false:null)
+  }else{
+    emptyval.checked = false;
+  }
 }
 
 function initParts(){
@@ -548,14 +581,15 @@ function createListeners(){
     });
   }
 
-  acc = document.querySelectorAll(".builder-part-category input.part-rd-bt");
+  acc = document.querySelectorAll(".builder-part-category input.part-rd-bt, .builder-part-category input.part-checkbox");
   for(let i = 0; i < acc.length; i++){
     acc[i].addEventListener("change", function() {
       var getCatParts = this.parentElement.querySelectorAll(".listed-part");
       for(let i=0;i< getCatParts.length;i++){
         updateNumberInput(getCatParts[i]);
         updatePartPrice(getCatParts[i]);
-      }      
+      }
+      checkMulti(this);
       avCompatible();
       updateFinalPrice();
       updateModal()
@@ -600,10 +634,12 @@ function createListeners(){
   }
 }
 document.addEventListener("DOMContentLoaded", function(){
+  /*
   var tooltipTriggerList = [].slice.call(document.querySelectorAll('.c-overlay-inner [data-bs-toggle="tooltip"]'))
   var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     return new bootstrap.Tooltip(tooltipTriggerEl)
   })
+  */
   createListeners();
   initParts();}
 )
