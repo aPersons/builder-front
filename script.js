@@ -538,16 +538,29 @@ function avCompatible(){
     }
   }  
 }
+function multiUpdate(){
+  var cats = document.querySelectorAll(".builder-parts .builder-part-category");
+  cats = [...cats].filter(cat => cat.querySelector("input.part-checkbox"))
+  for(let i=0;i<cats.length-1;i++){
+    var getSelected = cats[i].querySelectorAll("input.part-checkbox:checked");
+    var emptyval = [...cats[i].querySelectorAll("input.part-checkbox")].filter(partDom => partDom.value == "emptyval")[0]
+    if(!getSelected.length){
+      emptyval.checked = true;
+    }else{
+      emptyval.checked = false;
+    }
+  }
+}
 function checkMulti(wElement){
   if(!wElement.classList.contains("part-checkbox")){return}
   var parentCat = wElement.parentElement.parentElement;
   var getSelected = parentCat.querySelectorAll("input.part-checkbox:checked");
-  var emptyval = [...parentCat.querySelectorAll("input.part-checkbox")].filter(partDom => partDom.value == "emptyval")[0]  
+  var emptyval = [...parentCat.querySelectorAll("input.part-checkbox")].filter(partDom => partDom.value == "emptyval")[0]
   if(!getSelected.length){
     emptyval.checked = true;
   }else if(wElement.value == "emptyval"){
     emptyval.checked = true;
-    [...parentCat.querySelectorAll("input.part-checkbox")].map(partDom => partDom.value != "emptyval"?partDom.checked = false:null)
+    [...getSelected].map(partDom => partDom.value != "emptyval"?partDom.checked = false:null)
   }else{
     emptyval.checked = false;
   }

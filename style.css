@@ -385,7 +385,7 @@ body{
 .builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn label.btn-select{display: none;}
 
 .builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.btn-cancel,
-.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.btn-disabled,
+.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.disabled,
 .builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > label.btn-cancel,
 .builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > label.disabled{display: inline-block;}
 

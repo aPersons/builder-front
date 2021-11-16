@@ -59,9 +59,10 @@ for category in prodlist:
       if "multi-sel" in category:
         if category["init-prod"] == product["prod-code"]:
           ischecked = " checked"
+          secbtn = selected
         else:
           ischecked= ""
-        secbtn = cancel.format(sel_init = product["prod-code"])
+          secbtn = cancel.format(sel_init = product["prod-code"])
       else:
         if category["init-prod"] == product["prod-code"]:
             ischecked = " checked"
