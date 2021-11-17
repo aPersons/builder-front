@@ -541,12 +541,12 @@ function avCompatible(){
 function multiUpdate(){
   var cats = document.querySelectorAll(".builder-parts .builder-part-category");
   cats = [...cats].filter(cat => cat.querySelector("input.part-checkbox"))
-  for(let i=0;i<cats.length-1;i++){
+  for(let i=0;i<cats.length;i++){
     var getSelected = cats[i].querySelectorAll("input.part-checkbox:checked");
     var emptyval = [...cats[i].querySelectorAll("input.part-checkbox")].filter(partDom => partDom.value == "emptyval")[0]
     if(!getSelected.length){
       emptyval.checked = true;
-    }else{
+    }else if (getSelected.length>1){
       emptyval.checked = false;
     }
   }
@@ -565,6 +565,13 @@ function checkMulti(wElement){
     emptyval.checked = false;
   }
 }
+function updateContSel(cat){
+  if(cat.querySelector(".part-rd-bt:checked, .part-checkbox:checked").value=="emptyval"){
+    cat.querySelector(".part-category-head").classList.remove("contains-selected");
+  }else{
+    cat.querySelector(".part-category-head").classList.add("contains-selected");
+  }
+}
 
 function initParts(){
   var getParts = document.querySelectorAll(".builder-parts .listed-part")
@@ -572,11 +579,16 @@ function initParts(){
     updateNumberInput(getParts[i]);
     updatePartPrice(getParts[i]);
   }
+  multiUpdate()
   avCompatible();
   updateFinalPrice();
   updateModal()
   updateProdNav();
   updatePerfCarousel();
+  getParts = document.querySelectorAll(".builder-part-category")
+  for(let i=0;i< getParts.length;i++){
+    updateContSel(getParts[i]);
+  }
 }
 
 function createListeners(){
@@ -608,6 +620,7 @@ function createListeners(){
       updateModal()
       updateProdNav();
       updatePerfCarousel();
+      updateContSel(this.parentElement.parentElement);
     })
   }
 

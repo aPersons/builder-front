@@ -199,8 +199,12 @@ body{
   padding: 10px;
   transition: 0.25s;
   transition-timing-function: ease;
-  border-radius: 0.4375rem;
+  border-radius: 0.4375rem 0.4375rem 0 0;
   z-index: 1;
+}
+.builder-part-category .part-category-head.contains-selected{
+  background-color:#42d697;
+  color:#fff;
 }
 .builder-part-category.lp-show .part-category-head{
   border-radius: 0;
@@ -209,16 +213,26 @@ body{
   position: sticky;
   top: 139px;
 }
+.builder-part-category.lp-show .part-category-head.contains-selected{
+  background-color:#42d697;
+  color:#fff;
+}
 .builder-part-category .part-category-head::after{
-  content: '\02795';
-  font-size: 13px;
+  font-family: 'bootstrap-icons';
+  content: '\f64d';
+  font-size: 1rem;
   color: #777;
   float: right;
 }
 .builder-part-category.lp-show .part-category-head::after{
-  content: "\2796";
-  font-size: 13px;
+  font-family: 'bootstrap-icons';
+  content: "\f63b";
+  font-size: 1rem;
   color: #777;
+}
+.builder-part-category .part-category-head.contains-selected::after,
+.builder-part-category.lp-show .part-category-head.contains-selected::after{
+  color: #fff;
 }
 @media only screen and (max-width: 991px){
   .builder-part-category.lp-show .part-category-head{
@@ -228,6 +242,9 @@ body{
 .builder-part-category .part-category-head:hover {
   background-color:#f0f0f0;
   cursor: pointer;
+}
+.builder-part-category .part-category-head.contains-selected:hover {
+  background-color:#29bc7d;
 }
 .builder-part-category .part-category-description {
   background-color: #ffffff;
@@ -394,7 +411,7 @@ body{
 .builder-part-category .part-checkbox:disabled + .listed-part .part-btn label.btn.btn-cancel,
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn label.btn,
 .builder-part-category .part-rd-bt:disabled + .listed-part .part-btn label.btn.btn-cancel,
-.builder-part-category .part-rd-bt:disabled + .listed-part .part-btn part-number-input{
+.builder-part-category .part-rd-bt:disabled + .listed-part .part-btn .part-number-input{
   display: none;
 }
 .builder-part-category .listed-part .part-btn .disabled-part{margin-right: auto;display: none;}
@@ -479,5 +496,8 @@ body{
   }
   #build-modal .modal-content{
     align-self: stretch;
-  }  
+  }
+  #build-modal .modal-table{
+    
+  }
 }
