@@ -108,12 +108,15 @@ function updateFinalPrice(){
 function updateModal(){
   var modTable = document.querySelector("#build-modal .modal-table");
   if(!modTable){return}
-  modTable.innerHTML = `<div class="modal-cat-header">Κατηγορία</div>
-                          <div class="modal-prnum-header">Κωδικός</div>
-                          <div class="modal-product-header">Προϊόν</div>
-                          <div class="modal-quant-header">Τμχ.</div>
-                          <div class="modal-price-header">Τιμή</div>
-                          <div class="modal-total-header">Σύνολο</div>`;
+  modTable.innerHTML = `
+  <div class="table-row">
+  <div class="modal-cat-header">Κατηγορία</div>
+  <div class="modal-prnum-header">Κωδικός</div>
+  <div class="modal-product-header">Προϊόν</div>
+  <div class="modal-quant-header">Τμχ.</div>
+  <div class="modal-price-header">Τιμή</div>
+  <div class="modal-total-header">Σύνολο</div>
+  </div>`;
   var linktext = window.location.href.split('&');
   linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;  
   var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
@@ -121,12 +124,14 @@ function updateModal(){
   for(let i = 0; i< getCats.length; i++){
     var sel_prod = getCats[i].querySelectorAll("input.part-rd-bt:checked, input.part-checkbox:checked");
     if(!sel_prod.length){modTable.insertAdjacentHTML("beforeend",
-      `<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
+      `<div class="table-row">
+        <div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
         <div class="erp-pn">-</div>
         <div class="prod-nm">-</div>
         <div class="prod-quant">0x</div>
         <div class="prod-price">0,00 €</div>
-        <div class="prod-price-total">0,00 €</div>`
+        <div class="prod-price-total">0,00 €</div>
+        </div>`
       );
     }
     for(let x = 0; x < sel_prod.length; x++){
@@ -150,20 +155,24 @@ function updateModal(){
         linktext += `&o${i}=${sel_prod[x].value}&q${i}=${prod_quant}`;
       }      
       modTable.insertAdjacentHTML("beforeend",
-      `<div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
+      `<div class="table-row">
+        <div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
         <div class="erp-pn">${erp_pn}</div>
         <div class="prod-nm">${prod_name}</div>
         <div class="prod-quant">${prod_quant}x</div>
         <div class="prod-price">${wtDecimal(prod_price)} €</div>
-        <div class="prod-price-total">${wtDecimal(prod_price_total)} €</div>`
+        <div class="prod-price-total">${wtDecimal(prod_price_total)} €</div>
+        </div>`
       );
     }
   }
   sum = wtDecimal(sum);
   modTable.insertAdjacentHTML("beforeend",
-    `<div class="modal-total-title">Σύνολο:</div>
+    `<div class="table-row">
+      <div class="modal-total-title">Σύνολο:</div>
       <div></div><div></div><div></div><div></div>
-      <div class="modal-total-num"><span>${sum}</span> €</div>`
+      <div class="modal-total-num"><span>${sum}</span> €</div>
+      </div>`
     );
   document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = linktext;
 }
