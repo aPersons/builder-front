@@ -23,7 +23,7 @@ body{
 #build-modal .modal-dialog{
   max-width: 1150px;
   min-width: initial;
-  width: 100%;
+  width: calc(100% - 16px);
 }
 #build-modal .modal-table{
   width: 100%;
