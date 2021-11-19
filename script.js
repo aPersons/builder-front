@@ -178,7 +178,7 @@ function updateModal(){
 }
 
 function updateProdNav(forceInit=false){
-  var navBody = document.querySelector(".builder-product .prod-navigation");
+  var navBody = document.querySelector(".prod-navigation");
   if(!navBody){return}
 
   var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
@@ -222,7 +222,7 @@ function updateProdNav(forceInit=false){
     }    
   }
 }
-function updatePerfCarousel(){//alt
+function updatePerfCarousel(forceInit=false){
   var perf_carousel = document.querySelector("#performance-carousel-2");
   if(!perf_carousel){return}
   perfConfig = {
@@ -242,6 +242,8 @@ function updatePerfCarousel(){//alt
     "gameList":{
       "lol_game":{
         "cType":"normal",
+        "img_src":"assets/lol-game.jpg",
+        "img_src_wide":"assets/lol-game-wide.jpg",
         "parts":{
           "cpu":{
             "safe":"$",
@@ -255,6 +257,8 @@ function updatePerfCarousel(){//alt
       },
       "fortnite_game":{
         "cType":"normal",
+        "img_src":"assets/fortnite-game.jpg",
+        "img_src_wide":"assets/fortnite-game-wide.jpg",
         "parts":{
           "cpu":{
             "safe":"$",
@@ -268,6 +272,8 @@ function updatePerfCarousel(){//alt
       },
       "control_game":{
         "cType":"normal",
+        "img_src":"assets/control-game.jpg",
+        "img_src_wide":"assets/control-game-wide.jpg",
         "parts":{
           "cpu":{
             "safe":"$",
@@ -281,6 +287,8 @@ function updatePerfCarousel(){//alt
       },
       "fs2020_game":{
         "cType":"normal",
+        "img_src":"assets/fs2020-game.jpg",
+        "img_src_wide":"assets/fs2020-game-wide.jpg",
         "parts":{
           "cpu":{
             "safe":"$",
@@ -294,6 +302,8 @@ function updatePerfCarousel(){//alt
       },
       "sottr_game":{
         "cType":"normal",
+        "img_src":"assets/sottr-game.jpg",
+        "img_src_wide":"assets/sottr-game-wide.jpg",
         "parts":{
           "cpu":{
             "safe":"$",
@@ -306,6 +316,47 @@ function updatePerfCarousel(){//alt
         }
       }
     }
+  }
+  if(perf_carousel.innerText=="Needs Init"||forceInit){
+    var result ='<!-- Indicators --><div class="carousel-indicators">';
+      for(let i=0;i<Object.keys(perfConfig.gameList).length;i++){
+        result += `<button data-bs-target="#performance-carousel-2" data-bs-slide-to="${i}"${!i?' class="active"':""}></button>`;
+      }
+    result += '</div><!-- The slideshow --><div class="carousel-inner">';
+    for (const [game, gConfig] of Object.entries(perfConfig.gameList)){
+      result +=`
+      <div class="carousel-item${!Object.keys(perfConfig.gameList).indexOf(game)?" active":""}">
+        <img src="${gConfig.img_src}" alt="${perfConfig.dictionary[game]}">
+        <div class="perf-display" id="perf-${game}">
+          <div class="perf-head">
+            <span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
+            <span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
+            <span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
+          </div>
+          <div class="perf-body">
+            Needs Init
+          </div>
+        </div>
+      </div>
+      `      
+    }    
+    result += `
+            </div>
+            <!-- Left and right controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#performance-carousel-2"
+              data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#performance-carousel-2"
+              data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+        </div>
+      `
+      perf_carousel.innerHTML = result;
+      bootstrap.Carousel.getOrCreateInstance(document.querySelector("#performance-carousel-2")).dispose();
+      bootstrap.Carousel.getOrCreateInstance(document.querySelector("#performance-carousel-2"));
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`]
 
@@ -360,21 +411,21 @@ function updatePerfCarousel(){//alt
         switch(minScore){
           case "0":
             icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            perf_body.innerHTML = perfConfig.dictionary.perfNotReady;
+            //perf_body.innerHTML = perfConfig.dictionary.perfNotReady;
             break;
           case "1":
             icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
             icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1080p");
+            //perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1080p");
             break;
           case "2":
             icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
             icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1440p");
+            //perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1440p");
             break;
           case "3":
             icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","4K");
+            //perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","4K");
         }
         let txtRes = "";
         if(textList.length == 1){
@@ -390,7 +441,7 @@ function updatePerfCarousel(){//alt
             }
           }
         }
-        perf_body.innerHTML = perf_body.innerHTML + perfConfig.dictionary.recommend[0].replace("@@@",txtRes);
+        perf_body.innerHTML = /*perf_body.innerHTML + */perfConfig.dictionary.recommend[0].replace("@@@",txtRes).replace("<br/>","");
         break;
     }
   }

@@ -78,8 +78,10 @@ body{
 
 
   #build-modal .modal-table .table-row:first-child{display: none;}
-  #build-modal .modal-table .table-row:last-child{display: flex;}
-  #build-modal .modal-table .table-row:last-child > div{
+  #build-modal .modal-table .table-row:last-child{
+    display: flex;
+    background-color: #333;}
+  #build-modal .modal-table .table-row:last-child > div{    
     display: initial;
     width: initial;
   }
@@ -179,39 +181,72 @@ body{
 .perf-carousel{
   padding-bottom: 20px;
 }
+/*
 .perf-carousel img{
   width: 100%;
   border-radius: 0.4375rem;
 }
+*/
+/*
 .perf-carousel .carousel-control-prev,
 .perf-carousel .carousel-control-next{
   width: 20px;
-  /*height: 50%;*/
+  height: 50%;
   align-items: end;
-}
+}*/
+/*
 .perf-carousel .carousel-control-prev span,
 .perf-carousel .carousel-control-next span{
   height:50%;
   width: 100%;
-}
+}*/
+/*
 .perf-carousel .carousel-indicators{
   margin-bottom: 0;
 }
+*/
+/*
 #performance-carousel-2 .perf-display{
   margin: 0 20px;  
+}*/
+
+
+/* Carousel alt*/
+#performance-carousel-2 .carousel-item.carousel-item-end,
+#performance-carousel-2 .carousel-item.carousel-item-start,
+#performance-carousel-2 .carousel-item.active{display: grid;}
+#performance-carousel-2 .carousel-item{
+  grid-template-columns: auto auto;
+  grid-template-rows: auto 1fr;
+  align-items: center;
+}
+#performance-carousel-2 .perf-display{display: contents;}
+#performance-carousel-2.perf-carousel img{
+  grid-row: span 2;
+  border-radius: 0.4375rem;
 }
 #performance-carousel-2 .perf-head{
   display: flex;
   justify-content: space-around;
-  margin: 5px 0;
+  margin: 0 5px;
   border-bottom: 1px solid #dde4eb;
 }
 #performance-carousel-2 .perf-body{
   text-align: center;
+  padding: 0 10px;
 }
 .category-link{
   cursor: pointer;
 }
+#performance-carousel-2.perf-carousel .carousel-control-prev,
+#performance-carousel-2.perf-carousel .carousel-control-next{
+  width: 20px;
+}
+#performance-carousel-2.perf-carousel .carousel-indicators{
+  margin-bottom: 0;
+}
+
+
 
 /* Part List */
 @media only screen and (min-width:768px){
@@ -371,7 +406,9 @@ body{
   grid-area:part-price;
   padding: 5px;
 }
+.part-checkbox + .listed-part .price-main,
 .part-rd-bt + .listed-part .price-main{display: none;}
+.builder-part-category.lp-show .part-checkbox + .listed-part .price-main{display: initial;}
 .part-rd-bt:checked + .listed-part .price-difference{display: none;}
 .listed-part .price-difference.price-lower{color:#14c714;}
 .listed-part .price-difference.price-higher{color:#ff1b1b;}
