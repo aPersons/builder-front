@@ -739,6 +739,11 @@
 							<div class="mb-3">
 								<button class="btn btn-success btn-shadow d-block w-100" type="submit" id="prd_addtocart"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
 							</div>
+							<div class="mb-3">
+								<button type="button" class="btn btn-primary btn-shadow d-block w-100" data-bs-toggle="modal" data-bs-target="#build-modal">
+									<strong>Σύνοψη &amp; Αποθήκευση</strong>
+								</button>
+							</div>
 							<h5 class="h6 mb-2 pb-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Πληροφορίες</h5>
 							<div class="fs-sm mb-1"><strong>Κωδικός Msystems: </strong>500-xxxxx</div>
 							<div class="fs-sm mb-1"><strong>Part Number: </strong>xxxxxxxxxxxx</div>
@@ -831,11 +836,6 @@
 					</ul>
 					<div class="tab-content" role="tabpanel" id="prod-tabs">
 						<div class="builder-product-cart tab-pane fade show active" role="tabpanel" id="tab-cart">
-							<div class="build-modal-bt">
-								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#build-modal">
-									Σύνοψη & Αποθήκευση
-								</button>
-							</div>					
 							<div id="performance-carousel-2" class="carousel carousel-dark slide perf-carousel" data-bs-ride="carousel">
 								Needs Init
 							</div>
@@ -847,6 +847,21 @@
 			<div class="col-lg-8 col-md-7 order-lg-1 builder-parts">
 				{fill_part_list}
 
+			</div>
+		</div>
+	</div>
+	<div class="modal-quick-view modal fade" id="quick-view" tabindex="-1">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title product-title">Ουπς κάτι πήγε στραβά<i class="ci-arrow-right fs-lg ms-2"></i></h4>
+					<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<span>Ουπς κάτι πήγε στραβά, παρακαλώ δοκιμάστε πάλι</span>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -118,6 +118,16 @@ body{
   align-items: stretch;
 }
 
+/*@@@@@@@@@@@@@@@@@@@*/
+
+.modal-quick-view{
+  padding: initial;
+}
+.modal-quick-view .modal-dialog{
+  min-width: initial;
+  width: calc(100% - 16px);
+}
+
 /*Top offset*/
 .builder-body-container{
   margin-top: -4.875rem;
@@ -164,15 +174,6 @@ body{
 }
 .builder-product .prod-navigation .prod-navigator i{margin-right: 10px;}
 .builder-product .prod-navigation .prod-navigator span{float: right;}
-
-.builder-product .build-modal-bt{
-  grid-area: build-modal-bt;
-  margin-bottom: 5px;
-  white-space: normal;
-}
-.builder-product .build-modal-bt button{
-  width: 100%;
-}
 
 /* Carousel */
 .builder-product .perf-carousel{
@@ -347,7 +348,7 @@ body{
   display: block;
 }
 .builder-part-category .listed-part-inner{  
-  transition: -webkit-box-shadow 0.2s ease-in-out, box-shadow 0.1s ease-in-out;
+  transition: -webkit-box-shadow 0.05s ease-in-out, box-shadow 0.05s ease-in-out;
   display: grid;
   border-radius: 0.4375rem;
   margin: 0;
@@ -459,7 +460,6 @@ body{
   padding-left: 3px;
   padding-right: 3px;
   width: 92px;
-  box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
   display: none;
 }
 .part-btn label.btn-change{display: inline-block;}
@@ -512,7 +512,7 @@ body{
   color: #fff;
   padding: 0 0.5ch;
   opacity: 0.65;
-  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, opacity 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, opacity 0.25s ease-in-out, box-shadow 0.2s, -webkit-box-shadow 0.2s;
 }
 .part-btn .part-number-input .part-num-incr{
   border-radius: 0 .25rem .25rem 0;
@@ -521,18 +521,17 @@ body{
 .part-btn .part-number-input .quantity-display,
 .part-rd-bt:checked + .listed-part
 .part-btn .part-number-input .quantity-display{opacity: 1;}
+
 .part-btn .part-number-input.decr-av .part-num-decr,
 .part-btn .part-number-input.incr-av .part-num-incr{
   opacity: 1;
   cursor: pointer;
-}
-.part-btn .part-number-input.decr-av .part-num-decr,
-.part-btn .part-number-input.incr-av .part-num-incr{
-  opacity: 1
+  box-shadow: 0 0.5rem 1.125rem -0.5rem hsl(0deg 0% 61% / 90%)
 }
 .part-btn .part-number-input.decr-av .part-num-decr:hover,
 .part-btn .part-number-input.incr-av .part-num-incr:hover{
   background-color: #c0c0c0;
+  box-shadow: none;
 }
 
 @media only screen and (max-width: 575px) {
@@ -547,12 +546,11 @@ body{
   .topbar,
   .header-main,
   .page-title-overlap,
+  .builder-body-container,
+  .modal-quick-view,
   .btn-scroll-top,
   .bottom-toolbar,
   footer{
-    display:none;
-  }
-  .builder-body-container{
     display:none;
   }
   #build-modal .modal-footer,

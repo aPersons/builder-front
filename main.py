@@ -4,7 +4,7 @@ with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
 selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
-cancel = '<label class="btn btn-primary btn-cancel" for="{sel_init}">Ακύρωση</label>'
+cancel = '<label class="btn btn-primary btn-cancel btn-shadow" for="{sel_init}">Ακύρωση</label>'
 num_input_alt = """
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
@@ -35,8 +35,8 @@ prod_template = """
                   {price_difference}                  
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="{part_id}">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="{part_id}">Επιλογή</label>
                   {sec_btn}
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -84,7 +84,7 @@ for category in prodlist:
           #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
       seeMore = ""
       if product["prod-av"] != "":
-        seeMore = '<a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
+        seeMore = '<a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
 
       perfAttributes = ""
       perfres = ""
