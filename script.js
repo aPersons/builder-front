@@ -318,7 +318,7 @@ function updatePerfCarousel(forceInit=false){
     }
   }
   if(perf_carousel.innerText=="Needs Init"||forceInit){
-    var result ='<!-- Indicators --><div class="carousel-indicators">';
+    var result ='<div style="text-align: center; color: #eabe4b;">Εκτιμώμενη Απόδοση</div><!-- Indicators --><div class="carousel-indicators">';
       for(let i=0;i<Object.keys(perfConfig.gameList).length;i++){
         result += `<button data-bs-target="#performance-carousel-2" data-bs-slide-to="${i}"${!i?' class="active"':""}></button>`;
       }
@@ -328,11 +328,11 @@ function updatePerfCarousel(forceInit=false){
       <div class="carousel-item${!Object.keys(perfConfig.gameList).indexOf(game)?" active":""}">
         <img src="${gConfig.img_src}" alt="${perfConfig.dictionary[game]}">
         <div class="perf-display" id="perf-${game}">
-          <div class="perf-head">
+          ${/*<div class="perf-head">
             <span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
             <span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
             <span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-          </div>
+    </div>*/""}
           <div class="perf-body">
             Needs Init
           </div>
@@ -365,12 +365,12 @@ function updatePerfCarousel(forceInit=false){
       case "normal":
         var gameDisplay = perf_carousel.querySelector(`#perf-${game}`)        
         if(!gameDisplay){continue}
-        var icon_1080p = gameDisplay.querySelector(".perf-1080p span");
-        var icon_1440p = gameDisplay.querySelector(".perf-1440p span");
-        var icon_4k = gameDisplay.querySelector(".perf-4k span");
+        //var icon_1080p = gameDisplay.querySelector(".perf-1080p span");
+        //var icon_1440p = gameDisplay.querySelector(".perf-1440p span");
+        //var icon_4k = gameDisplay.querySelector(".perf-4k span");
         var perf_body = gameDisplay.querySelector(".perf-body");
         perf_body.innerHTML = "err";
-        icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
+        //icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i>`;
         var missRes = [];
         for (let cat of Object.keys(gConfig.parts)){
           var findpart = document.querySelector(`#cat-${cat} input.part-rd-bt:checked`);          
@@ -410,23 +410,23 @@ function updatePerfCarousel(forceInit=false){
         }
         switch(minScore){
           case "0":
-            icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            //perf_body.innerHTML = perfConfig.dictionary.perfNotReady;
+            //icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfNotReady;
             break;
           case "1":
-            icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            //perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1080p");
+            //icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            //icon_1080p.innerHTML= `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1080p");
             break;
           case "2":
-            icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            //perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1440p");
+            //icon_4k.innerHTML = `<i class="bi bi-x-circle-fill"style="color: #dc3545;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            //icon_1080p.innerHTML = icon_1440p.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","1440p");
             break;
           case "3":
-            icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
-            //perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","4K");
-        }
+            //icon_1080p.innerHTML = icon_1440p.innerHTML = icon_4k.innerHTML = `<i class="bi bi-check-circle-fill"style="color: #198754;font-size: 1.2rem;vertical-align: middle;"></i>`;
+            perf_body.innerHTML = perfConfig.dictionary.perfReady.replace("@@@",perfConfig.dictionary[game]).replace("###","4K");
+        }/*
         let txtRes = "";
         if(textList.length == 1){
           txtRes = msg[0]+textList[0][0]+msg[1]+textList[0][1]+msg[2];
@@ -441,7 +441,7 @@ function updatePerfCarousel(forceInit=false){
             }
           }
         }
-        perf_body.innerHTML = /*perf_body.innerHTML + */perfConfig.dictionary.recommend[0].replace("@@@",txtRes).replace("<br/>","");
+        perf_body.innerHTML = perf_body.innerHTML + perfConfig.dictionary.recommend[0].replace("@@@",txtRes);*/
         break;
     }
   }
