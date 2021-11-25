@@ -195,6 +195,7 @@ body{
   border: 1px solid #e3e9ef;
   border-radius: 0.4375rem;
   box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
+  margin-bottom: 10px;
 }
 /*
 .perf-carousel img{
