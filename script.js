@@ -118,7 +118,8 @@ function updateModal(){
   <div class="modal-total-header">Σύνολο</div>
   </div>`;
   var linktext = window.location.href.split('&');
-  linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;  
+  //linktext = `${linktext[0]}&${linktext[1]}&prefill=1`; //
+  linktext = `https://www.msystems.gr/section/systems/?&system=18&prefill=1`;   //temp change
   var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
   var sum = 0;
   for(let i = 0; i< getCats.length; i++){
@@ -152,7 +153,7 @@ function updateModal(){
         }
         prod_price_total = Number(prod_price) * prod_quant;
         sum += prod_price_total;
-        linktext += `&o${i}=${sel_prod[x].value}&q${i}=${prod_quant}`;
+        linktext += `&o${i}${sel_prod[x].type=="checkbox"?"[]":""}=${sel_prod[x].value}&q${i}${sel_prod[x].type=="checkbox"?"[]":""}=${prod_quant}`;
       }      
       modTable.insertAdjacentHTML("beforeend",
       `<div class="table-row">
@@ -174,7 +175,8 @@ function updateModal(){
       <div class="modal-total-num"><span>${sum}</span> €</div>
       </div>`
     );
-  document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = linktext;
+  document.querySelector("#build-modal .modal-footer .footer-link-body").dataset.geturl = linktext;
+  document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = "Δημιουργία σύνδεσμου";
 }
 
 function updateProdNav(forceInit=false){
@@ -707,15 +709,34 @@ function createListeners(){
   }
   var copy_btn = document.querySelector("#build-modal .footer-interface .btn-copy-link")
   if (copy_btn) {
-    copy_btn.addEventListener("click", function () {
-      /*window.getSelection().selectAllChildren(
-        document.querySelector("#build-modal .footer-link-body")
-      );*/
-      try {
-        navigator.clipboard.writeText(document.querySelector("#build-modal .footer-link-body").innerHTML);
-        //var successful = document.execCommand("copy");
-        //var msg = successful ? "successful" : "unsuccessful";
-      } catch (err) { }
+    copy_btn.addEventListener("click", async function() {
+      var urLement = document.querySelector("#build-modal .footer-link-body");
+      if(urLement.hasAttribute("data-geturl")){
+        try{
+          if(urLement.innerHTML == "Δημιουργία σύνδεσμου"){
+
+            const request = await fetch(
+              'https://api-ssl.bitly.com/v4/shorten',{
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer ${gettoken}`,
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ "long_url": urLement.dataset.geturl})
+            })
+
+            if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
+            const getjson = await request.json()
+            urLement.innerHTML = getjson["link"];
+          }
+          navigator.clipboard.writeText(document.querySelector("#build-modal .footer-link-body").innerHTML);
+        }catch(err){
+          urLement.innerHTML = "error, see console log...";
+          console.log(err)
+        }
+      }else{
+        urLement.innerHTML = "Something went wrong...";        
+      }
     });
   }
 }
