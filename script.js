@@ -731,8 +731,11 @@ function createListeners(){
           }
           navigator.clipboard.writeText(document.querySelector("#build-modal .footer-link-body").innerHTML);
         }catch(err){
-          urLement.innerHTML = "error, see console log...";
+          urLement.innerHTML = "urLement.dataset.geturl";          
           console.log(err)
+          try{
+            navigator.clipboard.writeText(document.querySelector("#build-modal .footer-link-body").innerHTML);
+          }catch{}
         }
       }else{
         urLement.innerHTML = "Something went wrong...";        
