@@ -4,13 +4,13 @@ with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
 selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
-cancel = '<label class="btn btn-primary btn-cancel" for="{sel_init}">Ακύρωση</label>'
+cancel = '<label class="btn btn-primary btn-cancel btn-shadow" for="{sel_init}">Ακύρωση</label>'
 num_input_alt = """
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 """
 
@@ -23,7 +23,7 @@ cat_template="""
                 </div>
             </div>"""
 prod_template = """
-            <input type="radio" class="part-rd-bt" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
+            <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
             <div class="listed-part">              
               <label class="listed-part-inner" for="{part_id}">
                 <div class="part-img">
@@ -32,11 +32,11 @@ prod_template = """
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="{part_price}">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  {price_difference}                  
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="{part_id}">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="{part_id}">Επιλογή</label>
                   {sec_btn}
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -55,61 +55,73 @@ av_template={
 results=""
 for category in prodlist:
     catres=""
-    for product in category["product-list"]:        
+    for product in category["product-list"]:
+      if "multi-sel" in category:
+        if category["init-prod"] == product["prod-code"]:
+          ischecked = " checked"
+          secbtn = selected
+        else:
+          ischecked= ""
+          secbtn = cancel.format(sel_init = product["prod-code"])
+      else:
         if category["init-prod"] == product["prod-code"]:
             ischecked = " checked"
             secbtn = selected
         else:
             ischecked = ""
             secbtn = cancel.format(sel_init = category["init-prod"])
-        num_input_res = ""
-        if "prod-min" in product and "prod-max" in product:
-            num_input_res = num_input_alt.format(
-                part_id = product["prod-code"],
-                part_cat = category["cat-code"],
-                part_min = product["prod-min"],
-                part_max = product["prod-max"]
-            )
-        #get_av = ""
-        #if "prod-av" in product:
-            #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
-        seeMore = ""
-        if product["prod-av"] != "":
-          seeMore = '<a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
 
-        perfAttributes = ""
-        perfres = ""
-        if "perf-data" in product and "emptyval" not in product:
-          for atr in product["perf-data"]:
-            perfAttributes += atr+","
-          perfres =' data-perfattr="'+perfAttributes[:len(perfAttributes)-1]+'"'
+      num_input_res = ""
+      if "prod-min" in product and "prod-max" in product:
+          num_input_res = num_input_alt.format(
+              part_id = product["prod-code"],
+              part_cat = category["cat-code"],
+              part_min = product["prod-min"],
+              part_max = product["prod-max"]
+          )
+      #get_av = ""
+      #if "prod-av" in product:
+          #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
+      seeMore = ""
+      if product["prod-av"] != "":
+        seeMore = '<a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
+
+      perfAttributes = ""
+      perfres = ""
+      if "perf-data" in product and "emptyval" not in product:
+        for atr in product["perf-data"]:
+          perfAttributes += atr+","
+        perfres =' data-perfattr="'+perfAttributes[:len(perfAttributes)-1]+'"'
 
 
-        compAttributes = ""
-        compres = ""
-        if "comp-data" in product and "emptyval" not in product:
-          for fltr in product["comp-data"]:
-            for atr in fltr:
-              compAttributes += atr+","
-            compAttributes = compAttributes[:len(compAttributes)-1]+";"
-          compres =' data-compattr="'+compAttributes[:len(compAttributes)-1]+'"'
+      compAttributes = ""
+      compres = ""
+      if "comp-data" in product and "emptyval" not in product:
+        for fltr in product["comp-data"]:
+          for atr in fltr:
+            compAttributes += atr+","
+          compAttributes = compAttributes[:len(compAttributes)-1]+";"
+        compres =' data-compattr="'+compAttributes[:len(compAttributes)-1]+'"'
 
-        catres += prod_template.format(
-            part_id = product["prod-code"],
-            part_cat = category["cat-code"],
-            part_value = (product["prod-code"],"emptyval")["emptyval" in product],
-            is_checked = ischecked,
-            perfattr = perfres,
-            compattr = compres,
-            img_src = product["prod-code"],
-            part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
-            part_title = product["prod-name"],
-            part_av = av_template[product["prod-av"]],
-            see_more = seeMore,
-            part_price = product["prod-price"],
-            use_num_input = num_input_res,
-            sec_btn = secbtn
-        )
+      catres += prod_template.format(
+        input_type = "checkbox" if "multi-sel" in category else "radio",
+        sel_type = "part-checkbox" if "multi-sel" in category else "part-rd-bt",
+        part_id = product["prod-code"],
+        part_cat = category["cat-code"],
+        part_value = (product["prod-code"],"emptyval")["emptyval" in product],
+        is_checked = ischecked,
+        perfattr = perfres,
+        compattr = compres,
+        img_src = product["prod-code"],
+        part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
+        part_title = product["prod-name"],
+        part_av = av_template[product["prod-av"]],
+        see_more = seeMore,
+        part_price = product["prod-price"],
+        price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
+        use_num_input = num_input_res,
+        sec_btn = secbtn
+      )
     results += cat_template.format(
         cat_name = category["cat-code"],
         cat_title = category["cat-name"],

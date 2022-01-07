@@ -707,27 +707,7 @@
 		</div>
 	</div>
 	<!--Content Starts Here -->
-	<div class="modal fade" id="build-modal" tabindex="-1">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Msystems Ryzen Gaming</h5>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<div class="modal-table"></div>
-				</div>
-				<div class="modal-footer">
-					<div class="footer-text">Για να αποθηκεύσετε το σύστημα με τις επιλογές που έχετε κάνει αποθηκεύστε τον παρακάτω σύνδεσμο</div>
-					<div class="footer-interface">
-						<div class="footer-link-body"></div>
-						<button class="btn btn-primary btn-copy-link" title="Αντιγραφή συνδέσμου στο Clipboard"><i class="bi bi-paperclip"></i></button>
-						<button class="btn btn-success btn-print-pg" onclick="window.print()" title="Εκτύπωση"><i class="bi bi-printer"></i></button>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<script src="../bitlytokentestuser777.js"></script>
 	<div class="container builder-body-container">
 		<div class="bg-light shadow-lg rounded-3 px-4 py-3 mb-3">
 			<div class="px-lg-3">
@@ -759,6 +739,11 @@
 						</div>
 							<div class="mb-3">
 								<button class="btn btn-success btn-shadow d-block w-100" type="submit" id="prd_addtocart"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
+							</div>
+							<div class="mb-3">
+								<button type="button" class="btn btn-primary btn-shadow d-block w-100" data-bs-toggle="modal" data-bs-target="#build-modal">
+									<strong>Σύνοψη &amp; Αποθήκευση</strong>
+								</button>
 							</div>
 							<h5 class="h6 mb-2 pb-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Πληροφορίες</h5>
 							<div class="fs-sm mb-1"><strong>Κωδικός Msystems: </strong>500-xxxxx</div>
@@ -840,7 +825,7 @@
 		<div class="row cont-body">
 			<div class="col-lg-4 col-md-5 order-md-2 builder-product">
 				<div class="tab-container">
-					<ul class="nav nav-tabs" id="tab-cart-head" role="tablist">
+					<!--<ul class="nav nav-tabs" id="tab-cart-head" role="tablist">
 						<li class="nav-item" role="presentation">
 							<button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#tab-cart"
 								type="button" role="tab">Καλάθι</button>
@@ -852,104 +837,18 @@
 					</ul>
 					<div class="tab-content" role="tabpanel" id="prod-tabs">
 						<div class="builder-product-cart tab-pane fade show active" role="tabpanel" id="tab-cart">
-							<div class="build-modal-bt">
-								<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#build-modal">
-									Σύνοψη & Αποθήκευση
-								</button>
-							</div>					
 							<div id="performance-carousel-2" class="carousel carousel-dark slide perf-carousel" data-bs-ride="carousel">
-								<!-- Indicators -->
-								<div class="carousel-indicators">
-									<button data-bs-target="#performance-carousel-2" data-bs-slide-to="0" class="active"></button>
-									<button data-bs-target="#performance-carousel-2" data-bs-slide-to="1"></button>
-									<button data-bs-target="#performance-carousel-2" data-bs-slide-to="2"></button>
-									<button data-bs-target="#performance-carousel-2" data-bs-slide-to="3"></button>
-									<button data-bs-target="#performance-carousel-2" data-bs-slide-to="4"></button>
-								</div>
-								<!-- The slideshow -->
-								<div class="carousel-inner">
-									<div class="carousel-item active">
-											<img src="assets/fortnite-game-wide.jpg" alt="fortnite">
-										<div class="perf-display" id="perf-fortnite_game">
-											<div class="perf-head">
-												<span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-											</div>
-											<div class="perf-body">
-												Needs Init
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-											<img src="assets/lol-game-wide.jpg" alt="League of Legends">
-										<div class="perf-display" id="perf-lol_game">
-											<div class="perf-head">
-												<span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-											</div>
-											<div class="perf-body">
-												Needs Init
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-											<img src="assets/sottr-game-wide.jpg" alt="Shadow of the Tomb Raider">
-										<div class="perf-display" id="perf-sottr_game">
-											<div class="perf-head">
-												<span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-											</div>
-											<div class="perf-body">
-												Needs Init
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<img src="assets/control-game-wide.jpg" alt="Control">
-										<div class="perf-display" id="perf-control_game">
-											<div class="perf-head">
-												<span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-											</div>
-											<div class="perf-body">
-												Needs Init
-											</div>
-										</div>
-									</div>
-									<div class="carousel-item">
-										<img src="assets/fs2020-game-wide.jpg" alt="Microsoft Flight Simulator">
-										<div class="perf-display" id="perf-fs2020_game">
-											<div class="perf-head">
-												<span class="perf-1080p">1080p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-1440p">1440p:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-												<span class="perf-4k">4K:&nbsp;<span><i class="bi bi-exclamation-circle-fill"style="color: #eabe4b;font-size: 1.2rem;vertical-align: middle;"></i></span></span>
-											</div>
-											<div class="perf-body">
-												Needs Init
-											</div>
-										</div>
-									</div>
-								</div>
-								<!-- Left and right controls -->
-								<button class="carousel-control-prev" type="button" data-bs-target="#performance-carousel-2"
-									data-bs-slide="prev">
-									<span class="carousel-control-prev-icon"></span>
-								</button>
-								<button class="carousel-control-next" type="button" data-bs-target="#performance-carousel-2"
-									data-bs-slide="next">
-									<span class="carousel-control-next-icon"></span>
-								</button>
+								Needs Init
 							</div>
 						</div>
 						<div class="tab-nav tab-pane fade prod-navigation" role="tabpanel" id="prod-navigation">Needs Init</div>
+					</div>-->
+					<div id="performance-carousel-2" class="carousel carousel-dark slide perf-carousel" data-bs-ride="carousel">
+						Needs Init
 					</div>
+					<div class="prod-navigation" id="prod-navigation">Needs Init</div>
 				</div>
 			</div>
-
 			<div class="col-lg-8 col-md-7 order-lg-1 builder-parts">
 				
             <div class="builder-part-category kouti" id="cat-kouti">
@@ -966,11 +865,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς κουτί</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -985,12 +884,12 @@
                 <div class="part-text"><div class="part-text-head">Kolink KLA-002 Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="2590">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1004,12 +903,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master Elite 342</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="3490">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1023,12 +922,12 @@
                 <div class="part-text"><div class="part-text-head">Cougar MX330-X Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4490">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1042,12 +941,12 @@
                 <div class="part-text"><div class="part-text-head">Kolink Inspire K1 RGB Windowed Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4690">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1061,12 +960,12 @@
                 <div class="part-text"><div class="part-text-head">Corsair Carbide Series 100R Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4700">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1080,12 +979,12 @@
                 <div class="part-text"><div class="part-text-head">Kolink StrongHold Windowed Mid-Tower Case Tempered Glass - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4700">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1099,12 +998,12 @@
                 <div class="part-text"><div class="part-text-head">Corsair Carbide Series 100R Mid-Tower Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5090">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1118,12 +1017,12 @@
                 <div class="part-text"><div class="part-text-head">Corsair Carbide Series SPEC-01 Red LED Mid-Tower Gaming Case - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5140">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1137,12 +1036,12 @@
                 <div class="part-text"><div class="part-text-head">Corsair Carbide SPEC-05 Windowed Mid-Tower Case</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5290">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1156,12 +1055,12 @@
                 <div class="part-text"><div class="part-text-head">Deepcool Matrexx 55 Mesh Windowed Mid-Tower Case Tempered Glass</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5490">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="kouti10">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="kouti0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="kouti10">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="kouti0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1182,11 +1081,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς μητρική</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -1201,12 +1100,12 @@
                 <div class="part-text"><div class="part-text-head">Asus Prime A320M-K</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5150">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1220,12 +1119,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte A520M H rev. 1.0</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6450">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1239,12 +1138,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte A520M S2H rev. 1.0</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6990">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1258,12 +1157,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte B450M DS3H V2 rev.1.0</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="7090">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1277,12 +1176,12 @@
                 <div class="part-text"><div class="part-text-head">Asus Prime A520M-K</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="7690">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1296,12 +1195,12 @@
                 <div class="part-text"><div class="part-text-head">Asus Prime A520M-E</div><div class="prod-av-2">Μικρή διαθεσιμότητα</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="7690">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1315,12 +1214,12 @@
                 <div class="part-text"><div class="part-text-head">Asus Prime A520M-A</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="8150">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1334,12 +1233,12 @@
                 <div class="part-text"><div class="part-text-head">Asus Prime B450M-A II</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="8690">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1353,12 +1252,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte B450 AORUS M</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1372,12 +1271,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte B550M DS3H</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9990">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="mitriki10">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="mitriki0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="mitriki10">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="mitriki0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1398,11 +1297,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς επεξεργαστή</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -1417,12 +1316,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 5 2600X with Wraith Spire Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="17250">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1436,12 +1335,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 5 3600 with Wraith Stealth Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="19990">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1455,12 +1354,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 5 3600X with Wraith Spire Cooler</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="29500">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1474,12 +1373,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 7 3700X with Wraith Pirsm Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="31990">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1493,12 +1392,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 5 5600X with Wraith Stealth Cooler</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="32890">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1512,12 +1411,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 7 3800X with Wraith Prism Cooler</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="36900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1531,12 +1430,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 7 5800X</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="48890">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1550,12 +1449,12 @@
                 <div class="part-text"><div class="part-text-head">AMD Ryzen 9 3900X with Wraith Prism Cooler</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="49900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="cpu8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="cpu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="cpu8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="cpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1576,11 +1475,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς ψύξη επεξεργαστή</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -1595,12 +1494,12 @@
                 <div class="part-text"><div class="part-text-head">Deepcool CPU Cooler GAMMAXX 200T</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="1790">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1614,12 +1513,12 @@
                 <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer A13X Compact AMD CPU Cooler</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="2150">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1633,12 +1532,12 @@
                 <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer A13X CO Compact AMD CPU Cooler - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="2290">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1652,12 +1551,12 @@
                 <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer 34 CPU Cooler</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="2990">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1671,12 +1570,12 @@
                 <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer XTREME Rev.2</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="3390">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1690,12 +1589,12 @@
                 <div class="part-text"><div class="part-text-head">Arctic Cooling Freezer 34 eSports CPU Cooler - Grey / Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="3590">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1709,12 +1608,12 @@
                 <div class="part-text"><div class="part-text-head">Thermaltake Thermaltake CPU Cooler UX200 ARGB</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="3650">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1728,12 +1627,12 @@
                 <div class="part-text"><div class="part-text-head">Be Quiet! CPU Cooler Pure Rock 2</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="3900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1747,12 +1646,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master CPU Cooler Hyper 212 Black Edition</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4090">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1766,12 +1665,12 @@
                 <div class="part-text"><div class="part-text-head">Be Quiet! CPU Cooler Pure Rock 2 - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4250">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psiktra10">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psiktra0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psiktra10">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psiktra0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1792,11 +1691,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς μνήμη RAM</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -1811,19 +1710,19 @@
                 <div class="part-text"><div class="part-text-head">HyperX 8GB Fury DDR4 2666MHz Non-ECC CL16 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5350">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram1-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1837,19 +1736,19 @@
                 <div class="part-text"><div class="part-text-head">Corsair Vengeance LPX 8GB DDR4 2666MHz (Kit of 2) - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5590">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram2-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1863,19 +1762,19 @@
                 <div class="part-text"><div class="part-text-head">HyperX 8GB Fury DDR4 3200MHz Non-ECC CL16 (Kit of 2)</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5750">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram3-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1889,19 +1788,19 @@
                 <div class="part-text"><div class="part-text-head">G.Skill 8GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black</div><div class="prod-av-1">10-15 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6500">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram4-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1915,19 +1814,19 @@
                 <div class="part-text"><div class="part-text-head">G.Skill 16GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9190">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram5-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1941,19 +1840,19 @@
                 <div class="part-text"><div class="part-text-head">HyperX 16GB Fury DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9280">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram6-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1967,19 +1866,19 @@
                 <div class="part-text"><div class="part-text-head">HyperX 16GB Fury DDR4 3200MHz 1Rx8 Non-ECC CL16 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9580">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram7-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -1993,19 +1892,19 @@
                 <div class="part-text"><div class="part-text-head">Corsair Vengeance LPX 16GB DDR4 3200MHz (Kit of 2) - Black</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9590">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram8-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2019,19 +1918,19 @@
                 <div class="part-text"><div class="part-text-head">HyperX 16GB Predator DDR4 2666MHz Non-ECC CL13 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="9970">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram9-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2045,19 +1944,19 @@
                 <div class="part-text"><div class="part-text-head">HyperX 16GB Fury RGB DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="10100">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="ram10-quantity" name="ram-quantity" min="1" max="4" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="ram10">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="ram0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="ram10">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="ram0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2078,11 +1977,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς κάρτα Γραφικών</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -2097,19 +1996,19 @@
                 <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1650 TUF 4GB D6</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="29900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu1-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2123,19 +2022,19 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte GeForce GTX 1660 SUPER OC 6G</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="44900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu2-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2149,19 +2048,19 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte GeForce GTX 1660 OC 6G</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="47900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu3-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2175,19 +2074,19 @@
                 <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1660 SUPER TUF Gaming 6GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="49900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu4-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2201,19 +2100,19 @@
                 <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1660 SUPER TUF Gaming OC 6GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="49900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu5-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2227,19 +2126,19 @@
                 <div class="part-text"><div class="part-text-head">Asus GeForce GTX 1660 SUPER Dual EVO OC 6GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="49900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu6-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2253,19 +2152,19 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte GeForce RTX 2060 OC 6G</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="55900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu7-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2279,19 +2178,19 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte AORUS GeForce RTX 3060 Elite 12GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="69900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu8-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2305,19 +2204,19 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte Radeon RX 6700 XT Eagle 12GB</div><div class="prod-av-0">Μη διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="89900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="gpu9-quantity" name="gpu-quantity" min="1" max="2" value="0">
-    <i class="bi bi-dash part-num-decr" style=""></i>
+    <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
-    <i class="bi bi-plus part-num-incr" style=""></i>
+    <i class="bi bi-plus part-num-incr"></i>
   </div>
 
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="gpu9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="gpu0">Ακύρωση</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="gpu9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="gpu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2338,11 +2237,11 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς τροφοδοτικό</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
@@ -2357,12 +2256,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master Elite V3 500W</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4390">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2376,12 +2275,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master MWE 500W V2 Bronze Rated Power Supply - Bulk</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4750">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2395,12 +2294,12 @@
                 <div class="part-text"><div class="part-text-head">Corsair CV Series CV550 550W Bronze Rated Power Supply</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4990">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2414,12 +2313,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master MWE 500 V2 White Rated Power Supply</div><div class="prod-av-2">Μικρή διαθεσιμότητα</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5090">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2433,12 +2332,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte Power Supply GP-P550B 550W 80+ Bronze</div><div class="prod-av-1">1-3 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5450">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2452,12 +2351,12 @@
                 <div class="part-text"><div class="part-text-head">Corsair CV Series CV650 650W Bronze Rated Power Supply</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5590">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2471,12 +2370,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master MWE 600W V2 Bronze Rated Power Supply - Bulk</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5600">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2490,12 +2389,12 @@
                 <div class="part-text"><div class="part-text-head">Cooler Master Elite V3 600W</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5690">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2509,12 +2408,12 @@
                 <div class="part-text"><div class="part-text-head">Force Power Supply 850W - 80plus Bronze</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5900">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2528,12 +2427,12 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte Power Supply GP-P650B 650W 80+ Bronze</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6070">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                  <span class="price-difference">+0,00€</span>                  
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="psu10">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="psu0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="psu10">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="psu0">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2545,7 +2444,7 @@
                 <div class="part-category-description">Η τελευταία τεχνολογία των δίσκων SSD, η επικοινωνία γίνεται μέσω των γρήγορων PCIe lanes αντί των θυρών SATA με αποτέλεσμα πολύ υψηλότερες ταχύτητες ανάγνωσης και εγγραφής.</div>
                 <div class="part-list-containter">
                   
-            <input type="radio" class="part-rd-bt" id="m2ssd0" name="m2ssd" value="emptyval" checked>
+            <input type="checkbox" class="part-checkbox" id="m2ssd0" name="m2ssd" value="emptyval" checked>
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd0">
                 <div class="part-img">
@@ -2554,17 +2453,17 @@
                 <div class="part-text"><div class="part-text-head">Χωρίς Δίσκο SSD M.2</div><div class="prod-av-null"></div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="0000">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
                 <div class="part-btn">
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd0">Επιλογή</label>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd0">Επιλογή</label>
                   <label class="btn btn-success disabled" >Επιλεγμένο</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd1" name="m2ssd" value="m2ssd1" data-erp="001-47240">
+            <input type="checkbox" class="part-checkbox" id="m2ssd1" name="m2ssd" value="m2ssd1" data-erp="001-47240">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd1">
                 <div class="part-img">
@@ -2573,17 +2472,17 @@
                 <div class="part-text"><div class="part-text-head">Kingston 250GB KC2500 NVMe M.2 PCI-Express SSD</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4150">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd1">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd1">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd1">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd2" name="m2ssd" value="m2ssd2" data-erp="001-45387">
+            <input type="checkbox" class="part-checkbox" id="m2ssd2" name="m2ssd" value="m2ssd2" data-erp="001-45387">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd2">
                 <div class="part-img">
@@ -2592,17 +2491,17 @@
                 <div class="part-text"><div class="part-text-head">Gigabyte 256GB M.2 PCIe NVMe SSD</div><div class="prod-av-2">Μικρή διαθεσιμότητα</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4490">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd2">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd2">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd2">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd3" name="m2ssd" value="m2ssd3" data-erp="001-49274">
+            <input type="checkbox" class="part-checkbox" id="m2ssd3" name="m2ssd" value="m2ssd3" data-erp="001-49274">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd3">
                 <div class="part-img">
@@ -2611,17 +2510,17 @@
                 <div class="part-text"><div class="part-text-head">Western Digital Blue SN550 M.2 250GB NVMe SSD</div><div class="prod-av-1">10-15 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="4690">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd3">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd3">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd3">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd4" name="m2ssd" value="m2ssd4" data-erp="001-51445">
+            <input type="checkbox" class="part-checkbox" id="m2ssd4" name="m2ssd" value="m2ssd4" data-erp="001-51445">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd4">
                 <div class="part-img">
@@ -2630,17 +2529,17 @@
                 <div class="part-text"><div class="part-text-head">Samsung 250GB NVMe SSD 980 Series M.2 PCI-Express</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5050">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd4">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd4">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd4">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd5" name="m2ssd" value="m2ssd5" data-erp="001-51631">
+            <input type="checkbox" class="part-checkbox" id="m2ssd5" name="m2ssd" value="m2ssd5" data-erp="001-51631">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd5">
                 <div class="part-img">
@@ -2649,17 +2548,17 @@
                 <div class="part-text"><div class="part-text-head">Kingston 500GB NV1 NVMe M.2 PCI-Express SSD</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5270">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd5">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd5">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd5">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd6" name="m2ssd" value="m2ssd6" data-erp="001-48155">
+            <input type="checkbox" class="part-checkbox" id="m2ssd6" name="m2ssd" value="m2ssd6" data-erp="001-48155">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd6">
                 <div class="part-img">
@@ -2668,17 +2567,17 @@
                 <div class="part-text"><div class="part-text-head">Corsair Force Series MP510 240GB NVMe M.2 PCI-Express SSD</div><div class="prod-av-1">10-15 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="5590">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd6">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd6">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd6">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd7" name="m2ssd" value="m2ssd7" data-erp="001-42920">
+            <input type="checkbox" class="part-checkbox" id="m2ssd7" name="m2ssd" value="m2ssd7" data-erp="001-42920">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd7">
                 <div class="part-img">
@@ -2687,36 +2586,36 @@
                 <div class="part-text"><div class="part-text-head">Samsung 250GB NVMe SSD 970 Evo Plus Series M.2 PCI-Express</div><div class="prod-av-2">Άμεσα διαθέσιμο</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6150">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd7">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd7">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd7">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd8" name="m2ssd" value="m2ssd8" data-erp="001-48953">
+            <input type="checkbox" class="part-checkbox" id="m2ssd8" name="m2ssd" value="m2ssd8" data-erp="001-48953">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd8">
                 <div class="part-img">
                   <img class="build-img" src="assets/m2ssd8.jpg" width="100%">
                 </div>
-                <div class="part-text"><div class="part-text-head">Western Digital Blue SN550 M.2 500GB NVMe SSD [WDS500G2B0C]</div><div class="prod-av-1">10-15 εργάσιμες</div></div>
+                <div class="part-text"><div class="part-text-head">Western Digital Blue SN550 M.2 500GB NVMe SSD</div><div class="prod-av-1">10-15 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6200">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd8">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd8">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd8">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
             </div><div class="border-top pt-3 mt-3"></div>
-            <input type="radio" class="part-rd-bt" id="m2ssd9" name="m2ssd" value="m2ssd9" data-erp="001-43489">
+            <input type="checkbox" class="part-checkbox" id="m2ssd9" name="m2ssd" value="m2ssd9" data-erp="001-43489">
             <div class="listed-part">              
               <label class="listed-part-inner" for="m2ssd9">
                 <div class="part-img">
@@ -2725,12 +2624,12 @@
                 <div class="part-text"><div class="part-text-head">Western Digital SN750 Black M.2 250GB PCIe NVMe SSD</div><div class="prod-av-1">1-2 εργάσιμες</div></div>
                 <div class="part-price">
                   <span class="price-main" data-priceval="6490">0,00€</span>
-                  <span class="price-difference">(+0,00€)</span>
+                                    
                 </div>
-                <div class="part-btn"><a class="prod-quick-view" href="#"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
-                  <label class="btn btn-success btn-change" >Αλλαγή</label>
-                  <label class="btn btn-success btn-select" for="m2ssd9">Επιλογή</label>
-                  <label class="btn btn-primary btn-cancel" for="m2ssd0">Ακύρωση</label>
+                <div class="part-btn"><a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>
+                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-select btn-shadow" for="m2ssd9">Επιλογή</label>
+                  <label class="btn btn-primary btn-cancel btn-shadow" for="m2ssd9">Ακύρωση</label>
                   <div class="disabled-part">disabled</div>
                 </div>                
               </label>              
@@ -2738,6 +2637,42 @@
                 </div>
             </div>
 
+			</div>
+		</div>
+	</div>
+	<div class="modal-quick-view modal fade" id="quick-view" tabindex="-1">
+		<div class="modal-dialog modal-xl">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title product-title">Ουπς κάτι πήγε στραβά<i class="ci-arrow-right fs-lg ms-2"></i></h4>
+					<button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<span>Ουπς κάτι πήγε στραβά, παρακαλώ δοκιμάστε πάλι</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="build-modal" tabindex="-1">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title">Msystems Ryzen Gaming</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<div class="modal-table">Needs Init</div>
+				</div>
+				<div class="modal-footer">
+					<div class="footer-text">Για να αποθηκεύσετε το σύστημα με τις επιλογές που έχετε κάνει αποθηκεύστε τον παρακάτω σύνδεσμο</div>
+					<div class="footer-interface">
+						<div class="footer-link-body"></div>
+						<button class="btn btn-primary btn-copy-link" title="Αντιγραφή συνδέσμου στο Clipboard"><i class="bi bi-paperclip"></i></button>
+						<button class="btn btn-success btn-print-pg" onclick="window.print()" title="Εκτύπωση"><i class="bi bi-printer"></i></button>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
