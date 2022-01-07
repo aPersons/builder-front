@@ -178,13 +178,14 @@ body{
   border-radius: 0.4375rem;
   padding: 5px;
   transition: background-color 0.25s;
+  font-size: 0.8rem;
 }
 .builder-product .prod-navigation .prod-navigator:hover{
   background-color: #f6f6f6;
   cursor: pointer;
 }
-.builder-product .prod-navigation .prod-navigator i{margin-right: 10px;}
-.builder-product .prod-navigation .prod-navigator span{float: right;}
+/* .builder-product .prod-navigation .prod-navigator i{margin-right: 10px;} */
+.builder-product .prod-navigation .prod-navigator i.bi{float: right;}
 
 /* Carousel */
 #performance-carousel-2{

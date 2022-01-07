@@ -189,7 +189,8 @@ function updateProdNav(forceInit=false){
     for(let i = 0;i< getCats.length;i++){
       var nameText = getCats[i].querySelector(".part-category-head").innerText;
       var catTarget = getCats[i].id;   
-      endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;    
+      // endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;
+      endList += `<div class="prod-navigator" data-navdest="${catTarget}">${nameText}<i class="bi bi-tools"></i></div>`;
     }
     navBody.innerHTML = endList;
     var navList = navBody.querySelectorAll(".prod-navigator");
@@ -206,23 +207,23 @@ function updateProdNav(forceInit=false){
       navList[i].style.backgroundColor = "";
       }
     }
-  for(let i = 0;i< navList.length;i++){
-    var selected = document.querySelectorAll(`.builder-part-category#${navList[i].dataset.navdest} input.part-rd-bt:checked, .builder-part-category#${navList[i].dataset.navdest} input.part-checkbox:checked`);
-    var priceBox = navList[i].querySelector(`span`);
-    var sum = 0;
-    for(let x = 0; x < selected.length; x++){
-      if(selected[x].value != "emptyval"){
-        var price = Number(selected[x].nextElementSibling.querySelector(".price-main").dataset.priceval);
-        var quant = selected[x].nextElementSibling.querySelector("input.part-quantity");
-        sum += price*(quant?Number(quant.value):1);
-      }
-    }
-    if(!selected.length){
-      priceBox.innerHTML = "-,--€";
-    }else{
-      priceBox.innerHTML = `${wtDecimal(sum)}€`
-    }    
-  }
+  // for(let i = 0;i< navList.length;i++){
+  //   var selected = document.querySelectorAll(`.builder-part-category#${navList[i].dataset.navdest} input.part-rd-bt:checked, .builder-part-category#${navList[i].dataset.navdest} input.part-checkbox:checked`);
+  //   var priceBox = navList[i].querySelector(`span`);
+  //   var sum = 0;
+  //   for(let x = 0; x < selected.length; x++){
+  //     if(selected[x].value != "emptyval"){
+  //       var price = Number(selected[x].nextElementSibling.querySelector(".price-main").dataset.priceval);
+  //       var quant = selected[x].nextElementSibling.querySelector("input.part-quantity");
+  //       sum += price*(quant?Number(quant.value):1);
+  //     }
+  //   }
+  //   if(!selected.length){
+  //     priceBox.innerHTML = "-,--€";
+  //   }else{
+  //     priceBox.innerHTML = `${wtDecimal(sum)}€`
+  //   }    
+  // }
 }
 function updatePerfCarousel(forceInit=false){
   var perf_carousel = document.querySelector("#performance-carousel-2");
