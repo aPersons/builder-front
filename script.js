@@ -108,15 +108,14 @@ function updateFinalPrice(){
 function updateModal(){
   var modTable = document.querySelector("#build-modal .modal-table");
   if(!modTable){return}
-  modTable.innerHTML = `
+  var tempHTML = `
   <div class="table-row">
   <div class="modal-cat-header">Κατηγορία</div>
   <div class="modal-prnum-header">Κωδικός</div>
   <div class="modal-product-header">Προϊόν</div>
   <div class="modal-quant-header">Τμχ.</div>
   <div class="modal-price-header">Τιμή</div>
-  <div class="modal-total-header">Σύνολο</div>
-  </div>`;
+  <div class="modal-total-header">Σύνολο</div>`;
   var linktext = window.location.href.split('&');
   //linktext = `${linktext[0]}&${linktext[1]}&prefill=1`; //
   linktext = `https://www.msystems.gr/section/systems/?&system=18&prefill=1`;   //temp change
@@ -124,8 +123,8 @@ function updateModal(){
   var sum = 0;
   for(let i = 0; i< getCats.length; i++){
     var sel_prod = getCats[i].querySelectorAll("input.part-rd-bt:checked, input.part-checkbox:checked");
-    if(!sel_prod.length){modTable.insertAdjacentHTML("beforeend",
-      `<div class="table-row">
+    if(!sel_prod.length){
+      tempHTML+=`<div class="table-row">
         <div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
         <div class="erp-pn">-</div>
         <div class="prod-nm">-</div>
@@ -133,7 +132,7 @@ function updateModal(){
         <div class="prod-price">0,00 €</div>
         <div class="prod-price-total">0,00 €</div>
         </div>`
-      );
+      ;
     }
     for(let x = 0; x < sel_prod.length; x++){
       var prod_price = 0;
@@ -155,8 +154,7 @@ function updateModal(){
         sum += prod_price_total;
         linktext += `&o${i}${sel_prod[x].type=="checkbox"?"[]":""}=${sel_prod[x].value}&q${i}${sel_prod[x].type=="checkbox"?"[]":""}=${prod_quant}`;
       }      
-      modTable.insertAdjacentHTML("beforeend",
-      `<div class="table-row">
+      tempHTML+=`<div class="table-row">
         <div class="cat-nm">${getCats[i].querySelector(".part-category-head").innerHTML}</div>
         <div class="erp-pn">${erp_pn}</div>
         <div class="prod-nm">${prod_name}</div>
@@ -164,17 +162,17 @@ function updateModal(){
         <div class="prod-price">${wtDecimal(prod_price)} €</div>
         <div class="prod-price-total">${wtDecimal(prod_price_total)} €</div>
         </div>`
-      );
+      ;
     }
   }
   sum = wtDecimal(sum);
-  modTable.insertAdjacentHTML("beforeend",
-    `<div class="table-row">
-      <div class="modal-total-title">Σύνολο:</div>
-      <div></div><div></div><div></div><div></div>
-      <div class="modal-total-num"><span>${sum}</span> €</div>
-      </div>`
-    );
+  tempHTML +=`<div class="table-row">
+    <div class="modal-total-title">Σύνολο:</div>
+    <div></div><div></div><div></div><div></div>
+    <div class="modal-total-num"><span>${sum}</span> €</div>
+    </div>`
+  ;
+  modTable.innerHTML =tempHTML+"</div>";
   document.querySelector("#build-modal .modal-footer .footer-link-body").dataset.geturl = linktext;
   document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = "Δημιουργία σύνδεσμου";
 }
@@ -564,14 +562,14 @@ function avCompatible(){
   }
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
   for (const [cat, rCats] of Object.entries(compConfig)) {
-    var products = document.querySelectorAll(`#cat-${cat} .part-list-containter input.part-rd-bt, #cat-${cat} .part-list-containter input.part-checkbox`);
+    var products = document.querySelectorAll(`#cat-${cat} input.part-rd-bt, #cat-${cat} input.part-checkbox`);
     break_point:
     for(let i=0;i<products.length;i++){
       if(products[i].value =="emptyval"){continue}
       products[i].disabled = false;
       var attributesA = products[i].dataset.compattr.split(";");
       for (const [rCat, cconfig] of Object.entries(rCats)) {
-        var selSubProd = document.querySelectorAll(`#cat-${rCat} .part-list-containter input.part-rd-bt:checked, #cat-${rCat} .part-list-containter input.part-checkbox:checked`);
+        var selSubProd = document.querySelectorAll(`#cat-${rCat} input.part-rd-bt:checked, #cat-${rCat} input.part-checkbox:checked`);
         for(let x=0;x<selSubProd.length;x++){
           if(selSubProd[x].value=="emptyval"){continue}
           var attributesB = selSubProd[x].dataset.compattr.split(";");
@@ -645,7 +643,7 @@ function initParts(){
   multiUpdate()
   avCompatible();
   updateFinalPrice();
-  updateModal()
+  // updateModal()
   updateProdNav();
   updatePerfCarousel();
   getParts = document.querySelectorAll(".builder-part-category")
@@ -678,10 +676,10 @@ function createListeners(){
         updatePartPrice(getCatParts[i]);
       }
       checkMulti(this);
-      avCompatible();
+      avCompatible;
       updateFinalPrice();
-      updateModal()
-      updateProdNav();
+      // updateModal()
+      // updateProdNav();
       updatePerfCarousel();
       updateContSel(this.parentElement.parentElement);
     })
@@ -693,7 +691,7 @@ function createListeners(){
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
       updateNumberInput(loctemp,"decrement");
       updateFinalPrice();
-      updateModal()
+      // updateModal()
       updateProdNav();
     })
   }
@@ -704,10 +702,16 @@ function createListeners(){
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
       updateNumberInput(loctemp,"increment");
       updateFinalPrice();
-      updateModal()
+      // updateModal()
       updateProdNav();
     })
   }
+
+  acc = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#build-modal"]');
+  for(let i = 0; i < acc.length; i++){
+    acc[i].addEventListener("click", updateModal)
+  }
+
   var copy_btn = document.querySelector("#build-modal .footer-interface .btn-copy-link")
   if (copy_btn) {
     copy_btn.addEventListener("click", async function() {
