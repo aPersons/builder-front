@@ -58,6 +58,7 @@ function updatePartPrice(partDom){
     partDifference.classList.remove("price-lower","price-higher");
   }
 }
+
 function updateNumberInput(partDom, action="update"){
   var inputHead = partDom.querySelector(".part-number-input");
   if(!inputHead){return;}
@@ -86,6 +87,7 @@ function updateNumberInput(partDom, action="update"){
   }
   inputHead.querySelector(".quantity-display").innerHTML = inputValue.value;
 }
+
 function updateFinalPrice(){
   var objList = document.querySelectorAll(".build-price-total");
   var objListTaxLess = document.querySelectorAll(".build-price-taxless");
@@ -115,7 +117,7 @@ function updateModal(){
   <div class="modal-product-header">Προϊόν</div>
   <div class="modal-quant-header">Τμχ.</div>
   <div class="modal-price-header">Τιμή</div>
-  <div class="modal-total-header">Σύνολο</div>`;
+  <div class="modal-total-header">Σύνολο</div></div>`;
   var linktext = window.location.href.split('&');
   //linktext = `${linktext[0]}&${linktext[1]}&prefill=1`; //
   linktext = `https://www.msystems.gr/section/systems/?&system=18&prefill=1`;   //temp change
@@ -172,39 +174,58 @@ function updateModal(){
     <div class="modal-total-num"><span>${sum}</span> €</div>
     </div>`
   ;
-  modTable.innerHTML =tempHTML+"</div>";
+
+  modTable.innerHTML = tempHTML;
   document.querySelector("#build-modal .modal-footer .footer-link-body").dataset.geturl = linktext;
   document.querySelector("#build-modal .modal-footer .footer-link-body").innerHTML = "Δημιουργία σύνδεσμου";
 }
 
-function updateProdNav(forceInit=false){
-  var navBody = document.querySelector(".prod-navigation");
+function initProdNav(){
+  var navBody = document.getElementById("prod-navigation");
+  if(!navBody){return}
+  var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
+  var endList = "";
+  for(let i = 0;i< getCats.length;i++){
+    var nameText = getCats[i].querySelector(".part-category-head").innerText;
+    var catTarget = getCats[i].id;   
+    // endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;
+    endList += `<div class="prod-navigator" data-navdest="${catTarget}">${nameText}<i class="bi bi-tools"></i></div>`;
+  }
+  navBody.innerHTML = endList;
+  var navList = navBody.querySelectorAll(".prod-navigator");
+  for(let n=0;n<navList.length;n++){
+    navList[n].addEventListener("click",function(){catRedirect(getCats[n])});
+  }
+  updateProdNav();
+}
+function updateProdNav(){
+  var navBody = document.getElementById("prod-navigation");
   if(!navBody){return}
 
-  var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
-  if(navBody.innerText=="Needs Init"||forceInit){
-    var endList = "";
-    for(let i = 0;i< getCats.length;i++){
-      var nameText = getCats[i].querySelector(".part-category-head").innerText;
-      var catTarget = getCats[i].id;   
-      // endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;
-      endList += `<div class="prod-navigator" data-navdest="${catTarget}">${nameText}<i class="bi bi-tools"></i></div>`;
-    }
-    navBody.innerHTML = endList;
-    var navList = navBody.querySelectorAll(".prod-navigator");
-    for(let n=0;n<navList.length;n++){
-      navList[n].addEventListener("click",function(){catRedirect(getCats[n])});
+  // var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
+  // if(navBody.innerText=="Needs Init"||forceInit){
+  //   var endList = "";
+  //   for(let i = 0;i< getCats.length;i++){
+  //     var nameText = getCats[i].querySelector(".part-category-head").innerText;
+  //     var catTarget = getCats[i].id;   
+  //     // endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;
+  //     endList += `<div class="prod-navigator" data-navdest="${catTarget}">${nameText}<i class="bi bi-tools"></i></div>`;
+  //   }
+  //   navBody.innerHTML = endList;
+  //   var navList = navBody.querySelectorAll(".prod-navigator");
+  //   for(let n=0;n<navList.length;n++){
+  //     navList[n].addEventListener("click",function(){catRedirect(getCats[n])});
+  //   }
+  // }
+  var navList = document.querySelectorAll("#prod-navigation .prod-navigator");
+  for(let i=0;i<navList.length;i++){
+    var catTargetDom = document.getElementById(navList[i].dataset.navdest);
+    if(catTargetDom.classList.contains("lp-show")){
+      navList[i].style.backgroundColor = "#f6f6f6";
+    }else{
+      navList[i].style.backgroundColor = "";
     }
   }
-  var navList = document.querySelectorAll(".prod-navigation .prod-navigator");
-    for(let i=0;i<navList.length;i++){
-      var catTargetDom = document.querySelector(`.builder-part-category#${navList[i].dataset.navdest}`);
-      if(catTargetDom.classList.contains("lp-show")){
-        navList[i].style.backgroundColor = "#f6f6f6";
-      }else{
-      navList[i].style.backgroundColor = "";
-      }
-    }
   // for(let i = 0;i< navList.length;i++){
   //   var selected = document.querySelectorAll(`.builder-part-category#${navList[i].dataset.navdest} input.part-rd-bt:checked, .builder-part-category#${navList[i].dataset.navdest} input.part-checkbox:checked`);
   //   var priceBox = navList[i].querySelector(`span`);
@@ -223,6 +244,7 @@ function updateProdNav(forceInit=false){
   //   }    
   // }
 }
+
 function updatePerfCarousel(forceInit=false){
   var perf_carousel = document.querySelector("#performance-carousel-2");
   if(!perf_carousel){return}
@@ -644,7 +666,7 @@ function initParts(){
   avCompatible();
   updateFinalPrice();
   // updateModal()
-  updateProdNav();
+  initProdNav();
   updatePerfCarousel();
   getParts = document.querySelectorAll(".builder-part-category")
   for(let i=0;i< getParts.length;i++){
@@ -679,7 +701,7 @@ function createListeners(){
       avCompatible;
       updateFinalPrice();
       // updateModal()
-      // updateProdNav();
+      updateProdNav();
       updatePerfCarousel();
       updateContSel(this.parentElement.parentElement);
     })
@@ -691,8 +713,6 @@ function createListeners(){
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
       updateNumberInput(loctemp,"decrement");
       updateFinalPrice();
-      // updateModal()
-      updateProdNav();
     })
   }
 
@@ -702,8 +722,6 @@ function createListeners(){
       var loctemp = this.parentElement.parentElement.parentElement.parentElement;
       updateNumberInput(loctemp,"increment");
       updateFinalPrice();
-      // updateModal()
-      updateProdNav();
     })
   }
 
