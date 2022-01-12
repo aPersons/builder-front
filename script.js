@@ -189,7 +189,7 @@ function initProdNav(){
     var nameText = getCats[i].querySelector(".part-category-head").innerText;
     var catTarget = getCats[i].id;   
     // endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;
-    endList += `<div class="prod-navigator" data-navdest="${catTarget}">${nameText}<i class="bi bi-tools"></i></div>`;
+    endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-slash-circle"></i>${nameText}<i class="bi bi-tools"></i></div>`;
   }
   navBody.innerHTML = endList;
   var navList = navBody.querySelectorAll(".prod-navigator");
@@ -197,27 +197,13 @@ function initProdNav(){
     navList[n].addEventListener("click",function(){catRedirect(getCats[n])});
   }
   updateProdNav();
+  updateProdNavSel();
 }
+
 function updateProdNav(){
   var navBody = document.getElementById("prod-navigation");
   if(!navBody){return}
-
-  // var getCats = document.querySelectorAll(".builder-parts .builder-part-category");
-  // if(navBody.innerText=="Needs Init"||forceInit){
-  //   var endList = "";
-  //   for(let i = 0;i< getCats.length;i++){
-  //     var nameText = getCats[i].querySelector(".part-category-head").innerText;
-  //     var catTarget = getCats[i].id;   
-  //     // endList += `<div class="prod-navigator" data-navdest="${catTarget}"><i class="bi bi-tools"></i>${nameText}<span>-,--€</span></div>`;
-  //     endList += `<div class="prod-navigator" data-navdest="${catTarget}">${nameText}<i class="bi bi-tools"></i></div>`;
-  //   }
-  //   navBody.innerHTML = endList;
-  //   var navList = navBody.querySelectorAll(".prod-navigator");
-  //   for(let n=0;n<navList.length;n++){
-  //     navList[n].addEventListener("click",function(){catRedirect(getCats[n])});
-  //   }
-  // }
-  var navList = document.querySelectorAll("#prod-navigation .prod-navigator");
+  var navList = navBody.querySelectorAll(".prod-navigator");
   for(let i=0;i<navList.length;i++){
     var catTargetDom = document.getElementById(navList[i].dataset.navdest);
     if(catTargetDom.classList.contains("lp-show")){
@@ -226,23 +212,19 @@ function updateProdNav(){
       navList[i].style.backgroundColor = "";
     }
   }
-  // for(let i = 0;i< navList.length;i++){
-  //   var selected = document.querySelectorAll(`.builder-part-category#${navList[i].dataset.navdest} input.part-rd-bt:checked, .builder-part-category#${navList[i].dataset.navdest} input.part-checkbox:checked`);
-  //   var priceBox = navList[i].querySelector(`span`);
-  //   var sum = 0;
-  //   for(let x = 0; x < selected.length; x++){
-  //     if(selected[x].value != "emptyval"){
-  //       var price = Number(selected[x].nextElementSibling.querySelector(".price-main").dataset.priceval);
-  //       var quant = selected[x].nextElementSibling.querySelector("input.part-quantity");
-  //       sum += price*(quant?Number(quant.value):1);
-  //     }
-  //   }
-  //   if(!selected.length){
-  //     priceBox.innerHTML = "-,--€";
-  //   }else{
-  //     priceBox.innerHTML = `${wtDecimal(sum)}€`
-  //   }    
-  // }
+}
+function updateProdNavSel(){
+  var navBody = document.getElementById("prod-navigation");
+  if(!navBody){return}
+  var navList = navBody.querySelectorAll(".prod-navigator");
+  for(let i=0;i<navList.length;i++){
+    var catTargetDom = document.querySelector(`#${navList[i].dataset.navdest} .part-category-head`);
+    if(catTargetDom.classList.contains("contains-selected")){
+      navList[i].firstElementChild.outerHTML = '<i class="bi bi-check-circle"></i>';
+    }else{
+      navList[i].firstElementChild.outerHTML = '<i class="bi bi-slash-circle"></i>';
+    }
+  }
 }
 
 function updatePerfCarousel(forceInit=false){
@@ -515,73 +497,75 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   }
   updateProdNav();
 }
-function avCompatible(){
-  var compConfig = {
-    "kouti": {
-      "mitriki":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"0",
-        "attrB":"0",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
-      }
+
+var compConfig = {
+  "kouti": {
+    "mitriki":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+    }
+  },
+  "mitriki": {
+    "kouti":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
     },
-    "mitriki": {
-      "kouti":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"0",
-        "attrB":"0",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
-      },
-      "cpu":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"1",
-        "attrB":"0",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
-      },
-      "psiktra":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"1",
-        "attrB":"0",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
-      }
+    "cpu":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"1",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
     },
-    "cpu": {
-      "mitriki":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"0",
-        "attrB":"1",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
-      },
-      "psiktra":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"0",
-        "attrB":"0",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
-      }      
+    "psiktra":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"1",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+    }
+  },
+  "cpu": {
+    "mitriki":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"1",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
     },
-    "psiktra": {
-      "mitriki":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"0",
-        "attrB":"1",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
-      },
-      "cpu":{
-        "cType":"normal",
-        "safe":"$afe",
-        "attrA":"0",
-        "attrB":"0",
-        "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
-      }
+    "psiktra":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+    }      
+  },
+  "psiktra": {
+    "mitriki":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"1",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+    },
+    "cpu":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
     }
   }
+}
+
+function avCompatible(){
   var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
   for (const [cat, rCats] of Object.entries(compConfig)) {
     var products = document.querySelectorAll(`#cat-${cat} input.part-rd-bt, #cat-${cat} input.part-checkbox`);
@@ -621,6 +605,12 @@ function avCompatible(){
     }
   }  
 }
+
+function avCompNarrow(alcat){
+  var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
+
+}
+
 function multiUpdate(){
   var cats = document.querySelectorAll(".builder-parts .builder-part-category");
   cats = [...cats].filter(cat => cat.querySelector("input.part-checkbox"))
@@ -654,6 +644,7 @@ function updateContSel(cat){
   }else{
     cat.querySelector(".part-category-head").classList.add("contains-selected");
   }
+  updateProdNavSel();
 }
 
 function initParts(){
@@ -665,7 +656,6 @@ function initParts(){
   multiUpdate()
   avCompatible();
   updateFinalPrice();
-  // updateModal()
   initProdNav();
   updatePerfCarousel();
   getParts = document.querySelectorAll(".builder-part-category")
@@ -689,7 +679,20 @@ function createListeners(){
     });
   }
 
-  acc = document.querySelectorAll(".builder-part-category input.part-rd-bt, .builder-part-category input.part-checkbox");
+  acc = document.querySelectorAll(".builder-part-category input.part-rd-bt");
+  for(let i = 0; i < acc.length; i++){
+    acc[i].addEventListener("change", function() {
+      var getCatParts = this.parentElement.querySelectorAll(".listed-part");
+      for(let i=0;i< getCatParts.length;i++){
+        updateNumberInput(getCatParts[i]);
+        updatePartPrice(getCatParts[i]);
+      }
+      avCompatible();
+      updateFinalPrice();
+      updateContSel(this.parentElement.parentElement);
+    })
+  }
+  acc = document.querySelectorAll(".builder-part-category input.part-checkbox");
   for(let i = 0; i < acc.length; i++){
     acc[i].addEventListener("change", function() {
       var getCatParts = this.parentElement.querySelectorAll(".listed-part");
@@ -698,11 +701,8 @@ function createListeners(){
         updatePartPrice(getCatParts[i]);
       }
       checkMulti(this);
-      avCompatible;
+      avCompatible();
       updateFinalPrice();
-      // updateModal()
-      updateProdNav();
-      updatePerfCarousel();
       updateContSel(this.parentElement.parentElement);
     })
   }
