@@ -654,7 +654,7 @@ function initParts(){
     updatePartPrice(getParts[i]);
   }
   multiUpdate()
-  avCompatible();
+  // avCompatible();
   updateFinalPrice();
   initProdNav();
   updatePerfCarousel();
@@ -687,7 +687,7 @@ function createListeners(){
         updateNumberInput(getCatParts[i]);
         updatePartPrice(getCatParts[i]);
       }
-      avCompatible();
+      // avCompatible();
       updateFinalPrice();
       updateContSel(this.parentElement.parentElement);
     })
@@ -701,7 +701,7 @@ function createListeners(){
         updatePartPrice(getCatParts[i]);
       }
       checkMulti(this);
-      avCompatible();
+      // avCompatible();
       updateFinalPrice();
       updateContSel(this.parentElement.parentElement);
     })
@@ -747,21 +747,21 @@ function createListeners(){
               },
               body: JSON.stringify({ "long_url": urLement.dataset.geturl})
             })
-
+            
             if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
             const getjson = await request.json()
             urLement.innerHTML = getjson["link"];
           }
           navigator.clipboard.writeText(document.querySelector("#build-modal .footer-link-body").innerHTML);
         }catch(err){
-          urLement.innerHTML = "urLement.dataset.geturl";          
+          urLement.innerHTML = "urLement.dataset.geturl";
           console.log(err)
           try{
             navigator.clipboard.writeText(document.querySelector("#build-modal .footer-link-body").innerHTML);
           }catch{}
         }
       }else{
-        urLement.innerHTML = "Something went wrong...";        
+        urLement.innerHTML = "Something went wrong...";
       }
     });
   }
