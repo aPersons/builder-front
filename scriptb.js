@@ -100,8 +100,60 @@ var domCashe = {
   "prodNav":{}
 };
 
-function crDom(){
+function crCats(){
+  domCashe.dom = {};
+  var tmpList = document.querySelectorAll(".builder-part-category");
+  for(let i=0;i<tmpList.length;i++){
+    domCashe.dom[tmpList[i].id] = {
+      "selfDom": tmpList[i]
+    }
+  }
+}
 
+function crRdBt(){
+  function rdHandler(){
+
+  }
+  for(const [nm, ob] of Object.entries(domCashe.dom)){
+    ob.rdList = {};
+    var tmpList = ob.selfDom.querySelectorAll("input.part-rd-bt");
+    for(let i=0;i<tmpList.length;i++){
+      tmpList[i].removeEventListener("change",rdHandler);
+      tmpList[i].addEventListener("change",rdHandler);
+      ob.rdList[tmpList[i].id] = {
+        "selfDom": tmpList[i],
+        "parentCat": nm
+      }
+    }
+  }
+}
+
+function catRedirect(wCat, action="toggle",focus="prod") {
+
+}
+
+function crCatShow(){
+  function chHandler(){
+    var cName = this.parentElement.id;
+    catRedirect(cName);
+  }
+  function pcHandler(){
+    var cName = this.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+    catRedirect(cName,"open");
+  }
+  for(const ob of Object.values(domCashe.dom)){
+    ob.lpState = ob.selfDom.classList.contains("lp-show");
+    ob.headDom = ob.selfDom.querySelector(".part-category-head");
+    ob.headDom.removeEventListener("click",chHandler);
+    ob.headDom.addEventListener("click",chHandler);
+    if(ob.hasOwnProperty("rdList")){
+      for(const pob of Object.values(ob.rdList)){
+        var tmpch = pob.selfDom.querySelector(".btn-change");
+        tmpch.removeEventListener("click",pcHandler);
+        tmpch.addEventListener("click",pcHandler);
+      }
+    }
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function(){
