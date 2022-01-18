@@ -30,7 +30,7 @@ prod_template = """
                   <img class="build-img" src="assets/{img_src}.jpg" width="100%">
                 </div>
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
-                <div class="part-price">
+                <div class="part-price" data-priceval="{part_price}">
                   <span class="price-main" data-priceval="{part_price}">0,00€</span>
                   {price_difference}                  
                 </div>
