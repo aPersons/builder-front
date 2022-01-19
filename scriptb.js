@@ -96,16 +96,19 @@ var compConfig = {
 
 var domCashe = {
   "dom":{},
+  "domOrder":[],
   "buildModal":{},
   "prodNav":{}
 };
 
 function crCats(){
   domCashe.dom = {};
+  domCashe.domOrder = [];
   var tmpList = document.querySelectorAll(".builder-part-category");
   for(let i=0;i<tmpList.length;i++){
     var tmphead = tmpList[i].querySelector(".part-category-head");
-    domCashe.dom[tmpList[i].id] = {
+    domCashe.domOrder.push(tmpList[i].id);
+    domCashe.dom[domCashe.domOrder[domCashe.domOrder.length-1]] = {
       "selfDom": tmpList[i],
       "headDom": tmphead,
       "nmTxt": tmphead.innerText,
@@ -121,65 +124,93 @@ function updateRdState(pnm, cnm){
   domCashe.dom[cnm].prodSelected = pnm;
 }
 
+var CFGRdBtHandler = {
+  "updateHeadSel": false,
+  "updateProdPrice": false
+};
+function RdBtHandler(){
+  let CFG = CFGRdBtHandler;
+  var pnm = this.id;
+  var cnm = "cat-"+this.name;
+  updateRdState(pnm, cnm);
+  if(CFG.updateHeadSel)updateHeadSel(cnm);
+  if(CFG.updateProdPrice)updateProdPrice(cnm);
+}
 function crRdBt(){
-  function rdHandler(){
-    var pnm = this.id;
-    var cnm = "cat-"+this.name;
-    updateRdState(pnm, cnm);
-  }
-  for(const [nm, ob] of Object.entries(domCashe.dom)){
+  for(const cnm of domCashe.domOrder){
+    var ob = domCashe.dom[cnm]
     var tmpList = ob.selfDom.querySelectorAll("input.part-rd-bt");
     if(tmpList.length){
       ob.prodType = "radio";
+      ob.emptyEl = "$blank";
       ob.prodList = {};
+      ob.prodOrder = [];
       for(let i=0;i<tmpList.length;i++){
-        tmpList[i].removeEventListener("change",rdHandler);
-        tmpList[i].addEventListener("change",rdHandler);
+        tmpList[i].removeEventListener("change",RdBtHandler);
+        tmpList[i].addEventListener("change",RdBtHandler);
         var dname = tmpList[i].id;
+        ob.prodOrder.push(dname);
         var cdom = tmpList[i].nextElementSibling;
         ob.prodList[dname] = {
           "selfDom": tmpList[i],
           "cDom": cdom,
           "nmTxt": cdom.querySelector(".part-text-head").innerText,
-          "priceVal": cdom.querySelector(".part-price").dataset.priceval,
-          "parentCat": nm,
+          "priceVal": Number(cdom.querySelector(".part-price").dataset.priceval),
+          "parentCat": cnm,
           "isSelected": tmpList[i].checked,
           "value": tmpList[i].value,
         }
-        if(ob.prodList[dname].isSelected)ob.prodSelected = dname;
+        if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
+        if (ob.prodList[dname].isSelected)ob.prodSelected = dname;
       }
     }
   }
 }
 
+function addProdSel(pnm, cnm){
+  var qsize = domCashe.dom[cnm].prodSelected.length;
+  var sOrd = domCashe.dom[cnm].prodOrder.indexOf(pnm);
+  for(let i = 0;i < qsize; i++){
+    var lnm = domCashe.dom[cnm].prodSelected[i];
+    if (sOrd<domCashe.dom[cnm].prodOrder.indexOf(lnm)){
+      domCashe.dom[cnm].prodSelected.splice(i,0,pnm);
+      return
+    }
+  }
+  domCashe.dom[cnm].prodSelected.push(pnm);
+}
+function removeProdSel(pnm, cnm){
+  domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(pnm),1);
+}
+
 function updateCbState(pnm, cnm){
-  if(domCashe.dom[cnm].prodSelected.includes(pnm)&&domCashe.dom[cnm].emptyCb==pnm){
+  if(domCashe.dom[cnm].prodSelected.includes(pnm)&&domCashe.dom[cnm].emptyEl==pnm){
     if(domCashe.dom[cnm].prodSelected.length>1){
-      domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(pnm),1);
+      removeProdSel(pnm, cnm),
       domCashe.dom[cnm].prodList[pnm].isSelected = false;
     }else{
       domCashe.dom[cnm].prodList[pnm].selfDom.checked = true;
     }
   }else if(domCashe.dom[cnm].prodSelected.includes(pnm)){
-    if(domCashe.dom[cnm].prodSelected.length<2&&domCashe.dom[cnm].emptyCb == "blank"){
+    if(domCashe.dom[cnm].prodSelected.length<2&&domCashe.dom[cnm].emptyEl == "$blank"){
       domCashe.dom[cnm].prodList[pnm].selfDom.checked = true;
     }else{
-      domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(pnm),1);
+      removeProdSel(pnm, cnm);
       domCashe.dom[cnm].prodList[pnm].isSelected = false;
-      if(domCashe.dom[cnm].emptyCb != "blank"){
-        var enm = domCashe.dom[cnm].emptyCb;
+      if(domCashe.dom[cnm].emptyEl != "$blank"){
+        var enm = domCashe.dom[cnm].emptyEl;
         if(domCashe.dom[cnm].prodSelected.length<1){
           domCashe.dom[cnm].prodSelected = [enm]
           domCashe.dom[cnm].prodList[enm].isSelected = true;
           domCashe.dom[cnm].prodList[enm].selfDom.checked = true;
         }else if(domCashe.dom[cnm].prodSelected.length>1&&domCashe.dom[cnm].prodSelected.includes(enm)){
-          domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(enm),1);
+          removeProdSel(enm, cnm);
           domCashe.dom[cnm].prodList[enm].isSelected = false;
           domCashe.dom[cnm].prodList[enm].selfDom.checked = false;
         }
       }
     }
-  }else if(domCashe.dom[cnm].emptyCb==pnm){
+  }else if(domCashe.dom[cnm].emptyEl==pnm){
     for(const pr of domCashe.dom[cnm].prodSelected){
       domCashe.dom[cnm].prodList[pr].isSelected = false;
       domCashe.dom[cnm].prodList[pr].selfDom.checked = false;
@@ -187,12 +218,12 @@ function updateCbState(pnm, cnm){
     domCashe.dom[cnm].prodSelected = [pnm]
     domCashe.dom[cnm].prodList[pnm].isSelected = true;
   }else {
-    domCashe.dom[cnm].prodSelected.push(pnm);
+    addProdSel(pnm, cnm);
     domCashe.dom[cnm].prodList[pnm].isSelected = true;
-    if(domCashe.dom[cnm].emptyCb != "blank"){
-      if(domCashe.dom[cnm].prodSelected.includes(domCashe.dom[cnm].emptyCb)){
-        var enm = domCashe.dom[cnm].emptyCb;
-        domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(enm),1);
+    if(domCashe.dom[cnm].emptyEl != "$blank"){
+      if(domCashe.dom[cnm].prodSelected.includes(domCashe.dom[cnm].emptyEl)){
+        var enm = domCashe.dom[cnm].emptyEl;
+        removeProdSel(enm, cnm);
         domCashe.dom[cnm].prodList[enm].isSelected = false;
         domCashe.dom[cnm].prodList[enm].selfDom.checked = false;
       }
@@ -203,60 +234,67 @@ function updateCbState(pnm, cnm){
 function CbCheck(){
   for(const [nm, ob] of Object.entries(domCashe.dom)){
     if(ob.prodType == "checkbox"){
-      if (ob.emptyCb != "blank"){
+      if (ob.emptyEl != "$blank"){
         if(ob.prodList.length<1){
-          ob.prodSelected = [ob.emptyCb]
-          ob.prodList[ob.emptyCb].isSelected = true;
-          ob.prodList[ob.emptyCb].selfDom.checked = true;
-        }else if (ob.prodList.length>1&&ob.prodSelected.includes(ob.emptyCb)){
-          ob.prodSelected.splice(ob.prodSelected.indexOf(ob.emptyCb),1);
-          ob.prodList[ob.emptyCb].isSelected = false;
-          ob.prodList[ob.emptyCb].selfDom.checked = false;
+          ob.prodSelected = [ob.emptyEl]
+          ob.prodList[ob.emptyEl].isSelected = true;
+          ob.prodList[ob.emptyEl].selfDom.checked = true;
+        }else if (ob.prodList.length>1&&ob.prodSelected.includes(ob.emptyEl)){
+          ob.prodSelected.splice(ob.prodSelected.indexOf(ob.emptyEl),1);
+          ob.prodList[ob.emptyEl].isSelected = false;
+          ob.prodList[ob.emptyEl].selfDom.checked = false;
         }
       }
     }
   }
 }
 
+var CFGCbBtHandler = {
+  "updateHeadSel": false
+};
+function CbBtHandler(){
+  let CFG = CFGCbBtHandler;
+  var pnm = this.id;
+  var cnm = "cat-"+this.name;
+  updateCbState(pnm, cnm);
+  if(CFG.updateHeadSel)updateHeadSel(cnm);
+}
 function crCbBt(){
-  function cbHandler(){
-    var pnm = this.id;
-    var cnm = "cat-"+this.name;
-    updateCbState(pnm, cnm);
-  }
-  for(const [nm, ob] of Object.entries(domCashe.dom)){
+  for(const cnm of domCashe.domOrder){
+    var ob = domCashe.dom[cnm];
     var tmpList = ob.selfDom.querySelectorAll("input.part-checkbox");
     if(tmpList.length){
-      ob.emptyCb = "blank"
+      ob.emptyEl = "$blank";
       ob.prodType = "checkbox";
-      ob.prodSelected = []
+      ob.prodSelected = [],
+      ob.prodOrder = [];
       ob.prodList = {};
       for(let i=0;i<tmpList.length;i++){
-        tmpList[i].removeEventListener("change",cbHandler);
-        tmpList[i].addEventListener("change",cbHandler);
+        tmpList[i].removeEventListener("change",CbBtHandler);
+        tmpList[i].addEventListener("change",CbBtHandler);
         var dname = tmpList[i].id;
+        ob.prodOrder.push(dname);
         var cdom = tmpList[i].nextElementSibling;
         ob.prodList[dname] = {
           "selfDom": tmpList[i],
           "cDom": cdom,
           "nmTxt": cdom.querySelector(".part-text-head").innerText,
-          "priceVal": cdom.querySelector(".part-price").dataset.priceval,
-          "parentCat": nm,
+          "priceVal": Number(cdom.querySelector(".part-price").dataset.priceval),
+          "parentCat": cnm,
           "isSelected": tmpList[i].checked,
           "value": tmpList[i].value,
         }
-        if (ob.prodList[dname].value == "emptyval") ob.emptyCb = dname;
+        if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
         if(ob.prodList[dname].isSelected)ob.prodSelected.push(dname);
       }
-    }else{
-      delete ob.emptyCb;
     }
   }
   CbCheck();
 }
 
 function catRedirect(wCat, action="toggle",focus="prod") {
-  for (const [k, ob] of Object.entries(domCashe.dom)) {
+  for (const k of domCashe.domOrder) {
+    ob = domCashe.dom[k];
     if(k === wCat){
       switch(action){
         case "open":
@@ -308,37 +346,134 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   }
 }
 
+var CFGcHeadHandler = {};
+function cHeadHandler(){
+  let CFG = CFGcHeadHandler;
+  var cName = this.parentElement.id;
+  catRedirect(cName);
+}
 function crCOpen(){
-  function chHandler(){
-    var cName = this.parentElement.id;
-    catRedirect(cName);
-  }
-  for(const ob of Object.values(domCashe.dom)){
-    ob.headDom.removeEventListener("click",chHandler);
-    ob.headDom.addEventListener("click",chHandler);
+  for(const cnm of domCashe.domOrder){
+    var ob = domCashe.dom[cnm];
+    ob.headDom.removeEventListener("click",cHeadHandler);
+    ob.headDom.addEventListener("click",cHeadHandler);
   }
 }
+
+var CFGpChangeHandler = {};
+function pChangeHandler(){
+  let CFG = CFGpChangeHandler;
+  var cName = this.parentElement.parentElement.parentElement.parentElement.parentElement.id;
+  catRedirect(cName,"open");
+}
 function crCOpenMinor(){
-  function pcHandler(){
-    var cName = this.parentElement.parentElement.parentElement.parentElement.parentElement.id;
-    catRedirect(cName,"open");
-  }
-  for(const ob of Object.values(domCashe.dom)){
-    if(ob.hasOwnProperty("prodList")){
-      for(const pob of Object.values(ob.prodList)){
-        var tmpch = pob.cDom.querySelector(".btn-change");
-        tmpch.removeEventListener("click",pcHandler);
-        tmpch.addEventListener("click",pcHandler);
+  for(const cnm of domCashe.domOrder){
+    if(domCashe.dom[cnm].hasOwnProperty("prodList")){
+      for(const pnm of domCashe.dom[cnm].prodOrder){
+        var tmpch = domCashe.dom[cnm].prodList[pnm].cDom.querySelector(".btn-change");
+        tmpch.removeEventListener("click",pChangeHandler);
+        tmpch.addEventListener("click",pChangeHandler);
       }
     }
   }
 }
+
+function updateHeadSel(cnm){
+  var ob = domCashe.dom[cnm];
+  if(ob.prodType=="radio"){
+    if(ob.prodSelected == ob.emptyEl){
+      if(ob.hasSelected){
+        ob.hasSelected = false;
+        ob.headDom.classList.remove("contains-selected");
+      }
+    }else if (!ob.hasSelected){
+      ob.hasSelected = true;
+      ob.headDom.classList.add("contains-selected");
+    }
+  }else if(ob.prodType=="checkbox"){
+    if(ob.prodSelected.length<1||(ob.prodSelected.length<2&&ob.prodSelected.includes(ob.emptyEl))){
+      if(ob.hasSelected){
+        ob.hasSelected = false;
+        ob.headDom.classList.remove("contains-selected");
+      }
+    }else if (!ob.hasSelected){
+      ob.hasSelected = true;
+      ob.headDom.classList.add("contains-selected");
+    }
+  }
+}
+
+function crHeadSel(){
+  for(const cnm of domCashe.domOrder){
+    domCashe.dom[cnm].hasSelected = false;
+    updateHeadSel(cnm);
+  }
+  CFGRdBtHandler.updateHeadSel = true;
+  CFGCbBtHandler.updateHeadSel = true;
+}
+
+function updateProdPrice(cnm){
+  var ob = domCashe.dom[cnm];
+  if (ob.prodType == "radio") {
+    var sprice = ob.prodList[ob.prodSelected].priceVal;
+    for (const pnm of ob.prodOrder) {
+      var pob = ob.prodList[pnm];
+      var dfr = pob.priceVal - sprice;
+      if(dfr == 0){
+        pob.priceBlock.innerText = `+0,00€`;
+        if (pob.priceColor != "price-lower"){
+          pob.priceColor = "price-lower";
+          pob.priceBlock.classList.remove("price-higher");
+          pob.priceBlock.classList.add("price-lower");
+        }
+      }else if(dfr < 0){
+        pob.priceBlock.innerText = `${wtDecimal(dfr)}€`;
+        if (pob.priceColor != "price-lower"){
+          pob.priceColor = "price-lower";
+          pob.priceBlock.classList.remove("price-higher");
+          pob.priceBlock.classList.add("price-lower");
+        }
+      }else{
+        pob.priceBlock.innerText = `+${wtDecimal(dfr)}€`;
+        if (pob.priceColor != "price-higher"){
+          pob.priceColor = "price-higher";
+          pob.priceBlock.classList.remove("price-lower");
+          pob.priceBlock.classList.add("price-higher");
+        }
+      }
+    }
+  }
+}
+
+function crProdPrice(){
+  for (const cnm of domCashe.domOrder) {
+    var ob = domCashe.dom[cnm];
+    if (ob.prodType == "radio") {
+      for (const pnm of ob.prodOrder) {
+        var pod = ob.prodList[pnm];
+        pod.priceBlock = pod.cDom.querySelector(".price-block");
+        pod.priceColor = "None";
+      }
+      updateProdPrice(cnm)
+    }else if (ob.prodType == "checkbox") {
+      for (const pnm of ob.prodOrder) {
+        var pod = ob.prodList[pnm];
+        pod.cDom.querySelector(".price-block").innerText = wtDecimal(pod.priceVal);
+      }
+    }
+  }
+  CFGRdBtHandler.updateProdPrice = true;
+}
+
+
 
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
   crCbBt();
 
+  crProdPrice();
   crCOpen();
   crCOpenMinor();
+  crHeadSel();
 })

@@ -435,12 +435,12 @@ body{
   grid-area:part-price;
   padding: 5px;
 }
-.part-checkbox + .listed-part .price-main,
-.part-rd-bt + .listed-part .price-main{display: none;}
-.builder-part-category.lp-show .part-checkbox + .listed-part .price-main{display: initial;}
-.part-rd-bt:checked + .listed-part .price-difference{display: none;}
-.listed-part .price-difference.price-lower{color:#14c714;}
-.listed-part .price-difference.price-higher{color:#ff1b1b;}
+
+.part-rd-bt:checked + .listed-part .price-block{display: none;}
+
+.listed-part .price-block.price-lower{color:#14c714;}
+.listed-part .price-block.price-higher{color:#ff1b1b;}
+
 .listed-part-inner .part-btn{
   display: flex;
   flex-wrap: wrap;
@@ -514,6 +514,10 @@ body{
 .part-checkbox:disabled + .listed-part .part-btn .disabled-part,
 .part-rd-bt:disabled + .listed-part .part-btn .disabled-part{display: inline-block;}
 
+.part-number-input.static-number{
+  display: none;
+}
+
 /*num Button */
 .part-number-input{
   display: flex;
@@ -525,6 +529,7 @@ body{
   text-align: center;
   box-shadow: 0 0.3rem 1.525rem -0.375rem rgb(0 0 0 / 10%);
 }
+
 .part-number-input input{
   display: none;
 }

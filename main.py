@@ -5,12 +5,17 @@ with open("product-list.json","r",encoding="UTF-8") as rawjson:
 
 selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
 cancel = '<label class="btn btn-primary btn-cancel btn-shadow" for="{sel_init}">Ακύρωση</label>'
-num_input_alt = """
+num_input = """
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
     <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display"></span>
     <i class="bi bi-plus part-num-incr"></i>
+  </div>
+"""
+num_input_alt = """
+  <div class="part-number-input static-number">
+    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="1" max="1" value="1">
   </div>
 """
 
@@ -31,8 +36,7 @@ prod_template = """
                 </div>
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
                 <div class="part-price" data-priceval="{part_price}">
-                  <span class="price-main" data-priceval="{part_price}">0,00€</span>
-                  {price_difference}                  
+                  <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
                   <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
@@ -73,12 +77,17 @@ for category in prodlist:
 
       num_input_res = ""
       if "prod-min" in product and "prod-max" in product:
-          num_input_res = num_input_alt.format(
+          num_input_res = num_input.format(
               part_id = product["prod-code"],
               part_cat = category["cat-code"],
               part_min = product["prod-min"],
               part_max = product["prod-max"]
           )
+      else:
+        num_input_res = num_input_alt.format(
+              part_id = product["prod-code"],
+              part_cat = category["cat-code"]
+        )
       #get_av = ""
       #if "prod-av" in product:
           #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
