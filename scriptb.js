@@ -111,30 +111,26 @@ function crCats(){
     domCashe.dom[domCashe.domOrder[domCashe.domOrder.length-1]] = {
       "selfDom": tmpList[i],
       "headDom": tmphead,
-      "nmTxt": tmphead.innerText,
+      "nmTxt": tmphead.textContent,
       "lpState": tmpList[i].classList.contains("lp-show")
     }
   }
 }
 
-function updateRdState(pnm, cnm){
-  var lastl = domCashe.dom[cnm].prodSelected;
+function updateRdState(evArgs){
+  var lastl = domCashe.dom[evArgs.cnm].prodSelected;
   domCashe.dom[cnm].prodList[lastl].isSelected = false;
   domCashe.dom[cnm].prodList[pnm].isSelected = true;
   domCashe.dom[cnm].prodSelected = pnm;
 }
 
-var CFGRdBtHandler = {
-  "updateHeadSel": false,
-  "updateProdPrice": false
-};
+var CFGRdBtHandler = [];
 function RdBtHandler(){
-  let CFG = CFGRdBtHandler;
-  var pnm = this.id;
-  var cnm = "cat-"+this.name;
-  updateRdState(pnm, cnm);
-  if(CFG.updateHeadSel)updateHeadSel(cnm);
-  if(CFG.updateProdPrice)updateProdPrice(cnm);
+  var evArgs = {
+    pnm: this.id,
+    cnm: "cat-"+this.name
+  }
+  for(const fnc of CFGRdBtHandler)fnc(evArgs);
 }
 function crRdBt(){
   for(const cnm of domCashe.domOrder){
@@ -154,7 +150,7 @@ function crRdBt(){
         ob.prodList[dname] = {
           "selfDom": tmpList[i],
           "cDom": cdom,
-          "nmTxt": cdom.querySelector(".part-text-head").innerText,
+          "nmTxt": cdom.querySelector(".part-text-head").textContent,
           "priceVal": Number(cdom.querySelector(".part-price").dataset.priceval),
           "parentCat": cnm,
           "isSelected": tmpList[i].checked,
@@ -165,6 +161,8 @@ function crRdBt(){
       }
     }
   }
+  CFGRdBtHandler.length = 0;
+  CFGRdBtHandler.push(updateRdState);
 }
 
 function addProdSel(pnm, cnm){
@@ -183,7 +181,10 @@ function removeProdSel(pnm, cnm){
   domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(pnm),1);
 }
 
-function updateCbState(pnm, cnm){
+function updateCbState(evArgs){
+  var pnm = evArgs.pnm;
+  var cnm = evArgs.cnm;
+  
   if(domCashe.dom[cnm].prodSelected.includes(pnm)&&domCashe.dom[cnm].emptyEl==pnm){
     if(domCashe.dom[cnm].prodSelected.length>1){
       removeProdSel(pnm, cnm),
@@ -249,15 +250,13 @@ function CbCheck(){
   }
 }
 
-var CFGCbBtHandler = {
-  "updateHeadSel": false
-};
+var CFGCbBtHandler = [];
 function CbBtHandler(){
-  let CFG = CFGCbBtHandler;
-  var pnm = this.id;
-  var cnm = "cat-"+this.name;
-  updateCbState(pnm, cnm);
-  if(CFG.updateHeadSel)updateHeadSel(cnm);
+  var evArgs = {
+    pnm: this.id,
+    cnm: "cat-"+this.name
+  }
+  for (const fnc of CFGCbBtHandler)fnc(evArgs);
 }
 function crCbBt(){
   for(const cnm of domCashe.domOrder){
@@ -278,7 +277,7 @@ function crCbBt(){
         ob.prodList[dname] = {
           "selfDom": tmpList[i],
           "cDom": cdom,
-          "nmTxt": cdom.querySelector(".part-text-head").innerText,
+          "nmTxt": cdom.querySelector(".part-text-head").textContent,
           "priceVal": Number(cdom.querySelector(".part-price").dataset.priceval),
           "parentCat": cnm,
           "isSelected": tmpList[i].checked,
@@ -290,11 +289,17 @@ function crCbBt(){
     }
   }
   CbCheck();
+  CFGCbBtHandler.length = 0;
+  CFGCbBtHandler.push(updateCbState);
 }
 
 function catRedirect(wCat, action="toggle",focus="prod") {
+  var wCat = evArgs.cnm;
+  var action = evArgs.hasOwnProperty("action")?evArgs.action : "toggle";
+  var focus = evArgs.hasOwnProperty("focus")?evArgs.action : "prod";
+
   for (const k of domCashe.domOrder) {
-    ob = domCashe.dom[k];
+    var ob = domCashe.dom[k];
     if(k === wCat){
       switch(action){
         case "open":
@@ -346,11 +351,12 @@ function catRedirect(wCat, action="toggle",focus="prod") {
   }
 }
 
-var CFGcHeadHandler = {};
+CFGcHeadHandler = [];
 function cHeadHandler(){
-  let CFG = CFGcHeadHandler;
-  var cName = this.parentElement.id;
-  catRedirect(cName);
+  var evArgs = {
+    cnm: this.parentElement.id
+  }
+  for(const fnc of CFGcHeadHandler)fnc(evArgs);
 }
 function crCOpen(){
   for(const cnm of domCashe.domOrder){
@@ -358,13 +364,17 @@ function crCOpen(){
     ob.headDom.removeEventListener("click",cHeadHandler);
     ob.headDom.addEventListener("click",cHeadHandler);
   }
+  CFGcHeadHandler.length = 0;
+  CFGcHeadHandler.push(catRedirect);
 }
 
-var CFGpChangeHandler = {};
+CFGpChangeHandler = [];
 function pChangeHandler(){
-  let CFG = CFGpChangeHandler;
-  var cName = this.parentElement.parentElement.parentElement.parentElement.parentElement.id;
-  catRedirect(cName,"open");
+  var evArgs = {
+    cnm: this.parentElement.parentElement.parentElement.parentElement.parentElement.id,
+    action: "open"
+  }
+  for(const fnc of CFGpChangeHandler)fnc(evArgs);
 }
 function crCOpenMinor(){
   for(const cnm of domCashe.domOrder){
@@ -376,10 +386,12 @@ function crCOpenMinor(){
       }
     }
   }
+  CFGpChangeHandler.length = 0;
+  CFGpChangeHandler.push(catRedirect);
 }
 
-function updateHeadSel(cnm){
-  var ob = domCashe.dom[cnm];
+function updateHeadSel(evArgs){
+  var ob = domCashe.dom[evArgs.cnm];
   if(ob.prodType=="radio"){
     if(ob.prodSelected == ob.emptyEl){
       if(ob.hasSelected){
@@ -405,40 +417,53 @@ function updateHeadSel(cnm){
 
 function crHeadSel(){
   for(const cnm of domCashe.domOrder){
-    domCashe.dom[cnm].hasSelected = false;
+    domCashe.dom[cnm].hasSelected = domCashe.dom[cnm].headDom.classList.contains("contains-selected");
     updateHeadSel(cnm);
   }
-  CFGRdBtHandler.updateHeadSel = true;
-  CFGCbBtHandler.updateHeadSel = true;
+  CFGRdBtHandler.push(updateHeadSel);
+  CFGCbBtHandler.push(updateHeadSel);
 }
 
-function updateProdPrice(cnm){
-  var ob = domCashe.dom[cnm];
+function updateProdPrice(evArgs){
+  var ob = domCashe.dom[evArgs.cnm];
   if (ob.prodType == "radio") {
     var sprice = ob.prodList[ob.prodSelected].priceVal;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
       var dfr = pob.priceVal - sprice;
       if(dfr == 0){
-        pob.priceBlock.innerText = `+0,00€`;
-        if (pob.priceColor != "price-lower"){
-          pob.priceColor = "price-lower";
+        pob.priceBlock.textContent = `+0,00€`;
+        if(pob.priceColorHigher){
+          pob.priceColorHigher = false;
           pob.priceBlock.classList.remove("price-higher");
+        }
+        if(!pob.priceColorLower){
+          pob.priceColorLower = true;
           pob.priceBlock.classList.add("price-lower");
         }
       }else if(dfr < 0){
-        pob.priceBlock.innerText = `${wtDecimal(dfr)}€`;
+        pob.priceBlock.textContent = `${wtDecimal(dfr)}€`;
         if (pob.priceColor != "price-lower"){
-          pob.priceColor = "price-lower";
-          pob.priceBlock.classList.remove("price-higher");
-          pob.priceBlock.classList.add("price-lower");
+          if(pob.priceColorHigher){
+            pob.priceColorHigher = false;
+            pob.priceBlock.classList.remove("price-higher");
+          }
+          if(!pob.priceColorLower){
+            pob.priceColorLower = true;
+            pob.priceBlock.classList.add("price-lower");
+          }
         }
       }else{
-        pob.priceBlock.innerText = `+${wtDecimal(dfr)}€`;
+        pob.priceBlock.textContent = `+${wtDecimal(dfr)}€`;
         if (pob.priceColor != "price-higher"){
-          pob.priceColor = "price-higher";
-          pob.priceBlock.classList.remove("price-lower");
-          pob.priceBlock.classList.add("price-higher");
+          if(!pob.priceColorHigher){
+            pob.priceColorHigher = true;
+            pob.priceBlock.classList.add("price-higher");
+          }
+          if(pob.priceColorLower){
+            pob.priceColorLower = false;
+            pob.priceBlock.classList.remove("price-lower");
+          }
         }
       }
     }
@@ -452,25 +477,123 @@ function crProdPrice(){
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
         pod.priceBlock = pod.cDom.querySelector(".price-block");
-        pod.priceColor = "None";
+        pod.priceColorHigher = pod.priceBlock.classList.contains("price-higher");
+        pod.priceColorLower = pod.priceBlock.classList.contains("price-lower");
       }
-      updateProdPrice(cnm)
+      updateProdPrice(cnm);
     }else if (ob.prodType == "checkbox") {
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
-        pod.cDom.querySelector(".price-block").innerText = wtDecimal(pod.priceVal);
+        pod.cDom.querySelector(".price-block").textContent = wtDecimal(pod.priceVal);
       }
     }
   }
-  CFGRdBtHandler.updateProdPrice = true;
+  CFGRdBtHandler.push(updateProdPrice);
 }
 
+function updateNumberInput(partDom, action="update"){
+  var inputHead = partDom.querySelector(".part-number-input");
+  if(!inputHead)return;
+  var inputValue = inputHead.querySelector(".part-quantity");
+  var inputMin = Number(inputValue.min);
+  var inputMax = Number(inputValue.max);
+  inputHead.classList.remove("decr-av","incr-av");
+  if(!partDom.previousElementSibling.checked){
+    inputValue.disabled = true;
+    inputValue.value = 0;
+  }else{
+    inputValue.disabled = false;
+    if(inputValue.value < inputMin || inputValue.value > inputMax){
+      inputValue.value = inputMin;
+    }else if(action == "increment" && inputValue.value < inputMax){
+      inputValue.value++;
+    }else if(action == "decrement" && inputValue.value > inputMin){
+      inputValue.value--;
+    }
+    if(inputValue.value > inputMin){
+      inputHead.classList.add("decr-av");
+    }
+    if(inputValue.value < inputMax){
+      inputHead.classList.add("incr-av");
+    }     
+  }
+  inputHead.querySelector(".quantity-display").innerHTML = inputValue.value;
+}
+
+function updateCatQuant(cnm){
+  var ob = domCashe.dom[cnm];
+  for (const pnm of ob.prodOrder) {
+    var pob = ob.prodList[pnm]
+    if(pob.isSelected){
+      if(pob.qDisabled){
+        pob.qDisabled = false;
+        pob.qInput.disabled = false;
+        if(pob.qType == "dynamic" && (pob.qValue<pob.qMin || pob.qValue>pob.qMax)){
+          pob.qValue = qMin;
+          pob.qInput.value = qMin;
+          pob.qDisplay.textContent = qMin;
+        }
+      }
+    }else{
+      if(!pob.qDisabled){
+        pob.qDisabled = true;
+        pob.qInput.disabled = true;
+        if(pob.qType == "dynamic" && pob.qValue != 0){
+          pob.qValue = 0;
+          pob.qInput.value = 0;
+          pob.qDisplay.textContent = 0;
+        }
+      }
+    }
+  }
+}
+
+var CFGquantHandler={}
+function quantIncrHandler(){
+  var CFG = CFGquantHandler;
+}
+function quantDecrHandler(){
+  var CFG = CFGquantHandler;
+}
+function crQuantity(){
+  for (const cnm of domCashe.domOrder) {
+    var ob = domCashe.dom[cnm];
+    for (const pnm of ob.prodOrder) {
+      var pob = ob.prodList[pnm];
+      var  qcont = pob.cDom.querySelector(".part-number-input");
+      pob.qInput = qcont.querySelector(".part-quantity");
+      pob.qDisabled = pob.qInput.disabled;
+      if (qcont.classList.contains("static-number")) {
+        pob.qType = "static";
+      }else{
+        pob.qType = "dynamic";
+        pob.qAddAv = qcont.classList.contains("incr-av");
+        pob.qSubAv = qcont.classList.contains("decr-av");
+        pob.qDisplay = qcont.querySelector(".quantity-display");
+        pob.qValue = Number(pob.qInput.value);
+        pob.qMin = Number(pob.qInput.min);
+        pob.qMax = Number(pob.qInput.max);
+
+        var btAdd = qcont.querySelector(".part-num-incr");
+        btAdd.removeEventListener("click",quantIncrHandler);
+        btAdd.addEventListener("click",quantIncrHandler);
+        var btSub = qcont.querySelector(".part-num-decr");
+        btSub.removeEventListener("click",quantDecrHandler);
+        btSub.addEventListener("click",quantDecrHandler);
+      }
+    }
+    updateCatQuant(cnm);
+  }
+  CFGRdBtHandler.push(updateCatQuant);
+  CFGCbBtHandler.push(updateCatQuant);
+}
 
 
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
   crCbBt();
+  crQuantity();
 
   crProdPrice();
   crCOpen();

@@ -9,7 +9,7 @@ num_input = """
   <div class="part-number-input">
     <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
     <i class="bi bi-dash part-num-decr"></i>
-    <span class="quantity-display"></span>
+    <span class="quantity-display">0</span>
     <i class="bi bi-plus part-num-incr"></i>
   </div>
 """
@@ -39,7 +39,7 @@ prod_template = """
                   <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
-                  <label class="btn btn-success btn-change btn-shadow" >Αλλαγή</label>
+                  <label class="btn btn-success btn-change btn-shadow">Αλλαγή</label>
                   <label class="btn btn-success btn-select btn-shadow" for="{part_id}">Επιλογή</label>
                   {sec_btn}
                   <div class="disabled-part">disabled</div>
