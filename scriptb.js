@@ -674,6 +674,20 @@ function crFinalPrice(){
   }
 }
 
+var CFGprodNavHandler = [];
+function prodNavHandler(){
+  // var evArgs = {
+  //   cnm: pob.parentElement.parentElement.id,
+  // }
+  // for(const fnc of CFGprodNavHandler)fnc(evArgs);
+}
+function crProdNav(){
+  domCashe.navBody = {};
+  var navBody = document.getElementById("prod-navigation");
+  if(!navBody)return;
+
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
@@ -685,4 +699,5 @@ document.addEventListener("DOMContentLoaded", function(){
   crCOpen();
   crCOpenMinor();
   crHeadSel();
+  crProdNav()
 })
