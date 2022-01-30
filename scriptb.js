@@ -95,10 +95,11 @@ var compConfig = {
 }
 
 var domCashe = {
-  "dom":{},
-  "domOrder":[],
-  "buildModal":{},
-  "prodNav":{}
+  "dom": {},
+  "domOrder": [],
+  "buildModal": {},
+  "prodNav": {},
+  "finalPrice": {}
 };
 
 function crCats(){
@@ -623,9 +624,55 @@ function crQuantity(){
   }
   CFGRdBtHandler.push(updateCatQuant);
   CFGCbBtHandler.push(updateCatQuant);
+
+  CFGquantHandler.length = 0;
   CFGquantHandler.push(updateNumberInput);
 }
 
+function updateFinalPrice(evArgs){
+  var nresult = 0;
+  for(const ob of Object.values(domCashe.dom)){
+    if(ob.prodType=="radio"){
+      var pob = ob.prodList[ob.prodSelected];
+      nresult+= pob.priceVal * pob.qValue;
+    }else if(ob.prodType=="checkbox"){
+      for(const pnm of ob.prodSelected){
+        var pob = ob.prodList[pnm];
+        nresult+= pob.priceVal * pob.qValue;
+      }
+    }
+  }
+  if(nresult!=domCashe.finalPrice.totalVal){
+    domCashe.finalPrice.totalVal = nresult;
+    if(domCashe.finalPrice.priceDom.length){
+      var pricestr = wtDecimal(nresult);
+      for(const priceItem of domCashe.finalPrice.priceDom){
+        priceItem.textContent = pricestr;
+      }
+    }
+    if(domCashe.finalPrice.priceTaxLessDom.length){
+      var pricestr = wtDecimal(Math.floor(nresult/1.24));
+      for(const priceItem of domCashe.finalPrice.priceTaxLessDom){
+        priceItem.textContent = pricestr;
+      }
+    }
+  }
+}
+
+function crFinalPrice(){
+  domCashe.finalPrice = {}
+  var buildPrice = document.querySelectorAll(".build-price-total");
+  var buildPriceTaxLess = document.querySelectorAll(".build-price-taxless");
+  domCashe.finalPrice.priceDom = new Array(...buildPrice);
+  domCashe.finalPrice.priceTaxLessDom = new Array(...buildPriceTaxLess);
+  if(buildPrice.length||buildPriceTaxLess.length){
+    domCashe.finalPrice.totalVal = 0;
+    updateFinalPrice({});
+    CFGRdBtHandler.push(updateFinalPrice);
+    CFGCbBtHandler.push(updateFinalPrice);
+    CFGquantHandler.push(updateFinalPrice);
+  }
+}
 
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
@@ -634,6 +681,7 @@ document.addEventListener("DOMContentLoaded", function(){
   crQuantity();
 
   crProdPrice();
+  crFinalPrice();
   crCOpen();
   crCOpenMinor();
   crHeadSel();

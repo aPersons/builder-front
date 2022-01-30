@@ -15,7 +15,7 @@ num_input = """
 """
 num_input_alt = """
   <div class="part-number-input static-number">
-    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="1" max="1" value="1">
+    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" value="1">
   </div>
 """
 
