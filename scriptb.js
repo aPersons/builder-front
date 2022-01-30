@@ -493,77 +493,104 @@ function crProdPrice(){
   CFGRdBtHandler.push(updateProdPrice);
 }
 
-function updateNumberInput(partDom, action="update"){
-  var inputHead = partDom.querySelector(".part-number-input");
-  if(!inputHead)return;
-  var inputValue = inputHead.querySelector(".part-quantity");
-  var inputMin = Number(inputValue.min);
-  var inputMax = Number(inputValue.max);
-  inputHead.classList.remove("decr-av","incr-av");
-  if(!partDom.previousElementSibling.checked){
-    inputValue.disabled = true;
-    inputValue.value = 0;
+function updateNumberInput(evArgs){
+  var cnm = evArgs.cnm;
+  var pnm = evArgs.pnm;
+  var opcode = evArgs.hasOwnProperty("opcode")?evArgs.opcode:"update";
+  var pob = domCashe.dom[cnm].prodList[pnm];
+  if(pob.isSelected){
+    if(pob.qDisabled){
+      pob.qDisabled = false;
+      pob.qInput.disabled = false;
+    }
+    if(pob.qType == "dynamic"){
+      if(pob.qValue<pob.qMin || pob.qValue>pob.qMax){
+        pob.qValue = pob.qMin;
+        pob.qInput.value = pob.qMin;
+        pob.qDisplay.textContent = pob.qMin;
+      }else if (opcode == "add" && pob.qValue<pob.qMax){
+        pob.qValue ++;
+        pob.qInput.value = pob.qValue;
+        pob.qDisplay.textContent = pob.qValue;
+      }else if (opcode == "sub" && pob.qValue>pob.qMin){
+        pob.qValue --;
+        pob.qInput.value = pob.qValue;
+        pob.qDisplay.textContent = pob.qValue;
+      }
+      if(pob.qValue < pob.qMax){
+        if(!pob.qAddAv){
+          pob.qAddAv = true;
+          pob.qCont.classList.add("incr-av");
+        }
+      }else{
+        if(pob.qAddAv){
+          pob.qAddAv = false;
+          pob.qCont.classList.remove("incr-av");
+        }
+      }
+      if(pob.qValue > pob.qMin){
+        if(!pob.qSubAv){
+          pob.qSubAv = true;
+          pob.qCont.classList.add("decr-av");
+        }
+      }else{
+        if(pob.qSubAv){
+          pob.qSubAv = false;
+          pob.qCont.classList.remove("decr-av");
+        }
+      }        
+    }
   }else{
-    inputValue.disabled = false;
-    if(inputValue.value < inputMin || inputValue.value > inputMax){
-      inputValue.value = inputMin;
-    }else if(action == "increment" && inputValue.value < inputMax){
-      inputValue.value++;
-    }else if(action == "decrement" && inputValue.value > inputMin){
-      inputValue.value--;
+    if(!pob.qDisabled){
+      pob.qDisabled = true;
+      pob.qInput.disabled = true;
     }
-    if(inputValue.value > inputMin){
-      inputHead.classList.add("decr-av");
+    if(pob.qType == "dynamic"){
+      if(pob.qValue != 0){
+        pob.qValue = 0;
+        pob.qInput.value = 0;
+        pob.qDisplay.textContent = 0;
+      }
+      if(pob.qAddAv){
+        pob.qAddAv = false;
+        pob.qCont.classList.remove("incr-av");
+      }
+      if(pob.qSubAv){
+        pob.qSubAv = false;
+        pob.qCont.classList.remove("decr-av");
+      }
     }
-    if(inputValue.value < inputMax){
-      inputHead.classList.add("incr-av");
-    }     
   }
-  inputHead.querySelector(".quantity-display").innerHTML = inputValue.value;
 }
 
 function updateCatQuant(evArgs){
   var ob = domCashe.dom[evArgs.cnm];
   for (const pnm of ob.prodOrder) {
-    var pob = ob.prodList[pnm]
-    if(pob.isSelected){
-      if(pob.qDisabled){
-        pob.qDisabled = false;
-        pob.qInput.disabled = false;
-        if(pob.qType == "dynamic" && (pob.qValue<pob.qMin || pob.qValue>pob.qMax)){
-          pob.qValue = pob.qMin;
-          pob.qInput.value = pob.qMin;
-          pob.qDisplay.textContent = pob.qMin;
-        }
-      }
-    }else{
-      if(!pob.qDisabled){
-        pob.qDisabled = true;
-        pob.qInput.disabled = true;
-        if(pob.qType == "dynamic" && pob.qValue != 0){
-          pob.qValue = 0;
-          pob.qInput.value = 0;
-          pob.qDisplay.textContent = 0;
-          if(pob.qAddAv){
-            pob.qAddAv = false;
-            pob.qCont.classList.remove("incr-av");
-          }
-          if(pob.qSubAv){
-            pob.qSubAv = false;
-            pob.qCont.classList.remove("decr-av");
-          }
-        }
-      }
-    }
+    updateNumberInput({
+      "cnm": evArgs.cnm,
+      "pnm": pnm
+    });
   }
 }
 
-var CFGquantHandler={}
+var CFGquantHandler=[];
 function quantIncrHandler(){
-  var CFG = CFGquantHandler;
+  var pob = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling;
+  var evArgs = {
+    pnm: pob.id,
+    cnm: pob.parentElement.parentElement.id,
+    opcode: "add"
+  }
+  for(const fnc of CFGquantHandler)fnc(evArgs);
 }
 function quantDecrHandler(){
-  var CFG = CFGquantHandler;
+  var pob = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling;
+  var evArgs = {
+    pnm: pob.id,
+    cnm: pob.parentElement.parentElement.id,
+    opcode: "sub"
+  }
+  for(const fnc of CFGquantHandler)fnc(evArgs);
 }
 function crQuantity(){
   for (const cnm of domCashe.domOrder) {
@@ -596,6 +623,7 @@ function crQuantity(){
   }
   CFGRdBtHandler.push(updateCatQuant);
   CFGCbBtHandler.push(updateCatQuant);
+  CFGquantHandler.push(updateNumberInput);
 }
 
 
