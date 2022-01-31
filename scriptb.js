@@ -674,18 +674,40 @@ function crFinalPrice(){
   }
 }
 
+function updateNavplpShow(){
+  
+}
+
 var CFGprodNavHandler = [];
 function prodNavHandler(){
-  // var evArgs = {
-  //   cnm: pob.parentElement.parentElement.id,
-  // }
-  // for(const fnc of CFGprodNavHandler)fnc(evArgs);
+  var evArgs = {
+    cnm: this.dataset.navdest,
+  }
+  for(const fnc of CFGprodNavHandler)fnc(evArgs);
 }
 function crProdNav(){
-  domCashe.navBody = {};
+  domCashe.prodNav = {};
   var navBody = document.getElementById("prod-navigation");
   if(!navBody)return;
-
+  domCashe.prodNav.navBody = navBody;
+  domCashe.prodNav.navigators = {};
+  var navstr = "";
+  for(const cnm of domCashe.domOrder){
+    var ob = domCashe.dom[cnm];
+    domCashe.prodNav.navigators["cnm"]={
+      "lpState": ob.lpState,
+      "hasSelected": ob.hasSelected
+    };
+    navstr += `<div class="prod-navigator" data-navdest="${cnm}" ${ob.lpState?'style="background-color: #f6f6f6"':""}><i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i>${ob.nmTxt}<i class="bi bi-tools"></i></div>`;
+  }
+  navBody.innerHTML = navstr;
+  var navList = navBody.querySelectorAll(".prod-navigator");
+  for(let i=0;i<navList.length;i++){
+    var cnm = navList[i].dataset.navdest;
+    domCashe.prodNav.navigators["cnm"].navDom = navList[i];
+    navList[i].addEventListener("click",prodNavHandler);
+  }
+  CFGprodNavHandler.length = 0;
 }
 
 document.addEventListener("DOMContentLoaded", function(){
