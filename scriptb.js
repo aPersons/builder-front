@@ -150,6 +150,7 @@ function crRdBt(){
         var dname = tmpList[i].id;
         ob.prodOrder.push(dname);
         var cdom = tmpList[i].nextElementSibling;
+        var erpL = tmpList[i].dataset.erp;
         ob.prodList[dname] = {
           "selfDom": tmpList[i],
           "cDom": cdom,
@@ -158,6 +159,7 @@ function crRdBt(){
           "parentCat": cnm,
           "isSelected": tmpList[i].checked,
           "value": tmpList[i].value,
+          "erp": erpL?erpL:"-"
         }
         if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
         if (ob.prodList[dname].isSelected)ob.prodSelected = dname;
@@ -277,6 +279,7 @@ function crCbBt(){
         var dname = tmpList[i].id;
         ob.prodOrder.push(dname);
         var cdom = tmpList[i].nextElementSibling;
+        var erpL = tmpList[i].dataset.erp;
         ob.prodList[dname] = {
           "selfDom": tmpList[i],
           "cDom": cdom,
@@ -285,6 +288,7 @@ function crCbBt(){
           "parentCat": cnm,
           "isSelected": tmpList[i].checked,
           "value": tmpList[i].value,
+          "erp": erpL?erpL:"-"
         }
         if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
         if(ob.prodList[dname].isSelected)ob.prodSelected.push(dname);
@@ -674,8 +678,30 @@ function crFinalPrice(){
   }
 }
 
-function updateNavplpShow(){
-  
+function updateNavlpShow(evArgs){
+  for(const [cnm, navob] of Object.entries(domCashe.prodNav.navigators)){
+    if(domCashe.dom[cnm].lpState && !navob.lpState){
+      navob.lpState = true;
+      navob.navDom.style.backgroundColor = "#f6f6f6";
+    }else if (!domCashe.dom[cnm].lpState && navob.lpState){
+      navob.lpState = false;
+      navob.navDom.style.backgroundColor = "";
+    }
+  }
+}
+
+function updateNavCatHasSelected(evArgs){
+  if(domCashe.dom[evArgs.cnm].hasSelected && !domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
+    domCashe.prodNav.navigators[evArgs.cnm].hasSelected = true;
+    var domMark = domCashe.prodNav.navigators[evArgs.cnm].navDom.firstElementChild;
+    domMark.classList.remove("bi-slash-circle");
+    domMark.classList.add("bi-check-circle");
+  }else if(!domCashe.dom[evArgs.cnm].hasSelected && domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
+    domCashe.prodNav.navigators[evArgs.cnm].hasSelected = false;
+    var domMark = domCashe.prodNav.navigators[evArgs.cnm].navDom.firstElementChild;
+    domMark.classList.remove("bi-check-circle");
+    domMark.classList.add("bi-slash-circle");
+  }
 }
 
 var CFGprodNavHandler = [];
@@ -694,20 +720,145 @@ function crProdNav(){
   var navstr = "";
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm];
-    domCashe.prodNav.navigators["cnm"]={
+    domCashe.prodNav.navigators[cnm]={
       "lpState": ob.lpState,
       "hasSelected": ob.hasSelected
     };
-    navstr += `<div class="prod-navigator" data-navdest="${cnm}" ${ob.lpState?'style="background-color: #f6f6f6"':""}><i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i>${ob.nmTxt}<i class="bi bi-tools"></i></div>`;
+    navstr += `<div class="prod-navigator" data-navdest="${cnm}" ${ob.lpState?'style="background-color: #f6f6f6"':""}>
+    <i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i>${ob.nmTxt}<i class="bi bi-tools"></i></div>`;
   }
   navBody.innerHTML = navstr;
   var navList = navBody.querySelectorAll(".prod-navigator");
   for(let i=0;i<navList.length;i++){
     var cnm = navList[i].dataset.navdest;
-    domCashe.prodNav.navigators["cnm"].navDom = navList[i];
+    domCashe.prodNav.navigators[cnm].navDom = navList[i];
     navList[i].addEventListener("click",prodNavHandler);
   }
+  CFGcHeadHandler.push(updateNavlpShow);
+  CFGpChangeHandler.push(updateNavlpShow);
+
   CFGprodNavHandler.length = 0;
+  CFGprodNavHandler.push(catRedirect);
+  CFGprodNavHandler.push(updateNavlpShow);
+
+  CFGRdBtHandler.push(updateNavCatHasSelected);
+  CFGCbBtHandler.push(updateNavCatHasSelected);
+}
+
+function updateBuildModal(evArgs){
+  var linktext = window.location.href.split('&');
+  //linktext = `${linktext[0]}&${linktext[1]}&prefill=1`; //
+  linktext = `https://www.msystems.gr/section/systems_new/?&system=18&prefill=1`;   //temp change
+  var tabletext = `<div class="table-row">
+  <div class="modal-cat-header">Κατηγορία</div>
+  <div class="modal-prnum-header">Κωδικός</div>
+  <div class="modal-product-header">Προϊόν</div>
+  <div class="modal-quant-header">Τμχ.</div>
+  <div class="modal-price-header">Τιμή</div>
+  <div class="modal-total-header">Σύνολο</div></div>`;
+  var totalVal = 0;
+  for(let i=0;i<domCashe.domOrder.length;i++){
+    var ob = domCashe.dom[domCashe.domOrder[i]];
+    if(ob.prodType == "radio"){
+      var pob = ob.prodList[ob.prodSelected];
+      tabletext += `<div class="table-row">
+      <div class="cat-nm">${ob.nmTxt}</div>
+      <div class="erp-pn">${pob.erp}</div>
+      <div class="prod-nm">${pob.nmTxt}</div>
+      <div class="prod-quant">${pob.qValue}x</div>
+      <div class="prod-price">${wtDecimal(pob.priceVal)} €</div>
+      <div class="prod-price-total">${wtDecimal(pob.qValue * pob.priceVal)} €</div>
+      </div>`;
+      totalVal+= (pob.qValue * pob.priceVal);
+      if(ob.hasSelected)linktext += `&o${i}=${pob.Value}&q${i}=${pob.qValue}`;
+    }else if(ob.prodType == "checkbox"){
+      for(const pnm of ob.prodSelected){
+        var pob = ob.prodList[pnm];
+        tabletext += `<div class="table-row">
+        <div class="cat-nm">${ob.nmTxt}</div>
+        <div class="erp-pn">${pob.erp}</div>
+        <div class="prod-nm">${pob.nmTxt}</div>
+        <div class="prod-quant">${pob.qValue}x</div>
+        <div class="prod-price">${wtDecimal(pob.priceVal)} €</div>
+        <div class="prod-price-total">${wtDecimal(pob.qValue * pob.priceVal)} €</div>
+        </div>`;
+        totalVal+= (pob.qValue * pob.priceVal);
+        if(ob.hasSelected)linktext += `&o${i}[]=${pob.Value}&q${i}[]=${pob.qValue}`;
+      }
+    }
+  }
+  tabletext += `<div class="table-row">
+  <div class="modal-total-title">Σύνολο:</div>
+  <div></div><div></div><div></div><div></div>
+  <div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
+  </div>`
+  domCashe.buildModal.modalTable.innerHTML = tabletext;
+  domCashe.buildModal.linkFull = linktext;
+  domCashe.buildModal.qLink = "Δημιουργία σύνδεσμου";
+  domCashe.buildModal.footerLinkBody.textContent = "Δημιουργία σύνδεσμου";
+}
+
+async function buildShortLink(evArgs) {
+  try{
+    if(domCashe.buildModal.qLink == "Δημιουργία σύνδεσμου"){
+
+      const request = await fetch(
+        'https://api-ssl.bitly.com/v4/shorten',{
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${gettoken}`,
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ "long_url": domCashe.buildModal.linkFull})
+      })
+      
+      if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
+      const getjson = await request.json()
+      domCashe.buildModal.qLink = getjson["link"];
+      domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
+    }
+    navigator.clipboard.writeText(domCashe.buildModal.qLink);
+  }catch(err){
+    domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
+    domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
+    console.log(err)
+    try{
+      navigator.clipboard.writeText(domCashe.buildModal.linkFull);
+    }catch{}
+  }
+}
+
+CFGbuildModalOpenHandler = [];
+function buildModalOpenHandler(){
+  var evArgs = {}
+  for(const fnc of CFGbuildModalOpenHandler)fnc(evArgs);
+}
+CFGbuildShortLinkHandler = [];
+function buildShortLinkHandler(){
+  var evArgs = {}
+  for(const fnc of CFGbuildShortLinkHandler)fnc(evArgs);
+}
+function crBuildModal(){
+  domCashe.buildModal = {};
+  var mdl = document.getElementById("build-modal");
+  if(!mdl)return;
+  domCashe.buildModal.modalTable = mdl.querySelector(".modal-body .modal-table");
+  domCashe.buildModal.footerLinkBody = mdl.querySelector(".footer-link-body");
+  domCashe.buildModal.linkFull = "";
+  var btnCopy = mdl.querySelector(".btn-copy-link");
+  btnCopy.removeEventListener("click", buildShortLinkHandler);
+  btnCopy.addEventListener("click", buildShortLinkHandler);
+
+  var btns = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#build-modal"]');
+  for(const btn of btns){
+    btn.removeEventListener("click",buildModalOpenHandler);
+    btn.addEventListener("click",buildModalOpenHandler);
+  }
+  CFGbuildModalOpenHandler.length=0;
+  CFGbuildModalOpenHandler.push(updateBuildModal);
+
+  CFGbuildShortLinkHandler.length=0;
+  CFGbuildShortLinkHandler.push(buildShortLink);
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -721,5 +872,6 @@ document.addEventListener("DOMContentLoaded", function(){
   crCOpen();
   crCOpenMinor();
   crHeadSel();
-  crProdNav()
+  crProdNav();
+  crBuildModal();
 })
