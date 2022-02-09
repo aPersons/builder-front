@@ -326,36 +326,38 @@ function catRedirect(evArgs) {
       ob.selfDom.classList.remove("lp-show");
     }
   }
-  if(focus=="none"){return}
-  var catState = domCashe.dom[wCat].lpState;
-  var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
-  var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
-  var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
-  if(!catState || focus == "cat" || !selprod){
-    window.scrollTo({
-      top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
-      behavior: 'smooth'
-    });
-  }else{
-    var selprodTop = selprod.getBoundingClientRect().top;
-    var selprodBot = selprod.getBoundingClientRect().bottom;
-    if((window.innerHeight/2-140)>selprodTop-catPosTop){
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    if(focus=="none"){return}
+    var catState = domCashe.dom[wCat].lpState;
+    var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
+    var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
+    var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
+    if(!catState || focus == "cat" || !selprod){
       window.scrollTo({
         top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
         behavior: 'smooth'
       });
-    }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-      window.scrollTo({
-        top:catPosBot+window.pageYOffset-window.innerHeight+50,
-        behavior: 'smooth'
-    });
     }else{
-      window.scrollTo({
-        top:selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2,
-        behavior: 'smooth'
+      var selprodTop = selprod.getBoundingClientRect().top;
+      var selprodBot = selprod.getBoundingClientRect().bottom;
+      if((window.innerHeight/2-140)>selprodTop-catPosTop){
+        window.scrollTo({
+          top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
+          behavior: 'smooth'
+        });
+      }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
+        window.scrollTo({
+          top:catPosBot+window.pageYOffset-window.innerHeight+50,
+          behavior: 'smooth'
       });
+      }else{
+        window.scrollTo({
+          top:selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2,
+          behavior: 'smooth'
+        });
+      }
     }
-  }
+  })});  
 }
 
 CFGcHeadHandler = [];
@@ -682,10 +684,10 @@ function updateNavlpShow(evArgs){
   for(const [cnm, navob] of Object.entries(domCashe.prodNav.navigators)){
     if(domCashe.dom[cnm].lpState && !navob.lpState){
       navob.lpState = true;
-      navob.navDom.style.backgroundColor = "#f6f6f6";
+      navob.navDom.classList.add("navlpshow");
     }else if (!domCashe.dom[cnm].lpState && navob.lpState){
       navob.lpState = false;
-      navob.navDom.style.backgroundColor = "";
+      navob.navDom.classList.remove("navlpshow");
     }
   }
 }
@@ -724,8 +726,8 @@ function crProdNav(){
       "lpState": ob.lpState,
       "hasSelected": ob.hasSelected
     };
-    navstr += `<div class="prod-navigator" data-navdest="${cnm}" ${ob.lpState?'style="background-color: #f6f6f6"':""}>
-    <i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i>${ob.nmTxt}<i class="bi bi-tools"></i></div>`;
+    navstr += `<div class="prod-navigator ${ob.lpState?'navlpshow':""}" data-navdest="${cnm}">
+    <i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i><span>${ob.nmTxt}</span><i class="bi bi-tools"></i></div>`;
   }
   navBody.innerHTML = navstr;
   var navList = navBody.querySelectorAll(".prod-navigator");
