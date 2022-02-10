@@ -334,7 +334,7 @@ function catRedirect(evArgs) {
     var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
     if(!catState || focus == "cat" || !selprod){
       window.scrollTo({
-        top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
+        top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 138 : 128),
         behavior: 'smooth'
       });
     }else{
@@ -342,17 +342,17 @@ function catRedirect(evArgs) {
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
         window.scrollTo({
-          top:catPosTop+window.pageYOffset-(window.innerWidth > 991 ? 138 : 128),
+          top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 138 : 128),
           behavior: 'smooth'
         });
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
         window.scrollTo({
-          top:catPosBot+window.pageYOffset-window.innerHeight+50,
+          top:catPosBot+window.scrollY-window.innerHeight+50,
           behavior: 'smooth'
       });
       }else{
         window.scrollTo({
-          top:selprodTop+window.pageYOffset-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2,
+          top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2,
           behavior: 'smooth'
         });
       }
@@ -706,6 +706,68 @@ function updateNavCatHasSelected(evArgs){
   }
 }
 
+function updateNavPos(){
+  requestAnimationFrame(function(){requestAnimationFrame(function(){
+    if(domCashe.prodNav.parentBody.getBoundingClientRect().bottom<170 && window.innerWidth<=767){
+      if(!domCashe.prodNav.fixedMode){
+        domCashe.prodNav.fixedMode = true;
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          domCashe.prodNav.parentBody.style.paddingBottom = `${15+domCashe.prodNav.navBody.getBoundingClientRect().height}px`;
+          domCashe.prodNav.navBody.classList.add("fixed-mode");
+        }));
+      }
+    }else{
+      if(domCashe.prodNav.fixedMode){
+        domCashe.prodNav.fixedMode = false;
+        requestAnimationFrame(()=>requestAnimationFrame(()=>{
+          domCashe.prodNav.parentBody.style.paddingBottom = "";
+          domCashe.prodNav.navBody.classList.remove("fixed-mode");
+        }));
+      }
+    }    
+    if(domCashe.prodNav.fixedMode){
+      var focused = "";
+      var rdistance = 0;
+      for(let i = 0;i< domCashe.domOrder.length;i++){
+        var nhead = domCashe.dom[domCashe.domOrder[i]].selfDom.getBoundingClientRect().top;
+        var nfloor = domCashe.dom[domCashe.domOrder[i]].selfDom.getBoundingClientRect().bottom;
+        if(nhead<window.innerHeight-50 && nfloor>225){
+          if(!focused){
+            focused = domCashe.domOrder[i]
+            rdistance = nfloor
+          }else if (nfloor<rdistance){
+            focused = domCashe.domOrder[i]
+            rdistance = nfloor
+          }
+        }
+      }
+      for(const [cnm, navob]of Object.entries(domCashe.prodNav.navigators)){
+        if(cnm != focused){
+          if(navob.isFocused){
+            navob.isFocused = false;
+            navob.navDom.classList.remove("isfocused")
+          }
+        }else if(!navob.isFocused){
+          navob.isFocused = true;
+          navob.navDom.classList.add("isfocused")
+          requestAnimationFrame(()=>requestAnimationFrame(()=>{
+            var navbody = domCashe.prodNav.navBody;
+            var bpos = domCashe.prodNav.navigators[focused].navDom.getBoundingClientRect()
+            var bleft = bpos.left;
+            var bwidth = bpos.width;
+            var posOffset = navbody.scrollLeft+bleft-((window.innerWidth-bwidth)/2);
+            navbody.scrollTo({
+              top:0,
+              left: posOffset,
+              behavior: "smooth"
+            });
+          }))
+        }
+      }
+    }
+  })})
+}
+
 var CFGprodNavHandler = [];
 function prodNavHandler(){
   var evArgs = {
@@ -713,18 +775,38 @@ function prodNavHandler(){
   }
   for(const fnc of CFGprodNavHandler)fnc(evArgs);
 }
+var CFGscrollHandler = [];
+var scrollHandlerAv = true;
+var tmRef;
+function scrollHandler(){
+  if(scrollHandlerAv){
+    scrollHandlerAv = false;
+    for(const fnc of CFGscrollHandler)fnc();
+    setTimeout(()=>scrollHandlerAv=true,100);
+  }
+  clearTimeout(tmRef);
+  tmRef = setTimeout(scrollHandlerEnd,100)
+}
+function scrollHandlerEnd(){
+  scrollHandlerAv = false;
+  for(const fnc of CFGscrollHandler)fnc();
+  setTimeout(()=>scrollHandlerAv=true,100);
+}
 function crProdNav(){
   domCashe.prodNav = {};
   var navBody = document.getElementById("prod-navigation");
   if(!navBody)return;
+  domCashe.prodNav.fixedMode = false;
   domCashe.prodNav.navBody = navBody;
+  domCashe.prodNav.parentBody = navBody.parentElement;
   domCashe.prodNav.navigators = {};
   var navstr = "";
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm];
     domCashe.prodNav.navigators[cnm]={
       "lpState": ob.lpState,
-      "hasSelected": ob.hasSelected
+      "hasSelected": ob.hasSelected,
+      "isFocused": false
     };
     navstr += `<div class="prod-navigator ${ob.lpState?'navlpshow':""}" data-navdest="${cnm}">
     <i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i><span>${ob.nmTxt}</span><i class="bi bi-tools"></i></div>`;
@@ -745,6 +827,12 @@ function crProdNav(){
 
   CFGRdBtHandler.push(updateNavCatHasSelected);
   CFGCbBtHandler.push(updateNavCatHasSelected);
+
+  document.removeEventListener("scroll",scrollHandler);
+  document.addEventListener("scroll",scrollHandler);
+  CFGscrollHandler.length = 0;
+  CFGscrollHandler.push(updateNavPos);
+  updateNavPos();
 }
 
 function updateBuildModal(evArgs){
