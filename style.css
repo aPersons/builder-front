@@ -152,15 +152,15 @@ body{
   border-radius: 0.4375rem;
   background-color: #ffffff;
   box-shadow: 0 0.3rem 1.525rem -0.375rem rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;  
+  max-height: calc(100vh - 180px);
 }
 @media only screen and (min-width: 768px){
   .tab-container{
     position: -webkit-sticky;
     position: sticky;
     top: 139px;
-    max-height: calc(100vh - 190px);
-    display: flex;
-    flex-direction: column;
   }
 }
 @media only screen and (max-width: 991px){
@@ -177,11 +177,12 @@ body{
 }
 .prod-navigator{  
   padding: 0 5px;
-  transition: background-color 0.25s;
   font-size: 0.9rem;  
   cursor: pointer;
 }
-
+.prod-navigation:not(.fixed-mode) .prod-navigator{
+  transition: background-color 0.25s;
+}
 .prod-navigation:not(.fixed-mode) .prod-navigator:hover{
   background-color: #f6f6f6;
   border-radius: 0.4375rem;
@@ -334,6 +335,21 @@ body{
   border-radius: 0.4375rem;
   margin-bottom: 15px;
   border: solid 1px #e3e9ef;
+  display: flex;
+  flex-direction: column;
+}
+.builder-part-category.lp-show{  
+  border: solid 1px #42d697;
+}
+@media only screen and (min-width: 768px) and (max-width: 991px){
+  .builder-part-category{ 
+    max-height: calc(100vh - 185px);
+  }
+}
+@media only screen and (min-width: 992px){
+  .builder-part-category{ 
+    max-height: calc(100vh - 200px);
+  }
 }
 
 .builder-part-category .part-category-head{
@@ -399,15 +415,21 @@ body{
 
 /* Part Body */
 
-.part-list-containter{
+.part-list-container-outer{
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0 0 0.4375rem 0;
+}
+
+.part-list-container{
   padding:10px;
   display: flex;
   flex-direction: column;
 }
 @media only screen and (min-width: 768px){
-  .part-list-containter{
+  .part-list-container{
     overflow-y: auto;
-    max-height: 500px;
   }
 }
 .part-rd-bt,
@@ -422,10 +444,10 @@ body{
 .part-checkbox:checked + .listed-part{
   display: block;
 }
-.part-list-containter .border-top {
+.part-list-container .border-top {
   display: none;
 }
-.builder-part-category.lp-show .part-list-containter .border-top{
+.builder-part-category.lp-show .part-list-container .border-top{
   display: block;
 }
 .listed-part-inner{  

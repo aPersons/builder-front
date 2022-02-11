@@ -3,6 +3,24 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
+for y in range(20):
+  prodlist.append({
+    "cat-code": f"test{y}",
+    "cat-name": f"testcat{y}",
+    "cat-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    "init-prod": f"test{y}-0",
+    "product-list": []
+  })
+  for x in range(100):
+    prodlist[-1]["product-list"].append({
+      "prod-code":prodlist[-1]['cat-code']+f'-{x}',
+      "prod-price":f"{1*x}",
+      "prod-av":"",
+      "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}"
+    })
+    if x==0:
+      prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"
+
 selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
 cancel = '<label class="btn btn-primary btn-cancel btn-shadow" for="{sel_init}">Ακύρωση</label>'
 num_input = """
@@ -23,9 +41,10 @@ cat_template="""
             <div class="builder-part-category {cat_name}" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
                 <div class="part-category-description">{cat_descr}</div>
-                <div class="part-list-containter">
+                <div class="part-list-container-outer">
+                <div class="part-list-container">
                   {part_list}
-                </div>
+                </div></div>
             </div>"""
 prod_template = """
             <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
@@ -92,7 +111,7 @@ for category in prodlist:
       #if "prod-av" in product:
           #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
       seeMore = ""
-      if product["prod-av"] != "":
+      if not "emptyval" in product:
         seeMore = '<a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
 
       perfAttributes = ""
@@ -121,7 +140,7 @@ for category in prodlist:
         is_checked = ischecked,
         perfattr = perfres,
         compattr = compres,
-        img_src = product["prod-code"],
+        img_src = "kouti0" if "test" in product["prod-code"] else product["prod-code"],
         part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
         part_title = product["prod-name"],
         part_av = av_template[product["prod-av"]],

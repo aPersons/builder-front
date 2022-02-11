@@ -27,73 +27,6 @@ function wtDecimal(wholeNum){
   }
 }
 
-var compConfig = {
-  "kouti": {
-    "mitriki":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
-    }
-  },
-  "mitriki": {
-    "kouti":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
-    },
-    "cpu":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"1",
-      "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
-    },
-    "psiktra":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"1",
-      "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
-    }
-  },
-  "cpu": {
-    "mitriki":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"1",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
-    },
-    "psiktra":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
-    }      
-  },
-  "psiktra": {
-    "mitriki":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"1",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
-    },
-    "cpu":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
-    }
-  }
-}
-
 var domCashe = {
   "dom": {},
   "domOrder": [],
@@ -112,6 +45,7 @@ function crCats(){
     domCashe.dom[domCashe.domOrder[domCashe.domOrder.length-1]] = {
       "selfDom": tmpList[i],
       "headDom": tmphead,
+      "pListDom": tmpList[i].querySelector(".part-list-container"),
       "nmTxt": tmphead.textContent,
       "lpState": tmpList[i].classList.contains("lp-show")
     }
@@ -131,7 +65,7 @@ var CFGRdBtHandler = [];
 function RdBtHandler(){
   var evArgs = {
     pnm: this.id,
-    cnm: this.parentElement.parentElement.id
+    cnm: this.parentElement.parentElement.parentElement.id
   }
   for(const fnc of CFGRdBtHandler)fnc(evArgs);
 }
@@ -259,7 +193,7 @@ var CFGCbBtHandler = [];
 function CbBtHandler(){
   var evArgs = {
     pnm: this.id,
-    cnm: this.parentElement.parentElement.id
+    cnm: this.parentElement.parentElement.parentElement.id
   }
   for (const fnc of CFGCbBtHandler)fnc(evArgs);
 }
@@ -332,9 +266,21 @@ function catRedirect(evArgs) {
     var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
     var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
     var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
-    if(!catState || focus == "cat" || !selprod){
+    if(!catState || focus == "cat" || !selprod || window.innerWidth>=768){
+      if(catState && window.innerWidth>=768 && focus == "prod"){
+        var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
+        var selprodTop = selprod.getBoundingClientRect().top;
+        var selprodHeight = selprod.getBoundingClientRect().height;
+        var prodDifference = (parentPos.height-selprodHeight)/2;
+        var posOffset = domCashe.dom[wCat].pListDom.scrollTop+(selprodTop-parentPos.top)-prodDifference;
+        // console.log(posOffset);
+        domCashe.dom[wCat].pListDom.scrollTo({
+          top: posOffset,
+          behavior: 'smooth'
+        })
+      }
       window.scrollTo({
-        top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 138 : 128),
+        top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
         behavior: 'smooth'
       });
     }else{
@@ -342,7 +288,7 @@ function catRedirect(evArgs) {
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
         window.scrollTo({
-          top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 138 : 128),
+          top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
           behavior: 'smooth'
         });
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
@@ -352,7 +298,7 @@ function catRedirect(evArgs) {
       });
       }else{
         window.scrollTo({
-          top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 138 : 128))/2,
+          top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
           behavior: 'smooth'
         });
       }
@@ -380,7 +326,7 @@ function crCOpen(){
 CFGpChangeHandler = [];
 function pChangeHandler(){
   var evArgs = {
-    cnm: this.parentElement.parentElement.parentElement.parentElement.parentElement.id,
+    cnm: this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id,
     action: "open"
   }
   for(const fnc of CFGpChangeHandler)fnc(evArgs);
@@ -585,7 +531,7 @@ function quantIncrHandler(){
   var pob = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling;
   var evArgs = {
     pnm: pob.id,
-    cnm: pob.parentElement.parentElement.id,
+    cnm: pob.parentElement.parentElement.parentElement.id,
     opcode: "add"
   }
   for(const fnc of CFGquantHandler)fnc(evArgs);
@@ -594,7 +540,7 @@ function quantDecrHandler(){
   var pob = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling;
   var evArgs = {
     pnm: pob.id,
-    cnm: pob.parentElement.parentElement.id,
+    cnm: pob.parentElement.parentElement.parentElement.id,
     opcode: "sub"
   }
   for(const fnc of CFGquantHandler)fnc(evArgs);
@@ -731,7 +677,7 @@ function updateNavPos(){
       for(let i = 0;i< domCashe.domOrder.length;i++){
         var nhead = domCashe.dom[domCashe.domOrder[i]].selfDom.getBoundingClientRect().top;
         var nfloor = domCashe.dom[domCashe.domOrder[i]].selfDom.getBoundingClientRect().bottom;
-        if(nhead<window.innerHeight-50 && nfloor>225){
+        if(nhead<window.innerHeight-50 && nfloor>245){
           if(!focused){
             focused = domCashe.domOrder[i]
             rdistance = nfloor
@@ -757,7 +703,6 @@ function updateNavPos(){
             var bwidth = bpos.width;
             var posOffset = navbody.scrollLeft+bleft-((window.innerWidth-bwidth)/2);
             navbody.scrollTo({
-              top:0,
               left: posOffset,
               behavior: "smooth"
             });
@@ -776,21 +721,21 @@ function prodNavHandler(){
   for(const fnc of CFGprodNavHandler)fnc(evArgs);
 }
 var CFGscrollHandler = [];
-var scrollHandlerAv = true;
+// var scrollHandlerAv = true;
 var tmRef;
 function scrollHandler(){
-  if(scrollHandlerAv){
-    scrollHandlerAv = false;
-    for(const fnc of CFGscrollHandler)fnc();
-    setTimeout(()=>scrollHandlerAv=true,100);
-  }
+  // if(scrollHandlerAv){
+  //   scrollHandlerAv = false;
+  //   for(const fnc of CFGscrollHandler)fnc();
+  //   setTimeout(()=>scrollHandlerAv=true,100);
+  // }
   clearTimeout(tmRef);
-  tmRef = setTimeout(scrollHandlerEnd,100)
+  tmRef = setTimeout(scrollHandlerEnd,50);
 }
+var CFGscrollHandlerEnd = [];
 function scrollHandlerEnd(){
   scrollHandlerAv = false;
-  for(const fnc of CFGscrollHandler)fnc();
-  setTimeout(()=>scrollHandlerAv=true,100);
+  for(const fnc of CFGscrollHandlerEnd)fnc();
 }
 function crProdNav(){
   domCashe.prodNav = {};
@@ -831,7 +776,8 @@ function crProdNav(){
   document.removeEventListener("scroll",scrollHandler);
   document.addEventListener("scroll",scrollHandler);
   CFGscrollHandler.length = 0;
-  CFGscrollHandler.push(updateNavPos);
+  CFGscrollHandlerEnd.length = 0;
+  CFGscrollHandlerEnd.push(updateNavPos);
   updateNavPos();
 }
 
@@ -860,7 +806,7 @@ function updateBuildModal(evArgs){
       <div class="prod-price-total">${wtDecimal(pob.qValue * pob.priceVal)} €</div>
       </div>`;
       totalVal+= (pob.qValue * pob.priceVal);
-      if(ob.hasSelected)linktext += `&o${i}=${pob.Value}&q${i}=${pob.qValue}`;
+      if(ob.hasSelected)linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
     }else if(ob.prodType == "checkbox"){
       for(const pnm of ob.prodSelected){
         var pob = ob.prodList[pnm];
@@ -873,7 +819,7 @@ function updateBuildModal(evArgs){
         <div class="prod-price-total">${wtDecimal(pob.qValue * pob.priceVal)} €</div>
         </div>`;
         totalVal+= (pob.qValue * pob.priceVal);
-        if(ob.hasSelected)linktext += `&o${i}[]=${pob.Value}&q${i}[]=${pob.qValue}`;
+        if(ob.hasSelected)linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
       }
     }
   }
@@ -951,11 +897,96 @@ function crBuildModal(){
   CFGbuildShortLinkHandler.push(buildShortLink);
 }
 
+CFGprodCompatibility = {
+  "kouti": {
+    "mitriki":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+    }
+  },
+  "mitriki": {
+    "kouti":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
+    },
+    "cpu":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"1",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+    },
+    "psiktra":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"1",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+    }
+  },
+  "cpu": {
+    "mitriki":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"1",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+    },
+    "psiktra":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+    }      
+  },
+  "psiktra": {
+    "mitriki":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"1",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+    },
+    "cpu":{
+      "cType":"normal",
+      "safe":"$afe",
+      "attrA":"0",
+      "attrB":"0",
+      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+    }
+  }
+}
+
+function updateProdCompatibility(){
+
+}
+
+CFGprodCompRedirectHandler = [];
+function ProdCompRedirectHandler(){
+  var evArgs = {}
+  for(const fnc of CFGprodCompRedirectHandler)fnc(evArgs);
+}
+function crProdCompatibility(){
+  for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    for(const [pnm, pob] of Object.entries(ob.prodList)){
+
+    }
+  }
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
   crCbBt();
   crQuantity();
+  crProdCompatibility();
 
   crProdPrice();
   crFinalPrice();
