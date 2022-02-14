@@ -14,7 +14,7 @@ for y in range(20):
   for x in range(100):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
-      "prod-price":f"{1*x}",
+      "prod-price":f"{100*x}",
       "prod-av":"",
       "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}"
     })

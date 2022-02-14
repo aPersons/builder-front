@@ -898,8 +898,9 @@ function crBuildModal(){
 }
 
 CFGprodCompatibility = {
-  "kouti": {
-    "mitriki":{
+  "cat-kouti": {
+    "supOrder": ["cat-mitriki"],
+    "cat-mitriki":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
@@ -907,22 +908,23 @@ CFGprodCompatibility = {
       "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
     }
   },
-  "mitriki": {
-    "kouti":{
+  "cat-mitriki": {
+    "supOrder": ["cat-kouti","cat-cpu","cat-psiktra"],
+    "cat-kouti":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
       "attrB":"0",
       "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
     },
-    "cpu":{
+    "cat-cpu":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"1",
       "attrB":"0",
       "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
     },
-    "psiktra":{
+    "cat-psiktra":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"1",
@@ -930,15 +932,16 @@ CFGprodCompatibility = {
       "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
     }
   },
-  "cpu": {
-    "mitriki":{
+  "cat-cpu": {
+    "supOrder": ["cat-mitriki","cat-psiktra"],
+    "cat-mitriki":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
       "attrB":"1",
       "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
     },
-    "psiktra":{
+    "cat-psiktra":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
@@ -946,15 +949,16 @@ CFGprodCompatibility = {
       "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
     }      
   },
-  "psiktra": {
-    "mitriki":{
+  "cat-psiktra": {
+    "supOrder": ["cat-mitriki","cat-cpu"],
+    "cat-mitriki":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
       "attrB":"1",
       "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
     },
-    "cpu":{
+    "cat-cpu":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
@@ -964,20 +968,141 @@ CFGprodCompatibility = {
   }
 }
 
-function updateProdCompatibility(){
+function addUnsupported(pnm, cnm, cnmB){
+  var qsize = domCashe.dom[cnm].prodList[pnm].Compatibility.length;
+  var sOrd = CFGprodCompatibility[cnm].supOrder.indexOf(cnmB);
+  for(let i = 0;i < qsize; i++){
+    var lnm = domCashe.dom[cnm].prodList[pnm].Compatibility[i];
+    if (sOrd<CFGprodCompatibility[cnm].supOrder.indexOf(lnm)){
+      domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.splice(i,0,cnmB);
+      return
+    }
+  }
+  domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.push(cnmB);
+}
+function removeUnsupported(pnm, cnm, cnmB){
+  domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.splice(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.indexOf(cnmB),1);
+}
 
+function updateProdCompatibility(evArgs){
+  if(domCashe.dom[evArgs.cnm].prodType=="radio"){
+    for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
+      if(!inst.supOrder.includes(evArgs.cnm))continue;
+      for(const pnm of domCashe.dom[cnm].prodOrder){
+        if(compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm)){
+          if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))removeUnsupported(pnm, cnm, evArgs.cnm);
+        }else{
+          if(!domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))addUnsupported(pnm, cnm, evArgs.cnm);
+        }
+        updateDisabledBLock(cnm, pnm);
+      }
+    }
+  }else if(domCashe.dom[evArgs.cnm].prodType=="checkbox"){
+    for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
+      if(!inst.supOrder.includes(evArgs.cnm))continue;
+      for(const pnm of domCashe.dom[cnm].prodOrder){
+        var defVal = false;
+        for(const pnmB of domCashe.dom[evArgs.cnm].prodSelected){
+          if(!compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm) && !defVal){
+            defVal = true;
+            break;
+          }
+        }
+        if(defVal && !domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)){
+          addUnsupported(pnm, cnm, evArgs.cnm);
+        }else if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)){
+          removeUnsupported(pnm, cnm, evArgs.cnm);
+        }
+        updateDisabledBLock(cnm, pnm);
+      }
+    }
+  }
+}
+
+function checkProdCompatibility(cnm, pnm){
+  var tmpUnsupported = [];
+  for(const cnmB of CFGprodCompatibility[cnm].supOrder){
+    if(domCashe.dom[cnmB].prodType=="radio"){
+      if(!compareProdCompatibility(cnm,pnm,cnmB,domCashe.dom[cnmB].prodSelected)){
+        tmpUnsupported.push(cnmB);
+      }
+    }else if(domCashe.dom[cnmB].prodType=="checkbox"){
+      var defVal = false;
+      for(const pnmB of domCashe.dom[cnmB].prodSelected){
+        if(!compareProdCompatibility(cnm,pnm,cnmB,pnmB) && !defVal){
+          defVal = true;
+          break;
+        }
+      }
+      if(defVal){
+        tmpUnsupported.push(cnmB);
+      }
+    }
+  }
+  domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported = tmpUnsupported;
+  updateDisabledBLock(cnm, pnm);
+}
+
+function updateDisabledBLock(cnm, pnm){
+}
+
+function compareProdCompatibility(cnmA, pnmA, cnmB, pnmB){
+  switch(CFGprodCompatibility[cnmA][cnmB].cType){
+    case "normal":
+      var tmpattr = domCashe.dom[cnmA].prodList[pnmA].Compatibility.compattr;
+      var attrA = tmpattr == "$afe"?["$afe"]:tmpattr.split(";")[Number(CFGprodCompatibility[cnmA][cnmB].attrA)].split(",");
+      tmpattr = domCashe.dom[cnmB].prodList[pnmB].Compatibility.compattr;
+      var attrB = tmpattr == "$afe"?["$afe"]:tmpattr.split(";")[Number(CFGprodCompatibility[cnmA][cnmB].attrB)].split(",");
+      if(CFGprodCompatibility[cnmA][cnmB].safe){
+        var sf = CFGprodCompatibility[cnmA][cnmB].safe;
+        if(attrA.includes(sf)||attrB.includes(sf)){
+          return true;
+        }
+        for(const sA of attrA){
+          if(attrB.includes(sA)){
+            return true;
+          }
+        }
+        return false;
+      }
+  }
 }
 
 CFGprodCompRedirectHandler = [];
 function ProdCompRedirectHandler(){
-  var evArgs = {}
+  var evArgs = {
+    "cnm": this.dataset.unsupported
+  }
   for(const fnc of CFGprodCompRedirectHandler)fnc(evArgs);
 }
 function crProdCompatibility(){
+  var qUpdate = [];
   for(const [cnm, ob] of Object.entries(domCashe.dom)){
     for(const [pnm, pob] of Object.entries(ob.prodList)){
-
+      if(!pob.hasOwnProperty("disStatus")){
+        pob.disStatus = pob.selfDom.disabled?"unassigned":false;
+      }
+      if(!pob.hasOwnProperty("disDom")){
+        pob.disDom = pob.selfDom.querySelector(".disabled-part");
+      }
+      if(CFGprodCompatibility.hasOwnProperty(cnm)){
+        pob.Compatibility = {
+          "compattr": pob.selfDom.hasAttribute("data-compattr")?pob.selfDom.dataset.compattr:"$afe",
+          "unSupported": [],
+          "dReason": false
+        }
+        qUpdate.push([cnm,pnm])
+      }
     }
+  }
+  CFGprodCompRedirectHandler.length = 0;
+  if(qUpdate.length){
+    for(const kv of qUpdate){
+      checkProdCompatibility(kv[0],kv[1]);
+    }
+    CFGprodCompRedirectHandler.push(catRedirect);
+    CFGRdBtHandler.push(updateProdCompatibility);
+    CFGCbBtHandler.push(updateProdCompatibility);
   }
 }
 
