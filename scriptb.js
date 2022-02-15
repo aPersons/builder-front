@@ -905,7 +905,8 @@ CFGprodCompatibility = {
       "safe":"$afe",
       "attrA":"0",
       "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB":"Μητρική"
     }
   },
   "cat-mitriki": {
@@ -915,21 +916,24 @@ CFGprodCompatibility = {
       "safe":"$afe",
       "attrA":"0",
       "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με το επιλεγμένο !!kouti@@Κουτί##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με το επιλεγμένο ",
+      "errMB":"Κουτί"
     },
     "cat-cpu":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"1",
       "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ",
+      "errMB":"Επεξεργαστή"
     },
     "cat-psiktra":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"1",
       "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB":"Ψύξη επεξεργαστή"
     }
   },
   "cat-cpu": {
@@ -939,14 +943,16 @@ CFGprodCompatibility = {
       "safe":"$afe",
       "attrA":"0",
       "attrB":"1",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB":"Μητρική"
     },
     "cat-psiktra":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
       "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!psiktra@@Ψύξη επεξεργαστή##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB":"Ψύξη επεξεργαστή"
     }      
   },
   "cat-psiktra": {
@@ -956,14 +962,16 @@ CFGprodCompatibility = {
       "safe":"$afe",
       "attrA":"0",
       "attrB":"1",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με την επιλεγμένη !!mitriki@@Μητρική##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB":"Μητρική"
     },
     "cat-cpu":{
       "cType":"normal",
       "safe":"$afe",
       "attrA":"0",
       "attrB":"0",
-      "errM":"$$ Το προϊόν δεν είναι συμβατό με τον επιλεγμένο !!cpu@@Επεξεργαστή##."
+      "errMA":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ",
+      "errMB":"Επεξεργαστή"
     }
   }
 }
@@ -1044,6 +1052,39 @@ function checkProdCompatibility(cnm, pnm){
 }
 
 function updateDisabledBLock(cnm, pnm){
+  var pob = domCashe.dom[cnm].prodList[pnm]
+  if(pob.disStatus == false || pob.disStatus == "unassigned" || pob.disStatus == "compatibility"){
+    if(!pob.Compatibility.unSupported.length){
+      if(pob.disStatus != false){
+        pob.disStatus = false;
+        pob.selfDom.disabled = false;
+      }
+    }else if(pob.disStatus == "compatibility"){
+      if(pob.Compatibility.dReason[0] != pob.Compatibility.unSupported[0]){
+        pob.Compatibility.dReason[0] = pob.Compatibility.unSupported[0];
+        pob.Compatibility.dReason[1].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMA;
+        pob.Compatibility.dReason[2].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMB;
+        pob.Compatibility.dReason[2].dataset.unsupported = pob.Compatibility.unSupported[0];
+        var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
+      }
+    }else{      
+      if(!pob.disStatus){
+        pob.disStatus = "compatibility";
+        pob.selfDom.disabled = true;
+      }else if(pob.disStatus == "unassigned"){
+        pob.disStatus = "compatibility";
+      }
+      pob.disDom.innerHTML = `<i class="bi bi-exclamation-circle"></i>
+      <span>${CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMA}</span>
+      <a class="category-link" data-unsupported="${pob.Compatibility.unSupported[0]}">${CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMB}</a>.`;
+      pob.Compatibility.dReason = [
+        pob.Compatibility.unSupported[0],
+        pob.disDom.querySelector("span"),
+        pob.disDom.querySelector("a")
+      ]
+      pob.Compatibility.dReason[2].addEventListener("click",ProdCompRedirectHandler);
+    }
+  }
 }
 
 function compareProdCompatibility(cnmA, pnmA, cnmB, pnmB){
@@ -1083,7 +1124,7 @@ function crProdCompatibility(){
         pob.disStatus = pob.selfDom.disabled?"unassigned":false;
       }
       if(!pob.hasOwnProperty("disDom")){
-        pob.disDom = pob.selfDom.querySelector(".disabled-part");
+        pob.disDom = pob.cDom.querySelector(".disabled-part");
       }
       if(CFGprodCompatibility.hasOwnProperty(cnm)){
         pob.Compatibility = {
