@@ -32,7 +32,8 @@ var domCashe = {
   "domOrder": [],
   "buildModal": {},
   "prodNav": {},
-  "finalPrice": {}
+  "finalPrice": {},
+  "perfCarousel":{}
 };
 
 function crCats(){
@@ -237,7 +238,7 @@ function crCbBt(){
 function catRedirect(evArgs) {
   var wCat = evArgs.cnm;
   var action = evArgs.hasOwnProperty("action")?evArgs.action : "toggle";
-  var focus = evArgs.hasOwnProperty("focus")?evArgs.action : "prod";
+  var focus = evArgs.hasOwnProperty("focus")?evArgs.focus : "prod";
 
   for (const k of domCashe.domOrder) {
     var ob = domCashe.dom[k];
@@ -734,7 +735,7 @@ function scrollHandler(){
 }
 var CFGscrollHandlerEnd = [];
 function scrollHandlerEnd(){
-  scrollHandlerAv = false;
+  // scrollHandlerAv = false;
   for(const fnc of CFGscrollHandlerEnd)fnc();
 }
 function crProdNav(){
@@ -995,7 +996,7 @@ function removeUnsupported(pnm, cnm, cnmB){
 function updateProdCompatibility(evArgs){
   if(domCashe.dom[evArgs.cnm].prodType=="radio"){
     for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
-      if(!inst.supOrder.includes(evArgs.cnm))continue;
+      if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
       for(const pnm of domCashe.dom[cnm].prodOrder){
         if(compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm)){
           if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))removeUnsupported(pnm, cnm, evArgs.cnm);
@@ -1007,7 +1008,7 @@ function updateProdCompatibility(evArgs){
     }
   }else if(domCashe.dom[evArgs.cnm].prodType=="checkbox"){
     for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
-      if(!inst.supOrder.includes(evArgs.cnm))continue;
+      if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
       for(const pnm of domCashe.dom[cnm].prodOrder){
         var defVal = false;
         for(const pnmB of domCashe.dom[evArgs.cnm].prodSelected){
@@ -1030,6 +1031,7 @@ function updateProdCompatibility(evArgs){
 function checkProdCompatibility(cnm, pnm){
   var tmpUnsupported = [];
   for(const cnmB of CFGprodCompatibility[cnm].supOrder){
+    if(!domCashe.dom.hasOwnProperty(cnmB))continue;
     if(domCashe.dom[cnmB].prodType=="radio"){
       if(!compareProdCompatibility(cnm,pnm,cnmB,domCashe.dom[cnmB].prodSelected)){
         tmpUnsupported.push(cnmB);
@@ -1058,6 +1060,9 @@ function updateDisabledBLock(cnm, pnm){
       if(pob.disStatus != false){
         pob.disStatus = false;
         pob.selfDom.disabled = false;
+      }
+      if(pob.Compatibility.dReason.lenth){
+        pob.Compatibility.dReason = [];
       }
     }else if(pob.disStatus == "compatibility"){
       if(pob.Compatibility.dReason[0] != pob.Compatibility.unSupported[0]){
@@ -1132,7 +1137,7 @@ function crProdCompatibility(){
           "unSupported": [],
           "dReason": false
         }
-        qUpdate.push([cnm,pnm])
+        qUpdate.push([cnm,pnm]);
       }
     }
   }
@@ -1142,9 +1147,214 @@ function crProdCompatibility(){
       checkProdCompatibility(kv[0],kv[1]);
     }
     CFGprodCompRedirectHandler.push(catRedirect);
+    CFGprodCompRedirectHandler.push(updateNavlpShow);
     CFGRdBtHandler.push(updateProdCompatibility);
     CFGCbBtHandler.push(updateProdCompatibility);
   }
+}
+
+CFGperfCarousel = {
+  "dictionary":{
+    "cat-cpu":"Επεξεργαστή",
+    "cat-gpu":"Κάρτα Γραφικών",
+    "required":"Το σύστημα χρειάζεται @@@.",
+    "perfReady":"Το σύστημα είναι κατάλληλο για @@@ μέχρι ### ανάλυση.",
+    "perfNotReady": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι.",
+    "recommend": "<br/>Αλλάξτε @@@ για καλύτερη απόδοση."
+  },
+  "partList":["cat-cpu","cat-gpu","cat-asd"],
+  "gameOrder":["lol_game","fortnite_game","control_game","fs2020_game","sottr_game"],
+  "gameList":{
+    "lol_game":{
+      "cType":"normal",
+      "stateFormat": "$$",
+      "nmTxt":"League of Legends",
+      "img_src":"assets/lol-game.jpg",
+      "parts":{
+        "cat-cpu":{
+          "safe":false,
+          "attr": "0"
+        },
+        "cat-gpu":{
+          "safe":"$",
+          "attr": "0"
+        }          
+      }
+    },
+    "fortnite_game":{
+      "cType":"normal",
+      "stateFormat": "$$",
+      "nmTxt":"Fortnite",
+      "img_src":"assets/fortnite-game.jpg",
+      "parts":{
+        "cat-cpu":{
+          "safe":false,
+          "attr": "1"
+        },
+        "cat-gpu":{
+          "safe":$,
+          "attr": "1"
+        }
+      }
+    },
+    "control_game":{
+      "cType":"normal",
+      "stateFormat": "$$",
+      "nmTxt":"Control",
+      "img_src":"assets/control-game.jpg",
+      "parts":{
+        "cat-cpu":{
+          "safe":false,
+          "attr": "2"
+        },
+        "cat-gpu":{
+          "safe":"$",
+          "attr": "2"
+        }          
+      }
+    },
+    "fs2020_game":{
+      "cType":"normal",
+      "stateFormat": "$$",
+      "nmTxt":"MS Flight Simulator 2020",
+      "img_src":"assets/fs2020-game.jpg",
+      "parts":{
+        "cat-cpu":{
+          "safe":false,
+          "attr": "3"
+        },
+        "cat-gpu":{
+          "safe":"$",
+          "attr": "3"
+        }          
+      }
+    },
+    "sottr_game":{
+      "cType":"normal",
+      "stateFormat": "$$",
+      "nmTxt":"Shadow of the Tomb Raider",
+      "img_src":"assets/sottr-game.jpg",
+      "parts":{
+        "cat-cpu":{
+          "safe":false,
+          "attr": "4"
+        },
+        "cat-gpu":{
+          "safe":"$",
+          "attr": "4"
+        }          
+      }
+    }
+  }
+}
+
+function updatePerfCarousel(evArgs){
+
+}
+
+function crPerfMsg(gnm,msg){
+  switch(msg){
+    case "required":
+      var tmpC = []
+      for(const [cnm, sob] of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
+        if(!sob.safe)tmpC.push(cnm)
+      }
+      var tmpF = []
+      for(const cnm of tmpC){
+        tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
+      }
+      var tmpFields = "";
+      if(tmpC.length == 1){
+        tmpFields = tmpF[0];
+      }else if(tmpC.length == 2){
+        tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
+      }else if(tmpC.length > 2){
+        for(let i=0;i<tmpC.length;i++){
+          if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
+          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `
+          else tmpFields += `${tmpF[i]}, `;
+        }
+      }
+      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.required.replace("@@@",tmpFields);
+    break;
+    case "perfNotReady":
+
+    break;
+
+    case "1080p":case "1440p":case "4K":
+
+    break;
+  }
+}
+
+var CFGperfCarouselHandler = [];
+function perfCarouselHandler(){
+  var evArgs = {
+    "cnm": this.dataset.perfredirect
+  }
+  for(const fnc of CFGperfCarouselHandler)fnc(evArgs);  
+}
+
+function crPerfCarousel(){
+  var perfDom = document.getElementById("performance-carousel-2");
+  if(!perfDom)return
+  for(const cnm of CFGperfCarousel.partList){
+    if(!domCashe.dom.hasOwnProperty(cnm))continue
+    for(const [pnm,pob] of Object.entries(domCashe.dom[cnm].prodList)){
+      var attrs = pob.selfDom.dataset.perfattr
+      pob.perfAttr = attrs?attrs:"$";
+    }
+  }
+  domCashe.perfCarousel.perfDom = perfDom;
+  domCashe.perfCarousel.gameList = {};
+  var tmpMarkup = `<div style="text-align: center; color: #eabe4b;">Εκτιμώμενη Απόδοση</div>
+  <!-- Indicators --><div class="carousel-indicators">`;
+  for(let i=0;i<CFGperfCarousel.gameOrder.length;i++){
+    tmpMarkup += `<button data-bs-target="#performance-carousel-2" data-bs-slide-to="${i}"${!i?' class="active"':""}></button>`;
+  }
+  tmpMarkup += '</div><!-- The slideshow --><div class="carousel-inner">';
+
+  for(const gnm of CFGperfCarousel.gameOrder){
+    domCashe.perfCarousel.gameList[gnm]={
+      "state": CFGperfCarousel.gameList[gnm].stateFormat
+    }
+    tmpMarkup += `
+    <div class="carousel-item${CFGperfCarousel.gameOrder[0] == gnm?" active":""}">
+      <img src="${CFGperfCarousel.gameList[gnm].img_src}" alt="${CFGperfCarousel.gameList[gnm].nmTxt}">
+      <div class="perf-display" id="perf-${gnm}">
+        <div class="perf-body"></div>
+      </div>
+    </div>
+    `
+  }
+  tmpMarkup += `
+    </div>
+    <!-- Left and right controls -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#performance-carousel-2"
+      data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#performance-carousel-2"
+      data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+  </div>
+  `
+  perfDom.innerHTML = tmpMarkup;
+
+  for(const gnm of CFGperfCarousel.gameOrder){
+    domCashe.perfCarousel.gameList[gnm]={
+      "state": CFGperfCarousel.gameList[gnm].stateFormat,
+      "perfBody": perfDom.querySelector(`#perf-${gnm} .perf-body`)
+    }
+  }
+  
+  CFGperfCarouselHandler.length = 0;
+  CFGperfCarouselHandler.push(catRedirect);
+  CFGperfCarouselHandler.push(updateNavlpShow);
+  CFGRdBtHandler.push(updatePerfCarousel);
+  CFGCbBtHandler.push(updatePerfCarousel);
 }
 
 document.addEventListener("DOMContentLoaded", function(){
@@ -1159,6 +1369,7 @@ document.addEventListener("DOMContentLoaded", function(){
   crCOpen();
   crCOpenMinor();
   crHeadSel();
+  crPerfCarousel();
   crProdNav();
   crBuildModal();
 })
