@@ -25,7 +25,7 @@ selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label
 cancel = '<label class="btn btn-primary btn-cancel btn-shadow" for="{sel_init}">Ακύρωση</label>'
 num_input = """
   <div class="part-number-input">
-    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" min="{part_min}" max="{part_max}" value="0">
+    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity{mlfx}" min="{part_min}" max="{part_max}" value="0">
     <i class="bi bi-dash part-num-decr"></i>
     <span class="quantity-display">0</span>
     <i class="bi bi-plus part-num-incr"></i>
@@ -33,7 +33,7 @@ num_input = """
 """
 num_input_alt = """
   <div class="part-number-input static-number">
-    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity" value="1">
+    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity{mlfx}" value="1">
   </div>
 """
 
@@ -47,7 +47,7 @@ cat_template="""
                 </div></div>
             </div>"""
 prod_template = """
-            <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
+            <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}{mlfx}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
             <div class="listed-part">              
               <label class="listed-part-inner" for="{part_id}">
                 <div class="part-img">
@@ -97,6 +97,7 @@ for category in prodlist:
       num_input_res = ""
       if "prod-min" in product and "prod-max" in product:
           num_input_res = num_input.format(
+              mlfx = "[]"if "multi-sel" in category else "",
               part_id = product["prod-code"],
               part_cat = category["cat-code"],
               part_min = product["prod-min"],
@@ -104,6 +105,7 @@ for category in prodlist:
           )
       else:
         num_input_res = num_input_alt.format(
+              mlfx = "[]"if "multi-sel" in category else "",
               part_id = product["prod-code"],
               part_cat = category["cat-code"]
         )
@@ -136,6 +138,7 @@ for category in prodlist:
         sel_type = "part-checkbox" if "multi-sel" in category else "part-rd-bt",
         part_id = product["prod-code"],
         part_cat = category["cat-code"],
+        mlfx = "[]"if "multi-sel" in category else "",
         part_value = (product["prod-code"],"emptyval")["emptyval" in product],
         is_checked = ischecked,
         perfattr = perfres,

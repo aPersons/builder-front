@@ -267,6 +267,7 @@ function catRedirect(evArgs) {
     var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
     var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
     var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
+    var prodNavoff = window.innerWidth<768? -25:0;
     if(!catState || focus == "cat" || !selprod || window.innerWidth>=768){
       if(catState && window.innerWidth>=768 && focus == "prod"){
         var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
@@ -281,7 +282,7 @@ function catRedirect(evArgs) {
         })
       }
       window.scrollTo({
-        top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+        top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
         behavior: 'smooth'
       });
     }else{
@@ -289,7 +290,7 @@ function catRedirect(evArgs) {
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
         window.scrollTo({
-          top:catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+          top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
           behavior: 'smooth'
         });
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
@@ -643,13 +644,13 @@ function updateNavCatHasSelected(evArgs){
   if(domCashe.dom[evArgs.cnm].hasSelected && !domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
     domCashe.prodNav.navigators[evArgs.cnm].hasSelected = true;
     var domMark = domCashe.prodNav.navigators[evArgs.cnm].navDom.firstElementChild;
-    domMark.classList.remove("bi-slash-circle");
-    domMark.classList.add("bi-check-circle");
+    domMark.classList.remove("text-muted");
+    domMark.classList.add("text-success");
   }else if(!domCashe.dom[evArgs.cnm].hasSelected && domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
     domCashe.prodNav.navigators[evArgs.cnm].hasSelected = false;
     var domMark = domCashe.prodNav.navigators[evArgs.cnm].navDom.firstElementChild;
-    domMark.classList.remove("bi-check-circle");
-    domMark.classList.add("bi-slash-circle");
+    domMark.classList.remove("text-success");
+    domMark.classList.add("text-muted");
   }
 }
 
@@ -659,7 +660,7 @@ function updateNavPos(){
       if(!domCashe.prodNav.fixedMode){
         domCashe.prodNav.fixedMode = true;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          domCashe.prodNav.parentBody.style.paddingBottom = `${15+domCashe.prodNav.navBody.getBoundingClientRect().height}px`;
+          //domCashe.prodNav.parentBody.style.paddingBottom = `${15+domCashe.prodNav.navBody.getBoundingClientRect().height}px`;
           domCashe.prodNav.navBody.classList.add("fixed-mode");
         }));
       }
@@ -667,7 +668,7 @@ function updateNavPos(){
       if(domCashe.prodNav.fixedMode){
         domCashe.prodNav.fixedMode = false;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          domCashe.prodNav.parentBody.style.paddingBottom = "";
+          //domCashe.prodNav.parentBody.style.paddingBottom = "";
           domCashe.prodNav.navBody.classList.remove("fixed-mode");
         }));
       }
@@ -755,7 +756,7 @@ function crProdNav(){
       "isFocused": false
     };
     navstr += `<div class="prod-navigator ${ob.lpState?'navlpshow':""}" data-navdest="${cnm}">
-    <i class="bi ${ob.hasSelected?"bi-check-circle":"bi-slash-circle"}"></i><span>${ob.nmTxt}</span><i class="bi bi-tools"></i></div>`;
+    <i class="bi bi-circle-fill fs-xs pe-1 ${ob.hasSelected?"text-success":"text-muted"}"></i><span>${ob.nmTxt}</span></div>`;
   }
   navBody.innerHTML = navstr;
   var navList = navBody.querySelectorAll(".prod-navigator");
@@ -1369,7 +1370,7 @@ document.addEventListener("DOMContentLoaded", function(){
   crCOpen();
   crCOpenMinor();
   crHeadSel();
-  crPerfCarousel();
   crProdNav();
+  crPerfCarousel();
   crBuildModal();
 })

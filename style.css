@@ -176,6 +176,12 @@ body{
 .prod-navigation{
   overflow: auto;
 }
+@media only screen and (max-width: 767px) {
+  .prod-navigation:not(.fixed-mode){
+    display: none;
+  }
+}
+
 .prod-navigator{  
   padding: 0 5px;
   font-size: 0.9rem;  
@@ -232,10 +238,10 @@ body{
 .prod-navigation.fixed-mode .prod-navigator.isfocused{
   border-bottom-color: #fff;
 }
-.prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-slash-circle + span{
-  color: #eabe4b;
+.prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-circle-fill.text-muted + span{
+  color: #7d879c;
 }
-.prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-check-circle + span{
+.prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-circle-fill.text-success + span{
   color: #42d697;
 }
 .prod-navigation.fixed-mode .prod-navigator i.bi-tools{
@@ -367,11 +373,14 @@ body{
   background-color:#42d697;
   color:#fff;
 }
-@media only screen and (min-width: 768px){
-  .builder-part-category.lp-show .part-category-head{    
-    background-color:#f6f6f6;
+.builder-part-category.lp-show .part-category-head{
+  background-color:#f6f6f6;
     position: -webkit-sticky; /* Safari */
     position: sticky;
+    top: 160px;
+}
+@media only screen and (min-width: 768px){
+  .builder-part-category.lp-show .part-category-head{    
     top: 135px;
   }
 }
