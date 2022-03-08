@@ -377,7 +377,7 @@ body{
   background-color:#f6f6f6;
     position: -webkit-sticky; /* Safari */
     position: sticky;
-    top: 160px;
+    top: 161px;
 }
 @media only screen and (min-width: 768px){
   .builder-part-category.lp-show .part-category-head{    

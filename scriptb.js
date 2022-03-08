@@ -267,7 +267,7 @@ function catRedirect(evArgs) {
     var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
     var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
     var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
-    var prodNavoff = window.innerWidth<768? -25:0;
+    var prodNavoff = window.innerWidth<768? -30:0;
     if(!catState || focus == "cat" || !selprod || window.innerWidth>=768){
       if(catState && window.innerWidth>=768 && focus == "prod"){
         var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
@@ -1193,7 +1193,7 @@ CFGperfCarousel = {
           "attr": "1"
         },
         "cat-gpu":{
-          "safe":$,
+          "safe":"$",
           "attr": "1"
         }
       }
@@ -1253,7 +1253,7 @@ function updatePerfCarousel(evArgs){
 
 }
 
-function crPerfMsg(gnm,msg){
+function wrPerfMsg(gnm,msg){
   switch(msg){
     case "required":
       var tmpC = []
@@ -1272,16 +1272,35 @@ function crPerfMsg(gnm,msg){
       }else if(tmpC.length > 2){
         for(let i=0;i<tmpC.length;i++){
           if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
-          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `
+          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
           else tmpFields += `${tmpF[i]}, `;
         }
       }
       domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.required.replace("@@@",tmpFields);
     break;
     case "perfNotReady":
-
+      var tmpC = []
+      for(const cnm of Object.keys(CFGperfCarousel.gameList[gnm].parts)){
+        if(domCashe.domOrder.includes(cnm))tmpC.push(cnm);
+      }
+      var tmpF = []
+      for(const cnm of tmpC){
+        tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
+      }
+      var tmpFields = "";
+      if(tmpC.length == 1){
+        tmpFields = tmpF[0];
+      }else if(tmpC.length == 2){
+        tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
+      }else if(tmpC.length > 2){
+        for(let i=0;i<tmpC.length;i++){
+          if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
+          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
+          else tmpFields += `${tmpF[i]}, `;
+        }
+      }
+      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfNotReady + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);
     break;
-
     case "1080p":case "1440p":case "4K":
 
     break;
