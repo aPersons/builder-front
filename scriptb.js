@@ -1299,10 +1299,30 @@ function wrPerfMsg(gnm,msg){
           else tmpFields += `${tmpF[i]}, `;
         }
       }
-      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfNotReady + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);
+      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfNotReady + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);      
     break;
     case "1080p":case "1440p":case "4K":
-
+      var tmpC = []
+      for(const cnm of Object.keys(CFGperfCarousel.gameList[gnm].parts)){
+        if(domCashe.domOrder.includes(cnm))tmpC.push(cnm);
+      }
+      var tmpF = []
+      for(const cnm of tmpC){
+        tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
+      }
+      var tmpFields = "";
+      if(tmpC.length == 1){
+        tmpFields = tmpF[0];
+      }else if(tmpC.length == 2){
+        tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
+      }else if(tmpC.length > 2){
+        for(let i=0;i<tmpC.length;i++){
+          if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
+          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
+          else tmpFields += `${tmpF[i]}, `;
+        }
+      }
+      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfReady.replace("@@@",gnm).replace("###",msg)// + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);
     break;
   }
 }
