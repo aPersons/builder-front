@@ -832,14 +832,9 @@ function updateBuildModal(evArgs){
   </div>`
   domCashe.buildModal.modalTable.innerHTML = tabletext;
   domCashe.buildModal.linkFull = linktext;
-  domCashe.buildModal.qLink = "Δημιουργία σύνδεσμου";
-  domCashe.buildModal.footerLinkBody.textContent = "Δημιουργία σύνδεσμου";
-}
-
-async function buildShortLink(evArgs) {
-  try{
-    if(domCashe.buildModal.qLink == "Δημιουργία σύνδεσμου"){
-
+  domCashe.buildModal.qLink = "Unavailable";
+  (async ()=>{
+    try{  
       const request = await fetch(
         'https://api-ssl.bitly.com/v4/shorten',{
         method: 'POST',
@@ -854,16 +849,18 @@ async function buildShortLink(evArgs) {
       const getjson = await request.json()
       domCashe.buildModal.qLink = getjson["link"];
       domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
+    }catch(err){
+      domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
+      domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
+      console.log(err);
     }
+  })()
+}
+
+function buildShortLink(evArgs) {
+  try{
     navigator.clipboard.writeText(domCashe.buildModal.qLink);
-  }catch(err){
-    domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
-    domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
-    console.log(err)
-    try{
-      navigator.clipboard.writeText(domCashe.buildModal.linkFull);
-    }catch{}
-  }
+  }catch{}  
 }
 
 CFGbuildModalOpenHandler = [];
@@ -1322,7 +1319,7 @@ function wrPerfMsg(gnm,msg){
           else tmpFields += `${tmpF[i]}, `;
         }
       }
-      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfReady.replace("@@@",gnm).replace("###",msg)// + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);
+      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfReady.replace("@@@",CFGperfCarousel.gameList[gnm].nmTxt).replace("###",msg)// + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);
     break;
   }
 }
