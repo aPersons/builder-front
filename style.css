@@ -317,6 +317,29 @@ body{
 #performance-carousel-2 .perf-body{
   text-align: center;
 }
+
+#performance-carousel-2 .perf-body .progress div:nth-child(5){
+  transition: left 1s;
+  position: absolute;
+  left: 0%;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #f3f5f9;
+}
+#performance-carousel-2 .perf-body.perf-perfNotReady .progress div:nth-child(5){
+  left: 25%;
+}
+#performance-carousel-2 .perf-body.perf-1080p .progress div:nth-child(5){
+  left: 50%;
+}
+#performance-carousel-2 .perf-body.perf-1440p .progress div:nth-child(5){
+  left: 75%;
+}
+#performance-carousel-2 .perf-body.perf-4k .progress div:nth-child(5){
+  left: 100%;
+}
+
 .category-link{
   cursor: pointer;
 }

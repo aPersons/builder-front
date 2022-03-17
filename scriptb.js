@@ -1164,7 +1164,6 @@ CFGperfCarousel = {
   "gameOrder":["lol_game","fortnite_game","control_game","fs2020_game","sottr_game"],
   "gameList":{
     "lol_game":{
-      "cType":"normal",
       "stateFormat": "$$",
       "nmTxt":"League of Legends",
       "img_src":"assets/lol-game.jpg",
@@ -1180,7 +1179,6 @@ CFGperfCarousel = {
       }
     },
     "fortnite_game":{
-      "cType":"normal",
       "stateFormat": "$$",
       "nmTxt":"Fortnite",
       "img_src":"assets/fortnite-game.jpg",
@@ -1197,7 +1195,6 @@ CFGperfCarousel = {
     },
     "control_game":{
       "cType":"normal",
-      "stateFormat": "$$",
       "nmTxt":"Control",
       "img_src":"assets/control-game.jpg",
       "parts":{
@@ -1213,7 +1210,6 @@ CFGperfCarousel = {
     },
     "fs2020_game":{
       "cType":"normal",
-      "stateFormat": "$$",
       "nmTxt":"MS Flight Simulator 2020",
       "img_src":"assets/fs2020-game.jpg",
       "parts":{
@@ -1228,7 +1224,6 @@ CFGperfCarousel = {
       }
     },
     "sottr_game":{
-      "cType":"normal",
       "stateFormat": "$$",
       "nmTxt":"Shadow of the Tomb Raider",
       "img_src":"assets/sottr-game.jpg",
@@ -1253,74 +1248,105 @@ function updatePerfCarousel(evArgs){
 function wrPerfMsg(gnm,msg){
   switch(msg){
     case "required":
-      var tmpC = []
-      for(const [cnm, sob] of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
-        if(!sob.safe)tmpC.push(cnm)
-      }
-      var tmpF = []
-      for(const cnm of tmpC){
-        tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
-      }
-      var tmpFields = "";
-      if(tmpC.length == 1){
-        tmpFields = tmpF[0];
-      }else if(tmpC.length == 2){
-        tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
-      }else if(tmpC.length > 2){
-        for(let i=0;i<tmpC.length;i++){
-          if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
-          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
-          else tmpFields += `${tmpF[i]}, `;
+      if(domCashe.perfCarousel.gameList[gnm].state != "required"){        
+        domCashe.perfCarousel.gameList[gnm].state = "required";
+        var tmpC = []
+        for(const [cnm, sob] of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
+          if(!sob.safe)tmpC.push(cnm)
         }
-      }
-      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.required.replace("@@@",tmpFields);
-    break;
-    case "perfNotReady":
-      var tmpC = []
-      for(const cnm of Object.keys(CFGperfCarousel.gameList[gnm].parts)){
-        if(domCashe.domOrder.includes(cnm))tmpC.push(cnm);
-      }
-      var tmpF = []
-      for(const cnm of tmpC){
-        tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
-      }
-      var tmpFields = "";
-      if(tmpC.length == 1){
-        tmpFields = tmpF[0];
-      }else if(tmpC.length == 2){
-        tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
-      }else if(tmpC.length > 2){
-        for(let i=0;i<tmpC.length;i++){
-          if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
-          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
-          else tmpFields += `${tmpF[i]}, `;
+        var tmpF = []
+        for(const cnm of tmpC){
+          tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
         }
-      }
-      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfNotReady + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);      
-    break;
-    case "1080p":case "1440p":case "4K":
-      var tmpC = []
-      for(const cnm of Object.keys(CFGperfCarousel.gameList[gnm].parts)){
-        if(domCashe.domOrder.includes(cnm))tmpC.push(cnm);
-      }
-      var tmpF = []
-      for(const cnm of tmpC){
-        tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
-      }
-      var tmpFields = "";
-      if(tmpC.length == 1){
-        tmpFields = tmpF[0];
-      }else if(tmpC.length == 2){
-        tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
-      }else if(tmpC.length > 2){
-        for(let i=0;i<tmpC.length;i++){
-          if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
-          else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
-          else tmpFields += `${tmpF[i]}, `;
+        var tmpFields = "";
+        if(tmpC.length == 1){
+          tmpFields = tmpF[0];
+        }else if(tmpC.length == 2){
+          tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
+        }else if(tmpC.length > 2){
+          for(let i=0;i<tmpC.length;i++){
+            if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
+            else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
+            else tmpFields += `${tmpF[i]}, `;
+          }
         }
+        domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-required");
+        domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-perfNotReady","perf-1080p","perf-1440p","perf-4k");
+        domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.required.replace("@@@",tmpFields);
       }
-      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfReady.replace("@@@",CFGperfCarousel.gameList[gnm].nmTxt).replace("###",msg)// + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);
     break;
+    default:
+    if(domCashe.perfCarousel.gameList[gnm].state == "required" || domCashe.perfCarousel.gameList[gnm].state == "$$"){
+      domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = `
+      <div style="text-align: center; color: #eabe4b;">Εκτιμώμενη Απόδοση</div>
+      <div class="progress" style="position:relative;">
+        <div class="progress-bar bg-danger progress-bar-striped progress-bar-animated" style="width:25%;" role="progressbar"></div>
+        <div class="progress-bar bg-warning progress-bar-striped progress-bar-animated" style="width:25%;" role="progressbar"></div>
+        <div class="progress-bar progress-bar-striped progress-bar-animated" style="width:25%;" role="progressbar"></div>
+        <div class="progress-bar bg-success progress-bar-striped progress-bar-animated" style="width:25%;" role="progressbar"></div>
+        <div></div>
+        </div>
+      `;
+      switch(msg){
+        case "perfNotReady":
+          if(domCashe.perfCarousel.gameList[gnm].state != "perfNotReady"){
+            domCashe.perfCarousel.gameList[gnm].state = "perfNotReady";
+            requestAnimationFrame(()=>requestAnimationFrame(()=>{         
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-perfNotReady");        
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-required","perf-1080p","perf-1440p","perf-4k");
+            }))
+          }
+          // var tmpC = []
+          // for(const cnm of Object.keys(CFGperfCarousel.gameList[gnm].parts)){
+          //   if(domCashe.domOrder.includes(cnm))tmpC.push(cnm);
+          // }
+          // var tmpF = []
+          // for(const cnm of tmpC){
+          //   tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
+          // }
+          // var tmpFields = "";
+          // if(tmpC.length == 1){
+          //   tmpFields = tmpF[0];
+          // }else if(tmpC.length == 2){
+          //   tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
+          // }else if(tmpC.length > 2){
+          //   for(let i=0;i<tmpC.length;i++){
+          //     if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
+          //     else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
+          //     else tmpFields += `${tmpF[i]}, `;
+          //   }
+          // }
+          // domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.perfNotReady + CFGperfCarousel.dictionary.recommend.replace("@@@",tmpFields);      
+        break;
+        case "1080p":case "1440p":case "4K":
+          if(domCashe.perfCarousel.gameList[gnm].state != "1080p"){
+            domCashe.perfCarousel.gameList[gnm].state = "1080p";
+            requestAnimationFrame(()=>requestAnimationFrame(()=>{          
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-1080p");        
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-required","perf-perfNotReady","perf-1440p","perf-4k");
+            }))
+          }
+        break;
+        case "1440p":
+          if(domCashe.perfCarousel.gameList[gnm].state != "1440p"){
+            domCashe.perfCarousel.gameList[gnm].state = "1440p";
+            requestAnimationFrame(()=>requestAnimationFrame(()=>{
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-1440p");        
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-required","perf-perfNotReady","perf-1080p","perf-4k");
+            }))        
+          }
+        break;
+        case "4k":
+          if(domCashe.perfCarousel.gameList[gnm].state != "4k"){
+            domCashe.perfCarousel.gameList[gnm].state = "4k";
+            requestAnimationFrame(()=>requestAnimationFrame(()=>{
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-4k");        
+              domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-required","perf-perfNotReady","perf-1080p","perf-1440p");
+            }))          
+          }
+        break;
+      }
+    }   
   }
 }
 
@@ -1382,7 +1408,7 @@ function crPerfCarousel(){
 
   for(const gnm of CFGperfCarousel.gameOrder){
     domCashe.perfCarousel.gameList[gnm]={
-      "state": CFGperfCarousel.gameList[gnm].stateFormat,
+      "state": "$$",
       "perfBody": perfDom.querySelector(`#perf-${gnm} .perf-body`)
     }
   }
