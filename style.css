@@ -303,6 +303,7 @@ body{
   grid-template-columns: auto 65%;
   align-items: center;
   gap: 5px;
+  padding: 0 5px;
 }
 #performance-carousel-2 .perf-display{display: contents;}
 #performance-carousel-2.perf-carousel img{
@@ -318,7 +319,25 @@ body{
   text-align: center;
 }
 
-#performance-carousel-2 .perf-body .progress div:nth-child(5){
+#performance-carousel-2 .perf-body .progress{
+  position: relative;
+  background-image: linear-gradient(
+  90deg,
+  hsl(0deg 100% 50%) 0%,
+  hsl(11deg 100% 50%) 1%,
+  hsl(22deg 100% 50%) 5%,
+  hsl(33deg 100% 50%) 13%,
+  hsl(44deg 100% 50%) 25%,
+  hsl(55deg 100% 50%) 42%,
+  hsl(65deg 100% 50%) 60%,
+  hsl(76deg 100% 50%) 76%,
+  hsl(87deg 100% 50%) 88%,
+  hsl(98deg 100% 50%) 95%,
+  hsl(109deg 100% 50%) 99%,
+  hsl(120deg 100% 50%) 100%
+  );
+}
+#performance-carousel-2 .perf-body .progress div{
   transition: left 1s;
   position: absolute;
   left: 0%;
@@ -327,16 +346,39 @@ body{
   width: 100%;
   background-color: #f3f5f9;
 }
-#performance-carousel-2 .perf-body.perf-perfNotReady .progress div:nth-child(5){
+#performance-carousel-2 .perf-body .progress::before{
+  content: "unset";
+  color: #fff;
+  line-height: 1.4;
+  mix-blend-mode: difference;
+  z-index: 10;
+  width: 100%;
+  text-align: center;
+}
+
+#performance-carousel-2 .perf-body.perf-perfNotReady .progress::before{
+  content: "<1080P";
+}
+#performance-carousel-2 .perf-body.perf-1080p .progress::before{
+  content: "1080P";
+}
+#performance-carousel-2 .perf-body.perf-1440p .progress::before{
+  content: "1440P";
+}
+#performance-carousel-2 .perf-body.perf-4k .progress::before{
+  content: "4K";
+}
+
+#performance-carousel-2 .perf-body.perf-perfNotReady .progress div{
   left: 25%;
 }
-#performance-carousel-2 .perf-body.perf-1080p .progress div:nth-child(5){
+#performance-carousel-2 .perf-body.perf-1080p .progress div{
   left: 50%;
 }
-#performance-carousel-2 .perf-body.perf-1440p .progress div:nth-child(5){
+#performance-carousel-2 .perf-body.perf-1440p .progress div{
   left: 75%;
 }
-#performance-carousel-2 .perf-body.perf-4k .progress div:nth-child(5){
+#performance-carousel-2 .perf-body.perf-4k .progress div{
   left: 100%;
 }
 
