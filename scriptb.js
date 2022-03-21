@@ -719,6 +719,7 @@ var CFGprodNavHandler = [];
 function prodNavHandler(){
   var evArgs = {
     cnm: this.dataset.navdest,
+    action:"open"
   }
   for(const fnc of CFGprodNavHandler)fnc(evArgs);
 }
@@ -1251,13 +1252,15 @@ function updatePerfCarousel(evArgs){
       if(domCashe.dom[lcnm].prodType == "radio"){
         var obval = domCashe.dom[lcnm].prodList[domCashe.dom[lcnm].prodSelected].perfAttr;
         var obval = obval=="$"?"$":Number(obval.split(",")[Number(catr.attr)]);
-        if(obval == "$"){
-          if(CFGperfCarousel.gameList[gnm].parts[lcnm].safe != "$"){
-            wrPerfMsg(gnm,"required")
+        if(obval == "$"||obval==NaN){
+          if(CFGperfCarousel.gameList[gnm].parts[lcnm].safe != "$"||obval==NaN){
+            wrPerfMsg(gnm,"required");
             continue cgame;
           }else{
             continue
           }
+        }else if (obval < pRes){
+          pRes = obval;
         }
       }else if(domCashe.dom[lcnm].prodType == "checkbox"){
 
@@ -1298,6 +1301,10 @@ function wrPerfMsg(gnm,msg){
         domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-required");
         domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-perfNotReady","perf-1080p","perf-1440p","perf-4k");
         domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.required.replace("@@@",tmpFields);
+        var newlinks = domCashe.perfCarousel.gameList[gnm].perfBody.querySelectorAll(".category-link");
+        for(lnk of newlinks){
+          lnk.addEventListener("click",perfCarouselHandler);
+        }
       }
     break;
     case "perfNotReady":case "1080p":case "1440p":case "4k":
@@ -1350,7 +1357,8 @@ function wrPerfMsg(gnm,msg){
 var CFGperfCarouselHandler = [];
 function perfCarouselHandler(){
   var evArgs = {
-    "cnm": this.dataset.perfredirect
+    "cnm": this.dataset.perfredirect,
+    "action": "open"
   }
   for(const fnc of CFGperfCarouselHandler)fnc(evArgs);  
 }
@@ -1408,6 +1416,10 @@ function crPerfCarousel(){
       "state": "$$",
       "perfBody": perfDom.querySelector(`#perf-${gnm} .perf-body`)
     }
+  }
+  for(const cnm of CFGperfCarousel.partList){
+    if(!domCashe.dom.hasOwnProperty(cnm))continue
+    updatePerfCarousel({cnm:cnm})
   }
   
   CFGperfCarouselHandler.length = 0;

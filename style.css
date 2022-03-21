@@ -338,7 +338,7 @@ body{
   );
 }
 #performance-carousel-2 .perf-body .progress div{
-  transition: left 1s;
+  transition: left 0.5s;
   position: absolute;
   left: 0%;
   top: 0;
