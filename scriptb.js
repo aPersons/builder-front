@@ -1225,7 +1225,6 @@ CFGperfCarousel = {
       }
     },
     "sottr_game":{
-      "stateFormat": "$$",
       "nmTxt":"Shadow of the Tomb Raider",
       "img_src":"assets/sottr-game.jpg",
       "parts":{

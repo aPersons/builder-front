@@ -1,19 +1,8 @@
 
 /* Page Wrapper - Temp Contents*/
 
-body{
-  background-color: #f6f6f6!important;
-  height: auto !important;;
-}
-
-.header-main{
-  position: sticky;
-  width: 100%;
-  top: 0;
-  z-index: 20;
-  background-color: #fff;
-  box-shadow: 0 0.25rem 0.5625rem -0.0625rem rgb(0 0 0 / 3%),
-  0 0.275rem 1.25rem -0.0625rem rgb(0 0 0 / 5%);
+.btn-scroll-top{
+  bottom: 4rem;
 }
 
 /* Actual Content */
@@ -139,7 +128,7 @@ body{
   background-color: #fff;
   border-radius: 0.4375rem;
   margin: 0px;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   box-shadow: 0 0.3rem 1.525rem -0.375rem rgba(0,0,0,0.1);
   padding: 15px;
   text-align: justify;
@@ -147,7 +136,7 @@ body{
 
 /* Product - Cart */
 .tab-container{  
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   padding: 15px;
   border-radius: 0.4375rem;
   background-color: #ffffff;
@@ -238,9 +227,9 @@ body{
 .prod-navigation.fixed-mode .prod-navigator.isfocused{
   border-bottom-color: #fff;
 }
-.prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-circle-fill.text-muted + span{
+/* .prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-circle-fill.text-muted + span{
   color: #7d879c;
-}
+} */
 .prod-navigation.fixed-mode .prod-navigator.navlpshow i.bi-circle-fill.text-success + span{
   color: #42d697;
 }
@@ -405,7 +394,7 @@ body{
   background-color: #ffffff;
   box-shadow: 0 0.3rem 1.525rem -0.375rem rgba(0,0,0,0.1);
   border-radius: 0.4375rem;
-  margin-bottom: 15px;
+  margin-bottom: 1rem;
   border: solid 1px #e3e9ef;
   display: flex;
   flex-direction: column;
@@ -520,12 +509,13 @@ body{
 .part-checkbox:checked + .listed-part{
   display: block;
 }
-.part-list-container .border-top {
-  display: none;
+
+.builder-part-category.lp-show .listed-part:nth-last-child(n+2){
+  border-bottom: 1px solid #e3e9ef;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
 }
-.builder-part-category.lp-show .part-list-container .border-top{
-  display: block;
-}
+
 .listed-part-inner{
   display: grid;
   border-radius: 0.4375rem;
@@ -729,15 +719,17 @@ body{
 }
 
 
-@media print{
-  .topbar,
-  .header-main,
+@media print{  
+  header,
   .page-title-overlap,
   .builder-body-container,
   .modal-quick-view,
   .btn-scroll-top,
   .bottom-toolbar,
-  footer{
+  footer,
+  #mapModal,
+  #compareModal,
+  .eupopup-container{
     display:none;
   }
   #build-modal .modal-footer,
