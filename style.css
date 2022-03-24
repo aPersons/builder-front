@@ -241,7 +241,6 @@
 
 /* Carousel */
 #performance-carousel-2{
-  grid-area: build-performance;
   max-width: 330px;
   margin: auto;
   padding-bottom: 20px;
