@@ -1442,7 +1442,7 @@ document.addEventListener("DOMContentLoaded", function(){
   crCOpen();
   crCOpenMinor();
   crHeadSel();
-  crPerfCarousel();
+  // crPerfCarousel();
   crProdNav();
   crBuildModal();
 })
