@@ -61,19 +61,19 @@ prod_template = """
                   <label class="btn btn-success btn-change btn-shadow">Αλλαγή</label>
                   <label class="btn btn-success btn-select btn-shadow" for="{part_id}">Επιλογή</label>
                   {sec_btn}
-                  <div class="disabled-part">disabled</div>
+                  <div class="disabled-part fs-ms">disabled</div>
                 </div>                
               </label>              
             </div>"""
 av_template={
   "":'<div class="prod-av-null"></div>',
-  "Μη διαθέσιμο":'<div class="prod-av-0">Μη διαθέσιμο</div>',
-  "Άμεσα διαθέσιμο":'<div class="prod-av-2">Άμεσα διαθέσιμο</div>',
-  "1-3 εργάσιμες":'<div class="prod-av-1">1-3 εργάσιμες</div>',
-  "1-2 εργάσιμες":'<div class="prod-av-1">1-2 εργάσιμες</div>',
-  "5-10 εργάσιμες":'<div class="prod-av-1">1-2 εργάσιμες</div>',
-  "10-15 εργάσιμες":'<div class="prod-av-1">10-15 εργάσιμες</div>',
-  "Μικρή διαθεσιμότητα":'<div class="prod-av-2">Μικρή διαθεσιμότητα</div>'
+  "Μη διαθέσιμο":'<div class="prod-av-0"><span style="font-size:13px;">Μη διαθέσιμο</span></div>',
+  "Άμεσα διαθέσιμο":'<div class="prod-av-2"><span style="font-size:13px;">Άμεσα διαθέσιμο</span></div>',
+  "1-3 εργάσιμες":'<div class="prod-av-1"><span style="font-size:13px;">1-3 εργάσιμες</span></div>',
+  "1-2 εργάσιμες":'<div class="prod-av-1"><span style="font-size:13px;">1-2 εργάσιμες</span></div>',
+  "5-10 εργάσιμες":'<div class="prod-av-1"><span style="font-size:13px;">1-2 εργάσιμες</span></div>',
+  "10-15 εργάσιμες":'<div class="prod-av-1"><span style="font-size:13px;">10-15 εργάσιμες</span></div>',
+  "Μικρή διαθεσιμότητα":'<div class="prod-av-2"><span style="font-size:13px;">Μικρή διαθεσιμότητα</span></div>'
 }
 results=""
 for category in prodlist:
@@ -114,7 +114,7 @@ for category in prodlist:
           #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
       seeMore = ""
       if not "emptyval" in product:
-        seeMore = '<a class="prod-quick-view quick-view-btn" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
+        seeMore = '<a class="prod-quick-view quick-view-btn nav-link-style fs-ms" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
 
       perfAttributes = ""
       perfres = ""

@@ -1388,7 +1388,7 @@ function crPerfCarousel(){
     tmpMarkup += `
     <div class="carousel-item${CFGperfCarousel.gameOrder[0] == gnm?" active":""}">
       <div class="carousel-item-inner">
-        <img src="${CFGperfCarousel.gameList[gnm].img_src}">
+        <img src="${CFGperfCarousel.gameList[gnm].img_src}"alt="">
         <div class="perf-display" id="perf-${gnm}">
           <div class="perf-body"></div>
         </div>
@@ -1407,8 +1407,6 @@ function crPerfCarousel(){
       data-bs-slide="next">
       <span class="carousel-control-next-icon"></span>
     </button>
-  </div>
-  </div>
   `
   perfDom.innerHTML = tmpMarkup;
 
