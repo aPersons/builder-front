@@ -792,10 +792,7 @@ function updateBuildModal(evArgs){
   <div class="modal-cat-header">Κατηγορία</div>
   <div class="modal-prnum-header">Κωδικός</div>
   <div class="modal-product-header">Προϊόν</div>
-  <div class="modal-quant-header">Τμχ.</div>
-  <div class="modal-price-header">Τιμή</div>
-  <div class="modal-total-header">Σύνολο</div></div>`;
-  var totalVal = 0;
+  <div class="modal-quant-header">Τμχ.</div></div>`;
   for(let i=0;i<domCashe.domOrder.length;i++){
     var ob = domCashe.dom[domCashe.domOrder[i]];
     if(ob.prodType == "radio"){
@@ -804,11 +801,7 @@ function updateBuildModal(evArgs){
       <div class="cat-nm">${ob.nmTxt}</div>
       <div class="erp-pn">${pob.erp}</div>
       <div class="prod-nm">${pob.nmTxt}</div>
-      <div class="prod-quant">${pob.qValue}x</div>
-      <div class="prod-price">${wtDecimal(pob.priceVal)} €</div>
-      <div class="prod-price-total">${wtDecimal(pob.qValue * pob.priceVal)} €</div>
-      </div>`;
-      totalVal+= (pob.qValue * pob.priceVal);
+      <div class="prod-quant">${pob.qValue}x</div></div>`;
       if(ob.hasSelected)linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
     }else if(ob.prodType == "checkbox"){
       for(const pnm of ob.prodSelected){
@@ -817,20 +810,12 @@ function updateBuildModal(evArgs){
         <div class="cat-nm">${ob.nmTxt}</div>
         <div class="erp-pn">${pob.erp}</div>
         <div class="prod-nm">${pob.nmTxt}</div>
-        <div class="prod-quant">${pob.qValue}x</div>
-        <div class="prod-price">${wtDecimal(pob.priceVal)} €</div>
-        <div class="prod-price-total">${wtDecimal(pob.qValue * pob.priceVal)} €</div>
-        </div>`;
-        totalVal+= (pob.qValue * pob.priceVal);
+        <div class="prod-quant">${pob.qValue}x</div></div>`;
         if(ob.hasSelected)linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
       }
     }
   }
-  tabletext += `<div class="table-row">
-  <div class="modal-total-title">Σύνολο:</div>
-  <div></div><div></div><div></div><div></div>
-  <div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
-  </div>`
+  tabletext += `<div class="table-row"><div>&nbsp;</div><div></div><div></div><div></div></div>`
   domCashe.buildModal.modalTable.innerHTML = tabletext;
   domCashe.buildModal.linkFull = linktext;
   domCashe.buildModal.qLink = "Unavailable";
