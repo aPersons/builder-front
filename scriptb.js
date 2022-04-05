@@ -724,22 +724,22 @@ function prodNavHandler(){
   for(const fnc of CFGprodNavHandler)fnc(evArgs);
 }
 var CFGscrollHandler = [];
-// var scrollHandlerAv = true;
-var tmRef;
+var scrollHandlerAv = true;
+// var tmRef;
 function scrollHandler(){
-  // if(scrollHandlerAv){
-  //   scrollHandlerAv = false;
-  //   for(const fnc of CFGscrollHandler)fnc();
-  //   setTimeout(()=>scrollHandlerAv=true,100);
-  // }
-  clearTimeout(tmRef);
-  tmRef = setTimeout(scrollHandlerEnd,50);
+  if(scrollHandlerAv){
+    scrollHandlerAv = false;
+    for(const fnc of CFGscrollHandler)fnc();
+    setTimeout(()=>scrollHandlerAv=true,25);
+  }
+  // clearTimeout(tmRef);
+  // tmRef = setTimeout(scrollHandlerEnd,50);
 }
-var CFGscrollHandlerEnd = [];
-function scrollHandlerEnd(){
-  // scrollHandlerAv = false;
-  for(const fnc of CFGscrollHandlerEnd)fnc();
-}
+// var CFGscrollHandlerEnd = [];
+// function scrollHandlerEnd(){
+//   // scrollHandlerAv = false;
+//   for(const fnc of CFGscrollHandlerEnd)fnc();
+// }
 function crProdNav(){
   domCashe.prodNav = {};
   var navBody = document.getElementById("prod-navigation");
@@ -779,8 +779,9 @@ function crProdNav(){
   document.removeEventListener("scroll",scrollHandler);
   document.addEventListener("scroll",scrollHandler);
   CFGscrollHandler.length = 0;
-  CFGscrollHandlerEnd.length = 0;
-  CFGscrollHandlerEnd.push(updateNavPos);
+  CFGscrollHandler.push(updateNavPos);
+  // CFGscrollHandlerEnd.length = 0;
+  // CFGscrollHandlerEnd.push(updateNavPos);
   updateNavPos();
 }
 
@@ -815,7 +816,6 @@ function updateBuildModal(evArgs){
       }
     }
   }
-  tabletext += `<div class="table-row"><div>&nbsp;</div><div></div><div></div><div></div></div>`
   domCashe.buildModal.modalTable.innerHTML = tabletext;
   domCashe.buildModal.linkFull = linktext;
   domCashe.buildModal.qLink = "Unavailable";
@@ -846,7 +846,16 @@ function updateBuildModal(evArgs){
 function buildShortLink(evArgs) {
   try{
     navigator.clipboard.writeText(domCashe.buildModal.qLink);
-  }catch{}  
+    domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-check2"></i>';
+    setTimeout(()=>{
+      domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-paperclip"></i>';      
+    },2000)
+  }catch{
+    domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-check2"></i>';
+    setTimeout(()=>{
+      domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-x-lg"></i>';      
+    },2000)
+  }  
 }
 
 CFGbuildModalOpenHandler = [];
@@ -866,9 +875,9 @@ function crBuildModal(){
   domCashe.buildModal.modalTable = mdl.querySelector(".modal-body .modal-table");
   domCashe.buildModal.footerLinkBody = mdl.querySelector(".footer-link-body");
   domCashe.buildModal.linkFull = "";
-  var btnCopy = mdl.querySelector(".btn-copy-link");
-  btnCopy.removeEventListener("click", buildShortLinkHandler);
-  btnCopy.addEventListener("click", buildShortLinkHandler);
+  domCashe.buildModal.btnCopy = mdl.querySelector(".btn-copy-link");
+  domCashe.buildModal.btnCopy.removeEventListener("click", buildShortLinkHandler);
+  domCashe.buildModal.btnCopy.addEventListener("click", buildShortLinkHandler);
 
   var btns = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#build-modal"]');
   for(const btn of btns){
