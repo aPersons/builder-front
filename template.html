@@ -1322,7 +1322,7 @@
 							</div>
 						</div>
 							<div class="mb-3">
-								<button class="btn btn-success btn-shadow d-block w-100" type="submit" id="prd_addtocart"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
+								<button class="btn btn-success btn-shadow d-block w-100" type="submit" form="builder-form"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
 							</div>
 							<div class="mb-3">
 								<button type="button" class="btn btn-primary btn-shadow d-block w-100" data-bs-toggle="modal" data-bs-target="#build-modal">
@@ -1456,7 +1456,7 @@
 					</div>
 				</div>
 			</div>
-			<form class="col-lg-9 col-md-8 order-lg-1 builder-parts prod-form-body" action="">
+			<form class="col-lg-9 col-md-8 order-lg-1 builder-parts prod-form-body" id="builder-form" action="">
 				{fill_part_list}
 			</form>
 		</div>
@@ -1518,11 +1518,11 @@
 	<div class="bottom-toolbar bg-darker">
 		<div class="my-2 mb-1 text-center" style="display: flex;gap: 1rem; justify-content: center;">
 			<div class="bg-white px-2 py-1 btn" style="cursor: initial;"><strong><span class="build-price-total">0,00</span> €</strong></div>
-			<a class="btn btn-success px-2 py-1" id="">
+			<button class="btn btn-success px-2 py-1" type="submit" form="builder-form">
 				<strong><i class="ci-cart me-1"></i><span class="d-none d-lg-inline-block">Προσθήκη στο</span> Καλάθι</strong>
-			</a>
+			</button>
 			<button type="button" class="btn btn-primary px-2 py-1 d-none d-sm-block" data-bs-toggle="modal" data-bs-target="#build-modal">
-				Σύνοψη &amp; Αποθήκευση
+				<strong>Σύνοψη &amp; Αποθήκευση</strong>
 			</button>
 		</div>
 	</div>

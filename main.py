@@ -33,7 +33,7 @@ num_input = """
 """
 num_input_alt = """
   <div class="part-number-input static-number">
-    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity{mlfx}" value="1">
+    <input type="number" class="part-quantity"id="{part_id}-quantity" name="{part_cat}-quantity{mlfx}" value="{qval}">
   </div>
 """
 
@@ -107,7 +107,8 @@ for category in prodlist:
         num_input_res = num_input_alt.format(
               mlfx = "[]"if "multi-sel" in category else "",
               part_id = product["prod-code"],
-              part_cat = category["cat-code"]
+              part_cat = category["cat-code"],
+              qval = "0" if "emptyval" in product else "1"
         )
       #get_av = ""
       #if "prod-av" in product:

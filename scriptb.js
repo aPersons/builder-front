@@ -252,6 +252,7 @@ function catRedirect(evArgs) {
           ob.lpState = false;
           ob.selfDom.classList.remove("lp-show");
         break;
+        case "same": break;
         default://toggle
           ob.lpState = !ob.lpState
           ob.selfDom.classList.toggle("lp-show");
@@ -441,7 +442,7 @@ function crProdPrice(){
     }else if (ob.prodType == "checkbox") {
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
-        pod.cDom.querySelector(".price-block").textContent = wtDecimal(pod.priceVal);
+        pod.cDom.querySelector(".price-block").textContent = `${wtDecimal(pod.priceVal)}€`;
       }
     }
   }
