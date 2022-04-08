@@ -803,7 +803,7 @@ function updateBuildModal(evArgs){
       <div class="cat-nm">${ob.nmTxt}</div>
       <div class="erp-pn">${pob.erp}</div>
       <div class="prod-nm">${pob.nmTxt}</div>
-      <div class="prod-quant">${pob.qValue}x</div></div>`;
+      <div class="prod-quant">${pob.qValue}</div></div>`;
       if(ob.hasSelected)linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
     }else if(ob.prodType == "checkbox"){
       for(const pnm of ob.prodSelected){
@@ -812,36 +812,35 @@ function updateBuildModal(evArgs){
         <div class="cat-nm">${ob.nmTxt}</div>
         <div class="erp-pn">${pob.erp}</div>
         <div class="prod-nm">${pob.nmTxt}</div>
-        <div class="prod-quant">${pob.qValue}x</div></div>`;
+        <div class="prod-quant">${pob.qValue}</div></div>`;
         if(ob.hasSelected)linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
       }
     }
   }
   domCashe.buildModal.modalTable.innerHTML = tabletext;
   domCashe.buildModal.linkFull = linktext;
-  domCashe.buildModal.qLink = "Unavailable";
-  (async ()=>{
-    try{  
-      const request = await fetch(
-        'https://api-ssl.bitly.com/v4/shorten',{
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${gettoken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ "long_url": domCashe.buildModal.linkFull})
-      })
+  domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
+  domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
+  // (async ()=>{
+  //   try{  
+  //     const request = await fetch(
+  //       'https://api-ssl.bitly.com/v4/shorten',{
+  //       method: 'POST',
+  //       headers: {
+  //         'Authorization': `Bearer ${gettoken}`,
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ "long_url": domCashe.buildModal.linkFull})
+  //     })
       
-      if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
-      const getjson = await request.json()
-      domCashe.buildModal.qLink = getjson["link"];
-      domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
-    }catch(err){
-      domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
-      domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
-      console.log(err);
-    }
-  })()
+  //     if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
+  //     const getjson = await request.json()
+  //     domCashe.buildModal.qLink = getjson["link"];
+  //     domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
+  //   }catch(err){
+  //     console.log(err);
+  //   }
+  // })()
 }
 
 function buildShortLink(evArgs) {

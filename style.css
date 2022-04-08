@@ -711,6 +711,7 @@
 @media print{  
   header,
   .page-title-overlap,
+  .toast-container,
   .builder-body-container,
   .modal-quick-view,
   .btn-scroll-top,
