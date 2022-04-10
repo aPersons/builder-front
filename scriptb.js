@@ -1,3 +1,18 @@
+/*--------------------------------------------
+ Functions to make scroll with speed control
+---------------------------------------------*/
+
+// c = element to scroll to or top position in pixels
+// e = duration of the scroll in ms, time scrolling
+// d = (optative) ease function. Default easeOutCuaic
+function scrollToCustom(c,e,d){d||(d=easeOutCuaic);var a=document.documentElement;
+if(0===a.scrollTop){var b=a.scrollTop;++a.scrollTop;a=b+1===a.scrollTop--?a:document.body}
+b=a.scrollTop;0>=e||("object"===typeof b&&(b=b.offsetTop),
+"object"===typeof c&&(c=c.offsetTop),function(a,b,c,f,d,e,h){
+function g(){0>f||1<f||0>=d?a.scrollTop=c:(a.scrollTop=b-(b-c)*h(f),
+f+=d*e,setTimeout(g,e))}g()}(a,b,c,0,1/e,20,d))};
+function easeOutCuaic(t){t--;return t*t*t+1;}
+
 function wtDecimal(wholeNum){
   if(Number.isSafeInteger(Number(wholeNum))){
     var wholeStr = Number(wholeNum).toString();
@@ -96,7 +111,7 @@ function crRdBt(){
           "value": tmpList[i].value,
           "erp": erpL?erpL:"-"
         }
-        if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
+        if (ob.prodList[dname].value == "0") ob.emptyEl = dname;
         if (ob.prodList[dname].isSelected)ob.prodSelected = dname;
       }
     }
@@ -225,7 +240,7 @@ function crCbBt(){
           "value": tmpList[i].value,
           "erp": erpL?erpL:"-"
         }
-        if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
+        if (ob.prodList[dname].value == "0") ob.emptyEl = dname;
         if(ob.prodList[dname].isSelected)ob.prodSelected.push(dname);
       }
     }
@@ -282,28 +297,32 @@ function catRedirect(evArgs) {
           behavior: 'smooth'
         })
       }
-      window.scrollTo({
-        top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-        behavior: 'smooth'
-      });
+      // window.scrollTo({
+      //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+      //   behavior: 'smooth'
+      // });
+      scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),100);
     }else{
       var selprodTop = selprod.getBoundingClientRect().top;
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
-        window.scrollTo({
-          top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-          behavior: 'smooth'
-        });
+        // window.scrollTo({
+        //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+        //   behavior: 'smooth'
+        // });
+        scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),100);
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-        window.scrollTo({
-          top:catPosBot+window.scrollY-window.innerHeight+50,
-          behavior: 'smooth'
-      });
+      //   window.scrollTo({
+      //     top:catPosBot+window.scrollY-window.innerHeight+50,
+      //     behavior: 'smooth'
+      // });
+      scrollToCustom(catPosBot+window.scrollY-window.innerHeight+50);
       }else{
-        window.scrollTo({
-          top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
-          behavior: 'smooth'
-        });
+        // window.scrollTo({
+        //   top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
+        //   behavior: 'smooth'
+        // });
+        scrollToCustom(selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,100);
       }
     }
   })});  
@@ -391,38 +410,10 @@ function updateProdPrice(evArgs){
       var dfr = pob.priceVal - sprice;
       if(dfr == 0){
         pob.priceBlock.textContent = `+0,00€`;
-        if(pob.priceColorHigher){
-          pob.priceColorHigher = false;
-          pob.priceBlock.classList.remove("price-higher");
-        }
-        if(!pob.priceColorLower){
-          pob.priceColorLower = true;
-          pob.priceBlock.classList.add("price-lower");
-        }
       }else if(dfr < 0){
         pob.priceBlock.textContent = `${wtDecimal(dfr)}€`;
-        if (pob.priceColor != "price-lower"){
-          if(pob.priceColorHigher){
-            pob.priceColorHigher = false;
-            pob.priceBlock.classList.remove("price-higher");
-          }
-          if(!pob.priceColorLower){
-            pob.priceColorLower = true;
-            pob.priceBlock.classList.add("price-lower");
-          }
-        }
       }else{
         pob.priceBlock.textContent = `+${wtDecimal(dfr)}€`;
-        if (pob.priceColor != "price-higher"){
-          if(!pob.priceColorHigher){
-            pob.priceColorHigher = true;
-            pob.priceBlock.classList.add("price-higher");
-          }
-          if(pob.priceColorLower){
-            pob.priceColorLower = false;
-            pob.priceBlock.classList.remove("price-lower");
-          }
-        }
       }
     }
   }
@@ -435,8 +426,6 @@ function crProdPrice(){
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
         pod.priceBlock = pod.cDom.querySelector(".price-block");
-        pod.priceColorHigher = pod.priceBlock.classList.contains("price-higher");
-        pod.priceColorLower = pod.priceBlock.classList.contains("price-lower");
       }
       updateProdPrice({"cnm":cnm});
     }else if (ob.prodType == "checkbox") {

@@ -140,7 +140,7 @@ for category in prodlist:
         part_id = product["prod-code"],
         part_cat = category["cat-code"],
         mlfx = "[]"if "multi-sel" in category else "",
-        part_value = (product["prod-code"],"emptyval")["emptyval" in product],
+        part_value = (product["prod-code"],"0")["emptyval" in product],
         is_checked = ischecked,
         perfattr = perfres,
         compattr = compres,
