@@ -61,6 +61,7 @@ function crCats(){
     domCashe.dom[domCashe.domOrder[domCashe.domOrder.length-1]] = {
       "selfDom": tmpList[i],
       "headDom": tmphead,
+      "isHidden": tmpList[i].classList.contains("d-none"),
       "pListDom": tmpList[i].querySelector(".part-list-container"),
       "nmTxt": tmphead.textContent,
       "lpState": tmpList[i].classList.contains("lp-show")
@@ -741,6 +742,7 @@ function crProdNav(){
   var navstr = "";
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm];
+    if(ob.isHidden)continue;
     domCashe.prodNav.navigators[cnm]={
       "lpState": ob.lpState,
       "hasSelected": ob.hasSelected,
@@ -786,6 +788,7 @@ function updateBuildModal(evArgs){
   <div class="modal-quant-header">Τμχ.</div></div>`;
   for(let i=0;i<domCashe.domOrder.length;i++){
     var ob = domCashe.dom[domCashe.domOrder[i]];
+    if(ob.isHidden)continue;
     if(ob.prodType == "radio"){
       var pob = ob.prodList[ob.prodSelected];
       tabletext += `<div class="table-row">
