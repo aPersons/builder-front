@@ -40,7 +40,7 @@ num_input_alt = """
 cat_template="""
             <div class="builder-part-category" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
-                <div class="part-category-description">{cat_descr}</div>
+                <div class="part-category-description fs-md bg-secondary">{cat_descr}</div>
                 <div class="part-list-container-outer">
                 <div class="part-list-container">
                   {part_list}
@@ -54,7 +54,7 @@ prod_template = """
                   <img class="build-img" src="assets/{img_src}.jpg" width="100%">
                 </div>
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
-                <div class="part-price" data-priceval="{part_price}">
+                <div class="part-price fw-bold" data-priceval="{part_price}">
                   <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}

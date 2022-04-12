@@ -7,15 +7,14 @@
 	<title>builder.local</title>
 	<link rel="icon" href="assets/oci_ogol.ico">
 	<!-- Vendor Styles including: Font Icons, Plugins, etc.-->
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/vendor/simplebar/dist/simplebar.min.css"/>
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/vendor/tiny-slider/dist/tiny-slider.css"/>
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/vendor/drift-zoom/dist/drift-basic.min.css"/>
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/vendor/simplebar/dist/simplebar.min.css"/>
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/vendor/tiny-slider/dist/tiny-slider.css"/>
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/vendor/drift-zoom/dist/drift-basic.min.css"/>
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/vendor/lightgallery.js/dist/css/lightgallery.min.css"/>
 	<!-- Main Theme Styles + Bootstrap-->
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/css/theme.min.css">
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/css/jquery-ui.min.css">
-	<link rel="stylesheet" media="screen" href="https://static.msystems.gr/theme_new/bootstrap-icons.css">
-	<link href="https://static.msystems.gr/theme/mini_css/background.1.50.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/css/theme.min.css">
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/css/jquery-ui.min.css">
+	<link rel="stylesheet" href="https://static.msystems.gr/theme_new/bootstrap-icons.css">
 	<link href="style.css" rel="stylesheet">
 </head>
 
@@ -1297,18 +1296,12 @@
 			<div class="px-lg-3">
 				<div class="row">
 					<div class="col-lg-7 pe-lg-0 pt-lg-4">
-						<div class="product-gallery">
-							<div class="product-gallery-preview order-sm-2">
-								<div class="product-gallery-preview-item active" id="first"><img class="image-zoom" src="assets/18.png" data-zoom="assets/18.png" alt="Msystems AMD Entry Gaming">
-									<div class="image-zoom-pane"></div>
-								</div>
-							</div>
-							<div class="product-gallery-thumblist order-sm-1">
-								<a class="product-gallery-thumblist-item active" href="#first">
-									<img src="assets/18.png" alt="Msystems AMD Entry Gaming">
-								</a>
-							</div>
+						<div class="text-center">
+							<img src="https://static.msystems.gr/systems/images/systems_images/1.png" class="img-responsive mb-4" alt="Msystems Intel Gaming">
 						</div>
+						<div class="alert text-center px-2 py-2 border">
+							<h6 class="alert-heading fs-md mb-1">Προκαταβολή:</h6>
+							<span class="fs-sm">Επειδή κατά την συναρμολόγηση θα πρέπει να ανοιχτούν οι συσκευασίες των προϊόντων, για την ολοκλήρωση της παραγγελία σας απαιτείται προκαταβολή της τάξεως του 30% της αξίας. Σε περίπτωση πληρωμής με κάρτα δεν χρειάζεται προκαταβολή.</span></div>
 					</div>
 					<div class="col-lg-5 pt-4 pt-lg-0">
 						<div class="product-details ms-auto pb-3">
@@ -1317,12 +1310,9 @@
 									<span class="h3 fw-normal me-1"><strong><span class="build-price-total">0,00</span> €</strong></span><br>
 									<span class="text-muted fs-xs">Χωρίς ΦΠΑ: <span class="build-price-taxless">0,00</span> €</span>
 							</div>
-							<div class="mt-n5">
-								<button class="btn-wishlist btn-sm me-0 me-lg-n4 mt-n5" type="button" id="prd_addtowishlist" data-bs-toggle="tooltip" title="" data-bs-original-title="Προσθήκη στην wishlist" aria-label="Προσθήκη στην wishlist"><i class="ci-heart"></i></button>
-							</div>
 						</div>
 							<div class="mb-3">
-								<button class="btn btn-success btn-shadow d-block w-100" type="submit" form="builder-form"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
+								<button class="btn btn-success btn-shadow d-block w-100" onclick="$('#builder-form').submit();" type="submit" id="builder_addtocart"><i class="ci-cart fs-lg me-2"></i><strong>Προσθήκη στο Καλάθι</strong></button>
 							</div>
 							<div class="mb-3">
 								<button type="button" class="btn btn-primary btn-shadow d-block w-100" data-bs-toggle="modal" data-bs-target="#build-modal">
@@ -1330,63 +1320,8 @@
 								</button>
 							</div>
 							<h5 class="h6 mb-2 pb-2 border-bottom"><i class="ci-announcement text-muted fs-lg align-middle mt-n1 me-2"></i>Πληροφορίες</h5>
-							<div class="fs-sm mb-1"><strong>Κωδικός Msystems: </strong>500-xxxxx</div>
+							<div class="fs-sm mb-1"><strong>Κωδικός Msystems: </strong>000-00000</div>
 							<div class="fs-sm mb-3"><strong>Εγγύηση: </strong>Κάθε κομμάτι καλύπτεται από την Εγγύηση του Κατασκευαστή</div>
-							<div class="accordion mb-4" id="productPanels">
-								<div class="accordion-item">
-									<h3 class="accordion-header"><a class="accordion-button collapsed" href="#shippingOptions" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="shippingOptions"><i class="ci-delivery text-muted lead align-middle mt-n1 me-2"></i>Ενδεικτικά μεταφορικά</a></h3>
-									<div class="accordion-collapse collapse" id="shippingOptions" data-bs-parent="#productPanels">
-										<div class="accordion-body fs-sm">
-											<div class="d-flex justify-content-between border-bottom pb-2">
-												<div>
-													<div class="fw-semibold">Εντός Αττικής</div>
-													<div class="fs-sm text-muted">1 - 2 Ημέρες</div>
-												</div>
-												<div>Δωρεάν</div>
-											</div>
-											<div class="d-flex justify-content-between border-bottom pb-2">
-												<div>
-													<div class="fw-semibold">Εκτός Αττικής με Courier</div>
-													<div class="fs-sm text-muted">1 - 3 Ημέρες</div>
-												</div>
-												<div>26,50 €</div>
-											</div>
-											<div class="d-flex justify-content-between border-bottom py-2">
-												<div>
-													<div class="fw-semibold">Παραλαβή από το κατάστημα</div>
-													<div class="fs-sm text-muted">-</div>
-												</div>
-												<div>Δωρεάν</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="accordion-item">
-									<h3 class="accordion-header"><a class="accordion-button collapsed" href="#doseis" role="button" data-bs-toggle="collapse" aria-expanded="false" aria-controls="doseis"><i class="bi bi-currency-euro text-muted lead align-middle mt-n1 me-2"></i>Δόσεις</a></h3>
-									<div class="accordion-collapse collapse" id="doseis" data-bs-parent="#productPanels">
-										<div class="accordion-body fs-sm">
-											<div class="d-flex justify-content-between border-bottom pb-2">
-												<div>
-													<div class="fw-semibold">Courier</div>
-													<div class="fs-sm text-muted">1 - 2 Ημέρες</div>
-												</div>
-												<div>26,50 €</div>
-											</div>
-											<div class="d-flex justify-content-between border-bottom py-2">
-												<div>
-													<div class="fw-semibold">Μεταφορική</div>
-													<div class="fs-sm text-muted">1 - 4 Ημέρες</div>
-												</div>
-												<div>5-10 €</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<label class="form-label d-inline-block align-middle my-2 me-1">Μοιράσου το:</label>
-							<a class="btn-share btn-facebook me-1" href="#"><i class="ci-facebook me-0"></i><span class="ms-1 d-none d-lg-inline-block">Facebook</span></a>
-							<a class="btn-share btn-twitter me-1" href="#"><i class="ci-twitter me-0"></i><span class="ms-1 d-none d-lg-inline-block">Twitter</span></a>
-							<a class="btn-share btn-instagram" href="#"><i class="ci-mail me-0"></i><span class="ms-1 d-none d-lg-inline-block">Email</span></a>
 						</div>
 					</div>
 				</div>
@@ -1693,7 +1628,7 @@
 <script src="https://static.msystems.gr/theme_new/js/jquery-ui.min.js"></script>
 <script src="https://static.msystems.gr/theme_new/js/numeral.min.js"></script>
 <script src="https://static.msystems.gr/theme_new/js/locales/gr.min.js"></script>
-<script src='https://static.msystems.gr/theme/mini_js/jquery-eu-cookie-law-popup4.js' async defer></script>
+<script src='https://static.msystems.gr/theme_new/js/jquery-eu-cookie-law-popup4.js' async defer></script>
 <script src="https://static.msystems.gr/theme_new/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://static.msystems.gr/theme_new/vendor/simplebar/dist/simplebar.min.js"></script>
 <script src="https://static.msystems.gr/theme_new/vendor/tiny-slider/dist/min/tiny-slider.js"></script>
@@ -1703,11 +1638,11 @@
 <script src="https://static.msystems.gr/theme_new/vendor/lightgallery.js/dist/js/lightgallery.min.js"></script>
 <script src="https://static.msystems.gr/theme_new/vendor/lg-video.js/dist/lg-video.min.js"></script>
 <!-- Main theme script-->
-<script src="https://static.msystems.gr/theme_new/js/cookie.js"></script>
-<script src="https://static.msystems.gr/theme_new/js/theme.min.js"></script>
-<script src="https://static.msystems.gr/theme_new/js/mstheme.min.js"></script>
+<script src="https://static.msystems.gr/theme_new/js/cookie.1.js"></script>
+<script src="https://static.msystems.gr/theme_new/js/theme.min.1.js"></script>
+<script src="https://static.msystems.gr/theme_new/js/mstheme.min.1.js"></script>
 <script src="scriptb.js" defer></script>
-<script src='https://www.google.com/recaptcha/api.js' async defer></script>
+<script src="https://static.msystems.gr/theme_new/js/quick_view2.2.js"></script>
 </body>
 
 </html>

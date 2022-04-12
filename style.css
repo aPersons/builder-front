@@ -460,11 +460,7 @@
 .part-category-description {
   background-color: #ffffff;
   padding: 10px;
-  display: none;
   border-bottom: 1px solid #e3e9ef;
-}
-.builder-part-category.lp-show  .part-category-description{
-  display: block;
 }
 
 /* Part Body */
