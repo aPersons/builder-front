@@ -786,9 +786,11 @@ function updateBuildModal(evArgs){
   <div class="modal-prnum-header">Κωδικός</div>
   <div class="modal-product-header">Προϊόν</div>
   <div class="modal-quant-header">Τμχ.</div></div>`;
+  var totalVal = 0;
   for(let i=0;i<domCashe.domOrder.length;i++){
     var ob = domCashe.dom[domCashe.domOrder[i]];
     if(ob.isHidden)continue;
+    if(!ob.hasSelected)continue;
     if(ob.prodType == "radio"){
       var pob = ob.prodList[ob.prodSelected];
       tabletext += `<div class="table-row">
@@ -796,6 +798,7 @@ function updateBuildModal(evArgs){
       <div class="erp-pn">${pob.erp}</div>
       <div class="prod-nm">${pob.nmTxt}</div>
       <div class="prod-quant">${pob.qValue}</div></div>`;
+      totalVal+= (pob.qValue * pob.priceVal);
       if(ob.hasSelected)linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
     }else if(ob.prodType == "checkbox"){
       for(const pnm of ob.prodSelected){
@@ -805,10 +808,15 @@ function updateBuildModal(evArgs){
         <div class="erp-pn">${pob.erp}</div>
         <div class="prod-nm">${pob.nmTxt}</div>
         <div class="prod-quant">${pob.qValue}</div></div>`;
+        totalVal+= (pob.qValue * pob.priceVal);
         if(ob.hasSelected)linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
       }
     }
   }
+  tabletext += `<div class="table-row">
+  <div class="modal-total-title">Σύνολο:</div>
+  <div></div><div></div><div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
+  </div>`
   domCashe.buildModal.modalTable.innerHTML = tabletext;
   domCashe.buildModal.linkFull = linktext;
   domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
