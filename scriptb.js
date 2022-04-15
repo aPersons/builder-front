@@ -62,6 +62,7 @@ function crCats(){
       "selfDom": tmpList[i],
       "headDom": tmphead,
       "isHidden": tmpList[i].classList.contains("d-none"),
+      "isEmpty": (!tmpList[i].querySelectorAll("input.part-rd-bt, input.part-checkbox").length)?true:false,
       "pListDom": tmpList[i].querySelector(".part-list-container"),
       "nmTxt": tmphead.textContent,
       "lpState": tmpList[i].classList.contains("lp-show")
@@ -283,47 +284,47 @@ function catRedirect(evArgs) {
     var catState = domCashe.dom[wCat].lpState;
     var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
     var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
-    var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
+    var selprod = domCashe.dom[wCat].isEmpty?false:
+      domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
     var prodNavoff = window.innerWidth<768? -30:0;
     if(!catState || focus == "cat" || !selprod || window.innerWidth>=768){
-      if(catState && window.innerWidth>=768 && focus == "prod"){
+      if(catState && window.innerWidth>=768 && focus == "prod" && selprod){
         var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
         var selprodTop = selprod.getBoundingClientRect().top;
         var selprodHeight = selprod.getBoundingClientRect().height;
         var prodDifference = (parentPos.height-selprodHeight)/2;
         var posOffset = domCashe.dom[wCat].pListDom.scrollTop+(selprodTop-parentPos.top)-prodDifference;
-        // console.log(posOffset);
         domCashe.dom[wCat].pListDom.scrollTo({
           top: posOffset,
           behavior: 'smooth'
         })
       }
-      // window.scrollTo({
-      //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-      //   behavior: 'smooth'
-      // });
-      scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),500);
+      window.scrollTo({
+        top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+        behavior: 'smooth'
+      });
+      // scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),500);
     }else{
       var selprodTop = selprod.getBoundingClientRect().top;
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
-        // window.scrollTo({
-        //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-        //   behavior: 'smooth'
-        // });
-        scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),500);
+        window.scrollTo({
+          top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+          behavior: 'smooth'
+        });
+        // scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),500);
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-      //   window.scrollTo({
-      //     top:catPosBot+window.scrollY-window.innerHeight+50,
-      //     behavior: 'smooth'
-      // });
-      scrollToCustom(catPosBot+window.scrollY-window.innerHeight+50,500);
+        window.scrollTo({
+          top:catPosBot+window.scrollY-window.innerHeight+50,
+          behavior: 'smooth'
+      });
+      // scrollToCustom(catPosBot+window.scrollY-window.innerHeight+50,500);
       }else{
         // window.scrollTo({
         //   top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
         //   behavior: 'smooth'
         // });
-        scrollToCustom(selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,500);
+        // scrollToCustom(selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,500);
       }
     }
   })});  
@@ -541,6 +542,7 @@ function quantDecrHandler(){
 function crQuantity(){
   for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
+    if(ob.isEmpty)continue;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
       pob.qCont = pob.cDom.querySelector(".part-number-input");
@@ -779,8 +781,8 @@ function crProdNav(){
 
 function updateBuildModal(evArgs){
   var linktext = window.location.href.split('&');
-  //linktext = `${linktext[0]}&${linktext[1]}&prefill=1`; //
-  linktext = `https://www.msystems.gr/section/systems_new/?&system=18&prefill=1`;   //temp change
+  linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;
+  // linktext = `https://www.msystems.gr/section/systems_new/?&system=18&prefill=1`;   //temp change
   var tabletext = `<div class="table-row">
   <div class="modal-cat-header">Κατηγορία</div>
   <div class="modal-prnum-header">Κωδικός</div>
@@ -990,6 +992,7 @@ function updateProdCompatibility(evArgs){
   if(domCashe.dom[evArgs.cnm].prodType=="radio"){
     for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
       if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
+      if(domCashe.dom[cnm].isEmpty)continue;
       for(const pnm of domCashe.dom[cnm].prodOrder){
         if(compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm)){
           if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))removeUnsupported(pnm, cnm, evArgs.cnm);
@@ -1002,6 +1005,7 @@ function updateProdCompatibility(evArgs){
   }else if(domCashe.dom[evArgs.cnm].prodType=="checkbox"){
     for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
       if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
+      if(domCashe.dom[cnm].isEmpty)continue;
       for(const pnm of domCashe.dom[cnm].prodOrder){
         var defVal = false;
         for(const pnmB of domCashe.dom[evArgs.cnm].prodSelected){
@@ -1063,7 +1067,7 @@ function updateDisabledBLock(cnm, pnm){
         pob.Compatibility.dReason[1].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMA;
         pob.Compatibility.dReason[2].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMB;
         pob.Compatibility.dReason[2].dataset.unsupported = pob.Compatibility.unSupported[0];
-        var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
+        // var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
       }
     }else{      
       if(!pob.disStatus){
@@ -1117,6 +1121,7 @@ function ProdCompRedirectHandler(){
 function crProdCompatibility(){
   var qUpdate = [];
   for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    if(ob.isEmpty)continue;
     for(const [pnm, pob] of Object.entries(ob.prodList)){
       if(!pob.hasOwnProperty("disStatus")){
         pob.disStatus = pob.selfDom.disabled?"unassigned":false;
@@ -1243,7 +1248,7 @@ function updatePerfCarousel(evArgs){
     var pRes = 3;
     for(const [lcnm,catr]of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
       if(domCashe.dom[lcnm].prodType == "radio"){
-        var obval = domCashe.dom[lcnm].prodList[domCashe.dom[lcnm].prodSelected].perfAttr;
+        var obval = domCashe.dom[lcnm].isEmpty?"$":domCashe.dom[lcnm].prodList[domCashe.dom[lcnm].prodSelected].perfAttr;
         var obval = obval=="$"?"$":Number(obval.split(",")[Number(catr.attr)]);
         if(obval == "$"||obval==NaN){
           if(CFGperfCarousel.gameList[gnm].parts[lcnm].safe != "$"||obval==NaN){
@@ -1360,7 +1365,8 @@ function crPerfCarousel(){
   var perfDom = document.getElementById("performance-carousel-2");
   if(!perfDom)return
   for(const cnm of CFGperfCarousel.partList){
-    if(!domCashe.dom.hasOwnProperty(cnm))continue
+    if(!domCashe.dom.hasOwnProperty(cnm))continue;
+    if(domCashe.dom[cnm].isEmpty)continue;
     for(const [pnm,pob] of Object.entries(domCashe.dom[cnm].prodList)){
       var attrs = pob.selfDom.dataset.perfattr;
       pob.perfAttr = attrs?attrs:"$";
@@ -1422,6 +1428,46 @@ function crPerfCarousel(){
   CFGCbBtHandler.push(updatePerfCarousel);
 }
 
+function updateDomReduce(evArgs){
+  for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    if(ob.isEmpty)continue;
+    if(ob.lpState == ob.isReduced){
+      var pList = [];
+      if(ob.lpState){
+        for(const pnm of ob.prodOrder){
+          pList.push(ob.prodList[pnm].selfDom);
+          pList.push(ob.prodList[pnm].cDom);
+        }
+      }else{
+        if(ob.prodType == "radio"){
+          pList.push(ob.prodList[ob.prodSelected].selfDom);
+          pList.push(ob.prodList[ob.prodSelected].cDom);
+        }else if(ob.prodType == "checkbox"){
+          for(const pnm of ob.prodSelected){
+            pList.push(ob.prodList[pnm].selfDom);
+            pList.push(ob.prodList[pnm].cDom);
+          }
+        }
+      }
+      ob.pListDom.replaceChildren(...pList);
+      ob.isReduced = !ob.lpState;
+    }
+  }
+}
+
+function crDomReduce(){
+  for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    if(ob.isEmpty)continue;
+    ob.isReduced = false;
+  }
+  CFGcHeadHandler.push(updateDomReduce);
+  CFGpChangeHandler.push(updateDomReduce);
+  CFGprodNavHandler.push(updateDomReduce);
+  CFGprodCompRedirectHandler.push(updateDomReduce);
+  CFGperfCarouselHandler.push(updateDomReduce);
+  updateDomReduce({});
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
@@ -1437,4 +1483,5 @@ document.addEventListener("DOMContentLoaded", function(){
   // crPerfCarousel();
   crProdNav();
   crBuildModal();
+  crDomReduce();
 })
