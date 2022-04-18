@@ -2,16 +2,48 @@
  Functions to make scroll with speed control
 ---------------------------------------------*/
 
-// c = element to scroll to or top position in pixels
-// e = duration of the scroll in ms, time scrolling
-// d = (optative) ease function. Default easeOutCuaic
-function scrollToCustom(c,e,d){d||(d=easeOutCuaic);var a=document.documentElement;
-if(0===a.scrollTop){var b=a.scrollTop;++a.scrollTop;a=b+1===a.scrollTop--?a:document.body}
-b=a.scrollTop;0>=e||("object"===typeof b&&(b=b.offsetTop),
-"object"===typeof c&&(c=c.offsetTop),function(a,b,c,f,d,e,h){
-function g(){0>f||1<f||0>=d?a.scrollTop=c:(a.scrollTop=b-(b-c)*h(f),
-f+=d*e,setTimeout(g,e))}g()}(a,b,c,0,1/e,20,d))};
-function easeOutCuaic(t){t--;return t*t*t+1;}
+// Element or Position to move + Time in ms (milliseconds)
+
+function scrollToQ(element, duration) {
+	var e = document.documentElement;
+    if(e.scrollTop===0){
+        var t = e.scrollTop;
+        ++e.scrollTop;
+        e = t+1===e.scrollTop--?e:document.body;
+    }
+    scrollToC(e, e.scrollTop, element, duration);
+}
+// Element to move, element or px from, element or px to, time in ms to animate
+function scrollToC(element, from, to, duration) {
+  if (duration <= 0) return;
+  if(typeof from === "object")from=from.offsetTop;
+  if(typeof to === "object")to=to.offsetTop;
+  // Choose one effect like easeInQuart
+  scrollToX(element, from, to, 0, 1/duration, Date.now(), easeInOutCirc);
+}
+function scrollToX(element, xFrom, xTo, t01, speed, q, motion) {
+  var nq = Date.now();
+  var step = nq - q;
+  if (t01 < 0 || t01 > 1 || speed<= 0) {
+      element.scrollTop = xTo;
+      return;
+  }
+	element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
+	t01 += speed * step;
+	
+	requestAnimationFrame(function() {
+		scrollToX(element, xFrom, xTo, t01, speed, nq, motion);
+	});
+}
+function easeInOutCirc(t){
+  t/=0.5;
+  if(t<1)return -(Math.sqrt(1-t*t)-1)/2;
+  t-=2;
+  return (Math.sqrt(1-t*t)+1)/2;
+}
+
+/*--------------------------------------------
+---------------------------------------------*/
 
 function wtDecimal(wholeNum){
   if(Number.isSafeInteger(Number(wholeNum))){
@@ -298,33 +330,34 @@ function catRedirect(evArgs) {
           top: posOffset,
           behavior: 'smooth'
         })
+        scrollToC(domCashe.dom[wCat].pListDom,domCashe.dom[wCat].pListDom.scrollTop,posOffset,300);
       }
-      window.scrollTo({
-        top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-        behavior: 'smooth'
-      });
-      // scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),500);
+      // window.scrollTo({
+      //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+      //   behavior: 'smooth'
+      // });
+      scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),300);
     }else{
       var selprodTop = selprod.getBoundingClientRect().top;
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
-        window.scrollTo({
-          top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-          behavior: 'smooth'
-        });
-        // scrollToCustom(prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),500);
+        // window.scrollTo({
+        //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
+        //   behavior: 'smooth'
+        // });
+        scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),300);
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-        window.scrollTo({
-          top:catPosBot+window.scrollY-window.innerHeight+50,
-          behavior: 'smooth'
-      });
-      // scrollToCustom(catPosBot+window.scrollY-window.innerHeight+50,500);
+      //   window.scrollTo({
+      //     top:catPosBot+window.scrollY-window.innerHeight+50,
+      //     behavior: 'smooth'
+      // });
+      scrollToC(document.documentElement, window.scrollY, catPosBot+window.scrollY-window.innerHeight+50,300);
       }else{
         // window.scrollTo({
         //   top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
         //   behavior: 'smooth'
         // });
-        // scrollToCustom(selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,500);
+        scrollToC(document.documentElement, window.scrollY, selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,300);
       }
     }
   })});  
@@ -1456,6 +1489,7 @@ function updateDomReduce(evArgs){
 }
 
 function crDomReduce(){
+  if(!document.replaceChildren)return;
   for(const [cnm, ob] of Object.entries(domCashe.dom)){
     if(ob.isEmpty)continue;
     ob.isReduced = false;
