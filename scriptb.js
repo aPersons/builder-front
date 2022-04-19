@@ -19,7 +19,7 @@ function scrollToC(element, from, to, duration) {
   if(typeof from === "object")from=from.offsetTop;
   if(typeof to === "object")to=to.offsetTop;
   // Choose one effect like easeInQuart
-  scrollToX(element, from, to, 0, 1/duration, Date.now(), easeInOutCirc);
+  scrollToX(element, from, to, 0, 1/duration, Date.now(), easeInOutCuaic);
 }
 function scrollToX(element, xFrom, xTo, t01, speed, q, motion) {
   var nq = Date.now();
@@ -35,11 +35,11 @@ function scrollToX(element, xFrom, xTo, t01, speed, q, motion) {
 		scrollToX(element, xFrom, xTo, t01, speed, nq, motion);
 	});
 }
-function easeInOutCirc(t){
-  t/=0.5;
-  if(t<1)return -(Math.sqrt(1-t*t)-1)/2;
-  t-=2;
-  return (Math.sqrt(1-t*t)+1)/2;
+function easeInOutCuaic(t){
+	t/=0.5;
+	if(t<1)return t*t*t/2;
+	t-=2;
+	return (t*t*t+2)/2;
 }
 
 /*--------------------------------------------
@@ -94,7 +94,7 @@ function crCats(){
       "selfDom": tmpList[i],
       "headDom": tmphead,
       "isHidden": tmpList[i].classList.contains("d-none"),
-      "isEmpty": (!tmpList[i].querySelectorAll("input.part-rd-bt, input.part-checkbox").length)?true:false,
+      "isEmpty": (!tmpList[i].querySelectorAll(".part-rd-bt, .part-checkbox").length)?true:false,
       "pListDom": tmpList[i].querySelector(".part-list-container"),
       "nmTxt": tmphead.textContent,
       "lpState": tmpList[i].classList.contains("lp-show")
@@ -122,7 +122,7 @@ function RdBtHandler(){
 function crRdBt(){
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm]
-    var tmpList = ob.selfDom.querySelectorAll("input.part-rd-bt");
+    var tmpList = ob.selfDom.querySelectorAll(".part-rd-bt");
     if(tmpList.length){
       ob.prodType = "radio";
       ob.emptyEl = "$blank";
@@ -250,7 +250,7 @@ function CbBtHandler(){
 function crCbBt(){
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm];
-    var tmpList = ob.selfDom.querySelectorAll("input.part-checkbox");
+    var tmpList = ob.selfDom.querySelectorAll(".part-checkbox");
     if(tmpList.length){
       ob.emptyEl = "$blank";
       ob.prodType = "checkbox";
@@ -311,8 +311,9 @@ function catRedirect(evArgs) {
       ob.selfDom.classList.remove("lp-show");
     }
   }
+  if(focus=="none"){return}
   requestAnimationFrame(function(){requestAnimationFrame(function(){
-    if(focus=="none"){return}
+    var duration = 250;
     var catState = domCashe.dom[wCat].lpState;
     var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
     var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
@@ -330,13 +331,13 @@ function catRedirect(evArgs) {
           top: posOffset,
           behavior: 'smooth'
         })
-        scrollToC(domCashe.dom[wCat].pListDom,domCashe.dom[wCat].pListDom.scrollTop,posOffset,300);
+        scrollToC(domCashe.dom[wCat].pListDom,domCashe.dom[wCat].pListDom.scrollTop,posOffset, duration);
       }
       // window.scrollTo({
       //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
       //   behavior: 'smooth'
       // });
-      scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),300);
+      scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130), duration);
     }else{
       var selprodTop = selprod.getBoundingClientRect().top;
       var selprodBot = selprod.getBoundingClientRect().bottom;
@@ -345,19 +346,19 @@ function catRedirect(evArgs) {
         //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
         //   behavior: 'smooth'
         // });
-        scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),300);
+        scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130), duration);
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
       //   window.scrollTo({
       //     top:catPosBot+window.scrollY-window.innerHeight+50,
       //     behavior: 'smooth'
       // });
-      scrollToC(document.documentElement, window.scrollY, catPosBot+window.scrollY-window.innerHeight+50,300);
+      scrollToC(document.documentElement, window.scrollY, catPosBot+window.scrollY-window.innerHeight+50, duration);
       }else{
         // window.scrollTo({
         //   top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
         //   behavior: 'smooth'
         // });
-        scrollToC(document.documentElement, window.scrollY, selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,300);
+        scrollToC(document.documentElement, window.scrollY, selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2, duration);
       }
     }
   })});  
