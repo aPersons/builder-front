@@ -823,10 +823,12 @@ function updateBuildModal(evArgs){
   <div class="modal-product-header">Προϊόν</div>
   <div class="modal-quant-header">Τμχ.</div></div>`;
   var totalVal = 0;
+  var isEmpty = true;
   for(let i=0;i<domCashe.domOrder.length;i++){
     var ob = domCashe.dom[domCashe.domOrder[i]];
     if(ob.isHidden)continue;
     if(!ob.hasSelected)continue;
+    isEmpty = false;
     if(ob.prodType == "radio"){
       var pob = ob.prodList[ob.prodSelected];
       tabletext += `<div class="table-row">
@@ -849,6 +851,7 @@ function updateBuildModal(evArgs){
       }
     }
   }
+  if(isEmpty)tabletext += `<div class="table-row"><div></div><div></div><div>-</div><div></div></div>`;
   tabletext += `<div class="table-row">
   <div class="modal-total-title">Σύνολο:</div>
   <div></div><div></div><div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
