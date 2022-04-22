@@ -21,7 +21,7 @@ for y in range(20):
     if x==0:
       prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"
 
-selected = '<label class="btn btn-success disabled" >Επιλεγμένο</label>'
+selected = '<label class="btn btn-primary disabled" >Επιλεγμένο</label>'
 cancel = '<label class="btn btn-primary btn-cancel btn-shadow" for="{sel_init}">Ακύρωση</label>'
 num_input = """
   <div class="part-number-input">
@@ -51,15 +51,15 @@ prod_template = """
             <div class="listed-part">              
               <label class="listed-part-inner" for="{part_id}">
                 <div class="part-img">
-                  <img class="build-img" src="assets/{img_src}.jpg" width="100%">
+                  <img class="build-img" width="74" height="56" src="assets/{img_src}.jpg" width="100%">
                 </div>
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
                   <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
-                  <label class="btn btn-success btn-change btn-shadow">Αλλαγή</label>
-                  <label class="btn btn-success btn-select btn-shadow" for="{part_id}">Επιλογή</label>
+                  <label class="btn btn-primary btn-change btn-shadow">Αλλαγή</label>
+                  <label class="btn btn-primary btn-select btn-shadow" for="{part_id}">Επιλογή</label>
                   {sec_btn}
                   <div class="disabled-part fs-ms">disabled</div>
                 </div>                

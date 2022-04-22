@@ -405,7 +405,7 @@
   }
 }
 
-.builder-part-category .part-category-head{
+.part-category-head{
   background-color:#7b7b7b;
   color: #fff;
   padding: 10px;
@@ -417,51 +417,51 @@
   z-index: 1;
   font-weight: bolder
 }
-.builder-part-category .part-category-head.contains-selected{
+.builder-part-category > .part-category-head.contains-selected{
   background-color:#005fab;
   color:#fff;
 }
-.builder-part-category.lp-show .part-category-head{
+.builder-part-category.lp-show > .part-category-head{
   background-color:#7b7b7b;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 161px;
 }
 @media only screen and (min-width: 768px){
-  .builder-part-category.lp-show .part-category-head{    
+  .builder-part-category.lp-show > .part-category-head{    
     top: 135px;
   }
 }
-.builder-part-category.lp-show .part-category-head.contains-selected{
+.builder-part-category.lp-show > .part-category-head.contains-selected{
   background-color:#00ab44;
   color:#fff;
 }
-.builder-part-category.lp-show .part-category-head.contains-selected:hover{
+.builder-part-category.lp-show > .part-category-head.contains-selected:hover{
   background-color:#007830;
   color:#fff;
 }
-.builder-part-category .part-category-head::after{
+.builder-part-category > .part-category-head::after{
   font-family: 'bootstrap-icons';
   content: '\f64d';
   font-size: 1rem;
   float: right;
 }
-.builder-part-category.lp-show .part-category-head::after{
+.builder-part-category.lp-show > .part-category-head::after{
   content: "\f63b";
 }
 .part-category-head.contains-selected::after{
   color: #fff;
 }
 @media only screen and (max-width: 991px) and (min-width: 768px){
-  .builder-part-category.lp-show .part-category-head{
+  .builder-part-category.lp-show > .part-category-head{
     top: 129px;
   }
 }
-.builder-part-category .part-category-head:hover {
+.part-category-head:hover {
   background-color:#484848;
   cursor: pointer;
 }
-.builder-part-category .part-category-head.contains-selected:hover {
+.part-category-head.contains-selected:hover {
   background-color:#004378;
 }
 .part-category-description {
@@ -493,7 +493,7 @@
 .part-checkbox{
   display: none;
 }
-.builder-part-category .listed-part{  
+.listed-part{  
   display: none;
 }
 .builder-part-category.lp-show .listed-part,
@@ -549,28 +549,29 @@
 
 /* Inner Parts */
 
-.listed-part-inner .part-img{
+.part-img{
   display: flex;
   align-items: center;
   grid-area: part-img;
 }
-.listed-part-inner .part-text{
+.part-text{
   grid-area: part-text;
   padding: 5px 5px 0 5px;  
 }
-.listed-part-inner .part-text .prod-av-2{color: #449d44;}
-.listed-part-inner .part-text .prod-av-1{color: #ec971f;}
-.listed-part-inner .part-text .prod-av-0{color: #c9302c;}
-.listed-part-inner .part-price{
-  min-height: 61px;
+.part-text .prod-av-2{color: #449d44;}
+.part-text .prod-av-1{color: #ec971f;}
+.part-text .prod-av-0{color: #c9302c;}
+.part-price{
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
   align-content: center;
   grid-area: part-price;
   padding: 5px;
 }
-
+.price-block{
+  flex-grow: 1;
+  text-align: center;
+}
 .part-rd-bt:checked + .listed-part .price-block{display: none;}
 
 .listed-part-inner .part-btn{
@@ -583,24 +584,20 @@
   grid-area: part-btn;
 }
 @media only screen and (max-width: 575px) {
-  .listed-part-inner .part-price{
-  min-height: initial;
-  justify-content: center;
-  }
   .listed-part-inner .part-btn{
     justify-content: center;
   }
 }
 
-.listed-part-inner .prod-quick-view{
+.prod-quick-view{
   color: #4b566b;
   transition: color 0.25s ease-in-out;
   margin-right: auto;
 }
-.listed-part-inner .prod-quick-view i{
+.prod-quick-view > i{
   margin-right: 0.25rem
 }
-.listed-part-inner .prod-quick-view:hover{
+.prod-quick-view:hover{
   text-decoration: none;
   color: #005fab;
 }
@@ -613,7 +610,10 @@
     display: none;
   }
 }
-.part-btn label.btn{
+.part-btn > .btn-change,
+.part-btn > .btn-select,
+.part-btn > .btn-cancel,
+.part-btn > .disabled{
   margin:0;
   padding-top: 0;
   padding-bottom: 0;
@@ -622,29 +622,27 @@
   width: 92px;
   display: none;
 }
-.part-btn label.btn-change{display: inline-block;}
-.builder-part-category.lp-show .listed-part .part-btn label.btn-change{display:none;}
+.part-btn > .btn-change{display: inline-block;}
+.builder-part-category.lp-show .btn-change{display:none;}
 
-.builder-part-category.lp-show .listed-part .part-btn label.btn-select{display: inline-block;}
-.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn label.btn-select,
-.builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn label.btn-select{display: none;}
+.builder-part-category.lp-show .btn-select{display: inline-block;}
+.part-checkbox:checked + .listed-part .btn-select,
+.part-rd-bt:checked + .listed-part .btn-select{display: none;}
 
-.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.btn-cancel,
-.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > label.disabled,
-.builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > label.btn-cancel,
-.builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > label.disabled{display: inline-block;}
+.builder-part-category.lp-show .part-checkbox:checked + .listed-part .btn-cancel,
+.builder-part-category.lp-show .part-checkbox:checked + .listed-part .part-btn > .disabled,
+.builder-part-category.lp-show .part-rd-bt:checked + .listed-part .btn-cancel,
+.builder-part-category.lp-show .part-rd-bt:checked + .listed-part .part-btn > .disabled{display: inline-block;}
 
-.part-checkbox:disabled + .listed-part .part-btn,
-.part-checkbox:disabled + .listed-part .part-btn label.btn,
-.part-checkbox:disabled + .listed-part .part-btn label.btn.btn-cancel,
-.part-rd-bt:disabled + .listed-part .part-btn label.btn,
-.part-rd-bt:disabled + .listed-part .part-btn label.btn.btn-cancel,
-.part-rd-bt:disabled + .listed-part .part-btn .part-number-input{
-  display: none;
-}
-.listed-part .part-btn .disabled-part{margin-right: auto;display: none;}
-.part-checkbox:disabled + .listed-part .part-btn .disabled-part,
-.part-rd-bt:disabled + .listed-part .part-btn .disabled-part{display: inline-block;}
+
+.part-checkbox:disabled + .listed-part .part-btn > .btn,
+.part-checkbox:disabled + .listed-part .part-btn > .part-number-input,
+.part-rd-bt:disabled + .listed-part .part-btn > .btn,
+.part-rd-bt:disabled + .listed-part .part-btn > .part-number-input{display: none;}
+
+.listed-part .disabled-part{margin-right: auto;display: none;}
+.part-checkbox:disabled + .listed-part .disabled-part,
+.part-rd-bt:disabled + .listed-part .disabled-part{display: inline-block;}
 
 .part-number-input.static-number{
   display: none;
@@ -663,17 +661,17 @@
   font-size: 0.9375rem;
 }
 
-.part-number-input input{
+.part-number-input > input{
   display: none;
 }
-.part-number-input .quantity-display{
+.part-number-input > .quantity-display{
   flex-grow: 1;
   opacity: 0.65;
   transition: opacity 0.25s ease-in-out;  
   border: solid 1px #fff;
 }
-.part-number-input .part-num-decr,
-.part-number-input .part-num-incr{
+.part-number-input >.part-num-decr,
+.part-number-input > .part-num-incr{
   background-color:#d0d0d0;
   border: solid 1px #d0d0d0;
   color: #fff;
@@ -681,32 +679,32 @@
   opacity: 0.65;
   transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, border 0.25s ease-in-out, opacity 0.25s ease-in-out, box-shadow 0.2s, -webkit-box-shadow 0.2s;
 }
-.part-number-input .part-num-decr{
+.part-number-input > .part-num-decr{
   border-radius:.25rem 0 0 .25rem;
 }
-.part-number-input .part-num-incr{
+.part-number-input > .part-num-incr{
   border-radius: 0 .25rem .25rem 0;
 }
 .part-checkbox:checked + .listed-part
-.part-number-input .quantity-display,
+.part-number-input > .quantity-display,
 .part-rd-bt:checked + .listed-part
-.part-number-input .quantity-display{opacity: 1;}
+.part-number-input > .quantity-display{opacity: 1;}
 
-.part-number-input.decr-av .part-num-decr,
-.part-number-input.incr-av .part-num-incr{
+.part-number-input.decr-av > .part-num-decr,
+.part-number-input.incr-av > .part-num-incr{
   opacity: 1;
   cursor: pointer;
   box-shadow: 0 0.5rem 1.125rem -0.5rem hsl(0deg 0% 61% / 90%)
 }
-.part-number-input.decr-av .part-num-decr:hover,
-.part-number-input.incr-av .part-num-incr:hover{
+.part-number-input.decr-av > .part-num-decr:hover,
+.part-number-input.incr-av > .part-num-incr:hover{
   background-color: #c0c0c0;
   border: solid 1px #c0c0c0;
   box-shadow: none;
 }
 
 @media only screen and (max-width: 575px) {
-  .listed-part-inner .part-btn label.btn,
+  .listed-part-inner .part-btn > .btn,
   .listed-part-inner .part-number-input{
     flex-grow: 1;
   }
