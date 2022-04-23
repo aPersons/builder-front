@@ -289,6 +289,36 @@ function catRedirect(evArgs) {
   var action = evArgs.hasOwnProperty("action")?evArgs.action : "toggle";
   var focus = evArgs.hasOwnProperty("focus")?evArgs.focus : "prod";
 
+  if (window.innerWidth > 991){
+    var winMode = "lg";
+    var topPad = 139.5;//-4.5
+  } else if (window.innerWidth > 767) {
+    var winMode = "md";
+    var topPad = 129.5;
+  } else {
+    var winMode = "sm";
+    var topPad = 166.11;
+  }
+
+  // var dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+  // var qSize = dBox.bottom - dBox.top;
+  // var qBPos = dBox.bottom;
+
+  // var qList = [];
+  // var qNm = [];
+
+  // for (const cnm of domCashe.domOrder) {
+  //   if (domCashe.dom[cnm].lpState) {
+  //     qNm.push(cnm);
+  //     dBox = domCashe.dom[cnm].selfDom.getBoundingClientRect();
+  //     if (dBox.bottom <= topPad) {
+  //       qList.push([cnm, dBox.bottom - dBox.top]);
+  //     } else if (dBox.top <= topPad && dBox.bottom >= topPad + 40){
+  //       qList.push([cnm, "focused"]);
+  //     }
+  //   }
+  // }
+
   for (const k of domCashe.domOrder) {
     var ob = domCashe.dom[k];
     if(k === wCat){
@@ -311,8 +341,56 @@ function catRedirect(evArgs) {
       ob.selfDom.classList.remove("lp-show");
     }
   }
-  if(focus=="none"){return}
+
+  // var posOffset = 0;
+  // var gotSet = false;
+  // for (const qCat of qList) {
+  //   if (qCat[1] == "focused" && !domCashe.dom[qCat[0]].lpState) {
+  //     posOffset = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect().top - (topPad - 4.5);
+  //     gotSet = true;
+  //     break;
+  //   }else if (!domCashe.dom[qCat[0]].lpState) {
+  //     dBox = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect();
+  //     posOffset -= qCat[1] - (dBox.bottom - dBox.top);
+  //   }
+  // }
+
+  // dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+  // if (!qNm.includes(wCat) && domCashe.dom[wCat].lpState && !gotSet) {
+  //   if (qBPos <= topPad) {
+  //     posOffset += (dBox.bottom - dBox.top) - qSize;
+  //     console.log(dBox.bottom);
+  //     console.log(dBox.top);
+  //     console.log(dBox.bottom - dBox.top);
+  //     console.log(qSize);
+  //     console.log(posOffset);
+  //   }
+  // }
+
+  // document.documentElement.scrollTop = window.scrollY + posOffset;
+
+  if (focus == "none") return;
   requestAnimationFrame(function(){requestAnimationFrame(function(){
+
+    dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+    var duration = 250;
+
+    var selprod = domCashe.dom[wCat].isEmpty?false:
+      domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
+
+    if (winMode != "sm"){
+      scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 4.5), duration);
+    } else {
+      if (focus == "cat" || !selprod){
+        scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 4.5), duration);
+      } else {
+        scrollToC(document.documentElement, window.scrollY, window.scrollY + selprod.getBoundingClientRect().top - (topPad + 45), duration);        
+      }
+    }
+
+    
+    
+    return
     var duration = 250;
     var catState = domCashe.dom[wCat].lpState;
     var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
@@ -342,22 +420,10 @@ function catRedirect(evArgs) {
       var selprodTop = selprod.getBoundingClientRect().top;
       var selprodBot = selprod.getBoundingClientRect().bottom;
       if((window.innerHeight/2-140)>selprodTop-catPosTop){
-        // window.scrollTo({
-        //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-        //   behavior: 'smooth'
-        // });
         scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130), duration);
       }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-      //   window.scrollTo({
-      //     top:catPosBot+window.scrollY-window.innerHeight+50,
-      //     behavior: 'smooth'
-      // });
       scrollToC(document.documentElement, window.scrollY, catPosBot+window.scrollY-window.innerHeight+50, duration);
       }else{
-        // window.scrollTo({
-        //   top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
-        //   behavior: 'smooth'
-        // });
         scrollToC(document.documentElement, window.scrollY, selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2, duration);
       }
     }
