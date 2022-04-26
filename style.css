@@ -2,7 +2,7 @@
 /* Page Wrapper - Temp Contents*/
 
 .btn-scroll-top{
-  bottom: 4rem;
+  bottom: 6rem;
 }
 
 /* Actual Content */
@@ -425,11 +425,11 @@
   background-color:#7b7b7b;
   position: -webkit-sticky; /* Safari */
   position: sticky;
-  top: 161px;
+  top: 160px;
 }
 @media only screen and (min-width: 768px){
   .builder-part-category.lp-show > .part-category-head{    
-    top: 135px;
+    top: 134px;
   }
 }
 .builder-part-category.lp-show > .part-category-head.contains-selected{
@@ -454,7 +454,7 @@
 }
 @media only screen and (max-width: 991px) and (min-width: 768px){
   .builder-part-category.lp-show > .part-category-head{
-    top: 129px;
+    top: 124px;
   }
 }
 .part-category-head:hover {
@@ -733,7 +733,6 @@
     padding-top: 0!important;
     padding-right: 0 !important;
     background-color: #fff !important;
-    overflow: visible;
   }
   #build-modal .modal-title{
     text-align: center;

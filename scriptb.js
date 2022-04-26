@@ -291,7 +291,7 @@ function catRedirect(evArgs) {
 
   if (window.innerWidth > 991){
     var winMode = "lg";
-    var topPad = 139.5;//-4.5
+    var topPad = 139.5;
   } else if (window.innerWidth > 767) {
     var winMode = "md";
     var topPad = 129.5;
@@ -304,20 +304,20 @@ function catRedirect(evArgs) {
   // var qSize = dBox.bottom - dBox.top;
   // var qBPos = dBox.bottom;
 
-  // var qList = [];
+  var qList = [];
   // var qNm = [];
 
-  // for (const cnm of domCashe.domOrder) {
-  //   if (domCashe.dom[cnm].lpState) {
-  //     qNm.push(cnm);
-  //     dBox = domCashe.dom[cnm].selfDom.getBoundingClientRect();
-  //     if (dBox.bottom <= topPad) {
-  //       qList.push([cnm, dBox.bottom - dBox.top]);
-  //     } else if (dBox.top <= topPad && dBox.bottom >= topPad + 40){
-  //       qList.push([cnm, "focused"]);
-  //     }
-  //   }
-  // }
+  for (const cnm of domCashe.domOrder) {
+    if (domCashe.dom[cnm].lpState) {
+      // qNm.push(cnm);
+      dBox = domCashe.dom[cnm].selfDom.getBoundingClientRect();
+      if (dBox.bottom <= topPad) {
+        qList.push([cnm, dBox.bottom - dBox.top]);
+      } else if (dBox.top <= topPad && dBox.bottom >= topPad + 40){
+        qList.push([cnm, "focused"]);
+      }
+    }
+  }
 
   for (const k of domCashe.domOrder) {
     var ob = domCashe.dom[k];
@@ -342,32 +342,27 @@ function catRedirect(evArgs) {
     }
   }
 
-  // var posOffset = 0;
-  // var gotSet = false;
-  // for (const qCat of qList) {
-  //   if (qCat[1] == "focused" && !domCashe.dom[qCat[0]].lpState) {
-  //     posOffset = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect().top - (topPad - 4.5);
-  //     gotSet = true;
-  //     break;
-  //   }else if (!domCashe.dom[qCat[0]].lpState) {
-  //     dBox = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect();
-  //     posOffset -= qCat[1] - (dBox.bottom - dBox.top);
-  //   }
-  // }
+  var posOffset = 0;
+  var gotSet = false;
+  for (const qCat of qList) {
+    if (qCat[1] == "focused" && !domCashe.dom[qCat[0]].lpState) {
+      posOffset = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect().top - (topPad - 7);
+      gotSet = true;
+      break;
+    }else if (!domCashe.dom[qCat[0]].lpState) {
+      dBox = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect();
+      posOffset -= qCat[1] - (dBox.bottom - dBox.top);
+    }
+  }
 
   // dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
   // if (!qNm.includes(wCat) && domCashe.dom[wCat].lpState && !gotSet) {
   //   if (qBPos <= topPad) {
   //     posOffset += (dBox.bottom - dBox.top) - qSize;
-  //     console.log(dBox.bottom);
-  //     console.log(dBox.top);
-  //     console.log(dBox.bottom - dBox.top);
-  //     console.log(qSize);
-  //     console.log(posOffset);
   //   }
   // }
 
-  // document.documentElement.scrollTop = window.scrollY + posOffset;
+  document.documentElement.scrollTop = window.scrollY + posOffset;
 
   if (focus == "none") return;
   requestAnimationFrame(function(){requestAnimationFrame(function(){
@@ -378,53 +373,28 @@ function catRedirect(evArgs) {
     var selprod = domCashe.dom[wCat].isEmpty?false:
       domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
 
-    if (winMode != "sm"){
-      scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 4.5), duration);
-    } else {
-      if (focus == "cat" || !selprod){
-        scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 4.5), duration);
-      } else {
-        scrollToC(document.documentElement, window.scrollY, window.scrollY + selprod.getBoundingClientRect().top - (topPad + 45), duration);        
-      }
-    }
-
-    
-    
-    return
-    var duration = 250;
-    var catState = domCashe.dom[wCat].lpState;
-    var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
-    var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
-    var selprod = domCashe.dom[wCat].isEmpty?false:
-      domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
-    var prodNavoff = window.innerWidth<768? -30:0;
-    if(!catState || focus == "cat" || !selprod || window.innerWidth>=768){
-      if(catState && window.innerWidth>=768 && focus == "prod" && selprod){
+    if (winMode != "sm") {
+      if (domCashe.dom[wCat].lpState && selprod) {
         var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
-        var selprodTop = selprod.getBoundingClientRect().top;
-        var selprodHeight = selprod.getBoundingClientRect().height;
-        var prodDifference = (parentPos.height-selprodHeight)/2;
-        var posOffset = domCashe.dom[wCat].pListDom.scrollTop+(selprodTop-parentPos.top)-prodDifference;
-        domCashe.dom[wCat].pListDom.scrollTo({
-          top: posOffset,
-          behavior: 'smooth'
-        })
+        var selprodPos = selprod.getBoundingClientRect();
+        var prodDifference = (parentPos.height - selprodPos.height) /2;
+        var posOffset = domCashe.dom[wCat].pListDom.scrollTop + (selprodPos.top - parentPos.top) - prodDifference;
         scrollToC(domCashe.dom[wCat].pListDom,domCashe.dom[wCat].pListDom.scrollTop,posOffset, duration);
       }
-      // window.scrollTo({
-      //   top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-      //   behavior: 'smooth'
-      // });
-      scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130), duration);
-    }else{
-      var selprodTop = selprod.getBoundingClientRect().top;
-      var selprodBot = selprod.getBoundingClientRect().bottom;
-      if((window.innerHeight/2-140)>selprodTop-catPosTop){
-        scrollToC(document.documentElement, window.scrollY, prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130), duration);
-      }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-      scrollToC(document.documentElement, window.scrollY, catPosBot+window.scrollY-window.innerHeight+50, duration);
-      }else{
-        scrollToC(document.documentElement, window.scrollY, selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2, duration);
+      scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+    } else {
+      if (focus == "cat" || !selprod || !domCashe.dom[wCat].lpState){
+        scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+      } else {
+        var selprodPos = selprod.getBoundingClientRect();
+        var pPad = window.innerHeight / 2 - 101;
+        if (pPad > selprodPos.top - dBox.top) {
+          scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+        } else if (pPad > dBox.bottom - selprodPos.bottom) {
+          scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.bottom - (window.innerHeight - 55), duration);
+        } else {
+          scrollToC(document.documentElement, window.scrollY, window.scrollY + selprodPos.top - pPad, duration);
+        }
       }
     }
   })});  
@@ -753,7 +723,6 @@ function updateNavPos(){
       if(!domCashe.prodNav.fixedMode){
         domCashe.prodNav.fixedMode = true;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          //domCashe.prodNav.parentBody.style.paddingBottom = `${15+domCashe.prodNav.navBody.getBoundingClientRect().height}px`;
           domCashe.prodNav.navBody.classList.add("fixed-mode");
         }));
       }
@@ -761,7 +730,6 @@ function updateNavPos(){
       if(domCashe.prodNav.fixedMode){
         domCashe.prodNav.fixedMode = false;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          //domCashe.prodNav.parentBody.style.paddingBottom = "";
           domCashe.prodNav.navBody.classList.remove("fixed-mode");
         }));
       }
@@ -917,7 +885,7 @@ function updateBuildModal(evArgs){
       }
     }
   }
-  if(isEmpty)tabletext += `<div class="table-row"><div></div><div></div><div>-</div><div></div></div>`;
+  if(isEmpty)tabletext += `<div class="table-row"><div></div><div></div><div>&nbsp;</div><div></div></div>`;
   tabletext += `<div class="table-row">
   <div class="modal-total-title">Σύνολο:</div>
   <div></div><div></div><div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
