@@ -515,6 +515,8 @@ function crProdPrice(){
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
         pod.priceBlock = pod.cDom.querySelector(".price-block");
+        var modPrice = pod.cDom.querySelector(".price-merimna-block");
+        if (modPrice) modPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
       }
       updateProdPrice({"cnm":cnm});
     }else if (ob.prodType == "checkbox") {

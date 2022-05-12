@@ -563,18 +563,24 @@
 .part-text .prod-av-0{color: #c9302c;}
 .part-price{
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   align-content: center;
+  justify-content: center;
   grid-area: part-price;
   padding: 5px;
 }
-.price-block{
-  flex-grow: 1;
+.price-block,.price-merimna-block{
+  /* flex-grow: 1; */
   text-align: center;
+}
+.price-merimna-block + .price-block{
+  color: #4b566b;
+  font-size: 0.8125rem;
+  font-weight: 400;
 }
 
 /* modifier config */
-/* .part-rd-bt:checked + .listed-part .price-block{display: none;} */
+.part-rd-bt:checked + .listed-part .price-block{display: none;}
 
 .listed-part-inner .part-btn{
   display: flex;
@@ -588,6 +594,10 @@
 @media only screen and (max-width: 575px) {
   .listed-part-inner .part-btn{
     justify-content: center;
+  }
+  .part-price{
+    gap: 10px;
+    flex-direction: row;
   }
 }
 
