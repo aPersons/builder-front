@@ -572,6 +572,8 @@
   flex-grow: 1;
   text-align: center;
 }
+
+/* modifier config */
 /* .part-rd-bt:checked + .listed-part .price-block{display: none;} */
 
 .listed-part-inner .part-btn{

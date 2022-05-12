@@ -14,9 +14,11 @@ for y in range(1):
   for x in range(5):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
-      "prod-price":f"{100*x}",
+      #"prod-price":f"{100*x}",
+      "prod-price":"-20000",
       "prod-av":"",
-      "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}",
+      #"prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}",
+      "prod-name":"Voucher",
       "prod-min":"1",
       "prod-max":"1"
     })

@@ -676,6 +676,7 @@ function updateFinalPrice(evArgs){
       }
     }
   }
+  if (nresult < 0) nresult = 0
   if(nresult!=domCashe.finalPrice.totalVal){
     domCashe.finalPrice.totalVal = nresult;
     if(domCashe.finalPrice.priceDom.length){
