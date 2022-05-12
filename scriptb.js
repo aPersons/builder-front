@@ -1,3 +1,50 @@
+/*--------------------------------------------
+ Functions to make scroll with speed control
+---------------------------------------------*/
+
+// Element or Position to move + Time in ms (milliseconds)
+
+function scrollToQ(element, duration) {
+	var e = document.documentElement;
+    if(e.scrollTop===0){
+        var t = e.scrollTop;
+        ++e.scrollTop;
+        e = t+1===e.scrollTop--?e:document.body;
+    }
+    scrollToC(e, e.scrollTop, element, duration);
+}
+// Element to move, element or px from, element or px to, time in ms to animate
+function scrollToC(element, from, to, duration) {
+  if (duration <= 0) return;
+  if(typeof from === "object")from=from.offsetTop;
+  if(typeof to === "object")to=to.offsetTop;
+  // Choose one effect like easeInQuart
+  scrollToX(element, from, to, 0, 1/duration, Date.now(), easeInOutCuaic);
+}
+function scrollToX(element, xFrom, xTo, t01, speed, q, motion) {
+  var nq = Date.now();
+  var step = nq - q;
+  if (t01 < 0 || t01 > 1 || speed<= 0) {
+      element.scrollTop = xTo;
+      return;
+  }
+	element.scrollTop = xFrom - (xFrom - xTo) * motion(t01);
+	t01 += speed * step;
+	
+	requestAnimationFrame(function() {
+		scrollToX(element, xFrom, xTo, t01, speed, nq, motion);
+	});
+}
+function easeInOutCuaic(t){
+	t/=0.5;
+	if(t<1)return t*t*t/2;
+	t-=2;
+	return (t*t*t+2)/2;
+}
+
+/*--------------------------------------------
+---------------------------------------------*/
+
 function wtDecimal(wholeNum){
   if(Number.isSafeInteger(Number(wholeNum))){
     var wholeStr = Number(wholeNum).toString();
@@ -46,6 +93,8 @@ function crCats(){
     domCashe.dom[domCashe.domOrder[domCashe.domOrder.length-1]] = {
       "selfDom": tmpList[i],
       "headDom": tmphead,
+      "isHidden": tmpList[i].classList.contains("d-none"),
+      "isEmpty": (!tmpList[i].querySelectorAll(".part-rd-bt, .part-checkbox").length)?true:false,
       "pListDom": tmpList[i].querySelector(".part-list-container"),
       "nmTxt": tmphead.textContent,
       "lpState": tmpList[i].classList.contains("lp-show")
@@ -73,7 +122,7 @@ function RdBtHandler(){
 function crRdBt(){
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm]
-    var tmpList = ob.selfDom.querySelectorAll("input.part-rd-bt");
+    var tmpList = ob.selfDom.querySelectorAll(".part-rd-bt");
     if(tmpList.length){
       ob.prodType = "radio";
       ob.emptyEl = "$blank";
@@ -96,7 +145,7 @@ function crRdBt(){
           "value": tmpList[i].value,
           "erp": erpL?erpL:"-"
         }
-        if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
+        if (ob.prodList[dname].value == "0") ob.emptyEl = dname;
         if (ob.prodList[dname].isSelected)ob.prodSelected = dname;
       }
     }
@@ -201,7 +250,7 @@ function CbBtHandler(){
 function crCbBt(){
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm];
-    var tmpList = ob.selfDom.querySelectorAll("input.part-checkbox");
+    var tmpList = ob.selfDom.querySelectorAll(".part-checkbox");
     if(tmpList.length){
       ob.emptyEl = "$blank";
       ob.prodType = "checkbox";
@@ -225,7 +274,7 @@ function crCbBt(){
           "value": tmpList[i].value,
           "erp": erpL?erpL:"-"
         }
-        if (ob.prodList[dname].value == "emptyval") ob.emptyEl = dname;
+        if (ob.prodList[dname].value == "0") ob.emptyEl = dname;
         if(ob.prodList[dname].isSelected)ob.prodSelected.push(dname);
       }
     }
@@ -239,6 +288,36 @@ function catRedirect(evArgs) {
   var wCat = evArgs.cnm;
   var action = evArgs.hasOwnProperty("action")?evArgs.action : "toggle";
   var focus = evArgs.hasOwnProperty("focus")?evArgs.focus : "prod";
+
+  if (window.innerWidth > 991){
+    var winMode = "lg";
+    var topPad = 139.5;
+  } else if (window.innerWidth > 767) {
+    var winMode = "md";
+    var topPad = 129.5;
+  } else {
+    var winMode = "sm";
+    var topPad = 166.11;
+  }
+
+  // var dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+  // var qSize = dBox.bottom - dBox.top;
+  // var qBPos = dBox.bottom;
+
+  var qList = [];
+  // var qNm = [];
+
+  for (const cnm of domCashe.domOrder) {
+    if (domCashe.dom[cnm].lpState) {
+      // qNm.push(cnm);
+      dBox = domCashe.dom[cnm].selfDom.getBoundingClientRect();
+      if (dBox.bottom <= topPad) {
+        qList.push([cnm, dBox.bottom - dBox.top]);
+      } else if (dBox.top <= topPad && dBox.bottom >= topPad + 40){
+        qList.push([cnm, "focused"]);
+      }
+    }
+  }
 
   for (const k of domCashe.domOrder) {
     var ob = domCashe.dom[k];
@@ -262,48 +341,60 @@ function catRedirect(evArgs) {
       ob.selfDom.classList.remove("lp-show");
     }
   }
+
+  var posOffset = 0;
+  var gotSet = false;
+  for (const qCat of qList) {
+    if (qCat[1] == "focused" && !domCashe.dom[qCat[0]].lpState) {
+      posOffset = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect().top - (topPad - 7);
+      gotSet = true;
+      break;
+    }else if (!domCashe.dom[qCat[0]].lpState) {
+      dBox = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect();
+      posOffset -= qCat[1] - (dBox.bottom - dBox.top);
+    }
+  }
+
+  // dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+  // if (!qNm.includes(wCat) && domCashe.dom[wCat].lpState && !gotSet) {
+  //   if (qBPos <= topPad) {
+  //     posOffset += (dBox.bottom - dBox.top) - qSize;
+  //   }
+  // }
+
+  document.documentElement.scrollTop = window.scrollY + posOffset;
+
+  if (focus == "none") return;
   requestAnimationFrame(function(){requestAnimationFrame(function(){
-    if(focus=="none"){return}
-    var catState = domCashe.dom[wCat].lpState;
-    var catPosTop = domCashe.dom[wCat].selfDom.getBoundingClientRect().top;
-    var catPosBot = domCashe.dom[wCat].selfDom.getBoundingClientRect().bottom;
-    var selprod = domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
-    var prodNavoff = window.innerWidth<768? -30:0;
-    if(!catState || focus == "cat" || !selprod || window.innerWidth>=768){
-      if(catState && window.innerWidth>=768 && focus == "prod"){
+
+    dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+    var duration = 250;
+
+    var selprod = domCashe.dom[wCat].isEmpty?false:
+      domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
+
+    if (winMode != "sm") {
+      if (domCashe.dom[wCat].lpState && selprod) {
         var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
-        var selprodTop = selprod.getBoundingClientRect().top;
-        var selprodHeight = selprod.getBoundingClientRect().height;
-        var prodDifference = (parentPos.height-selprodHeight)/2;
-        var posOffset = domCashe.dom[wCat].pListDom.scrollTop+(selprodTop-parentPos.top)-prodDifference;
-        // console.log(posOffset);
-        domCashe.dom[wCat].pListDom.scrollTo({
-          top: posOffset,
-          behavior: 'smooth'
-        })
+        var selprodPos = selprod.getBoundingClientRect();
+        var prodDifference = (parentPos.height - selprodPos.height) /2;
+        var posOffset = domCashe.dom[wCat].pListDom.scrollTop + (selprodPos.top - parentPos.top) - prodDifference;
+        scrollToC(domCashe.dom[wCat].pListDom,domCashe.dom[wCat].pListDom.scrollTop,posOffset, duration);
       }
-      window.scrollTo({
-        top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-        behavior: 'smooth'
-      });
-    }else{
-      var selprodTop = selprod.getBoundingClientRect().top;
-      var selprodBot = selprod.getBoundingClientRect().bottom;
-      if((window.innerHeight/2-140)>selprodTop-catPosTop){
-        window.scrollTo({
-          top:prodNavoff+catPosTop+window.scrollY-(window.innerWidth > 991 ? 140 : 130),
-          behavior: 'smooth'
-        });
-      }else if((window.innerHeight/2-140)>catPosBot-selprodBot){
-        window.scrollTo({
-          top:catPosBot+window.scrollY-window.innerHeight+50,
-          behavior: 'smooth'
-      });
-      }else{
-        window.scrollTo({
-          top:selprodTop+window.scrollY-(window.innerHeight-(window.innerWidth > 991 ? 140 : 130))/2,
-          behavior: 'smooth'
-        });
+      scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+    } else {
+      if (focus == "cat" || !selprod || !domCashe.dom[wCat].lpState){
+        scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+      } else {
+        var selprodPos = selprod.getBoundingClientRect();
+        var pPad = window.innerHeight / 2 - 101;
+        if (pPad > selprodPos.top - dBox.top) {
+          scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+        } else if (pPad > dBox.bottom - selprodPos.bottom) {
+          scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.bottom - (window.innerHeight - 55), duration);
+        } else {
+          scrollToC(document.documentElement, window.scrollY, window.scrollY + selprodPos.top - pPad, duration);
+        }
       }
     }
   })});  
@@ -391,38 +482,10 @@ function updateProdPrice(evArgs){
       var dfr = pob.priceVal - sprice;
       if(dfr == 0){
         pob.priceBlock.textContent = `+0,00€`;
-        if(pob.priceColorHigher){
-          pob.priceColorHigher = false;
-          pob.priceBlock.classList.remove("price-higher");
-        }
-        if(!pob.priceColorLower){
-          pob.priceColorLower = true;
-          pob.priceBlock.classList.add("price-lower");
-        }
       }else if(dfr < 0){
         pob.priceBlock.textContent = `${wtDecimal(dfr)}€`;
-        if (pob.priceColor != "price-lower"){
-          if(pob.priceColorHigher){
-            pob.priceColorHigher = false;
-            pob.priceBlock.classList.remove("price-higher");
-          }
-          if(!pob.priceColorLower){
-            pob.priceColorLower = true;
-            pob.priceBlock.classList.add("price-lower");
-          }
-        }
       }else{
         pob.priceBlock.textContent = `+${wtDecimal(dfr)}€`;
-        if (pob.priceColor != "price-higher"){
-          if(!pob.priceColorHigher){
-            pob.priceColorHigher = true;
-            pob.priceBlock.classList.add("price-higher");
-          }
-          if(pob.priceColorLower){
-            pob.priceColorLower = false;
-            pob.priceBlock.classList.remove("price-lower");
-          }
-        }
       }
     }
   }
@@ -435,8 +498,6 @@ function crProdPrice(){
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
         pod.priceBlock = pod.cDom.querySelector(".price-block");
-        pod.priceColorHigher = pod.priceBlock.classList.contains("price-higher");
-        pod.priceColorLower = pod.priceBlock.classList.contains("price-lower");
       }
       updateProdPrice({"cnm":cnm});
     }else if (ob.prodType == "checkbox") {
@@ -551,6 +612,7 @@ function quantDecrHandler(){
 function crQuantity(){
   for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
+    if(ob.isEmpty)continue;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
       pob.qCont = pob.cDom.querySelector(".part-number-input");
@@ -661,7 +723,6 @@ function updateNavPos(){
       if(!domCashe.prodNav.fixedMode){
         domCashe.prodNav.fixedMode = true;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          //domCashe.prodNav.parentBody.style.paddingBottom = `${15+domCashe.prodNav.navBody.getBoundingClientRect().height}px`;
           domCashe.prodNav.navBody.classList.add("fixed-mode");
         }));
       }
@@ -669,7 +730,6 @@ function updateNavPos(){
       if(domCashe.prodNav.fixedMode){
         domCashe.prodNav.fixedMode = false;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
-          //domCashe.prodNav.parentBody.style.paddingBottom = "";
           domCashe.prodNav.navBody.classList.remove("fixed-mode");
         }));
       }
@@ -752,6 +812,7 @@ function crProdNav(){
   var navstr = "";
   for(const cnm of domCashe.domOrder){
     var ob = domCashe.dom[cnm];
+    if(ob.isHidden)continue;
     domCashe.prodNav.navigators[cnm]={
       "lpState": ob.lpState,
       "hasSelected": ob.hasSelected,
@@ -788,22 +849,28 @@ function crProdNav(){
 
 function updateBuildModal(evArgs){
   var linktext = window.location.href.split('&');
-  //linktext = `${linktext[0]}&${linktext[1]}&prefill=1`; //
-  linktext = `https://www.msystems.gr/section/systems_new/?&system=18&prefill=1`;   //temp change
+  linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;
+  // linktext = `https://www.msystems.gr/section/systems_new/?&system=18&prefill=1`;   //temp change
   var tabletext = `<div class="table-row">
   <div class="modal-cat-header">Κατηγορία</div>
   <div class="modal-prnum-header">Κωδικός</div>
   <div class="modal-product-header">Προϊόν</div>
   <div class="modal-quant-header">Τμχ.</div></div>`;
+  var totalVal = 0;
+  var isEmpty = true;
   for(let i=0;i<domCashe.domOrder.length;i++){
     var ob = domCashe.dom[domCashe.domOrder[i]];
+    if(ob.isHidden)continue;
+    if(!ob.hasSelected)continue;
+    isEmpty = false;
     if(ob.prodType == "radio"){
       var pob = ob.prodList[ob.prodSelected];
       tabletext += `<div class="table-row">
       <div class="cat-nm">${ob.nmTxt}</div>
       <div class="erp-pn">${pob.erp}</div>
       <div class="prod-nm">${pob.nmTxt}</div>
-      <div class="prod-quant">${pob.qValue}x</div></div>`;
+      <div class="prod-quant">${pob.qValue}</div></div>`;
+      totalVal+= (pob.qValue * pob.priceVal);
       if(ob.hasSelected)linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
     }else if(ob.prodType == "checkbox"){
       for(const pnm of ob.prodSelected){
@@ -812,36 +879,41 @@ function updateBuildModal(evArgs){
         <div class="cat-nm">${ob.nmTxt}</div>
         <div class="erp-pn">${pob.erp}</div>
         <div class="prod-nm">${pob.nmTxt}</div>
-        <div class="prod-quant">${pob.qValue}x</div></div>`;
+        <div class="prod-quant">${pob.qValue}</div></div>`;
+        totalVal+= (pob.qValue * pob.priceVal);
         if(ob.hasSelected)linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
       }
     }
   }
+  if(isEmpty)tabletext += `<div class="table-row"><div></div><div></div><div>&nbsp;</div><div></div></div>`;
+  tabletext += `<div class="table-row">
+  <div class="modal-total-title">Σύνολο:</div>
+  <div></div><div></div><div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
+  </div>`
   domCashe.buildModal.modalTable.innerHTML = tabletext;
   domCashe.buildModal.linkFull = linktext;
-  domCashe.buildModal.qLink = "Unavailable";
-  (async ()=>{
-    try{  
-      const request = await fetch(
-        'https://api-ssl.bitly.com/v4/shorten',{
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${gettoken}`,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ "long_url": domCashe.buildModal.linkFull})
-      })
+  domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
+  domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
+  // (async ()=>{
+  //   try{  
+  //     const request = await fetch(
+  //       'https://api-ssl.bitly.com/v4/shorten',{
+  //       method: 'POST',
+  //       headers: {
+  //         'Authorization': `Bearer ${gettoken}`,
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ "long_url": domCashe.buildModal.linkFull})
+  //     })
       
-      if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
-      const getjson = await request.json()
-      domCashe.buildModal.qLink = getjson["link"];
-      domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
-    }catch(err){
-      domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
-      domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
-      console.log(err);
-    }
-  })()
+  //     if(request.status >= 400) throw new Error(`Response status: ${request.status}`);
+  //     const getjson = await request.json()
+  //     domCashe.buildModal.qLink = getjson["link"];
+  //     domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
+  //   }catch(err){
+  //     console.log(err);
+  //   }
+  // })()
 }
 
 function buildShortLink(evArgs) {
@@ -991,6 +1063,7 @@ function updateProdCompatibility(evArgs){
   if(domCashe.dom[evArgs.cnm].prodType=="radio"){
     for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
       if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
+      if(domCashe.dom[cnm].isEmpty)continue;
       for(const pnm of domCashe.dom[cnm].prodOrder){
         if(compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm)){
           if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))removeUnsupported(pnm, cnm, evArgs.cnm);
@@ -1003,6 +1076,7 @@ function updateProdCompatibility(evArgs){
   }else if(domCashe.dom[evArgs.cnm].prodType=="checkbox"){
     for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
       if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
+      if(domCashe.dom[cnm].isEmpty)continue;
       for(const pnm of domCashe.dom[cnm].prodOrder){
         var defVal = false;
         for(const pnmB of domCashe.dom[evArgs.cnm].prodSelected){
@@ -1064,7 +1138,7 @@ function updateDisabledBLock(cnm, pnm){
         pob.Compatibility.dReason[1].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMA;
         pob.Compatibility.dReason[2].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMB;
         pob.Compatibility.dReason[2].dataset.unsupported = pob.Compatibility.unSupported[0];
-        var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
+        // var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
       }
     }else{      
       if(!pob.disStatus){
@@ -1118,6 +1192,7 @@ function ProdCompRedirectHandler(){
 function crProdCompatibility(){
   var qUpdate = [];
   for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    if(ob.isEmpty)continue;
     for(const [pnm, pob] of Object.entries(ob.prodList)){
       if(!pob.hasOwnProperty("disStatus")){
         pob.disStatus = pob.selfDom.disabled?"unassigned":false;
@@ -1244,7 +1319,7 @@ function updatePerfCarousel(evArgs){
     var pRes = 3;
     for(const [lcnm,catr]of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
       if(domCashe.dom[lcnm].prodType == "radio"){
-        var obval = domCashe.dom[lcnm].prodList[domCashe.dom[lcnm].prodSelected].perfAttr;
+        var obval = domCashe.dom[lcnm].isEmpty?"$":domCashe.dom[lcnm].prodList[domCashe.dom[lcnm].prodSelected].perfAttr;
         var obval = obval=="$"?"$":Number(obval.split(",")[Number(catr.attr)]);
         if(obval == "$"||obval==NaN){
           if(CFGperfCarousel.gameList[gnm].parts[lcnm].safe != "$"||obval==NaN){
@@ -1361,7 +1436,8 @@ function crPerfCarousel(){
   var perfDom = document.getElementById("performance-carousel-2");
   if(!perfDom)return
   for(const cnm of CFGperfCarousel.partList){
-    if(!domCashe.dom.hasOwnProperty(cnm))continue
+    if(!domCashe.dom.hasOwnProperty(cnm))continue;
+    if(domCashe.dom[cnm].isEmpty)continue;
     for(const [pnm,pob] of Object.entries(domCashe.dom[cnm].prodList)){
       var attrs = pob.selfDom.dataset.perfattr;
       pob.perfAttr = attrs?attrs:"$";
@@ -1423,6 +1499,47 @@ function crPerfCarousel(){
   CFGCbBtHandler.push(updatePerfCarousel);
 }
 
+function updateDomReduce(evArgs){
+  for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    if(ob.isEmpty)continue;
+    if(ob.lpState == ob.isReduced){
+      var pList = [];
+      if(ob.lpState){
+        for(const pnm of ob.prodOrder){
+          pList.push(ob.prodList[pnm].selfDom);
+          pList.push(ob.prodList[pnm].cDom);
+        }
+      }else{
+        if(ob.prodType == "radio"){
+          pList.push(ob.prodList[ob.prodSelected].selfDom);
+          pList.push(ob.prodList[ob.prodSelected].cDom);
+        }else if(ob.prodType == "checkbox"){
+          for(const pnm of ob.prodSelected){
+            pList.push(ob.prodList[pnm].selfDom);
+            pList.push(ob.prodList[pnm].cDom);
+          }
+        }
+      }
+      ob.pListDom.replaceChildren(...pList);
+      ob.isReduced = !ob.lpState;
+    }
+  }
+}
+
+function crDomReduce(){
+  if(!document.replaceChildren)return;
+  for(const [cnm, ob] of Object.entries(domCashe.dom)){
+    if(ob.isEmpty)continue;
+    ob.isReduced = false;
+  }
+  CFGcHeadHandler.push(updateDomReduce);
+  CFGpChangeHandler.push(updateDomReduce);
+  CFGprodNavHandler.push(updateDomReduce);
+  CFGprodCompRedirectHandler.push(updateDomReduce);
+  CFGperfCarouselHandler.push(updateDomReduce);
+  updateDomReduce({});
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
@@ -1438,4 +1555,5 @@ document.addEventListener("DOMContentLoaded", function(){
   // crPerfCarousel();
   crProdNav();
   crBuildModal();
+  crDomReduce();
 })
