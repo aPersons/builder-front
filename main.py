@@ -3,20 +3,22 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
-for y in range(20):
+for y in range(1):
   prodlist.append({
     "cat-code": f"test{y}",
     "cat-name": f"testcat{y}",
     "cat-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "init-prod": f"test{y}-0",
+    "init-prod": "werwe",#f"test{y}-0",
     "product-list": []
   })
-  for x in range(100):
+  for x in range(5):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
       "prod-price":f"{100*x}",
       "prod-av":"",
-      "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}"
+      "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}",
+      "prod-min":"1",
+      "prod-max":"1"
     })
     if x==0:
       prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"

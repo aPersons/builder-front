@@ -102,13 +102,24 @@ function crCats(){
   }
 }
 
-function updateRdState(evArgs){
+function updateRdState(evArgs) {
   var cnm = evArgs.cnm;
   var pnm = evArgs.pnm;
   var lastl = domCashe.dom[cnm].prodSelected;
   domCashe.dom[cnm].prodList[lastl].isSelected = false;
   domCashe.dom[cnm].prodList[pnm].isSelected = true;
   domCashe.dom[cnm].prodSelected = pnm;
+}
+
+function rdSelCheck() {
+  for (const ob of Object.values(domCashe.dom)) {
+    if (ob.prodType != "radio") continue;
+    if (!ob.hasOwnProperty("prodSelected")) {
+      ob.prodSelected = ob.prodOrder[0];
+      ob.prodList[ob.prodSelected].isSelected = true;
+      ob.prodList[ob.prodSelected].selfDom.checked = true;
+    }
+  }
 }
 
 var CFGRdBtHandler = [];
@@ -150,6 +161,7 @@ function crRdBt(){
       }
     }
   }
+  rdSelCheck();
   CFGRdBtHandler.length = 0;
   CFGRdBtHandler.push(updateRdState);
 }
@@ -298,6 +310,7 @@ function catRedirect(evArgs) {
   } else {
     var winMode = "sm";
     var topPad = 166.11;
+    // var topPad = modCat ? 129.5 : 166.11;
   }
 
   // var dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
@@ -479,6 +492,10 @@ function updateProdPrice(evArgs){
     var sprice = ob.prodList[ob.prodSelected].priceVal;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
+      if (pnm == ob.prodSelected){
+        pob.priceBlock.textContent = `${wtDecimal(sprice)}€`;
+        continue;
+      }
       var dfr = pob.priceVal - sprice;
       if(dfr == 0){
         pob.priceBlock.textContent = `+0,00€`;
@@ -1540,12 +1557,81 @@ function crDomReduce(){
   updateDomReduce({});
 }
 
+var modCat = false;
+function updateModifier(){
+  if(!modCat) return;
+
+  var nresult = 0;
+  for(const ob of Object.values(domCashe.dom)){
+    if(ob.prodType=="radio"){
+      var pob = ob.prodList[ob.prodSelected];
+      nresult+= pob.priceVal * pob.qValue;
+    }else if(ob.prodType=="checkbox"){
+      for(const pnm of ob.prodSelected){
+        var pob = ob.prodList[pnm];
+        nresult+= pob.priceVal * pob.qValue;
+      }
+    }
+  }
+
+  var modOb = domCashe.dom[modCat];
+  var modPob = modOb.prodList[modOb.prodSelected];
+  var priceClean = nresult - (modPob.priceVal * modPob.qValue);
+
+  var avQuant = priceClean >= 60000 ? 3 : priceClean >= 40000 ? 2 : 1;
+
+  for (pob of Object.values(modOb.prodList)) {
+    if (pob.qType != "dynamic") continue;
+    pob.qMax = avQuant;
+    if (pob.qValue > pob.qMax){
+      pob.qValue = avQuant;
+      pob.qInput.value = avQuant;
+
+      pob.qDisplay.textContent = pob.qValue;
+
+      if(pob.qValue <= pob.qMin){
+        if (pob.qSubAv == true){
+          pob.qSubAv = false;
+          pob.qCont.classList.remove("decr-av");
+        }
+      }else{
+        if (pob.qSubAv == false){
+          pob.qSubAv = true;
+          pob.qCont.classList.add("decr-av");
+        }
+      }
+    }
+
+    if(pob.qValue >= pob.qMax){
+      if (pob.qAddAv == true){
+        pob.qAddAv = false;
+        pob.qCont.classList.remove("incr-av");
+      }
+    }else{
+      if (pob.qAddAv == false){
+        pob.qAddAv = true;
+        pob.qCont.classList.add("incr-av");
+      }
+    }    
+  }
+}
+
+function merimnaModifier(wCat){
+  if (!(wCat && domCashe.domOrder.includes(wCat)))return;
+  modCat = wCat;
+  updateModifier();
+  CFGRdBtHandler.push(updateModifier);
+  CFGCbBtHandler.push(updateModifier);
+  CFGquantHandler.push(updateModifier)
+}
+
 document.addEventListener("DOMContentLoaded", function(){
   crCats();
   crRdBt();
   crCbBt();
   crQuantity();
-  crProdCompatibility();
+  // crProdCompatibility();
+  merimnaModifier("cat-test0");
 
   crProdPrice();
   crFinalPrice();

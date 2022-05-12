@@ -572,7 +572,7 @@
   flex-grow: 1;
   text-align: center;
 }
-.part-rd-bt:checked + .listed-part .price-block{display: none;}
+/* .part-rd-bt:checked + .listed-part .price-block{display: none;} */
 
 .listed-part-inner .part-btn{
   display: flex;
