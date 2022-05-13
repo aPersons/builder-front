@@ -492,6 +492,7 @@ function updateProdPrice(evArgs){
     var sprice = ob.prodList[ob.prodSelected].priceVal;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
+      if (!pob.hasOwnProperty("priceBlock")) continue;
       if (pnm == ob.prodSelected){
         pob.priceBlock.textContent = `${wtDecimal(sprice)}€`;
         continue;
@@ -514,15 +515,19 @@ function crProdPrice(){
     if (ob.prodType == "radio") {
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
-        pod.priceBlock = pod.cDom.querySelector(".price-block");
-        var modPrice = pod.cDom.querySelector(".price-merimna-block");
-        if (modPrice) modPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
+        var fixedPrice = pod.cDom.querySelector(".price-fixed-block");
+        if (fixedPrice) fixedPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
+        var relPrice = pod.cDom.querySelector(".price-rel-block");
+        if (relPrice) pod.priceBlock = relPrice;
       }
       updateProdPrice({"cnm":cnm});
     }else if (ob.prodType == "checkbox") {
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
-        pod.cDom.querySelector(".price-block").textContent = `${wtDecimal(pod.priceVal)}€`;
+        var fixedPrice = pod.cDom.querySelector(".price-fixed-block");
+        if (fixedPrice) fixedPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
+        var relPrice = pod.cDom.querySelector(".price-rel-block");
+        if (relPrice) relPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
       }
     }
   }

@@ -569,18 +569,18 @@
   grid-area: part-price;
   padding: 5px;
 }
-.price-block,.price-merimna-block{
+.price-rel-block,.price-fixed-block{
   /* flex-grow: 1; */
   text-align: center;
 }
-.price-merimna-block + .price-block{
+.price-fixed-block + .price-rel-block{
   color: #4b566b;
   font-size: 0.8125rem;
   font-weight: 400;
 }
 
 /* modifier config */
-.part-rd-bt:checked + .listed-part .price-block{display: none;}
+.part-rd-bt:checked + .listed-part .price-rel-block{display: none;}
 
 .listed-part-inner .part-btn{
   display: flex;
