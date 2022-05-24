@@ -60,7 +60,7 @@ prod_template = """
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
                   {merimna_price_block}
-                  <span class="price-rel-block">0,00€</span>
+                  <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
                   <label class="btn btn-primary btn-change btn-shadow">Αλλαγή</label>

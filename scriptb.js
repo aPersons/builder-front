@@ -517,7 +517,7 @@ function crProdPrice(){
         var pod = ob.prodList[pnm];
         var fixedPrice = pod.cDom.querySelector(".price-fixed-block");
         if (fixedPrice) fixedPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
-        var relPrice = pod.cDom.querySelector(".price-rel-block");
+        var relPrice = pod.cDom.querySelector(".price-block");
         if (relPrice) pod.priceBlock = relPrice;
       }
       updateProdPrice({"cnm":cnm});
@@ -526,7 +526,7 @@ function crProdPrice(){
         var pod = ob.prodList[pnm];
         var fixedPrice = pod.cDom.querySelector(".price-fixed-block");
         if (fixedPrice) fixedPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
-        var relPrice = pod.cDom.querySelector(".price-rel-block");
+        var relPrice = pod.cDom.querySelector(".price-block");
         if (relPrice) relPrice.textContent = `${wtDecimal(pod.priceVal)}€`;
       }
     }
@@ -911,6 +911,7 @@ function updateBuildModal(evArgs){
     }
   }
   if(isEmpty)tabletext += `<div class="table-row"><div></div><div></div><div>&nbsp;</div><div></div></div>`;
+  totalVal = totalVal<0?0:totalVal;
   tabletext += `<div class="table-row">
   <div class="modal-total-title">Σύνολο:</div>
   <div></div><div></div><div class="modal-total-num"><span>${wtDecimal(totalVal)}</span> €</div>
