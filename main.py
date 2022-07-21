@@ -3,20 +3,24 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
-for y in range(20):
+for y in range(1):
   prodlist.append({
     "cat-code": f"test{y}",
     "cat-name": f"testcat{y}",
     "cat-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-    "init-prod": f"test{y}-0",
+    "init-prod": "werwe",#f"test{y}-0",
     "product-list": []
   })
-  for x in range(100):
+  for x in range(5):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
-      "prod-price":f"{100*x}",
+      #"prod-price":f"{100*x}",
+      "prod-price":"-20000",
       "prod-av":"",
-      "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}"
+      #"prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}",
+      "prod-name":"Voucher",
+      "prod-min":"1",
+      "prod-max":"1"
     })
     if x==0:
       prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"
@@ -55,6 +59,7 @@ prod_template = """
                 </div>
                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
+                  {merimna_price_block}
                   <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{see_more}{use_num_input}
@@ -150,7 +155,8 @@ for category in prodlist:
         part_av = av_template[product["prod-av"]],
         see_more = seeMore,
         part_price = product["prod-price"],
-        price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
+        merimna_price_block = ""if "multi-sel" in category else '<span class="price-fixed-block">+0,00€</span>',
+        # price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
         use_num_input = num_input_res,
         sec_btn = secbtn
       )
