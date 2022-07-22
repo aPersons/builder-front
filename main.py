@@ -3,7 +3,7 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
-for y in range(1):
+for y in range(5):
   prodlist.append({
     "cat-code": f"test{y}",
     "cat-name": f"testcat{y}",
@@ -11,16 +11,16 @@ for y in range(1):
     "init-prod": "werwe",#f"test{y}-0",
     "product-list": []
   })
-  for x in range(5):
+  for x in range(50):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
-      #"prod-price":f"{100*x}",
-      "prod-price":"-20000",
+      "prod-price":f"{100*x}",
+      # "prod-price":"-20000",
       "prod-av":"",
-      #"prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}",
-      "prod-name":"Voucher",
-      "prod-min":"1",
-      "prod-max":"1"
+      "prod-name":f"{'emptyval'if x==0 else prodlist[-1]['cat-code']+f'-{x}'}",
+      # "prod-name":"Voucher",
+      # "prod-min":"1",
+      # "prod-max":"1"
     })
     if x==0:
       prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"
@@ -44,32 +44,49 @@ num_input_alt = """
 cat_template="""
             <div class="builder-part-category" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
-                <div class="part-category-description fs-md bg-secondary">{cat_descr}</div>
+                <div class="part-category-description fs-md">{cat_descr}</div>
                 <div class="part-list-container-outer">
-                <div class="part-list-container">
+                <div class="part-list-container bg-secondary">
                   {part_list}
                 </div></div>
             </div>"""
 prod_template = """
             <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}{mlfx}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
             <div class="listed-part">              
-              <label class="listed-part-inner" for="{part_id}">
+              <label class="listed-part-inner bg-light" for="{part_id}">
                 <div class="part-img">
                   <img class="build-img" width="74" height="56" src="assets/{img_src}.jpg" width="100%">
                 </div>
-                <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
+                <div class="part-text"><div class="part-text-head">{see_more}{part_title}</div></div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
                   {merimna_price_block}
                   <span class="price-block">0,00€</span>
                 </div>
-                <div class="part-btn">{see_more}{use_num_input}
-                  <label class="btn btn-primary btn-change btn-shadow">Αλλαγή</label>
-                  <label class="btn btn-primary btn-select btn-shadow" for="{part_id}">Επιλογή</label>
-                  {sec_btn}
+                <div class="part-btn">{use_num_input}
                   <div class="disabled-part fs-ms">disabled</div>
                 </div>                
               </label>              
             </div>"""
+# prod_template = """
+#             <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}{mlfx}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
+#             <div class="listed-part">              
+#               <label class="listed-part-inner" for="{part_id}">
+#                 <div class="part-img">
+#                   <img class="build-img" width="74" height="56" src="assets/{img_src}.jpg" width="100%">
+#                 </div>
+#                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
+#                 <div class="part-price fw-bold" data-priceval="{part_price}">
+#                   {merimna_price_block}
+#                   <span class="price-block">0,00€</span>
+#                 </div>
+#                 <div class="part-btn">{see_more}{use_num_input}
+#                   <label class="btn btn-primary btn-change btn-shadow">Αλλαγή</label>
+#                   <label class="btn btn-primary btn-select btn-shadow" for="{part_id}">Επιλογή</label>
+#                   {sec_btn}
+#                   <div class="disabled-part fs-ms">disabled</div>
+#                 </div>                
+#               </label>              
+#             </div>"""
 av_template={
   "":'<div class="prod-av-null"></div>',
   "Μη διαθέσιμο":'<div class="prod-av-0"><span style="font-size:13px;">Μη διαθέσιμο</span></div>',
@@ -120,7 +137,8 @@ for category in prodlist:
           #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
       seeMore = ""
       if not "emptyval" in product:
-        seeMore = '<a class="prod-quick-view quick-view-btn nav-link-style fs-ms" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
+        # seeMore = '<a class="prod-quick-view quick-view-btn nav-link-style fs-ms" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
+        seeMore = '<a class="prod-quick-view quick-view-btn nav-link-style" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i></a>'
 
       perfAttributes = ""
       perfres = ""
@@ -152,13 +170,13 @@ for category in prodlist:
         img_src = "kouti0" if "test" in product["prod-code"] else product["prod-code"],
         part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
         part_title = product["prod-name"],
-        part_av = av_template[product["prod-av"]],
+        # part_av = av_template[product["prod-av"]],
         see_more = seeMore,
         part_price = product["prod-price"],
         merimna_price_block = ""if "multi-sel" in category else '<span class="price-fixed-block">+0,00€</span>',
         # price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
-        use_num_input = num_input_res,
-        sec_btn = secbtn
+        use_num_input = num_input_res
+        # sec_btn = secbtn
       )
     results += cat_template.format(
         cat_name = category["cat-code"],

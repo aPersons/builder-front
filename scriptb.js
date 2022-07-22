@@ -458,28 +458,28 @@ function updateHeadSel(evArgs){
     if(ob.prodSelected == ob.emptyEl){
       if(ob.hasSelected){
         ob.hasSelected = false;
-        ob.headDom.classList.remove("contains-selected");
+        ob.selfDom.classList.remove("contains-selected");
       }
     }else if (!ob.hasSelected){
       ob.hasSelected = true;
-      ob.headDom.classList.add("contains-selected");
+      ob.selfDom.classList.add("contains-selected");
     }
   }else if(ob.prodType=="checkbox"){
     if(ob.prodSelected.length<1||(ob.prodSelected.length<2&&ob.prodSelected.includes(ob.emptyEl))){
       if(ob.hasSelected){
         ob.hasSelected = false;
-        ob.headDom.classList.remove("contains-selected");
+        ob.selfDom.classList.remove("contains-selected");
       }
     }else if (!ob.hasSelected){
       ob.hasSelected = true;
-      ob.headDom.classList.add("contains-selected");
+      ob.selfDom.classList.add("contains-selected");
     }
   }
 }
 
 function crHeadSel(){
   for(const cnm of domCashe.domOrder){
-    domCashe.dom[cnm].hasSelected = domCashe.dom[cnm].headDom.classList.contains("contains-selected");
+    domCashe.dom[cnm].hasSelected = domCashe.dom[cnm].selfDom.classList.contains("contains-selected");
     updateHeadSel({"cnm":cnm});
   }
   CFGRdBtHandler.push(updateHeadSel);
@@ -1640,15 +1640,15 @@ document.addEventListener("DOMContentLoaded", function(){
   crCbBt();
   crQuantity();
   // crProdCompatibility();
-  merimnaModifier("cat-test0");
+  // merimnaModifier("cat-test0");
 
   crProdPrice();
   crFinalPrice();
   crCOpen();
-  crCOpenMinor();
+  // crCOpenMinor();
   crHeadSel();
   // crPerfCarousel();
   crProdNav();
   crBuildModal();
-  crDomReduce();
+  setTimeout(crDomReduce,0);//quick_view.js must run before this. Won't add events otherwise.
 })
