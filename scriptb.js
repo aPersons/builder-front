@@ -6,7 +6,7 @@
 
 function scrollToQ(element, duration) {
 	var e = document.documentElement;
-    if(e.scrollTop===0){
+    if (e.scrollTop===0) {
         var t = e.scrollTop;
         ++e.scrollTop;
         e = t+1===e.scrollTop--?e:document.body;
@@ -16,8 +16,8 @@ function scrollToQ(element, duration) {
 // Element to move, element or px from, element or px to, time in ms to animate
 function scrollToC(element, from, to, duration) {
   if (duration <= 0) return;
-  if(typeof from === "object")from=from.offsetTop;
-  if(typeof to === "object")to=to.offsetTop;
+  if (typeof from === "object")from=from.offsetTop;
+  if (typeof to === "object")to=to.offsetTop;
   // Choose one effect like easeInQuart
   scrollToX(element, from, to, 0, 1/duration, Date.now(), easeInOutCuaic);
 }
@@ -35,7 +35,7 @@ function scrollToX(element, xFrom, xTo, t01, speed, q, motion) {
 		scrollToX(element, xFrom, xTo, t01, speed, nq, motion);
 	});
 }
-function easeInOutCuaic(t){
+function easeInOutCuaic(t) {
 	t/=0.5;
 	if(t<1)return t*t*t/2;
 	t-=2;
@@ -45,31 +45,31 @@ function easeInOutCuaic(t){
 /*--------------------------------------------
 ---------------------------------------------*/
 
-function wtDecimal(wholeNum){
-  if(Number.isSafeInteger(Number(wholeNum))){
+function wtDecimal(wholeNum) {
+  if (Number.isSafeInteger(Number(wholeNum))) {
     var wholeStr = Number(wholeNum).toString();
-    if(wholeNum >= 0){
-      if(wholeStr.length == 0){
+    if (wholeNum >= 0) {
+      if (wholeStr.length == 0) {
         return "0,00";
-      }else if(wholeStr.length == 1){
+      } else if(wholeStr.length == 1) {
         return `0,0${wholeStr}`;
-      }else if(wholeStr.length == 2){
+      } else if(wholeStr.length == 2) {
         return `0,${wholeStr}`;
-      }else{
+      } else {
         return `${wholeStr.slice(0, wholeStr.length-2)},${wholeStr.slice(wholeStr.length-2, wholeStr.length)}`;
       }
-    }else{
-      if(wholeStr.length < 2){
+    } else {
+      if (wholeStr.length < 2) {
         return "0,00";
-      }else if(wholeStr.length == 2){
+      } else if(wholeStr.length == 2) {
         return `-0,0${wholeStr[1]}`;
-      }else if(wholeStr.length == 3){
+      } else if(wholeStr.length == 3) {
         return `-0,${wholeStr.slice(1, wholeStr.length)}`;
-      }else{
+      } else {
         return `-${wholeStr.slice(1, wholeStr.length-2)},${wholeStr.slice(wholeStr.length-2, wholeStr.length)}`;
       }
     }
-  }else{
+  } else {
     return "unsupported input";
   }
 }
@@ -83,11 +83,11 @@ var domCashe = {
   "perfCarousel":{}
 };
 
-function crCats(){
+function crCats() {
   domCashe.dom = {};
   domCashe.domOrder = [];
   var tmpList = document.querySelectorAll(".builder-part-category");
-  for(let i=0;i<tmpList.length;i++){
+  for (let i=0;i<tmpList.length;i++) {
     var tmphead = tmpList[i].querySelector(".part-category-head");
     domCashe.domOrder.push(tmpList[i].id);
     domCashe.dom[domCashe.domOrder[domCashe.domOrder.length-1]] = {
@@ -123,23 +123,23 @@ function rdSelCheck() {
 }
 
 var CFGRdBtHandler = [];
-function RdBtHandler(){
+function RdBtHandler() {
   var evArgs = {
     pnm: this.id,
     cnm: this.parentElement.parentElement.parentElement.id
   }
-  for(const fnc of CFGRdBtHandler)fnc(evArgs);
+  for (const fnc of CFGRdBtHandler) fnc(evArgs);
 }
-function crRdBt(){
-  for(const cnm of domCashe.domOrder){
+function crRdBt() {
+  for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm]
     var tmpList = ob.selfDom.querySelectorAll(".part-rd-bt");
-    if(tmpList.length){
+    if (tmpList.length) {
       ob.prodType = "radio";
       ob.emptyEl = "$blank";
       ob.prodList = {};
       ob.prodOrder = [];
-      for(let i=0;i<tmpList.length;i++){
+      for (let i=0;i<tmpList.length;i++) {
         tmpList[i].removeEventListener("change",RdBtHandler);
         tmpList[i].addEventListener("change",RdBtHandler);
         var dname = tmpList[i].id;
@@ -166,64 +166,64 @@ function crRdBt(){
   CFGRdBtHandler.push(updateRdState);
 }
 
-function addProdSel(pnm, cnm){
+function addProdSel(pnm, cnm) {
   var qsize = domCashe.dom[cnm].prodSelected.length;
   var sOrd = domCashe.dom[cnm].prodOrder.indexOf(pnm);
-  for(let i = 0;i < qsize; i++){
+  for (let i = 0;i < qsize; i++) {
     var lnm = domCashe.dom[cnm].prodSelected[i];
-    if (sOrd<domCashe.dom[cnm].prodOrder.indexOf(lnm)){
+    if (sOrd<domCashe.dom[cnm].prodOrder.indexOf(lnm)) {
       domCashe.dom[cnm].prodSelected.splice(i,0,pnm);
       return
     }
   }
   domCashe.dom[cnm].prodSelected.push(pnm);
 }
-function removeProdSel(pnm, cnm){
+function removeProdSel(pnm, cnm) {
   domCashe.dom[cnm].prodSelected.splice(domCashe.dom[cnm].prodSelected.indexOf(pnm),1);
 }
 
-function updateCbState(evArgs){
+function updateCbState(evArgs) {
   var pnm = evArgs.pnm;
   var cnm = evArgs.cnm;
   
-  if(domCashe.dom[cnm].prodSelected.includes(pnm)&&domCashe.dom[cnm].emptyEl==pnm){
-    if(domCashe.dom[cnm].prodSelected.length>1){
+  if (domCashe.dom[cnm].prodSelected.includes(pnm)&&domCashe.dom[cnm].emptyEl==pnm) {
+    if (domCashe.dom[cnm].prodSelected.length>1) {
       removeProdSel(pnm, cnm),
       domCashe.dom[cnm].prodList[pnm].isSelected = false;
-    }else{
+    } else {
       domCashe.dom[cnm].prodList[pnm].selfDom.checked = true;
     }
-  }else if(domCashe.dom[cnm].prodSelected.includes(pnm)){
-    if(domCashe.dom[cnm].prodSelected.length<2&&domCashe.dom[cnm].emptyEl == "$blank"){
+  } else if (domCashe.dom[cnm].prodSelected.includes(pnm)) {
+    if (domCashe.dom[cnm].prodSelected.length<2&&domCashe.dom[cnm].emptyEl == "$blank") {
       domCashe.dom[cnm].prodList[pnm].selfDom.checked = true;
-    }else{
+    } else {
       removeProdSel(pnm, cnm);
       domCashe.dom[cnm].prodList[pnm].isSelected = false;
-      if(domCashe.dom[cnm].emptyEl != "$blank"){
+      if (domCashe.dom[cnm].emptyEl != "$blank") {
         var enm = domCashe.dom[cnm].emptyEl;
-        if(domCashe.dom[cnm].prodSelected.length<1){
+        if (domCashe.dom[cnm].prodSelected.length<1) {
           domCashe.dom[cnm].prodSelected = [enm]
           domCashe.dom[cnm].prodList[enm].isSelected = true;
           domCashe.dom[cnm].prodList[enm].selfDom.checked = true;
-        }else if(domCashe.dom[cnm].prodSelected.length>1&&domCashe.dom[cnm].prodSelected.includes(enm)){
+        } else if (domCashe.dom[cnm].prodSelected.length>1&&domCashe.dom[cnm].prodSelected.includes(enm)) {
           removeProdSel(enm, cnm);
           domCashe.dom[cnm].prodList[enm].isSelected = false;
           domCashe.dom[cnm].prodList[enm].selfDom.checked = false;
         }
       }
     }
-  }else if(domCashe.dom[cnm].emptyEl==pnm){
-    for(const pr of domCashe.dom[cnm].prodSelected){
+  } else if (domCashe.dom[cnm].emptyEl==pnm) {
+    for (const pr of domCashe.dom[cnm].prodSelected) {
       domCashe.dom[cnm].prodList[pr].isSelected = false;
       domCashe.dom[cnm].prodList[pr].selfDom.checked = false;
     }
     domCashe.dom[cnm].prodSelected = [pnm]
     domCashe.dom[cnm].prodList[pnm].isSelected = true;
-  }else {
+  } else {
     addProdSel(pnm, cnm);
     domCashe.dom[cnm].prodList[pnm].isSelected = true;
-    if(domCashe.dom[cnm].emptyEl != "$blank"){
-      if(domCashe.dom[cnm].prodSelected.includes(domCashe.dom[cnm].emptyEl)){
+    if (domCashe.dom[cnm].emptyEl != "$blank") {
+      if (domCashe.dom[cnm].prodSelected.includes(domCashe.dom[cnm].emptyEl)) {
         var enm = domCashe.dom[cnm].emptyEl;
         removeProdSel(enm, cnm);
         domCashe.dom[cnm].prodList[enm].isSelected = false;
@@ -233,15 +233,15 @@ function updateCbState(evArgs){
   }
 }
 
-function CbCheck(){
-  for(const [nm, ob] of Object.entries(domCashe.dom)){
-    if(ob.prodType == "checkbox"){
-      if (ob.emptyEl != "$blank"){
-        if(ob.prodList.length<1){
+function CbCheck() {
+  for (const [nm, ob] of Object.entries(domCashe.dom)) {
+    if (ob.prodType == "checkbox") {
+      if (ob.emptyEl != "$blank") {
+        if (ob.prodList.length<1) {
           ob.prodSelected = [ob.emptyEl]
           ob.prodList[ob.emptyEl].isSelected = true;
           ob.prodList[ob.emptyEl].selfDom.checked = true;
-        }else if (ob.prodList.length>1&&ob.prodSelected.includes(ob.emptyEl)){
+        } else if (ob.prodList.length>1&&ob.prodSelected.includes(ob.emptyEl)) {
           ob.prodSelected.splice(ob.prodSelected.indexOf(ob.emptyEl),1);
           ob.prodList[ob.emptyEl].isSelected = false;
           ob.prodList[ob.emptyEl].selfDom.checked = false;
@@ -252,24 +252,24 @@ function CbCheck(){
 }
 
 var CFGCbBtHandler = [];
-function CbBtHandler(){
+function CbBtHandler() {
   var evArgs = {
     pnm: this.id,
     cnm: this.parentElement.parentElement.parentElement.id
   }
-  for (const fnc of CFGCbBtHandler)fnc(evArgs);
+  for (const fnc of CFGCbBtHandler) fnc(evArgs);
 }
-function crCbBt(){
-  for(const cnm of domCashe.domOrder){
+function crCbBt() {
+  for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
     var tmpList = ob.selfDom.querySelectorAll(".part-checkbox");
-    if(tmpList.length){
+    if (tmpList.length) {
       ob.emptyEl = "$blank";
       ob.prodType = "checkbox";
       ob.prodSelected = [],
       ob.prodOrder = [];
       ob.prodList = {};
-      for(let i=0;i<tmpList.length;i++){
+      for (let i=0;i<tmpList.length;i++) {
         tmpList[i].removeEventListener("change",CbBtHandler);
         tmpList[i].addEventListener("change",CbBtHandler);
         var dname = tmpList[i].id;
@@ -287,7 +287,7 @@ function crCbBt(){
           "erp": erpL?erpL:"-"
         }
         if (ob.prodList[dname].value == "0") ob.emptyEl = dname;
-        if(ob.prodList[dname].isSelected)ob.prodSelected.push(dname);
+        if (ob.prodList[dname].isSelected) ob.prodSelected.push(dname);
       }
     }
   }
@@ -296,12 +296,21 @@ function crCbBt(){
   CFGCbBtHandler.push(updateCbState);
 }
 
+
+function catResize(evArgs) {
+  if (!evArgs.cnm) return;
+  domCashe.dom[evArgs.cnm].pListDom.parentElement.style.setProperty(
+    "--heightVar",
+    `${domCashe.dom[evArgs.cnm].pListDom.scrollHeight}px`
+  )
+}
+
 function catRedirect(evArgs) {
   var wCat = evArgs.cnm;
   var action = evArgs.hasOwnProperty("action")?evArgs.action : "toggle";
   var focus = evArgs.hasOwnProperty("focus")?evArgs.focus : "prod";
 
-  if (window.innerWidth > 991){
+  if (window.innerWidth > 991) {
     var winMode = "lg";
     var topPad = 139.5;
   } else if (window.innerWidth > 767) {
@@ -333,25 +342,30 @@ function catRedirect(evArgs) {
   }
 
   for (const k of domCashe.domOrder) {
+    let proxFanc = ()=>catResize({cnm:k});
     var ob = domCashe.dom[k];
-    if(k === wCat){
-      switch(action){
+    if (k === wCat) {
+      switch(action) {
         case "open":
           ob.lpState = true;
           ob.selfDom.classList.add("lp-show");
+          requestAnimationFrame(proxFanc);
         break;
         case "close":
           ob.lpState = false;
           ob.selfDom.classList.remove("lp-show");
+          requestAnimationFrame(proxFanc);
         break;
         case "same": break;
         default://toggle
           ob.lpState = !ob.lpState
           ob.selfDom.classList.toggle("lp-show");
+          requestAnimationFrame(proxFanc);
       }
-    }else if (ob.lpState) {
+    } else if (ob.lpState) {
       ob.lpState = false;
       ob.selfDom.classList.remove("lp-show");
+      requestAnimationFrame(proxFanc);
     }
   }
 
@@ -362,7 +376,7 @@ function catRedirect(evArgs) {
       posOffset = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect().top - (topPad - 7);
       gotSet = true;
       break;
-    }else if (!domCashe.dom[qCat[0]].lpState) {
+    } else if (!domCashe.dom[qCat[0]].lpState) {
       dBox = domCashe.dom[qCat[0]].selfDom.getBoundingClientRect();
       posOffset -= qCat[1] - (dBox.bottom - dBox.top);
     }
@@ -396,7 +410,7 @@ function catRedirect(evArgs) {
       }
       scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
     } else {
-      if (focus == "cat" || !selprod || !domCashe.dom[wCat].lpState){
+      if (focus == "cat" || !selprod || !domCashe.dom[wCat].lpState) {
         scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
       } else {
         var selprodPos = selprod.getBoundingClientRect();
@@ -414,34 +428,39 @@ function catRedirect(evArgs) {
 }
 
 CFGcHeadHandler = [];
-function cHeadHandler(){
+function cHeadHandler() {
   var evArgs = {
     cnm: this.parentElement.id
   }
-  for(const fnc of CFGcHeadHandler)fnc(evArgs);
+  for (const fnc of CFGcHeadHandler) fnc(evArgs);
 }
-function crCOpen(){
-  for(const cnm of domCashe.domOrder){
+function crCOpen() {
+  for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
     ob.headDom.removeEventListener("click",cHeadHandler);
     ob.headDom.addEventListener("click",cHeadHandler);
+
+    if (!ob.isHidden) {      
+      let proxFanc = ()=>catResize({cnm:cnm});
+      requestAnimationFrame(proxFanc);
+    }
   }
   CFGcHeadHandler.length = 0;
   CFGcHeadHandler.push(catRedirect);
 }
 
 CFGpChangeHandler = [];
-function pChangeHandler(){
+function pChangeHandler() {
   var evArgs = {
     cnm: this.parentElement.parentElement.parentElement.parentElement.parentElement.parentElement.id,
     action: "open"
   }
-  for(const fnc of CFGpChangeHandler)fnc(evArgs);
+  for (const fnc of CFGpChangeHandler) fnc(evArgs);
 }
-function crCOpenMinor(){
-  for(const cnm of domCashe.domOrder){
-    if(domCashe.dom[cnm].hasOwnProperty("prodList")){
-      for(const pnm of domCashe.dom[cnm].prodOrder){
+function crCOpenMinor() {
+  for (const cnm of domCashe.domOrder) {
+    if (domCashe.dom[cnm].hasOwnProperty("prodList")) {
+      for (const pnm of domCashe.dom[cnm].prodOrder) {
         var tmpch = domCashe.dom[cnm].prodList[pnm].cDom.querySelector(".btn-change");
         tmpch.removeEventListener("click",pChangeHandler);
         tmpch.addEventListener("click",pChangeHandler);
@@ -452,33 +471,33 @@ function crCOpenMinor(){
   CFGpChangeHandler.push(catRedirect);
 }
 
-function updateHeadSel(evArgs){
+function updateHeadSel(evArgs) {
   var ob = domCashe.dom[evArgs.cnm];
-  if(ob.prodType=="radio"){
-    if(ob.prodSelected == ob.emptyEl){
-      if(ob.hasSelected){
+  if (ob.prodType=="radio"){
+    if (ob.prodSelected == ob.emptyEl) {
+      if (ob.hasSelected) {
         ob.hasSelected = false;
         ob.selfDom.classList.remove("contains-selected");
       }
-    }else if (!ob.hasSelected){
+    } else if (!ob.hasSelected) {
       ob.hasSelected = true;
       ob.selfDom.classList.add("contains-selected");
     }
-  }else if(ob.prodType=="checkbox"){
-    if(ob.prodSelected.length<1||(ob.prodSelected.length<2&&ob.prodSelected.includes(ob.emptyEl))){
-      if(ob.hasSelected){
+  } else if (ob.prodType=="checkbox") {
+    if (ob.prodSelected.length<1||(ob.prodSelected.length<2&&ob.prodSelected.includes(ob.emptyEl))) {
+      if (ob.hasSelected) {
         ob.hasSelected = false;
         ob.selfDom.classList.remove("contains-selected");
       }
-    }else if (!ob.hasSelected){
+    } else if (!ob.hasSelected){
       ob.hasSelected = true;
       ob.selfDom.classList.add("contains-selected");
     }
   }
 }
 
-function crHeadSel(){
-  for(const cnm of domCashe.domOrder){
+function crHeadSel() {
+  for (const cnm of domCashe.domOrder) {
     domCashe.dom[cnm].hasSelected = domCashe.dom[cnm].selfDom.classList.contains("contains-selected");
     updateHeadSel({"cnm":cnm});
   }
@@ -486,30 +505,30 @@ function crHeadSel(){
   CFGCbBtHandler.push(updateHeadSel);
 }
 
-function updateProdPrice(evArgs){
+function updateProdPrice(evArgs) {
   var ob = domCashe.dom[evArgs.cnm];
   if (ob.prodType == "radio") {
     var sprice = ob.prodList[ob.prodSelected].priceVal;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
       if (!pob.hasOwnProperty("priceBlock")) continue;
-      if (pnm == ob.prodSelected){
+      if (pnm == ob.prodSelected) {
         pob.priceBlock.textContent = `${wtDecimal(sprice)}€`;
         continue;
       }
       var dfr = pob.priceVal - sprice;
-      if(dfr == 0){
+      if (dfr == 0) {
         pob.priceBlock.textContent = `+0,00€`;
-      }else if(dfr < 0){
+      } else if(dfr < 0) {
         pob.priceBlock.textContent = `${wtDecimal(dfr)}€`;
-      }else{
+      } else {
         pob.priceBlock.textContent = `+${wtDecimal(dfr)}€`;
       }
     }
   }
 }
 
-function crProdPrice(){
+function crProdPrice() {
   for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
     if (ob.prodType == "radio") {
@@ -521,7 +540,7 @@ function crProdPrice(){
         if (relPrice) pod.priceBlock = relPrice;
       }
       updateProdPrice({"cnm":cnm});
-    }else if (ob.prodType == "checkbox") {
+    } else if (ob.prodType == "checkbox") {
       for (const pnm of ob.prodOrder) {
         var pod = ob.prodList[pnm];
         var fixedPrice = pod.cDom.querySelector(".price-fixed-block");
@@ -534,69 +553,69 @@ function crProdPrice(){
   CFGRdBtHandler.push(updateProdPrice);
 }
 
-function updateNumberInput(evArgs){
+function updateNumberInput(evArgs) {
   var cnm = evArgs.cnm;
   var pnm = evArgs.pnm;
   var opcode = evArgs.hasOwnProperty("opcode")?evArgs.opcode:"update";
   var pob = domCashe.dom[cnm].prodList[pnm];
-  if(pob.isSelected){
-    if(pob.qDisabled){
+  if (pob.isSelected) {
+    if (pob.qDisabled) {
       pob.qDisabled = false;
       pob.qInput.disabled = false;
     }
-    if(pob.qType == "dynamic"){
-      if(pob.qValue<pob.qMin || pob.qValue>pob.qMax){
+    if (pob.qType == "dynamic") {
+      if (pob.qValue<pob.qMin || pob.qValue>pob.qMax) {
         pob.qValue = pob.qMin;
         pob.qInput.value = pob.qMin;
         pob.qDisplay.textContent = pob.qMin;
-      }else if (opcode == "add" && pob.qValue<pob.qMax){
+      } else if (opcode == "add" && pob.qValue<pob.qMax) {
         pob.qValue ++;
         pob.qInput.value = pob.qValue;
         pob.qDisplay.textContent = pob.qValue;
-      }else if (opcode == "sub" && pob.qValue>pob.qMin){
+      } else if (opcode == "sub" && pob.qValue>pob.qMin) {
         pob.qValue --;
         pob.qInput.value = pob.qValue;
         pob.qDisplay.textContent = pob.qValue;
       }
-      if(pob.qValue < pob.qMax){
-        if(!pob.qAddAv){
+      if (pob.qValue < pob.qMax) {
+        if (!pob.qAddAv) {
           pob.qAddAv = true;
           pob.qCont.classList.add("incr-av");
         }
-      }else{
-        if(pob.qAddAv){
+      } else {
+        if (pob.qAddAv) {
           pob.qAddAv = false;
           pob.qCont.classList.remove("incr-av");
         }
       }
-      if(pob.qValue > pob.qMin){
-        if(!pob.qSubAv){
+      if (pob.qValue > pob.qMin) {
+        if (!pob.qSubAv) {
           pob.qSubAv = true;
           pob.qCont.classList.add("decr-av");
         }
-      }else{
-        if(pob.qSubAv){
+      } else {
+        if (pob.qSubAv) {
           pob.qSubAv = false;
           pob.qCont.classList.remove("decr-av");
         }
       }        
     }
-  }else{
-    if(!pob.qDisabled){
+  } else {
+    if (!pob.qDisabled) {
       pob.qDisabled = true;
       pob.qInput.disabled = true;
     }
-    if(pob.qType == "dynamic"){
-      if(pob.qValue != 0){
+    if (pob.qType == "dynamic") {
+      if (pob.qValue != 0) {
         pob.qValue = 0;
         pob.qInput.value = 0;
         pob.qDisplay.textContent = 0;
       }
-      if(pob.qAddAv){
+      if (pob.qAddAv) {
         pob.qAddAv = false;
         pob.qCont.classList.remove("incr-av");
       }
-      if(pob.qSubAv){
+      if (pob.qSubAv) {
         pob.qSubAv = false;
         pob.qCont.classList.remove("decr-av");
       }
@@ -604,7 +623,7 @@ function updateNumberInput(evArgs){
   }
 }
 
-function updateCatQuant(evArgs){
+function updateCatQuant(evArgs) {
   var ob = domCashe.dom[evArgs.cnm];
   for (const pnm of ob.prodOrder) {
     updateNumberInput({
@@ -615,28 +634,28 @@ function updateCatQuant(evArgs){
 }
 
 var CFGquantHandler=[];
-function quantIncrHandler(){
+function quantIncrHandler() {
   var pob = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling;
   var evArgs = {
     pnm: pob.id,
     cnm: pob.parentElement.parentElement.parentElement.id,
     opcode: "add"
   }
-  for(const fnc of CFGquantHandler)fnc(evArgs);
+  for (const fnc of CFGquantHandler) fnc(evArgs);
 }
-function quantDecrHandler(){
+function quantDecrHandler() {
   var pob = this.parentElement.parentElement.parentElement.parentElement.previousElementSibling;
   var evArgs = {
     pnm: pob.id,
     cnm: pob.parentElement.parentElement.parentElement.id,
     opcode: "sub"
   }
-  for(const fnc of CFGquantHandler)fnc(evArgs);
+  for (const fnc of CFGquantHandler) fnc(evArgs);
 }
-function crQuantity(){
+function crQuantity() {
   for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
-    if(ob.isEmpty)continue;
+    if (ob.isEmpty) continue;
     for (const pnm of ob.prodOrder) {
       var pob = ob.prodList[pnm];
       pob.qCont = pob.cDom.querySelector(".part-number-input");
@@ -645,7 +664,7 @@ function crQuantity(){
       pob.qValue = Number(pob.qInput.value);
       if (pob.qCont.classList.contains("static-number")) {
         pob.qType = "static";
-      }else{
+      } else {
         pob.qType = "dynamic";
         pob.qAddAv = pob.qCont.classList.contains("incr-av");
         pob.qSubAv = pob.qCont.classList.contains("decr-av");
@@ -672,42 +691,42 @@ function crQuantity(){
 
 function updateFinalPrice(evArgs){
   var nresult = 0;
-  for(const ob of Object.values(domCashe.dom)){
-    if(ob.prodType=="radio"){
+  for (const ob of Object.values(domCashe.dom)) {
+    if (ob.prodType=="radio") {
       var pob = ob.prodList[ob.prodSelected];
       nresult+= pob.priceVal * pob.qValue;
-    }else if(ob.prodType=="checkbox"){
-      for(const pnm of ob.prodSelected){
+    } else if (ob.prodType=="checkbox") {
+      for (const pnm of ob.prodSelected) {
         var pob = ob.prodList[pnm];
         nresult+= pob.priceVal * pob.qValue;
       }
     }
   }
   if (nresult < 0) nresult = 0
-  if(nresult!=domCashe.finalPrice.totalVal){
+  if (nresult!=domCashe.finalPrice.totalVal) {
     domCashe.finalPrice.totalVal = nresult;
-    if(domCashe.finalPrice.priceDom.length){
+    if (domCashe.finalPrice.priceDom.length) {
       var pricestr = wtDecimal(nresult);
-      for(const priceItem of domCashe.finalPrice.priceDom){
+      for (const priceItem of domCashe.finalPrice.priceDom) {
         priceItem.textContent = pricestr;
       }
     }
-    if(domCashe.finalPrice.priceTaxLessDom.length){
+    if (domCashe.finalPrice.priceTaxLessDom.length) {
       var pricestr = wtDecimal(Math.floor(nresult/1.24));
-      for(const priceItem of domCashe.finalPrice.priceTaxLessDom){
+      for (const priceItem of domCashe.finalPrice.priceTaxLessDom) {
         priceItem.textContent = pricestr;
       }
     }
   }
 }
 
-function crFinalPrice(){
+function crFinalPrice() {
   domCashe.finalPrice = {}
   var buildPrice = document.querySelectorAll(".build-price-total");
   var buildPriceTaxLess = document.querySelectorAll(".build-price-taxless");
   domCashe.finalPrice.priceDom = new Array(...buildPrice);
   domCashe.finalPrice.priceTaxLessDom = new Array(...buildPriceTaxLess);
-  if(buildPrice.length||buildPriceTaxLess.length){
+  if (buildPrice.length||buildPriceTaxLess.length) {
     domCashe.finalPrice.totalVal = 0;
     updateFinalPrice({});
     CFGRdBtHandler.push(updateFinalPrice);
@@ -716,25 +735,25 @@ function crFinalPrice(){
   }
 }
 
-function updateNavlpShow(evArgs){
-  for(const [cnm, navob] of Object.entries(domCashe.prodNav.navigators)){
-    if(domCashe.dom[cnm].lpState && !navob.lpState){
+function updateNavlpShow(evArgs) {
+  for (const [cnm, navob] of Object.entries(domCashe.prodNav.navigators)) {
+    if (domCashe.dom[cnm].lpState && !navob.lpState) {
       navob.lpState = true;
       navob.navDom.classList.add("navlpshow");
-    }else if (!domCashe.dom[cnm].lpState && navob.lpState){
+    } else if (!domCashe.dom[cnm].lpState && navob.lpState) {
       navob.lpState = false;
       navob.navDom.classList.remove("navlpshow");
     }
   }
 }
 
-function updateNavCatHasSelected(evArgs){
-  if(domCashe.dom[evArgs.cnm].hasSelected && !domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
+function updateNavCatHasSelected(evArgs) {
+  if (domCashe.dom[evArgs.cnm].hasSelected && !domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
     domCashe.prodNav.navigators[evArgs.cnm].hasSelected = true;
     var domMark = domCashe.prodNav.navigators[evArgs.cnm].navDom.firstElementChild;
     domMark.classList.remove("text-muted");
     domMark.classList.add("text-success");
-  }else if(!domCashe.dom[evArgs.cnm].hasSelected && domCashe.prodNav.navigators[evArgs.cnm].hasSelected){
+  } else if (!domCashe.dom[evArgs.cnm].hasSelected && domCashe.prodNav.navigators[evArgs.cnm].hasSelected) {
     domCashe.prodNav.navigators[evArgs.cnm].hasSelected = false;
     var domMark = domCashe.prodNav.navigators[evArgs.cnm].navDom.firstElementChild;
     domMark.classList.remove("text-success");
@@ -742,48 +761,48 @@ function updateNavCatHasSelected(evArgs){
   }
 }
 
-function updateNavPos(){
-  requestAnimationFrame(function(){requestAnimationFrame(function(){
-    if(domCashe.prodNav.parentBody.getBoundingClientRect().bottom<170 && window.innerWidth<=767){
-      if(!domCashe.prodNav.fixedMode){
+function updateNavPos() {
+  requestAnimationFrame(function(){requestAnimationFrame(function() {
+    if (domCashe.prodNav.parentBody.getBoundingClientRect().bottom<170 && window.innerWidth<=767) {
+      if (!domCashe.prodNav.fixedMode) {
         domCashe.prodNav.fixedMode = true;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
           domCashe.prodNav.navBody.classList.add("fixed-mode");
         }));
       }
-    }else{
-      if(domCashe.prodNav.fixedMode){
+    } else {
+      if (domCashe.prodNav.fixedMode) {
         domCashe.prodNav.fixedMode = false;
         requestAnimationFrame(()=>requestAnimationFrame(()=>{
           domCashe.prodNav.navBody.classList.remove("fixed-mode");
         }));
       }
     }    
-    if(domCashe.prodNav.fixedMode){
+    if (domCashe.prodNav.fixedMode) {
       var focused = "";
       var rdistance = 0;
-      for(let i = 0;i< domCashe.domOrder.length;i++){
+      for (let i = 0;i< domCashe.domOrder.length;i++) {
         var nhead = domCashe.dom[domCashe.domOrder[i]].selfDom.getBoundingClientRect().top;
         var nfloor = domCashe.dom[domCashe.domOrder[i]].selfDom.getBoundingClientRect().bottom;
-        if(nhead<window.innerHeight-50 && nfloor>245){
-          if(!focused){
+        if (nhead<window.innerHeight-50 && nfloor>245) {
+          if (!focused) {
             focused = domCashe.domOrder[i]
-            rdistance = nfloor
-          }else if (nfloor<rdistance){
+            rdistance = nfloor;
+          } else if (nfloor<rdistance) {
             focused = domCashe.domOrder[i]
-            rdistance = nfloor
+            rdistance = nfloor;
           }
         }
       }
-      for(const [cnm, navob]of Object.entries(domCashe.prodNav.navigators)){
-        if(cnm != focused){
-          if(navob.isFocused){
+      for (const [cnm, navob]of Object.entries(domCashe.prodNav.navigators)) {
+        if (cnm != focused) {
+          if (navob.isFocused) {
             navob.isFocused = false;
-            navob.navDom.classList.remove("isfocused")
+            navob.navDom.classList.remove("isfocused");
           }
-        }else if(!navob.isFocused){
+        } else if (!navob.isFocused) {
           navob.isFocused = true;
-          navob.navDom.classList.add("isfocused")
+          navob.navDom.classList.add("isfocused");
           requestAnimationFrame(()=>requestAnimationFrame(()=>{
             var navbody = domCashe.prodNav.navBody;
             var bpos = domCashe.prodNav.navigators[focused].navDom.getBoundingClientRect()
@@ -802,43 +821,43 @@ function updateNavPos(){
 }
 
 var CFGprodNavHandler = [];
-function prodNavHandler(){
+function prodNavHandler() {
   var evArgs = {
     cnm: this.dataset.navdest,
     action:"open"
   }
-  for(const fnc of CFGprodNavHandler)fnc(evArgs);
+  for (const fnc of CFGprodNavHandler) fnc(evArgs);
 }
 var CFGscrollHandler = [];
 var scrollHandlerAv = true;
 // var tmRef;
-function scrollHandler(){
-  if(scrollHandlerAv){
+function scrollHandler() {
+  if (scrollHandlerAv) {
     scrollHandlerAv = false;
-    for(const fnc of CFGscrollHandler)fnc();
+    for (const fnc of CFGscrollHandler) fnc();
     setTimeout(()=>scrollHandlerAv=true,25);
   }
   // clearTimeout(tmRef);
   // tmRef = setTimeout(scrollHandlerEnd,50);
 }
 // var CFGscrollHandlerEnd = [];
-// function scrollHandlerEnd(){
+// function scrollHandlerEnd() {
 //   // scrollHandlerAv = false;
-//   for(const fnc of CFGscrollHandlerEnd)fnc();
+//   for (const fnc of CFGscrollHandlerEnd) fnc();
 // }
-function crProdNav(){
+function crProdNav() {
   domCashe.prodNav = {};
   var navBody = document.getElementById("prod-navigation");
-  if(!navBody)return;
+  if (!navBody) return;
   domCashe.prodNav.fixedMode = false;
   domCashe.prodNav.navBody = navBody;
   domCashe.prodNav.parentBody = navBody.parentElement;
   domCashe.prodNav.navigators = {};
   var navstr = "";
-  for(const cnm of domCashe.domOrder){
+  for (const cnm of domCashe.domOrder) {
     var ob = domCashe.dom[cnm];
-    if(ob.isHidden)continue;
-    domCashe.prodNav.navigators[cnm]={
+    if (ob.isHidden) continue;
+    domCashe.prodNav.navigators[cnm]= {
       "lpState": ob.lpState,
       "hasSelected": ob.hasSelected,
       "isFocused": false
@@ -848,7 +867,7 @@ function crProdNav(){
   }
   navBody.innerHTML = navstr;
   var navList = navBody.querySelectorAll(".prod-navigator");
-  for(let i=0;i<navList.length;i++){
+  for (let i=0;i<navList.length;i++) {
     var cnm = navList[i].dataset.navdest;
     domCashe.prodNav.navigators[cnm].navDom = navList[i];
     navList[i].addEventListener("click",prodNavHandler);
@@ -872,7 +891,7 @@ function crProdNav(){
   updateNavPos();
 }
 
-function updateBuildModal(evArgs){
+function updateBuildModal(evArgs) {
   var linktext = window.location.href.split('&');
   linktext = `${linktext[0]}&${linktext[1]}&prefill=1`;
   // linktext = `https://www.msystems.gr/section/systems_new/?&system=18&prefill=1`;   //temp change
@@ -883,12 +902,12 @@ function updateBuildModal(evArgs){
   <div class="modal-quant-header">Τμχ.</div></div>`;
   var totalVal = 0;
   var isEmpty = true;
-  for(let i=0;i<domCashe.domOrder.length;i++){
+  for (let i=0;i<domCashe.domOrder.length;i++) {
     var ob = domCashe.dom[domCashe.domOrder[i]];
-    if(ob.isHidden)continue;
-    if(!ob.hasSelected)continue;
+    if (ob.isHidden) continue;
+    if (!ob.hasSelected) continue;
     isEmpty = false;
-    if(ob.prodType == "radio"){
+    if (ob.prodType == "radio") {
       var pob = ob.prodList[ob.prodSelected];
       tabletext += `<div class="table-row">
       <div class="cat-nm">${ob.nmTxt}</div>
@@ -897,8 +916,8 @@ function updateBuildModal(evArgs){
       <div class="prod-quant">${pob.qValue}</div></div>`;
       totalVal+= (pob.qValue * pob.priceVal);
       if(ob.hasSelected)linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
-    }else if(ob.prodType == "checkbox"){
-      for(const pnm of ob.prodSelected){
+    } else if(ob.prodType == "checkbox") {
+      for (const pnm of ob.prodSelected) {
         var pob = ob.prodList[pnm];
         tabletext += `<div class="table-row">
         <div class="cat-nm">${ob.nmTxt}</div>
@@ -906,11 +925,11 @@ function updateBuildModal(evArgs){
         <div class="prod-nm">${pob.nmTxt}</div>
         <div class="prod-quant">${pob.qValue}</div></div>`;
         totalVal+= (pob.qValue * pob.priceVal);
-        if(ob.hasSelected)linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
+        if (ob.hasSelected) linktext += `&o${i}[]=${pob.value}&q${i}[]=${pob.qValue}`;
       }
     }
   }
-  if(isEmpty)tabletext += `<div class="table-row"><div></div><div></div><div>&nbsp;</div><div></div></div>`;
+  if (isEmpty) tabletext += `<div class="table-row"><div></div><div></div><div>&nbsp;</div><div></div></div>`;
   totalVal = totalVal<0?0:totalVal;
   tabletext += `<div class="table-row">
   <div class="modal-total-title">Σύνολο:</div>
@@ -921,7 +940,7 @@ function updateBuildModal(evArgs){
   domCashe.buildModal.qLink = domCashe.buildModal.linkFull;
   domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.linkFull;
   // (async ()=>{
-  //   try{  
+  //   try {  
   //     const request = await fetch(
   //       'https://api-ssl.bitly.com/v4/shorten',{
   //       method: 'POST',
@@ -936,20 +955,20 @@ function updateBuildModal(evArgs){
   //     const getjson = await request.json()
   //     domCashe.buildModal.qLink = getjson["link"];
   //     domCashe.buildModal.footerLinkBody.textContent = domCashe.buildModal.qLink;
-  //   }catch(err){
+  //   } catch(err) {
   //     console.log(err);
   //   }
   // })()
 }
 
 function buildShortLink(evArgs) {
-  try{
+  try {
     navigator.clipboard.writeText(domCashe.buildModal.qLink);
     domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-check2"></i>';
     setTimeout(()=>{
       domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-paperclip"></i>';      
     },2000)
-  }catch{
+  } catch {
     domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-check2"></i>';
     setTimeout(()=>{
       domCashe.buildModal.btnCopy.innerHTML = '<i class="bi bi-x-lg"></i>';      
@@ -960,17 +979,17 @@ function buildShortLink(evArgs) {
 CFGbuildModalOpenHandler = [];
 function buildModalOpenHandler(){
   var evArgs = {}
-  for(const fnc of CFGbuildModalOpenHandler)fnc(evArgs);
+  for (const fnc of CFGbuildModalOpenHandler) fnc(evArgs);
 }
 CFGbuildShortLinkHandler = [];
 function buildShortLinkHandler(){
   var evArgs = {}
-  for(const fnc of CFGbuildShortLinkHandler)fnc(evArgs);
+  for (const fnc of CFGbuildShortLinkHandler) fnc(evArgs);
 }
 function crBuildModal(){
   domCashe.buildModal = {};
   var mdl = document.getElementById("build-modal");
-  if(!mdl)return;
+  if (!mdl) return;
   domCashe.buildModal.modalTable = mdl.querySelector(".modal-body .modal-table");
   domCashe.buildModal.footerLinkBody = mdl.querySelector(".footer-link-body");
   domCashe.buildModal.linkFull = "";
@@ -979,14 +998,14 @@ function crBuildModal(){
   domCashe.buildModal.btnCopy.addEventListener("click", buildShortLinkHandler);
 
   var btns = document.querySelectorAll('[data-bs-toggle="modal"][data-bs-target="#build-modal"]');
-  for(const btn of btns){
+  for (const btn of btns) {
     btn.removeEventListener("click",buildModalOpenHandler);
     btn.addEventListener("click",buildModalOpenHandler);
   }
-  CFGbuildModalOpenHandler.length=0;
+  CFGbuildModalOpenHandler.length = 0;
   CFGbuildModalOpenHandler.push(updateBuildModal);
 
-  CFGbuildShortLinkHandler.length=0;
+  CFGbuildShortLinkHandler.length = 0;
   CFGbuildShortLinkHandler.push(buildShortLink);
 }
 
@@ -1069,51 +1088,51 @@ CFGprodCompatibility = {
   }
 }
 
-function addUnsupported(pnm, cnm, cnmB){
+function addUnsupported(pnm, cnm, cnmB) {
   var qsize = domCashe.dom[cnm].prodList[pnm].Compatibility.length;
   var sOrd = CFGprodCompatibility[cnm].supOrder.indexOf(cnmB);
-  for(let i = 0;i < qsize; i++){
+  for (let i = 0;i < qsize; i++) {
     var lnm = domCashe.dom[cnm].prodList[pnm].Compatibility[i];
-    if (sOrd<CFGprodCompatibility[cnm].supOrder.indexOf(lnm)){
+    if (sOrd<CFGprodCompatibility[cnm].supOrder.indexOf(lnm)) {
       domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.splice(i,0,cnmB);
       return
     }
   }
   domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.push(cnmB);
 }
-function removeUnsupported(pnm, cnm, cnmB){
+function removeUnsupported(pnm, cnm, cnmB) {
   domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.splice(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.indexOf(cnmB),1);
 }
 
-function updateProdCompatibility(evArgs){
-  if(domCashe.dom[evArgs.cnm].prodType=="radio"){
-    for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
-      if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
-      if(domCashe.dom[cnm].isEmpty)continue;
-      for(const pnm of domCashe.dom[cnm].prodOrder){
-        if(compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm)){
-          if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))removeUnsupported(pnm, cnm, evArgs.cnm);
-        }else{
-          if(!domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm))addUnsupported(pnm, cnm, evArgs.cnm);
+function updateProdCompatibility(evArgs) {
+  if (domCashe.dom[evArgs.cnm].prodType=="radio") {
+    for (const [cnm, inst] of Object.entries(CFGprodCompatibility)) {
+      if (!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm)) continue;
+      if (domCashe.dom[cnm].isEmpty) continue;
+      for (const pnm of domCashe.dom[cnm].prodOrder) {
+        if (compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm)) {
+          if (domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)) removeUnsupported(pnm, cnm, evArgs.cnm);
+        } else {
+          if (!domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)) addUnsupported(pnm, cnm, evArgs.cnm);
         }
         updateDisabledBLock(cnm, pnm);
       }
     }
-  }else if(domCashe.dom[evArgs.cnm].prodType=="checkbox"){
-    for(const [cnm, inst] of Object.entries(CFGprodCompatibility)){
-      if(!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm))continue;
-      if(domCashe.dom[cnm].isEmpty)continue;
-      for(const pnm of domCashe.dom[cnm].prodOrder){
+  } else if (domCashe.dom[evArgs.cnm].prodType=="checkbox") {
+    for (const [cnm, inst] of Object.entries(CFGprodCompatibility)) {
+      if (!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm)) continue;
+      if(domCashe.dom[cnm].isEmpty) continue;
+      for (const pnm of domCashe.dom[cnm].prodOrder) {
         var defVal = false;
-        for(const pnmB of domCashe.dom[evArgs.cnm].prodSelected){
-          if(!compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm) && !defVal){
+        for (const pnmB of domCashe.dom[evArgs.cnm].prodSelected) {
+          if (!compareProdCompatibility(cnm,pnm,evArgs.cnm,evArgs.pnm) && !defVal) {
             defVal = true;
             break;
           }
         }
-        if(defVal && !domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)){
+        if (defVal && !domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)) {
           addUnsupported(pnm, cnm, evArgs.cnm);
-        }else if(domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)){
+        } else if (domCashe.dom[cnm].prodList[pnm].Compatibility.unSupported.includes(evArgs.cnm)) {
           removeUnsupported(pnm, cnm, evArgs.cnm);
         }
         updateDisabledBLock(cnm, pnm);
@@ -1122,23 +1141,23 @@ function updateProdCompatibility(evArgs){
   }
 }
 
-function checkProdCompatibility(cnm, pnm){
+function checkProdCompatibility(cnm, pnm) {
   var tmpUnsupported = [];
-  for(const cnmB of CFGprodCompatibility[cnm].supOrder){
-    if(!domCashe.dom.hasOwnProperty(cnmB))continue;
-    if(domCashe.dom[cnmB].prodType=="radio"){
-      if(!compareProdCompatibility(cnm,pnm,cnmB,domCashe.dom[cnmB].prodSelected)){
+  for (const cnmB of CFGprodCompatibility[cnm].supOrder) {
+    if (!domCashe.dom.hasOwnProperty(cnmB)) continue;
+    if (domCashe.dom[cnmB].prodType=="radio") {
+      if (!compareProdCompatibility(cnm,pnm,cnmB,domCashe.dom[cnmB].prodSelected)) {
         tmpUnsupported.push(cnmB);
       }
-    }else if(domCashe.dom[cnmB].prodType=="checkbox"){
+    } else if (domCashe.dom[cnmB].prodType=="checkbox") {
       var defVal = false;
-      for(const pnmB of domCashe.dom[cnmB].prodSelected){
-        if(!compareProdCompatibility(cnm,pnm,cnmB,pnmB) && !defVal){
+      for (const pnmB of domCashe.dom[cnmB].prodSelected) {
+        if (!compareProdCompatibility(cnm,pnm,cnmB,pnmB) && !defVal) {
           defVal = true;
           break;
         }
       }
-      if(defVal){
+      if (defVal) {
         tmpUnsupported.push(cnmB);
       }
     }
@@ -1147,30 +1166,30 @@ function checkProdCompatibility(cnm, pnm){
   updateDisabledBLock(cnm, pnm);
 }
 
-function updateDisabledBLock(cnm, pnm){
+function updateDisabledBLock(cnm, pnm) {
   var pob = domCashe.dom[cnm].prodList[pnm]
-  if(pob.disStatus == false || pob.disStatus == "unassigned" || pob.disStatus == "compatibility"){
-    if(!pob.Compatibility.unSupported.length){
-      if(pob.disStatus != false){
+  if (pob.disStatus == false || pob.disStatus == "unassigned" || pob.disStatus == "compatibility") {
+    if(!pob.Compatibility.unSupported.length) {
+      if (pob.disStatus != false) {
         pob.disStatus = false;
         pob.selfDom.disabled = false;
       }
-      if(pob.Compatibility.dReason.lenth){
+      if (pob.Compatibility.dReason.lenth) {
         pob.Compatibility.dReason = [];
       }
-    }else if(pob.disStatus == "compatibility"){
-      if(pob.Compatibility.dReason[0] != pob.Compatibility.unSupported[0]){
+    } else if (pob.disStatus == "compatibility") {
+      if (pob.Compatibility.dReason[0] != pob.Compatibility.unSupported[0]) {
         pob.Compatibility.dReason[0] = pob.Compatibility.unSupported[0];
         pob.Compatibility.dReason[1].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMA;
         pob.Compatibility.dReason[2].textContent = CFGprodCompatibility[cnm][pob.Compatibility.unSupported[0]].errMB;
         pob.Compatibility.dReason[2].dataset.unsupported = pob.Compatibility.unSupported[0];
         // var msg = [`<a class="category-link"onclick="catRedirect(document.querySelector('#cat-`,`'),'open')">`,`</a>`,`<i class="bi bi-exclamation-circle"></i>`]
       }
-    }else{      
-      if(!pob.disStatus){
+    } else {      
+      if (!pob.disStatus) {
         pob.disStatus = "compatibility";
         pob.selfDom.disabled = true;
-      }else if(pob.disStatus == "unassigned"){
+      } else if (pob.disStatus == "unassigned") {
         pob.disStatus = "compatibility";
       }
       pob.disDom.innerHTML = `<i class="bi bi-exclamation-circle"></i>
@@ -1186,20 +1205,20 @@ function updateDisabledBLock(cnm, pnm){
   }
 }
 
-function compareProdCompatibility(cnmA, pnmA, cnmB, pnmB){
-  switch(CFGprodCompatibility[cnmA][cnmB].cType){
+function compareProdCompatibility(cnmA, pnmA, cnmB, pnmB) {
+  switch(CFGprodCompatibility[cnmA][cnmB].cType) {
     case "normal":
       var tmpattr = domCashe.dom[cnmA].prodList[pnmA].Compatibility.compattr;
       var attrA = tmpattr == "$afe"?["$afe"]:tmpattr.split(";")[Number(CFGprodCompatibility[cnmA][cnmB].attrA)].split(",");
       tmpattr = domCashe.dom[cnmB].prodList[pnmB].Compatibility.compattr;
       var attrB = tmpattr == "$afe"?["$afe"]:tmpattr.split(";")[Number(CFGprodCompatibility[cnmA][cnmB].attrB)].split(",");
-      if(CFGprodCompatibility[cnmA][cnmB].safe){
+      if (CFGprodCompatibility[cnmA][cnmB].safe) {
         var sf = CFGprodCompatibility[cnmA][cnmB].safe;
-        if(attrA.includes(sf)||attrB.includes(sf)){
+        if (attrA.includes(sf)||attrB.includes(sf)) {
           return true;
         }
-        for(const sA of attrA){
-          if(attrB.includes(sA)){
+        for (const sA of attrA) {
+          if (attrB.includes(sA)) {
             return true;
           }
         }
@@ -1209,24 +1228,24 @@ function compareProdCompatibility(cnmA, pnmA, cnmB, pnmB){
 }
 
 CFGprodCompRedirectHandler = [];
-function ProdCompRedirectHandler(){
+function ProdCompRedirectHandler() {
   var evArgs = {
     "cnm": this.dataset.unsupported
   }
-  for(const fnc of CFGprodCompRedirectHandler)fnc(evArgs);
+  for (const fnc of CFGprodCompRedirectHandler) fnc(evArgs);
 }
-function crProdCompatibility(){
+function crProdCompatibility() {
   var qUpdate = [];
-  for(const [cnm, ob] of Object.entries(domCashe.dom)){
-    if(ob.isEmpty)continue;
-    for(const [pnm, pob] of Object.entries(ob.prodList)){
-      if(!pob.hasOwnProperty("disStatus")){
+  for (const [cnm, ob] of Object.entries(domCashe.dom)) {
+    if (ob.isEmpty) continue;
+    for (const [pnm, pob] of Object.entries(ob.prodList)) {
+      if (!pob.hasOwnProperty("disStatus")) {
         pob.disStatus = pob.selfDom.disabled?"unassigned":false;
       }
-      if(!pob.hasOwnProperty("disDom")){
+      if (!pob.hasOwnProperty("disDom")) {
         pob.disDom = pob.cDom.querySelector(".disabled-part");
       }
-      if(CFGprodCompatibility.hasOwnProperty(cnm)){
+      if (CFGprodCompatibility.hasOwnProperty(cnm)) {
         pob.Compatibility = {
           "compattr": pob.selfDom.hasAttribute("data-compattr")?pob.selfDom.dataset.compattr:"$afe",
           "unSupported": [],
@@ -1237,8 +1256,8 @@ function crProdCompatibility(){
     }
   }
   CFGprodCompRedirectHandler.length = 0;
-  if(qUpdate.length){
-    for(const kv of qUpdate){
+  if (qUpdate.length) {
+    for (const kv of qUpdate) {
       checkProdCompatibility(kv[0],kv[1]);
     }
     CFGprodCompRedirectHandler.push(catRedirect);

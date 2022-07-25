@@ -485,6 +485,9 @@
   flex-direction: column;
   overflow: hidden;
   border-radius: 0 0 0.4375rem 0.4375rem;
+  --heightVar: auto;
+  height: var(--heightVar);
+  transition: height 0.1s;
 }
 
 .part-list-container{
@@ -544,6 +547,16 @@
 } */
 .builder-part-category.lp-show .listed-part-inner:hover{
   cursor: pointer;
+  box-shadow: 0 0 0 2px hsl(210, 27%, 81%);
+  animation: 0.25s ease-in-out prodAnimate;
+}
+@keyframes prodAnimate {
+  0% {
+    box-shadow: 0 0 0 1px #e3e9ef;
+  }
+  100% {
+    box-shadow: 0 0 0 2px hsl(210, 27%, 81%);
+  }
 }
 
 .builder-part-category.lp-show .part-checkbox:checked +
