@@ -977,16 +977,16 @@ function buildShortLink(evArgs) {
 }
 
 CFGbuildModalOpenHandler = [];
-function buildModalOpenHandler(){
+function buildModalOpenHandler() {
   var evArgs = {}
   for (const fnc of CFGbuildModalOpenHandler) fnc(evArgs);
 }
 CFGbuildShortLinkHandler = [];
-function buildShortLinkHandler(){
+function buildShortLinkHandler() {
   var evArgs = {}
   for (const fnc of CFGbuildShortLinkHandler) fnc(evArgs);
 }
-function crBuildModal(){
+function crBuildModal() {
   domCashe.buildModal = {};
   var mdl = document.getElementById("build-modal");
   if (!mdl) return;
@@ -1012,78 +1012,78 @@ function crBuildModal(){
 CFGprodCompatibility = {
   "cat-kouti": {
     "supOrder": ["cat-mitriki"],
-    "cat-mitriki":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
-      "errMB":"Μητρική"
+    "cat-mitriki": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "0",
+      "attrB": "0",
+      "errMA": "Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB": "Μητρική"
     }
   },
   "cat-mitriki": {
     "supOrder": ["cat-kouti","cat-cpu","cat-psiktra"],
-    "cat-kouti":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errMA":"Το προϊόν δεν είναι συμβατό με το επιλεγμένο ",
-      "errMB":"Κουτί"
+    "cat-kouti": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "0",
+      "attrB": "0",
+      "errMA": "Το προϊόν δεν είναι συμβατό με το επιλεγμένο ",
+      "errMB": "Κουτί"
     },
-    "cat-cpu":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"1",
-      "attrB":"0",
-      "errMA":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ",
-      "errMB":"Επεξεργαστή"
+    "cat-cpu": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "1",
+      "attrB": "0",
+      "errMA": "Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ",
+      "errMB": "Επεξεργαστή"
     },
-    "cat-psiktra":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"1",
-      "attrB":"0",
-      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
-      "errMB":"Ψύξη επεξεργαστή"
+    "cat-psiktra": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "1",
+      "attrB": "0",
+      "errMA": "Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB": "Ψύξη επεξεργαστή"
     }
   },
   "cat-cpu": {
     "supOrder": ["cat-mitriki","cat-psiktra"],
-    "cat-mitriki":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"1",
-      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
-      "errMB":"Μητρική"
+    "cat-mitriki": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "0",
+      "attrB": "1",
+      "errMA": "Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB": "Μητρική"
     },
-    "cat-psiktra":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
-      "errMB":"Ψύξη επεξεργαστή"
+    "cat-psiktra": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "0",
+      "attrB": "0",
+      "errMA": "Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB": "Ψύξη επεξεργαστή"
     }      
   },
   "cat-psiktra": {
     "supOrder": ["cat-mitriki","cat-cpu"],
-    "cat-mitriki":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"1",
-      "errMA":"Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
-      "errMB":"Μητρική"
+    "cat-mitriki": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "0",
+      "attrB": "1",
+      "errMA": "Το προϊόν δεν είναι συμβατό με την επιλεγμένη ",
+      "errMB": "Μητρική"
     },
-    "cat-cpu":{
-      "cType":"normal",
-      "safe":"$afe",
-      "attrA":"0",
-      "attrB":"0",
-      "errMA":"Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ",
-      "errMB":"Επεξεργαστή"
+    "cat-cpu": {
+      "cType": "normal",
+      "safe": "$afe",
+      "attrA": "0",
+      "attrB": "0",
+      "errMA": "Το προϊόν δεν είναι συμβατό με τον επιλεγμένο ",
+      "errMB": "Επεξεργαστή"
     }
   }
 }
@@ -1121,7 +1121,7 @@ function updateProdCompatibility(evArgs) {
   } else if (domCashe.dom[evArgs.cnm].prodType=="checkbox") {
     for (const [cnm, inst] of Object.entries(CFGprodCompatibility)) {
       if (!inst.supOrder.includes(evArgs.cnm)||!domCashe.dom.hasOwnProperty(cnm)) continue;
-      if(domCashe.dom[cnm].isEmpty) continue;
+      if (domCashe.dom[cnm].isEmpty) continue;
       for (const pnm of domCashe.dom[cnm].prodOrder) {
         var defVal = false;
         for (const pnmB of domCashe.dom[evArgs.cnm].prodSelected) {
@@ -1169,7 +1169,7 @@ function checkProdCompatibility(cnm, pnm) {
 function updateDisabledBLock(cnm, pnm) {
   var pob = domCashe.dom[cnm].prodList[pnm]
   if (pob.disStatus == false || pob.disStatus == "unassigned" || pob.disStatus == "compatibility") {
-    if(!pob.Compatibility.unSupported.length) {
+    if (!pob.Compatibility.unSupported.length) {
       if (pob.disStatus != false) {
         pob.disStatus = false;
         pob.selfDom.disabled = false;
@@ -1268,87 +1268,87 @@ function crProdCompatibility() {
 }
 
 CFGperfCarousel = {
-  "dictionary":{
-    "cat-cpu":"Επεξεργαστή",
-    "cat-gpu":"Κάρτα Γραφικών",
-    "required":"Το σύστημα χρειάζεται @@@.",
-    "perfReady":"Το σύστημα είναι κατάλληλο για @@@ μέχρι ### ανάλυση.",
+  "dictionary": {
+    "cat-cpu": "Επεξεργαστή",
+    "cat-gpu": "Κάρτα Γραφικών",
+    "required": "Το σύστημα χρειάζεται @@@.",
+    "perfReady": "Το σύστημα είναι κατάλληλο για @@@ μέχρι ### ανάλυση.",
     "perfNotReady": "Το σύστημα είναι ανεπαρκές για αυτό το παιχνίδι.",
     "recommend": "<br/>Αλλάξτε @@@ για καλύτερη απόδοση."
   },
-  "partList":["cat-cpu","cat-gpu","cat-asd"],
-  "gameOrder":["lol_game","fortnite_game","control_game","fs2020_game","sottr_game"],
-  "gameList":{
-    "lol_game":{
+  "partList": ["cat-cpu","cat-gpu","cat-asd"],
+  "gameOrder": ["lol_game","fortnite_game","control_game","fs2020_game","sottr_game"],
+  "gameList": {
+    "lol_game": {
       "stateFormat": "$$",
-      "nmTxt":"League of Legends",
-      "img_src":"assets/lol-game.jpg",
-      "parts":{
-        "cat-cpu":{
-          "safe":false,
+      "nmTxt": "League of Legends",
+      "img_src": "assets/lol-game.jpg",
+      "parts": {
+        "cat-cpu": {
+          "safe": false,
           "attr": "0"
         },
-        "cat-gpu":{
-          "safe":"$",
+        "cat-gpu": {
+          "safe": "$",
           "attr": "0"
         }          
       }
     },
-    "fortnite_game":{
+    "fortnite_game": {
       "stateFormat": "$$",
-      "nmTxt":"Fortnite",
-      "img_src":"assets/fortnite-game.jpg",
-      "parts":{
-        "cat-cpu":{
-          "safe":false,
+      "nmTxt": "Fortnite",
+      "img_src": "assets/fortnite-game.jpg",
+      "parts": {
+        "cat-cpu": {
+          "safe": false,
           "attr": "1"
         },
-        "cat-gpu":{
-          "safe":"$",
+        "cat-gpu": {
+          "safe": "$",
           "attr": "1"
         }
       }
     },
-    "control_game":{
-      "cType":"normal",
-      "nmTxt":"Control",
-      "img_src":"assets/control-game.jpg",
-      "parts":{
-        "cat-cpu":{
-          "safe":false,
+    "control_game": {
+      "cType": "normal",
+      "nmTxt": "Control",
+      "img_src": "assets/control-game.jpg",
+      "parts": {
+        "cat-cpu": {
+          "safe": false,
           "attr": "2"
         },
-        "cat-gpu":{
-          "safe":"$",
+        "cat-gpu": {
+          "safe": "$",
           "attr": "2"
         }          
       }
     },
-    "fs2020_game":{
-      "cType":"normal",
+    "fs2020_game": {
+      "cType": "normal",
       "nmTxt":"MS Flight Simulator 2020",
-      "img_src":"assets/fs2020-game.jpg",
-      "parts":{
-        "cat-cpu":{
-          "safe":false,
+      "img_src": "assets/fs2020-game.jpg",
+      "parts": {
+        "cat-cpu": {
+          "safe": false,
           "attr": "3"
         },
-        "cat-gpu":{
-          "safe":"$",
+        "cat-gpu": {
+          "safe": "$",
           "attr": "3"
         }          
       }
     },
-    "sottr_game":{
-      "nmTxt":"Shadow of the Tomb Raider",
-      "img_src":"assets/sottr-game.jpg",
-      "parts":{
-        "cat-cpu":{
-          "safe":false,
+    "sottr_game": {
+      "nmTxt": "Shadow of the Tomb Raider",
+      "img_src": "assets/sottr-game.jpg",
+      "parts": {
+        "cat-cpu": {
+          "safe": false,
           "attr": "4"
         },
-        "cat-gpu":{
-          "safe":"$",
+        "cat-gpu": {
+          "safe": "$",
           "attr": "4"
         }          
       }
@@ -1356,59 +1356,59 @@ CFGperfCarousel = {
   }
 }
 
-function updatePerfCarousel(evArgs){
+function updatePerfCarousel(evArgs) {
   var cnm = evArgs.cnm;
   cgame:
-  for(const [gnm,gob]of Object.entries(domCashe.perfCarousel.gameList)){
-    if(!CFGperfCarousel.gameList[gnm].parts.hasOwnProperty(cnm))continue
+  for (const [gnm,gob]of Object.entries(domCashe.perfCarousel.gameList)) {
+    if (!CFGperfCarousel.gameList[gnm].parts.hasOwnProperty(cnm)) continue;
     var pRes = 3;
-    for(const [lcnm,catr]of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
-      if(domCashe.dom[lcnm].prodType == "radio"){
+    for (const [lcnm,catr]of Object.entries(CFGperfCarousel.gameList[gnm].parts)) {
+      if (domCashe.dom[lcnm].prodType == "radio") {
         var obval = domCashe.dom[lcnm].isEmpty?"$":domCashe.dom[lcnm].prodList[domCashe.dom[lcnm].prodSelected].perfAttr;
         var obval = obval=="$"?"$":Number(obval.split(",")[Number(catr.attr)]);
-        if(obval == "$"||obval==NaN){
-          if(CFGperfCarousel.gameList[gnm].parts[lcnm].safe != "$"||obval==NaN){
+        if (obval == "$"||obval==NaN) {
+          if (CFGperfCarousel.gameList[gnm].parts[lcnm].safe != "$"||obval==NaN) {
             wrPerfMsg(gnm,"required");
             continue cgame;
-          }else{
+          } else {
             continue
           }
-        }else if (obval < pRes){
+        } else if (obval < pRes) {
           pRes = obval;
         }
-      }else if(domCashe.dom[lcnm].prodType == "checkbox"){
+      } else if (domCashe.dom[lcnm].prodType == "checkbox") {
 
       }
     }
-    if(pRes == 0)wrPerfMsg(gnm, "perfNotReady");
-    else if(pRes == 1)wrPerfMsg(gnm, "1080p");
-    else if(pRes == 2)wrPerfMsg(gnm, "1440p");
-    else if(pRes == 3)wrPerfMsg(gnm, "4k");
+    if (pRes == 0) wrPerfMsg(gnm, "perfNotReady");
+    else if (pRes == 1) wrPerfMsg(gnm, "1080p");
+    else if (pRes == 2) wrPerfMsg(gnm, "1440p");
+    else if (pRes == 3) wrPerfMsg(gnm, "4k");
   }
 }
 
-function wrPerfMsg(gnm,msg){
-  switch(msg){
+function wrPerfMsg(gnm,msg) {
+  switch(msg) {
     case "required":
-      if(domCashe.perfCarousel.gameList[gnm].state != "required"){        
+      if (domCashe.perfCarousel.gameList[gnm].state != "required") {        
         domCashe.perfCarousel.gameList[gnm].state = "required";
         var tmpC = []
-        for(const [cnm, sob] of Object.entries(CFGperfCarousel.gameList[gnm].parts)){
-          if(!sob.safe)tmpC.push(cnm)
+        for (const [cnm, sob] of Object.entries(CFGperfCarousel.gameList[gnm].parts)) {
+          if (!sob.safe) tmpC.push(cnm);
         }
         var tmpF = []
-        for(const cnm of tmpC){
+        for (const cnm of tmpC) {
           tmpF.push(`<a class="category-link" data-perfredirect="${cnm}">${CFGperfCarousel.dictionary[cnm]}</a>`)
         }
         var tmpFields = "";
-        if(tmpC.length == 1){
+        if (tmpC.length == 1) {
           tmpFields = tmpF[0];
-        }else if(tmpC.length == 2){
+        } else if(tmpC.length == 2) {
           tmpFields = `${tmpF[0]} και ${tmpF[1]}`;
-        }else if(tmpC.length > 2){
-          for(let i=0;i<tmpC.length;i++){
-            if(i==tmpC.length-1)tmpFields += `${tmpF[i]}`;
-            else if(i==tmpC.length-2)tmpFields += `${tmpF[i]} και `;
+        } else if(tmpC.length > 2) {
+          for (let i=0;i<tmpC.length;i++) {
+            if (i==tmpC.length-1) tmpFields += `${tmpF[i]}`;
+            else if (i==tmpC.length-2) tmpFields += `${tmpF[i]} και `;
             else tmpFields += `${tmpF[i]}, `;
           }
         }
@@ -1416,21 +1416,21 @@ function wrPerfMsg(gnm,msg){
         domCashe.perfCarousel.gameList[gnm].perfBody.classList.remove("perf-perfNotReady","perf-1080p","perf-1440p","perf-4k");
         domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = CFGperfCarousel.dictionary.required.replace("@@@",tmpFields);
         var newlinks = domCashe.perfCarousel.gameList[gnm].perfBody.querySelectorAll(".category-link");
-        for(lnk of newlinks){
+        for (lnk of newlinks) {
           lnk.addEventListener("click",perfCarouselHandler);
         }
       }
     break;
     case "perfNotReady":case "1080p":case "1440p":case "4k":
-      if(domCashe.perfCarousel.gameList[gnm].state == "required" || domCashe.perfCarousel.gameList[gnm].state == "$$"){
+      if (domCashe.perfCarousel.gameList[gnm].state == "required" || domCashe.perfCarousel.gameList[gnm].state == "$$") {
         domCashe.perfCarousel.gameList[gnm].perfBody.innerHTML = `
         <div style="text-align: center; color: #eabe4b;">${CFGperfCarousel.gameList[gnm].nmTxt}</div>
         <div class="progress"><div></div></div>
         `;
       }
-      switch(msg){
+      switch(msg) {
         case "perfNotReady":
-          if(domCashe.perfCarousel.gameList[gnm].state != "perfNotReady"){
+          if (domCashe.perfCarousel.gameList[gnm].state != "perfNotReady") {
             domCashe.perfCarousel.gameList[gnm].state = "perfNotReady";
             requestAnimationFrame(()=>requestAnimationFrame(()=>{         
               domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-perfNotReady");        
@@ -1438,7 +1438,7 @@ function wrPerfMsg(gnm,msg){
             }))
           }break;
         case "1080p":
-          if(domCashe.perfCarousel.gameList[gnm].state != "1080p"){
+          if (domCashe.perfCarousel.gameList[gnm].state != "1080p") {
             domCashe.perfCarousel.gameList[gnm].state = "1080p";
             requestAnimationFrame(()=>requestAnimationFrame(()=>{          
               domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-1080p");        
@@ -1447,7 +1447,7 @@ function wrPerfMsg(gnm,msg){
           }
         break;
         case "1440p":
-          if(domCashe.perfCarousel.gameList[gnm].state != "1440p"){
+          if (domCashe.perfCarousel.gameList[gnm].state != "1440p") {
             domCashe.perfCarousel.gameList[gnm].state = "1440p";
             requestAnimationFrame(()=>requestAnimationFrame(()=>{
               domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-1440p");        
@@ -1456,7 +1456,7 @@ function wrPerfMsg(gnm,msg){
           }
         break;
         case "4k":
-          if(domCashe.perfCarousel.gameList[gnm].state != "4k"){
+          if (domCashe.perfCarousel.gameList[gnm].state != "4k") {
             domCashe.perfCarousel.gameList[gnm].state = "4k";
             requestAnimationFrame(()=>requestAnimationFrame(()=>{
               domCashe.perfCarousel.gameList[gnm].perfBody.classList.add("perf-4k");        
@@ -1469,21 +1469,21 @@ function wrPerfMsg(gnm,msg){
 }
 
 var CFGperfCarouselHandler = [];
-function perfCarouselHandler(){
+function perfCarouselHandler() {
   var evArgs = {
     "cnm": this.dataset.perfredirect,
     "action": "open"
   }
-  for(const fnc of CFGperfCarouselHandler)fnc(evArgs);  
+  for (const fnc of CFGperfCarouselHandler) fnc(evArgs);  
 }
 
-function crPerfCarousel(){
+function crPerfCarousel() {
   var perfDom = document.getElementById("performance-carousel-2");
-  if(!perfDom)return
-  for(const cnm of CFGperfCarousel.partList){
-    if(!domCashe.dom.hasOwnProperty(cnm))continue;
-    if(domCashe.dom[cnm].isEmpty)continue;
-    for(const [pnm,pob] of Object.entries(domCashe.dom[cnm].prodList)){
+  if (!perfDom) return
+  for (const cnm of CFGperfCarousel.partList) {
+    if (!domCashe.dom.hasOwnProperty(cnm)) continue;
+    if (domCashe.dom[cnm].isEmpty) continue;
+    for (const [pnm,pob] of Object.entries(domCashe.dom[cnm].prodList)) {
       var attrs = pob.selfDom.dataset.perfattr;
       pob.perfAttr = attrs?attrs:"$";
     }
@@ -1492,12 +1492,12 @@ function crPerfCarousel(){
   domCashe.perfCarousel.gameList = {};
   var tmpMarkup = `<div style="text-align: center; color: #eabe4b;">Εκτιμώμενη Απόδοση</div>
   <!-- Indicators --><div class="carousel-indicators">`;
-  for(let i=0;i<CFGperfCarousel.gameOrder.length;i++){
+  for (let i=0;i<CFGperfCarousel.gameOrder.length;i++) {
     tmpMarkup += `<button data-bs-target="#performance-carousel-2" data-bs-slide-to="${i}"${!i?' class="active"':""}></button>`;
   }
   tmpMarkup += '</div><!-- The slideshow --><div class="carousel-inner">';
 
-  for(const gnm of CFGperfCarousel.gameOrder){
+  for (const gnm of CFGperfCarousel.gameOrder) {
     domCashe.perfCarousel.gameList[gnm]={
       "state": CFGperfCarousel.gameList[gnm].stateFormat
     }
@@ -1526,14 +1526,14 @@ function crPerfCarousel(){
   `
   perfDom.innerHTML = tmpMarkup;
 
-  for(const gnm of CFGperfCarousel.gameOrder){
+  for (const gnm of CFGperfCarousel.gameOrder) {
     domCashe.perfCarousel.gameList[gnm]={
       "state": "$$",
       "perfBody": perfDom.querySelector(`#perf-${gnm} .perf-body`)
     }
   }
-  for(const cnm of CFGperfCarousel.partList){
-    if(!domCashe.dom.hasOwnProperty(cnm))continue
+  for (const cnm of CFGperfCarousel.partList) {
+    if (!domCashe.dom.hasOwnProperty(cnm)) continue;
     updatePerfCarousel({cnm:cnm})
   }
   
@@ -1544,22 +1544,22 @@ function crPerfCarousel(){
   CFGCbBtHandler.push(updatePerfCarousel);
 }
 
-function updateDomReduce(evArgs){
-  for(const [cnm, ob] of Object.entries(domCashe.dom)){
-    if(ob.isEmpty)continue;
-    if(ob.lpState == ob.isReduced){
+function updateDomReduce(evArgs) {
+  for (const [cnm, ob] of Object.entries(domCashe.dom)) {
+    if (ob.isEmpty) continue;
+    if (ob.lpState == ob.isReduced) {
       var pList = [];
-      if(ob.lpState){
-        for(const pnm of ob.prodOrder){
+      if (ob.lpState) {
+        for (const pnm of ob.prodOrder) {
           pList.push(ob.prodList[pnm].selfDom);
           pList.push(ob.prodList[pnm].cDom);
         }
-      }else{
-        if(ob.prodType == "radio"){
+      } else {
+        if (ob.prodType == "radio") {
           pList.push(ob.prodList[ob.prodSelected].selfDom);
           pList.push(ob.prodList[ob.prodSelected].cDom);
-        }else if(ob.prodType == "checkbox"){
-          for(const pnm of ob.prodSelected){
+        } else if (ob.prodType == "checkbox") {
+          for (const pnm of ob.prodSelected) {
             pList.push(ob.prodList[pnm].selfDom);
             pList.push(ob.prodList[pnm].cDom);
           }
@@ -1571,10 +1571,10 @@ function updateDomReduce(evArgs){
   }
 }
 
-function crDomReduce(){
-  if(!document.replaceChildren)return;
-  for(const [cnm, ob] of Object.entries(domCashe.dom)){
-    if(ob.isEmpty)continue;
+function crDomReduce() {
+  if (!document.replaceChildren) return;
+  for (const [cnm, ob] of Object.entries(domCashe.dom)) {
+    if (ob.isEmpty) continue;
     ob.isReduced = false;
   }
   CFGcHeadHandler.push(updateDomReduce);
@@ -1586,16 +1586,16 @@ function crDomReduce(){
 }
 
 var modCat = false;
-function updateModifier(){
-  if(!modCat) return;
+function updateModifier() {
+  if (!modCat) return;
 
   var nresult = 0;
-  for(const ob of Object.values(domCashe.dom)){
-    if(ob.prodType=="radio"){
+  for (const ob of Object.values(domCashe.dom)) {
+    if (ob.prodType=="radio") {
       var pob = ob.prodList[ob.prodSelected];
       nresult+= pob.priceVal * pob.qValue;
-    }else if(ob.prodType=="checkbox"){
-      for(const pnm of ob.prodSelected){
+    } else if (ob.prodType=="checkbox") {
+      for (const pnm of ob.prodSelected) {
         var pob = ob.prodList[pnm];
         nresult+= pob.priceVal * pob.qValue;
       }
@@ -1611,41 +1611,41 @@ function updateModifier(){
   for (pob of Object.values(modOb.prodList)) {
     if (pob.qType != "dynamic") continue;
     pob.qMax = avQuant;
-    if (pob.qValue > pob.qMax){
+    if (pob.qValue > pob.qMax) {
       pob.qValue = avQuant;
       pob.qInput.value = avQuant;
 
       pob.qDisplay.textContent = pob.qValue;
 
-      if(pob.qValue <= pob.qMin){
-        if (pob.qSubAv == true){
+      if (pob.qValue <= pob.qMin) {
+        if (pob.qSubAv == true) {
           pob.qSubAv = false;
           pob.qCont.classList.remove("decr-av");
         }
-      }else{
-        if (pob.qSubAv == false){
+      } else {
+        if (pob.qSubAv == false) {
           pob.qSubAv = true;
           pob.qCont.classList.add("decr-av");
         }
       }
     }
 
-    if(pob.qValue >= pob.qMax){
-      if (pob.qAddAv == true){
+    if (pob.qValue >= pob.qMax) {
+      if (pob.qAddAv == true) {
         pob.qAddAv = false;
         pob.qCont.classList.remove("incr-av");
       }
-    }else{
-      if (pob.qAddAv == false){
+    } else {
+      if (pob.qAddAv == false) {
         pob.qAddAv = true;
         pob.qCont.classList.add("incr-av");
       }
-    }    
+    }
   }
 }
 
-function merimnaModifier(wCat){
-  if (!(wCat && domCashe.domOrder.includes(wCat)))return;
+function merimnaModifier(wCat) {
+  if (!(wCat && domCashe.domOrder.includes(wCat))) return;
   modCat = wCat;
   updateModifier();
   CFGRdBtHandler.push(updateModifier);
