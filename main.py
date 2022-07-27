@@ -41,7 +41,7 @@ num_input_alt = """
   </div>
 """
 
-cat_template="""
+cat_template = """
             <div class="builder-part-category" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
                 <div class="part-category-description fs-md">{cat_descr}</div>
@@ -87,7 +87,7 @@ prod_template = """
 #                 </div>                
 #               </label>              
 #             </div>"""
-av_template={
+av_template = {
   "":'<div class="prod-av-null"></div>',
   "Μη διαθέσιμο":'<div class="prod-av-0"><span style="font-size:13px;">Μη διαθέσιμο</span></div>',
   "Άμεσα διαθέσιμο":'<div class="prod-av-2"><span style="font-size:13px;">Άμεσα διαθέσιμο</span></div>',
@@ -97,9 +97,9 @@ av_template={
   "10-15 εργάσιμες":'<div class="prod-av-1"><span style="font-size:13px;">10-15 εργάσιμες</span></div>',
   "Μικρή διαθεσιμότητα":'<div class="prod-av-2"><span style="font-size:13px;">Μικρή διαθεσιμότητα</span></div>'
 }
-results=""
+results = ""
 for category in prodlist:
-    catres=""
+    catres = ""
     for product in category["product-list"]:
       if "multi-sel" in category:
         if category["init-prod"] == product["prod-code"]:
@@ -155,7 +155,7 @@ for category in prodlist:
           for atr in fltr:
             compAttributes += atr+","
           compAttributes = compAttributes[:len(compAttributes)-1]+";"
-        compres =' data-compattr="'+compAttributes[:len(compAttributes)-1]+'"'
+        compres = ' data-compattr="'+compAttributes[:len(compAttributes)-1]+'"'
 
       catres += prod_template.format(
         input_type = "checkbox" if "multi-sel" in category else "radio",
