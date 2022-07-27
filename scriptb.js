@@ -299,10 +299,24 @@ function crCbBt() {
 
 function catResize(evArgs) {
   if (!evArgs.cnm) return;
-  domCashe.dom[evArgs.cnm].pListDom.parentElement.style.setProperty(
-    "--heightVar",
-    `${domCashe.dom[evArgs.cnm].pListDom.scrollHeight}px`
-  )
+  let heightA = domCashe.dom[evArgs.cnm].pListDom.scrollHeight;
+  
+  let heightB = false;
+  if (window.innerWidth >= 992) {
+    heightB = window.innerHeight - (
+      200 + 
+      domCashe.dom[evArgs.cnm].headDom.getBoundingClientRect().height + 
+      domCashe.dom[evArgs.cnm].headDom.nextElementSibling.getBoundingClientRect().height
+    );
+  } else if (window.innerWidth >= 768) {
+    heightB = window.innerHeight - (
+      185 + 
+      domCashe.dom[evArgs.cnm].headDom.getBoundingClientRect().height + 
+      domCashe.dom[evArgs.cnm].headDom.nextElementSibling.getBoundingClientRect().height
+    );
+  }
+  let finalHeight = !heightB||heightA<heightB?heightA:heightB;
+  domCashe.dom[evArgs.cnm].pListDom.parentElement.style.setProperty("--heightVar", `${finalHeight}px`);
 }
 
 function catRedirect(evArgs) {
@@ -342,30 +356,40 @@ function catRedirect(evArgs) {
   }
 
   for (const k of domCashe.domOrder) {
-    let proxFanc = ()=>catResize({cnm:k});
+    // let proxFanc = () => catResize({cnm:k});
     var ob = domCashe.dom[k];
     if (k === wCat) {
       switch(action) {
         case "open":
+          if (ob.lpState) break;
           ob.lpState = true;
           ob.selfDom.classList.add("lp-show");
-          requestAnimationFrame(proxFanc);
+
+          // ob.pListDom.classList.add("hideScrollY");
+          // requestAnimationFrame(proxFanc);
         break;
         case "close":
+          if (!ob.lpState) break;
           ob.lpState = false;
           ob.selfDom.classList.remove("lp-show");
-          requestAnimationFrame(proxFanc);
+
+          // ob.pListDom.classList.add("hideScrollY");
+          // requestAnimationFrame(proxFanc);
         break;
         case "same": break;
         default://toggle
           ob.lpState = !ob.lpState
           ob.selfDom.classList.toggle("lp-show");
-          requestAnimationFrame(proxFanc);
+
+          // ob.pListDom.classList.add("hideScrollY");
+          // requestAnimationFrame(proxFanc);
       }
     } else if (ob.lpState) {
       ob.lpState = false;
       ob.selfDom.classList.remove("lp-show");
-      requestAnimationFrame(proxFanc);
+
+      // ob.pListDom.classList.add("hideScrollY");
+      // requestAnimationFrame(proxFanc);
     }
   }
 
@@ -435,15 +459,17 @@ function cHeadHandler() {
   for (const fnc of CFGcHeadHandler) fnc(evArgs);
 }
 function crCOpen() {
+  // function revealScroll() {this.firstElementChild.classList.remove("hideScrollY");}
   for (const cnm of domCashe.domOrder) {
-    var ob = domCashe.dom[cnm];
+    let ob = domCashe.dom[cnm];
     ob.headDom.removeEventListener("click",cHeadHandler);
     ob.headDom.addEventListener("click",cHeadHandler);
 
-    if (!ob.isHidden) {      
-      let proxFanc = ()=>catResize({cnm:cnm});
-      requestAnimationFrame(proxFanc);
-    }
+    // if (!ob.isHidden) {
+    //   let proxFanc = () => catResize({cnm:cnm});
+    //   requestAnimationFrame(proxFanc);
+    //   ob.pListDom.parentElement.addEventListener("transitionend",revealScroll);
+    // }
   }
   CFGcHeadHandler.length = 0;
   CFGcHeadHandler.push(catRedirect);

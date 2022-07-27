@@ -21,6 +21,7 @@ for y in range(5):
       # "prod-name":"Voucher",
       # "prod-min":"1",
       # "prod-max":"1"
+      "prod-id": 42901+x
     })
     if x==0:
       prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"
@@ -55,16 +56,16 @@ prod_template = """
             <div class="listed-part">              
               <label class="listed-part-inner bg-light" for="{part_id}">
                 <div class="part-img">
-                  <img class="build-img" width="74" height="56" src="assets/{img_src}.jpg" width="100%">
+                  <img class="build-img" width="320" height="240" src="{img_src}" width="100%">
                 </div>
-                <div class="part-text"><div class="part-text-head">{see_more}{part_title}</div></div>
+                <div class="part-text">
+                  <div class="part-text-head">{see_more}{part_title}</div>
+                  <div class="disabled-part fs-ms">disabled</div>
+                </div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
-                  {merimna_price_block}
                   <span class="price-block">0,00€</span>
                 </div>
-                <div class="part-btn">{use_num_input}
-                  <div class="disabled-part fs-ms">disabled</div>
-                </div>                
+                <div class="part-btn">{use_num_input}</div>                
               </label>              
             </div>"""
 # prod_template = """
@@ -167,13 +168,13 @@ for category in prodlist:
         is_checked = ischecked,
         perfattr = perfres,
         compattr = compres,
-        img_src = "kouti0" if "test" in product["prod-code"] else product["prod-code"],
+        img_src = f'https://static.msystems.gr/photos/cat_thumbs/{product["prod-id"]}.jpg' if "test" in product["prod-code"] else f'assets/{product["prod-code"]}.jpg',
         part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
         part_title = product["prod-name"],
         # part_av = av_template[product["prod-av"]],
         see_more = seeMore,
         part_price = product["prod-price"],
-        merimna_price_block = ""if "multi-sel" in category else '<span class="price-fixed-block">+0,00€</span>',
+        # merimna_price_block = ""if "multi-sel" in category else '<span class="price-fixed-block">+0,00€</span>',
         # price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
         use_num_input = num_input_res
         # sec_btn = secbtn
