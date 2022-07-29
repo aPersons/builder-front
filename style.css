@@ -387,8 +387,8 @@
   border-radius: 0.4375rem;
   margin-bottom: 1rem;
   border: solid 1px #7b7b7b;
-  border-left: 1px solid #e3e9ef!important;
-  border-right: 1px solid #e3e9ef!important;
+  /* border-left: 1px solid #e3e9ef!important;
+  border-right: 1px solid #e3e9ef!important; */
   display: flex;
   flex-direction: column;
   transition: border 0.25s ease-in-out;
@@ -627,6 +627,7 @@
   align-content: center;
   justify-content: center;
   grid-area: part-price;
+  min-height: 24px;
   /* padding: 5px; */
 }
 .price-block,.price-fixed-block {
