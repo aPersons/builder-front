@@ -650,7 +650,7 @@
 .listed-part-inner .part-btn {
   display: flex;
   flex-wrap: wrap;
-  justify-content: end;
+  justify-content: start;
   align-items: end;
   gap: 5px;
   /* padding: 5px; */
