@@ -63,6 +63,7 @@ prod_template = """
                   <div class="disabled-part fs-ms">disabled</div>
                 </div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
+                  {merimna_price_block}
                   <span class="price-block">0,00€</span>
                 </div>
                 <div class="part-btn">{use_num_input}</div>                
@@ -174,7 +175,7 @@ for category in prodlist:
         # part_av = av_template[product["prod-av"]],
         see_more = seeMore,
         part_price = product["prod-price"],
-        # merimna_price_block = ""if "multi-sel" in category else '<span class="price-fixed-block">+0,00€</span>',
+        merimna_price_block = ""if "multi-sel" in category else '<span class="price-fixed-block">0,00€</span>',
         # price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
         use_num_input = num_input_res
         # sec_btn = secbtn
