@@ -3,7 +3,7 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
-for y in range(5):
+for y in range(10):
   prodlist.append({
     "cat-code": f"test{y}",
     "cat-name": f"testcat{y}",
@@ -11,7 +11,7 @@ for y in range(5):
     "init-prod": "werwe",#f"test{y}-0",
     "product-list": []
   })
-  for x in range(50):
+  for x in range(100):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
       "prod-price":f"{100*x}",
@@ -60,13 +60,15 @@ prod_template = """
                 </div>
                 <div class="part-text">
                   <div class="part-text-head">{see_more}{part_title}</div>
-                  <div class="disabled-part fs-ms">disabled</div>
                 </div>
                 <div class="part-price fw-bold" data-priceval="{part_price}">
                   {merimna_price_block}
                   <span class="price-block">0,00€</span>
                 </div>
-                <div class="part-btn">{use_num_input}</div>                
+                <div class="part-btn">
+                  {use_num_input}
+                  <div class="disabled-part fs-ms">disabled</div>
+                </div>                
               </label>              
             </div>"""
 # prod_template = """
