@@ -44,7 +44,6 @@ num_input_alt = """
 """
 
 cat_template = """
-          {group_cat_start}
             <div class="builder-part-category" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
                 <div class="part-category-description fs-md">{cat_descr}</div>
@@ -73,26 +72,6 @@ prod_template = """
                 </div>                
               </label>              
             </div>"""
-# prod_template = """
-#             <input type="{input_type}" class="{sel_type}" id="{part_id}" name="{part_cat}{mlfx}" value="{part_value}"{is_checked}{part_erp}{perfattr}{compattr}>
-#             <div class="listed-part">              
-#               <label class="listed-part-inner" for="{part_id}">
-#                 <div class="part-img">
-#                   <img class="build-img" width="74" height="56" src="assets/{img_src}.jpg" width="100%">
-#                 </div>
-#                 <div class="part-text"><div class="part-text-head">{part_title}</div>{part_av}</div>
-#                 <div class="part-price fw-bold" data-priceval="{part_price}">
-#                   {merimna_price_block}
-#                   <span class="price-block">0,00€</span>
-#                 </div>
-#                 <div class="part-btn">{see_more}{use_num_input}
-#                   <label class="btn btn-primary btn-change btn-shadow">Αλλαγή</label>
-#                   <label class="btn btn-primary btn-select btn-shadow" for="{part_id}">Επιλογή</label>
-#                   {sec_btn}
-#                   <div class="disabled-part fs-ms">disabled</div>
-#                 </div>                
-#               </label>              
-#             </div>"""
 av_template = {
   "":'<div class="prod-av-null"></div>',
   "Μη διαθέσιμο":'<div class="prod-av-0"><span style="font-size:13px;">Μη διαθέσιμο</span></div>',
@@ -139,9 +118,7 @@ for category in prodlist:
               part_cat = category["cat-code"],
               qval = "0" if "emptyval" in product else "1"
         )
-      #get_av = ""
-      #if "prod-av" in product:
-          #get_av = '<br/><span class="part-av">{part_av}</span>'.format(part_av =product["prod-av"])
+     
       seeMore = ""
       if not "emptyval" in product:
         # seeMore = '<a class="prod-quick-view quick-view-btn nav-link-style fs-ms" data-productid="26356" href="#quick-view" data-bs-toggle="modal"><i class="bi bi-eye"></i>Λεπτομέρειες Προϊόντος</a>'
@@ -177,29 +154,18 @@ for category in prodlist:
         img_src = f'https://static.msystems.gr/photos/cat_thumbs/{product["prod-id"]}.jpg' if "test" in product["prod-code"] else f'assets/{product["prod-code"]}.jpg',
         part_erp = ' data-erp="{0}"'.format(product["prod-erp"])if "prod-erp" in product else "",
         part_title = product["prod-name"],
-        # part_av = av_template[product["prod-av"]],
         see_more = seeMore,
         part_price = product["prod-price"],
-        merimna_price_block = "",##if "multi-sel" in category else '<span class="price-fixed-block">0,00€</span>',
-        # price_difference = ""if "multi-sel" in category else '<span class="price-difference">+0,00€</span>',
+        merimna_price_block = "",
         use_num_input = num_input_res
-        # sec_btn = secbtn
       )
 
-    if (not ingroup and "catGroup" in category):
-      groupres = f'<div class="catgroup {category["catGroup"]}">'
-      ingroup = True
-    elif ingroup and not "catGroup" in category:
-      groupres = "</div>"
-      ingroup = False
-    else: groupres = ""
-
+    
     results += cat_template.format(
         cat_name = category["cat-code"],
         cat_title = category["cat-name"],
         cat_descr = category["cat-desc"],
-        part_list = catres,
-        group_cat_start = groupres
+        part_list = catres
     )
     
 if ingroup:

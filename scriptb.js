@@ -411,42 +411,42 @@ function catRedirect(evArgs) {
   //   }
   // }
 
-  document.documentElement.scrollTop = window.scrollY + posOffset;
+  // document.documentElement.scrollTop = window.scrollY + posOffset;
 
-  if (focus == "none") return;
-  requestAnimationFrame(() => requestAnimationFrame(() => {
+  // if (focus == "none") return;
+  // requestAnimationFrame(() => requestAnimationFrame(() => {
 
-    dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
-    var duration = 250;
+  //   dBox = domCashe.dom[wCat].selfDom.getBoundingClientRect();
+  //   var duration = 250;
 
-    var selprod = domCashe.dom[wCat].isEmpty?false:
-      domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
+  //   var selprod = domCashe.dom[wCat].isEmpty?false:
+  //     domCashe.dom[wCat].prodList[domCashe.dom[wCat].prodType == "radio" ? domCashe.dom[wCat].prodSelected : domCashe.dom[wCat].prodSelected[0]].cDom;
 
-    if (winMode != "sm") {
-      if (domCashe.dom[wCat].lpState && selprod) {
-        var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
-        var selprodPos = selprod.getBoundingClientRect();
-        var prodDifference = (parentPos.height - selprodPos.height) / 2;
-        var posOffset = domCashe.dom[wCat].pListDom.scrollTop + (selprodPos.top - parentPos.top) - prodDifference;
-        scrollToC(domCashe.dom[wCat].pListDom, domCashe.dom[wCat].pListDom.scrollTop,posOffset, duration);
-      }
-      scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
-    } else {
-      if (focus == "cat" || !selprod || !domCashe.dom[wCat].lpState) {
-        scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
-      } else {
-        var selprodPos = selprod.getBoundingClientRect();
-        var pPad = window.innerHeight / 2 - 101;
-        if (pPad > selprodPos.top - dBox.top) {
-          scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
-        } else if (pPad > dBox.bottom - selprodPos.bottom) {
-          scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.bottom - (window.innerHeight - 55), duration);
-        } else {
-          scrollToC(document.documentElement, window.scrollY, window.scrollY + selprodPos.top - pPad, duration);
-        }
-      }
-    }
-  }));  
+  //   if (winMode != "sm") {
+  //     if (domCashe.dom[wCat].lpState && selprod) {
+  //       var parentPos = domCashe.dom[wCat].pListDom.getBoundingClientRect();
+  //       var selprodPos = selprod.getBoundingClientRect();
+  //       var prodDifference = (parentPos.height - selprodPos.height) / 2;
+  //       var posOffset = domCashe.dom[wCat].pListDom.scrollTop + (selprodPos.top - parentPos.top) - prodDifference;
+  //       scrollToC(domCashe.dom[wCat].pListDom, domCashe.dom[wCat].pListDom.scrollTop,posOffset, duration);
+  //     }
+  //     scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+  //   } else {
+  //     if (focus == "cat" || !selprod || !domCashe.dom[wCat].lpState) {
+  //       scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+  //     } else {
+  //       var selprodPos = selprod.getBoundingClientRect();
+  //       var pPad = window.innerHeight / 2 - 101;
+  //       if (pPad > selprodPos.top - dBox.top) {
+  //         scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.top - (topPad - 7), duration);
+  //       } else if (pPad > dBox.bottom - selprodPos.bottom) {
+  //         scrollToC(document.documentElement, window.scrollY, window.scrollY + dBox.bottom - (window.innerHeight - 55), duration);
+  //       } else {
+  //         scrollToC(document.documentElement, window.scrollY, window.scrollY + selprodPos.top - pPad, duration);
+  //       }
+  //     }
+  //   }
+  // }));
 }
 
 CFGcHeadHandler = [];
