@@ -3,15 +3,16 @@ import json
 with open("product-list.json","r",encoding="UTF-8") as rawjson:
     prodlist = json.loads(rawjson.read())
 
-for y in range(10):
+for y in range(5):
   prodlist.append({
     "cat-code": f"test{y}",
     "cat-name": f"testcat{y}",
     "cat-desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
     "init-prod": "werwe",#f"test{y}-0",
-    "product-list": []
+    "product-list": [],
+    "catGroup": "catGroup0"
   })
-  for x in range(100):
+  for x in range(50):
     prodlist[-1]["product-list"].append({
       "prod-code":prodlist[-1]['cat-code']+f'-{x}',
       "prod-price":f"{100*x}",
@@ -21,7 +22,7 @@ for y in range(10):
       # "prod-name":"Voucher",
       # "prod-min":"1",
       # "prod-max":"1"
-      "prod-id": 42901+x
+      "prod-id": 42000+x+y*100
     })
     if x==0:
       prodlist[-1]["product-list"][-1]["emptyval"]="emptyval"
@@ -43,6 +44,7 @@ num_input_alt = """
 """
 
 cat_template = """
+          {group_cat_start}
             <div class="builder-part-category" id="cat-{cat_name}">
                 <div class="part-category-head">{cat_title}</div>
                 <div class="part-category-description fs-md">{cat_descr}</div>
@@ -102,6 +104,7 @@ av_template = {
   "Μικρή διαθεσιμότητα":'<div class="prod-av-2"><span style="font-size:13px;">Μικρή διαθεσιμότητα</span></div>'
 }
 results = ""
+ingroup = False
 for category in prodlist:
     catres = ""
     for product in category["product-list"]:
@@ -182,12 +185,25 @@ for category in prodlist:
         use_num_input = num_input_res
         # sec_btn = secbtn
       )
+
+    if (not ingroup and "catGroup" in category):
+      groupres = f'<div class="catgroup {category["catGroup"]}">'
+      ingroup = True
+    elif ingroup and not "catGroup" in category:
+      groupres = "</div>"
+      ingroup = False
+    else: groupres = ""
+
     results += cat_template.format(
         cat_name = category["cat-code"],
         cat_title = category["cat-name"],
         cat_descr = category["cat-desc"],
-        part_list = catres
+        part_list = catres,
+        group_cat_start = groupres
     )
+    
+if ingroup:
+  results+= "</div>"
 with open("template.html","r",encoding="UTF-8") as readtemp:
     results = readtemp.read().format(fill_part_list = results)
 with open("index.html","w",encoding="UTF-8") as out:

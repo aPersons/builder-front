@@ -942,7 +942,7 @@ function updateBuildModal(evArgs) {
       <div class="prod-quant">${pob.qValue}</div></div>`;
       totalVal+= (pob.qValue * pob.priceVal);
       if (ob.hasSelected) linktext += `&o${i}=${pob.value}&q${i}=${pob.qValue}`;
-    } else if(ob.prodType == "checkbox") {
+    } else if (ob.prodType == "checkbox") {
       for (const pnm of ob.prodSelected) {
         var pob = ob.prodList[pnm];
         tabletext += `<div class="table-row">

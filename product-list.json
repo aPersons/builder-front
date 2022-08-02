@@ -1,806 +1,1382 @@
 [
-    {
-        "cat-code":"kouti",
-        "cat-name":"Κουτί",
-        "cat-desc":"Το σπίτι του νέου σας συστήματος. Επιλέξτε το μοντέλο και το χρώμα που προτιμάτε!",
-        "init-prod":"kouti0",
-        "product-list":[
-            {
-                "prod-code":"kouti0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς κουτί"
-            },{
-                "prod-code":"kouti1",
-                "prod-erp":"001-46638",
-                "prod-price":"2590",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Kolink KLA-002 Mid-Tower Case - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX"]
-                ]
-            },{
-                "prod-code":"kouti2",
-                "prod-erp":"001-22344",
-                "prod-price":"3490",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Cooler Master Elite 342",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX"]
-                ]
-            },{
-                "prod-code":"kouti3",
-                "prod-erp":"001-36239",
-                "prod-price":"4490",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Cougar MX330-X Mid-Tower Case - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX", "E-ATX"]
-                ]
-            },{
-                "prod-code":"kouti4",
-                "prod-erp":"001-46640",
-                "prod-price":"4690",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Kolink Inspire K1 RGB Windowed Mid-Tower Case - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX"]
-                ]
-            },{
-                "prod-code":"kouti5",
-                "prod-erp":"001-29549",
-                "prod-price":"4700",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair Carbide Series 100R Mid-Tower Case - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX"]
-                ]
-            },{
-                "prod-code":"kouti6",
-                "prod-erp":"001-46274",
-                "prod-price":"4700",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Kolink StrongHold Windowed Mid-Tower Case Tempered Glass - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX", "E-ATX"]
-                ]
-            },{
-                "prod-code":"kouti7",
-                "prod-erp":"001-29549",
-                "prod-price":"5090",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair Carbide Series 100R Mid-Tower Case - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX"]
-                ]
-            },{
-                "prod-code":"kouti8",
-                "prod-erp":"001-26678",
-                "prod-price":"5140",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair Carbide Series SPEC-01 Red LED Mid-Tower Gaming Case - Black",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX"]
-                ]
-            },{
-                "prod-code":"kouti9",
-                "prod-erp":"001-48026",
-                "prod-price":"5290",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair Carbide SPEC-05 Windowed Mid-Tower Case",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX"]
-                ]
-            },{
-                "prod-code":"kouti10",
-                "prod-erp":"001-50726",
-                "prod-price":"5490",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Deepcool Matrexx 55 Mesh Windowed Mid-Tower Case Tempered Glass",
-                "comp-index": ["mobo-size"],
-                "comp-data": [
-                    ["Mini-ITX", "Micro ATX", "ATX", "E-ATX"]
-                ]
-            }
+  {
+    "cat-code": "kouti",
+    "cat-name": "Κουτί",
+    "cat-desc": "Το σπίτι του νέου σας συστήματος. Επιλέξτε το μοντέλο και το χρώμα που προτιμάτε!",
+    "init-prod": "kouti0",
+    "product-list": [
+      {
+        "prod-code": "kouti0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς κουτί"
+      },
+      {
+        "prod-code": "kouti1",
+        "prod-erp": "001-46638",
+        "prod-price": "2590",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Kolink KLA-002 Mid-Tower Case - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX"
+          ]
         ]
-    },{
-        "cat-code":"mitriki",
-        "cat-name":"Μητρική",
-        "cat-desc":"Η μητρική επιτρέπει στα διάφορα μέρη του συστήματος να επικοινωνούν μεταξύ τους. Σκεφθείτε να επιλέξετε καλύτερο μοντέλο αν χρειάζεστε έξτρα επεκτασιμότητα",
-        "init-prod":"mitriki0",
-        "product-list":[
-            {
-                "prod-code":"mitriki0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς μητρική"
-            },{
-                "prod-code":"mitriki1",
-                "prod-erp":"001-35424",
-                "prod-price":"5150",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Asus Prime A320M-K",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki2",
-                "prod-erp":"001-50794",
-                "prod-price":"6450",
-                "prod-av":"1-2 εργάσιμες",
-                "prod-name":"Gigabyte A520M H rev. 1.0",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki3",
-                "prod-erp":"001-49659",
-                "prod-price":"6990",
-                "prod-av":"1-2 εργάσιμες",
-                "prod-name":"Gigabyte A520M S2H rev. 1.0",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki4",
-                "prod-erp":"001-50195",
-                "prod-price":"7090",
-                "prod-av":"1-3 εργάσιμες",
-                "prod-name":"Gigabyte B450M DS3H V2 rev.1.0",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki5",
-                "prod-erp":"001-49654",
-                "prod-price":"7690",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Asus Prime A520M-K",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki6",
-                "prod-erp":"001-49658",
-                "prod-price":"7690",
-                "prod-av":"Μικρή διαθεσιμότητα",
-                "prod-name":"Asus Prime A520M-E",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki7",
-                "prod-erp":"001-49657",
-                "prod-price":"8150",
-                "prod-av":"1-3 εργάσιμες",
-                "prod-name":"Asus Prime A520M-A",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki8",
-                "prod-erp":"001-50197",
-                "prod-price":"8690",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Asus Prime B450M-A II",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki9",
-                "prod-erp":"001-44643",
-                "prod-price":"9000",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Gigabyte B450 AORUS M",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"mitriki10",
-                "prod-erp":"001-47746",
-                "prod-price":"9990",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Gigabyte B550M DS3H",
-                "comp-index": ["mobo-size","socket"],
-                "comp-data": [
-                    ["Micro ATX"],
-                    ["AM4"]
-                ]
-            }
+      },
+      {
+        "prod-code": "kouti2",
+        "prod-erp": "001-22344",
+        "prod-price": "3490",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Cooler Master Elite 342",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX"
+          ]
         ]
-    },{
-        "cat-code":"cpu",
-        "cat-name":"Επεξεργαστής",
-        "cat-desc":"Ο εγκέφαλος του συστήματός σας, όσο πιο δυνατό μοντέλο επιλέξετε τόσο πιο γρήγορη θα είναι η απόκριση του συστήματος σε απαιτητικές εργασίες.",
-        "init-prod":"cpu0",
-        "product-list":[
-            {
-                "prod-code":"cpu0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς επεξεργαστή"
-            },{
-                "prod-code":"cpu1",
-                "prod-erp":"001-38621",
-                "prod-price":"17250",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"AMD Ryzen 5 2600X with Wraith Spire Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu2",
-                "prod-erp":"001-44415",
-                "prod-price":"19990",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"AMD Ryzen 5 3600 with Wraith Stealth Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu3",
-                "prod-erp":"001-44416",
-                "prod-price":"29500",
-                "prod-av":"1-2 εργάσιμες",
-                "prod-name":"AMD Ryzen 5 3600X with Wraith Spire Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu4",
-                "prod-erp":"001-44417",
-                "prod-price":"31990",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"AMD Ryzen 7 3700X with Wraith Pirsm Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu5",
-                "prod-erp":"001-49550",
-                "prod-price":"32890",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"AMD Ryzen 5 5600X with Wraith Stealth Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu6",
-                "prod-erp":"001-44418",
-                "prod-price":"36900",
-                "prod-av":"1-3 εργάσιμες",
-                "prod-name":"AMD Ryzen 7 3800X with Wraith Prism Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["1","1","1","1","1"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu7",
-                "prod-erp":"001-49551",
-                "prod-price":"48890",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"AMD Ryzen 7 5800X",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["2","2","2","2","2"],
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"cpu8",
-                "prod-erp":"001-44419",
-                "prod-price":"49900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"AMD Ryzen 9 3900X with Wraith Prism Cooler",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["3","3","3","3","3"],
-                "comp-index": "socket",
-                "comp-data": [
-                    ["AM4"]
-                ]
-            }
+      },
+      {
+        "prod-code": "kouti3",
+        "prod-erp": "001-36239",
+        "prod-price": "4490",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Cougar MX330-X Mid-Tower Case - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX",
+            "E-ATX"
+          ]
         ]
-    },{
-        "cat-code":"psiktra",
-        "cat-name":"Ψύξη επεξεργαστή",
-        "cat-desc":"Διατηρήστε τις θερμοκρασίες του επεξεργαστή σας σε χαμηλά επίπεδα προσφέροντας του μακροζωία και δυνατότητα για Overclocking στα μοντέλα που το υποστηρίζουν.",
-        "init-prod":"psiktra0",
-        "product-list":[
-            {
-                "prod-code":"psiktra0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς ψύξη επεξεργαστή"
-            },{
-                "prod-code":"psiktra1",
-                "prod-erp":"001-38104",
-                "prod-price":"1790",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Deepcool CPU Cooler GAMMAXX 200T",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["775", "1150", "1151", "1155", "1156", "1200", "AM2", "AM2+", "AM3", "AM3+", "FM2", "AM4", "FM1"]
-                ]
-            },{
-                "prod-code":"psiktra2",
-                "prod-erp":"001-50571",
-                "prod-price":"2150",
-                "prod-av":"1-3 εργάσιμες",
-                "prod-name":"Arctic Cooling Freezer A13X Compact AMD CPU Cooler",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"psiktra3",
-                "prod-erp":"001-50572",
-                "prod-price":"2290",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Arctic Cooling Freezer A13X CO Compact AMD CPU Cooler - Black",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["AM4"]
-                ]
-            },{
-                "prod-code":"psiktra4",
-                "prod-erp":"001-43629",
-                "prod-price":"2990",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Arctic Cooling Freezer 34 CPU Cooler",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["1150", "1151", "1155", "1156", "1200", "2011", "2011v3", "2066", "AM4"]
-                ]
-            },{
-                "prod-code":"psiktra5",
-                "prod-erp":"001-46414",
-                "prod-price":"3390",
-                "prod-av":"1-3 εργάσιμες",
-                "prod-name":"Arctic Cooling Freezer XTREME Rev.2",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["775", "1150", "1151", "1155", "1156", "1200", "1366", "2011", "2011v3", "2066", "AM2", "AM3", "FM2", "AM4", "FM1", "FM2+"]
-                ]
-            },{
-                "prod-code":"psiktra6",
-                "prod-erp":"001-50103",
-                "prod-price":"3590",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Arctic Cooling Freezer 34 eSports CPU Cooler - Grey / Black",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["1150", "1151", "1155", "1200", "2011", "2011v3", "2066", "AM4"]
-                ]
-            },{
-                "prod-code":"psiktra7",
-                "prod-erp":"001-49075",
-                "prod-price":"3650",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Thermaltake Thermaltake CPU Cooler UX200 ARGB",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["775", "1150", "1151", "1155", "1156", "1200", "AM2", "AM2+", "AM3", "AM3+", "FM2", "AM4", "FM1"]
-                ]
-            },{
-                "prod-code":"psiktra8",
-                "prod-erp":"001-47470",
-                "prod-price":"3900",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Be Quiet! CPU Cooler Pure Rock 2",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["1150", "1151", "1155", "1200", "2011", "2011v3", "2066", "AM3", "AM3+", "AM4"]
-                ]
-            },{
-                "prod-code":"psiktra9",
-                "prod-erp":"001-41281",
-                "prod-price":"4090",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Cooler Master CPU Cooler Hyper 212 Black Edition",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["1150", "1151", "1155", "1156", "1200", "1366", "2011", "2011v3", "2066", "AM2", "AM2+", "AM3", "AM3+", "FM2", "AM4", "FM1", "FM2+"]
-                ]
-            },{
-                "prod-code":"psiktra10",
-                "prod-erp":"001-47471",
-                "prod-price":"4250",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Be Quiet! CPU Cooler Pure Rock 2 - Black",
-                "comp-index": ["socket"],
-                "comp-data": [
-                    ["1150", "1151", "1155", "1200", "2011", "2011v3", "2066", "AM3", "AM3+", "AM4"]
-                ]
-            }
+      },
+      {
+        "prod-code": "kouti4",
+        "prod-erp": "001-46640",
+        "prod-price": "4690",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Kolink Inspire K1 RGB Windowed Mid-Tower Case - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX"
+          ]
         ]
-    },{
-        "cat-code":"ram",
-        "cat-name":"Μνήμη RAM",
-        "cat-desc":"Μνήμη υψηλής ταχύτητας για τα Windows, τις εφαρμογές και τα παιχνίδια, επιλέξτε μεγαλύτερη χωρητικότητα για μια πιο ομαλή λειτουργία σε συνθήκες Multi-tasking.",
-        "init-prod":"ram0",
-        "product-list":[
-            {
-                "prod-code":"ram0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς μνήμη RAM"
-            },{
-                "prod-code":"ram1",
-                "prod-erp":"001-44813",
-                "prod-price":"5350",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"HyperX 8GB Fury DDR4 2666MHz Non-ECC CL16 (Kit of 2)",
-                "prod-min":"1",
-                "prod-max":"4000"
-            },{
-                "prod-code":"ram2",
-                "prod-erp":"001-48164",
-                "prod-price":"5590",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair Vengeance LPX 8GB DDR4 2666MHz (Kit of 2) - Black",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram3",
-                "prod-erp":"001-44848",
-                "prod-price":"5750",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"HyperX 8GB Fury DDR4 3200MHz Non-ECC CL16 (Kit of 2)",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram4",
-                "prod-erp":"001-37409",
-                "prod-price":"6500",
-                "prod-av":"10-15 εργάσιμες",
-                "prod-name":"G.Skill 8GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram5",
-                "prod-erp":"001-36989",
-                "prod-price":"9190",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"G.Skill 16GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram6",
-                "prod-erp":"001-44811",
-                "prod-price":"9280",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"HyperX 16GB Fury DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram7",
-                "prod-erp":"001-44846",
-                "prod-price":"9580",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"HyperX 16GB Fury DDR4 3200MHz 1Rx8 Non-ECC CL16 (Kit of 2)",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram8",
-                "prod-erp":"001-37928",
-                "prod-price":"9590",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair Vengeance LPX 16GB DDR4 3200MHz (Kit of 2) - Black",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram9",
-                "prod-erp":"001-35523",
-                "prod-price":"9970",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"HyperX 16GB Predator DDR4 2666MHz Non-ECC CL13 (Kit of 2)",
-                "prod-min":"1",
-                "prod-max":"4"
-            },{
-                "prod-code":"ram10",
-                "prod-erp":"001-44807",
-                "prod-price":"10100",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"HyperX 16GB Fury RGB DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)",
-                "prod-min":"1",
-                "prod-max":"4"
-            }
+      },
+      {
+        "prod-code": "kouti5",
+        "prod-erp": "001-29549",
+        "prod-price": "4700",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair Carbide Series 100R Mid-Tower Case - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX"
+          ]
         ]
-    },{
-        "cat-code":"gpu",
-        "cat-name":"Κάρτα Γραφικών",
-        "cat-desc":"Το πιο σημαντικό κομμάτι του Gaming συστήματός σας, επιλέξτε πιο δυνατό μοντέλο για καλύτερα frame rates και υποστήριξη οθονών με αναλύσεις μέχρι και 4K.",
-        "init-prod":"gpu0",
-        "product-list":[
-            {
-                "prod-code":"gpu0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς κάρτα Γραφικών"
-            },{
-                "prod-code":"gpu1",
-                "prod-erp":"001-51785",
-                "prod-price":"29900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Asus GeForce GTX 1650 TUF 4GB D6",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]
-            },{
-                "prod-code":"gpu2",
-                "prod-erp":"001-45582",
-                "prod-price":"44900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Gigabyte GeForce GTX 1660 SUPER OC 6G",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]
-            },{
-                "prod-code":"gpu3",
-                "prod-erp":"001-42726",
-                "prod-price":"47900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Gigabyte GeForce GTX 1660 OC 6G",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]
-            },{
-                "prod-code":"gpu4",
-                "prod-erp":"001-46520",
-                "prod-price":"49900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Asus GeForce GTX 1660 SUPER TUF Gaming 6GB",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]
-            },{
-                "prod-code":"gpu5",
-                "prod-erp":"001-49652",
-                "prod-price":"49900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Asus GeForce GTX 1660 SUPER TUF Gaming OC 6GB",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]
-            },{
-                "prod-code":"gpu6",
-                "prod-erp":"001-45422",
-                "prod-price":"49900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Asus GeForce GTX 1660 SUPER Dual EVO OC 6GB",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["0","0","0","0","0"]
-            },{
-                "prod-code":"gpu7",
-                "prod-erp":"001-41910",
-                "prod-price":"55900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Gigabyte GeForce RTX 2060 OC 6G",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["1","1","1","1","1"]
-            },{
-                "prod-code":"gpu8",
-                "prod-erp":"001-51385",
-                "prod-price":"69900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Gigabyte AORUS GeForce RTX 3060 Elite 12GB",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["2","2","2","2","2"]
-            },{
-                "prod-code":"gpu9",
-                "prod-erp":"001-51297",
-                "prod-price":"89900",
-                "prod-av":"Μη διαθέσιμο",
-                "prod-name":"Gigabyte Radeon RX 6700 XT Eagle 12GB",
-                "prod-min":"1",
-                "prod-max":"2",
-                "perf-index": ["lol-game","fortnite_game","control_game","fs2020_game","sottr_game"],
-                "perf-data":["3","3","3","3","3"]
-            }
+      },
+      {
+        "prod-code": "kouti6",
+        "prod-erp": "001-46274",
+        "prod-price": "4700",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Kolink StrongHold Windowed Mid-Tower Case Tempered Glass - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX",
+            "E-ATX"
+          ]
         ]
-    },{
-        "cat-code":"psu",
-        "cat-name":"Τροφοδοτικό",
-        "cat-desc":"Το τροφοδοτικό αναλαμβάνει την σταθερή παροχή ρεύματος σε όλα τα μέρη του συστήματος. Επιλέξτε καλύτερο μοντέλο για χαμηλότερη κατανάλωση, θόρυβο και θερμοκρασία.",
-        "init-prod":"psu0",
-        "product-list":[
-            {
-                "prod-code":"psu0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς τροφοδοτικό"
-            },{
-                "prod-code":"psu1",
-                "prod-erp":"001-37982",
-                "prod-price":"4390",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Cooler Master Elite V3 500W"
-            },{
-                "prod-code":"psu2",
-                "prod-erp":"001-50665",
-                "prod-price":"4750",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Cooler Master MWE 500W V2 Bronze Rated Power Supply - Bulk"
-            },{
-                "prod-code":"psu3",
-                "prod-erp":"001-47075",
-                "prod-price":"4990",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair CV Series CV550 550W Bronze Rated Power Supply"
-            },{
-                "prod-code":"psu4",
-                "prod-erp":"001-44606",
-                "prod-price":"5090",
-                "prod-av":"Μικρή διαθεσιμότητα",
-                "prod-name":"Cooler Master MWE 500 V2 White Rated Power Supply"
-            },{
-                "prod-code":"psu5",
-                "prod-erp":"001-48186",
-                "prod-price":"5450",
-                "prod-av":"1-3 εργάσιμες",
-                "prod-name":"Gigabyte Power Supply GP-P550B 550W 80+ Bronze"
-            },{
-                "prod-code":"psu6",
-                "prod-erp":"001-50108",
-                "prod-price":"5590",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Corsair CV Series CV650 650W Bronze Rated Power Supply"
-            },{
-                "prod-code":"psu7",
-                "prod-erp":"001-50669",
-                "prod-price":"5600",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Cooler Master MWE 600W V2 Bronze Rated Power Supply - Bulk"
-            },{
-                "prod-code":"psu8",
-                "prod-erp":"001-37983",
-                "prod-price":"5690",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Cooler Master Elite V3 600W"
-            },{
-                "prod-code":"psu9",
-                "prod-erp":"001-49364",
-                "prod-price":"5900",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Force Power Supply 850W - 80plus Bronze"
-            },{
-                "prod-code":"psu10",
-                "prod-erp":"001-40247",
-                "prod-price":"6070",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Gigabyte Power Supply GP-P650B 650W 80+ Bronze"
-            }
+      },
+      {
+        "prod-code": "kouti7",
+        "prod-erp": "001-29549",
+        "prod-price": "5090",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair Carbide Series 100R Mid-Tower Case - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX"
+          ]
         ]
-    },{
-        "cat-code":"m2ssd",
-        "cat-name":"Δίσκος SSD M.2",
-        "cat-desc":"Η τελευταία τεχνολογία των δίσκων SSD, η επικοινωνία γίνεται μέσω των γρήγορων PCIe lanes αντί των θυρών SATA με αποτέλεσμα πολύ υψηλότερες ταχύτητες ανάγνωσης και εγγραφής.",
-        "multi-sel":"0",
-        "init-prod":"m2ssd0",
-        "product-list":[
-            {
-                "prod-code":"m2ssd0",
-                "emptyval":"emptyval",
-                "prod-price":"0000",
-                "prod-av":"",
-                "prod-name":"Χωρίς Δίσκο SSD M.2"
-            },{
-                "prod-code":"m2ssd1",
-                "prod-erp":"001-47240",
-                "prod-price":"4150",
-                "prod-av":"1-2 εργάσιμες",
-                "prod-name":"Kingston 250GB KC2500 NVMe M.2 PCI-Express SSD"
-            },{
-                "prod-code":"m2ssd2",
-                "prod-erp":"001-45387",
-                "prod-price":"4490",
-                "prod-av":"Μικρή διαθεσιμότητα",
-                "prod-name":"Gigabyte 256GB M.2 PCIe NVMe SSD"
-            },{
-                "prod-code":"m2ssd3",
-                "prod-erp":"001-49274",
-                "prod-price":"4690",
-                "prod-av":"10-15 εργάσιμες",
-                "prod-name":"Western Digital Blue SN550 M.2 250GB NVMe SSD"
-            },{
-                "prod-code":"m2ssd4",
-                "prod-erp":"001-51445",
-                "prod-price":"5050",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Samsung 250GB NVMe SSD 980 Series M.2 PCI-Express"
-            },{
-                "prod-code":"m2ssd5",
-                "prod-erp":"001-51631",
-                "prod-price":"5270",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Kingston 500GB NV1 NVMe M.2 PCI-Express SSD"
-            },{
-                "prod-code":"m2ssd6",
-                "prod-erp":"001-48155",
-                "prod-price":"5590",
-                "prod-av":"10-15 εργάσιμες",
-                "prod-name":"Corsair Force Series MP510 240GB NVMe M.2 PCI-Express SSD"
-            },{
-                "prod-code":"m2ssd7",
-                "prod-erp":"001-42920",
-                "prod-price":"6150",
-                "prod-av":"Άμεσα διαθέσιμο",
-                "prod-name":"Samsung 250GB NVMe SSD 970 Evo Plus Series M.2 PCI-Express"
-            },{
-                "prod-code":"m2ssd8",
-                "prod-erp":"001-48953",
-                "prod-price":"6200",
-                "prod-av":"10-15 εργάσιμες",
-                "prod-name":"Western Digital Blue SN550 M.2 500GB NVMe SSD"
-            },{
-                "prod-code":"m2ssd9",
-                "prod-erp":"001-43489",
-                "prod-price":"6490",
-                "prod-av":"5-10 εργάσιμες",
-                "prod-name":"Western Digital SN750 Black M.2 250GB PCIe NVMe SSD"
-            }
+      },
+      {
+        "prod-code": "kouti8",
+        "prod-erp": "001-26678",
+        "prod-price": "5140",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair Carbide Series SPEC-01 Red LED Mid-Tower Gaming Case - Black",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX"
+          ]
         ]
-    }
+      },
+      {
+        "prod-code": "kouti9",
+        "prod-erp": "001-48026",
+        "prod-price": "5290",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair Carbide SPEC-05 Windowed Mid-Tower Case",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX"
+          ]
+        ]
+      },
+      {
+        "prod-code": "kouti10",
+        "prod-erp": "001-50726",
+        "prod-price": "5490",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Deepcool Matrexx 55 Mesh Windowed Mid-Tower Case Tempered Glass",
+        "comp-index": [
+          "mobo-size"
+        ],
+        "comp-data": [
+          [
+            "Mini-ITX",
+            "Micro ATX",
+            "ATX",
+            "E-ATX"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "cat-code": "mitriki",
+    "cat-name": "Μητρική",
+    "cat-desc": "Η μητρική επιτρέπει στα διάφορα μέρη του συστήματος να επικοινωνούν μεταξύ τους. Σκεφθείτε να επιλέξετε καλύτερο μοντέλο αν χρειάζεστε έξτρα επεκτασιμότητα",
+    "init-prod": "mitriki0",
+    "product-list": [
+      {
+        "prod-code": "mitriki0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς μητρική"
+      },
+      {
+        "prod-code": "mitriki1",
+        "prod-erp": "001-35424",
+        "prod-price": "5150",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Asus Prime A320M-K",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki2",
+        "prod-erp": "001-50794",
+        "prod-price": "6450",
+        "prod-av": "1-2 εργάσιμες",
+        "prod-name": "Gigabyte A520M H rev. 1.0",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki3",
+        "prod-erp": "001-49659",
+        "prod-price": "6990",
+        "prod-av": "1-2 εργάσιμες",
+        "prod-name": "Gigabyte A520M S2H rev. 1.0",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki4",
+        "prod-erp": "001-50195",
+        "prod-price": "7090",
+        "prod-av": "1-3 εργάσιμες",
+        "prod-name": "Gigabyte B450M DS3H V2 rev.1.0",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki5",
+        "prod-erp": "001-49654",
+        "prod-price": "7690",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Asus Prime A520M-K",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki6",
+        "prod-erp": "001-49658",
+        "prod-price": "7690",
+        "prod-av": "Μικρή διαθεσιμότητα",
+        "prod-name": "Asus Prime A520M-E",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki7",
+        "prod-erp": "001-49657",
+        "prod-price": "8150",
+        "prod-av": "1-3 εργάσιμες",
+        "prod-name": "Asus Prime A520M-A",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki8",
+        "prod-erp": "001-50197",
+        "prod-price": "8690",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Asus Prime B450M-A II",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki9",
+        "prod-erp": "001-44643",
+        "prod-price": "9000",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Gigabyte B450 AORUS M",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "mitriki10",
+        "prod-erp": "001-47746",
+        "prod-price": "9990",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Gigabyte B550M DS3H",
+        "comp-index": [
+          "mobo-size",
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "Micro ATX"
+          ],
+          [
+            "AM4"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "cat-code": "cpu",
+    "cat-name": "Επεξεργαστής",
+    "cat-desc": "Ο εγκέφαλος του συστήματός σας, όσο πιο δυνατό μοντέλο επιλέξετε τόσο πιο γρήγορη θα είναι η απόκριση του συστήματος σε απαιτητικές εργασίες.",
+    "init-prod": "cpu0",
+    "product-list": [
+      {
+        "prod-code": "cpu0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς επεξεργαστή"
+      },
+      {
+        "prod-code": "cpu1",
+        "prod-erp": "001-38621",
+        "prod-price": "17250",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "AMD Ryzen 5 2600X with Wraith Spire Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu2",
+        "prod-erp": "001-44415",
+        "prod-price": "19990",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "AMD Ryzen 5 3600 with Wraith Stealth Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu3",
+        "prod-erp": "001-44416",
+        "prod-price": "29500",
+        "prod-av": "1-2 εργάσιμες",
+        "prod-name": "AMD Ryzen 5 3600X with Wraith Spire Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu4",
+        "prod-erp": "001-44417",
+        "prod-price": "31990",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "AMD Ryzen 7 3700X with Wraith Pirsm Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu5",
+        "prod-erp": "001-49550",
+        "prod-price": "32890",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "AMD Ryzen 5 5600X with Wraith Stealth Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu6",
+        "prod-erp": "001-44418",
+        "prod-price": "36900",
+        "prod-av": "1-3 εργάσιμες",
+        "prod-name": "AMD Ryzen 7 3800X with Wraith Prism Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu7",
+        "prod-erp": "001-49551",
+        "prod-price": "48890",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "AMD Ryzen 7 5800X",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ],
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "cpu8",
+        "prod-erp": "001-44419",
+        "prod-price": "49900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "AMD Ryzen 9 3900X with Wraith Prism Cooler",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ],
+        "comp-index": "socket",
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "cat-code": "psiktra",
+    "cat-name": "Ψύξη επεξεργαστή",
+    "cat-desc": "Διατηρήστε τις θερμοκρασίες του επεξεργαστή σας σε χαμηλά επίπεδα προσφέροντας του μακροζωία και δυνατότητα για Overclocking στα μοντέλα που το υποστηρίζουν.",
+    "init-prod": "psiktra0",
+    "product-list": [
+      {
+        "prod-code": "psiktra0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς ψύξη επεξεργαστή"
+      },
+      {
+        "prod-code": "psiktra1",
+        "prod-erp": "001-38104",
+        "prod-price": "1790",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Deepcool CPU Cooler GAMMAXX 200T",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "775",
+            "1150",
+            "1151",
+            "1155",
+            "1156",
+            "1200",
+            "AM2",
+            "AM2+",
+            "AM3",
+            "AM3+",
+            "FM2",
+            "AM4",
+            "FM1"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra2",
+        "prod-erp": "001-50571",
+        "prod-price": "2150",
+        "prod-av": "1-3 εργάσιμες",
+        "prod-name": "Arctic Cooling Freezer A13X Compact AMD CPU Cooler",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra3",
+        "prod-erp": "001-50572",
+        "prod-price": "2290",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Arctic Cooling Freezer A13X CO Compact AMD CPU Cooler - Black",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra4",
+        "prod-erp": "001-43629",
+        "prod-price": "2990",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Arctic Cooling Freezer 34 CPU Cooler",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "1150",
+            "1151",
+            "1155",
+            "1156",
+            "1200",
+            "2011",
+            "2011v3",
+            "2066",
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra5",
+        "prod-erp": "001-46414",
+        "prod-price": "3390",
+        "prod-av": "1-3 εργάσιμες",
+        "prod-name": "Arctic Cooling Freezer XTREME Rev.2",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "775",
+            "1150",
+            "1151",
+            "1155",
+            "1156",
+            "1200",
+            "1366",
+            "2011",
+            "2011v3",
+            "2066",
+            "AM2",
+            "AM3",
+            "FM2",
+            "AM4",
+            "FM1",
+            "FM2+"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra6",
+        "prod-erp": "001-50103",
+        "prod-price": "3590",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Arctic Cooling Freezer 34 eSports CPU Cooler - Grey / Black",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "1150",
+            "1151",
+            "1155",
+            "1200",
+            "2011",
+            "2011v3",
+            "2066",
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra7",
+        "prod-erp": "001-49075",
+        "prod-price": "3650",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Thermaltake Thermaltake CPU Cooler UX200 ARGB",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "775",
+            "1150",
+            "1151",
+            "1155",
+            "1156",
+            "1200",
+            "AM2",
+            "AM2+",
+            "AM3",
+            "AM3+",
+            "FM2",
+            "AM4",
+            "FM1"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra8",
+        "prod-erp": "001-47470",
+        "prod-price": "3900",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Be Quiet! CPU Cooler Pure Rock 2",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "1150",
+            "1151",
+            "1155",
+            "1200",
+            "2011",
+            "2011v3",
+            "2066",
+            "AM3",
+            "AM3+",
+            "AM4"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra9",
+        "prod-erp": "001-41281",
+        "prod-price": "4090",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Cooler Master CPU Cooler Hyper 212 Black Edition",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "1150",
+            "1151",
+            "1155",
+            "1156",
+            "1200",
+            "1366",
+            "2011",
+            "2011v3",
+            "2066",
+            "AM2",
+            "AM2+",
+            "AM3",
+            "AM3+",
+            "FM2",
+            "AM4",
+            "FM1",
+            "FM2+"
+          ]
+        ]
+      },
+      {
+        "prod-code": "psiktra10",
+        "prod-erp": "001-47471",
+        "prod-price": "4250",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Be Quiet! CPU Cooler Pure Rock 2 - Black",
+        "comp-index": [
+          "socket"
+        ],
+        "comp-data": [
+          [
+            "1150",
+            "1151",
+            "1155",
+            "1200",
+            "2011",
+            "2011v3",
+            "2066",
+            "AM3",
+            "AM3+",
+            "AM4"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "cat-code": "ram",
+    "cat-name": "Μνήμη RAM",
+    "cat-desc": "Μνήμη υψηλής ταχύτητας για τα Windows, τις εφαρμογές και τα παιχνίδια, επιλέξτε μεγαλύτερη χωρητικότητα για μια πιο ομαλή λειτουργία σε συνθήκες Multi-tasking.",
+    "init-prod": "ram0",
+    "product-list": [
+      {
+        "prod-code": "ram0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς μνήμη RAM"
+      },
+      {
+        "prod-code": "ram1",
+        "prod-erp": "001-44813",
+        "prod-price": "5350",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "HyperX 8GB Fury DDR4 2666MHz Non-ECC CL16 (Kit of 2)",
+        "prod-min": "1",
+        "prod-max": "4000"
+      },
+      {
+        "prod-code": "ram2",
+        "prod-erp": "001-48164",
+        "prod-price": "5590",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair Vengeance LPX 8GB DDR4 2666MHz (Kit of 2) - Black",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram3",
+        "prod-erp": "001-44848",
+        "prod-price": "5750",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "HyperX 8GB Fury DDR4 3200MHz Non-ECC CL16 (Kit of 2)",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram4",
+        "prod-erp": "001-37409",
+        "prod-price": "6500",
+        "prod-av": "10-15 εργάσιμες",
+        "prod-name": "G.Skill 8GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram5",
+        "prod-erp": "001-36989",
+        "prod-price": "9190",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "G.Skill 16GB Ripjaws V DDR4 3200MHz Non-ECC CL16 18-18-38  (Kit of 2) Black",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram6",
+        "prod-erp": "001-44811",
+        "prod-price": "9280",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "HyperX 16GB Fury DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram7",
+        "prod-erp": "001-44846",
+        "prod-price": "9580",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "HyperX 16GB Fury DDR4 3200MHz 1Rx8 Non-ECC CL16 (Kit of 2)",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram8",
+        "prod-erp": "001-37928",
+        "prod-price": "9590",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair Vengeance LPX 16GB DDR4 3200MHz (Kit of 2) - Black",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram9",
+        "prod-erp": "001-35523",
+        "prod-price": "9970",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "HyperX 16GB Predator DDR4 2666MHz Non-ECC CL13 (Kit of 2)",
+        "prod-min": "1",
+        "prod-max": "4"
+      },
+      {
+        "prod-code": "ram10",
+        "prod-erp": "001-44807",
+        "prod-price": "10100",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "HyperX 16GB Fury RGB DDR4 2666MHz 1Rx8 Non-ECC CL16 (Kit of 2)",
+        "prod-min": "1",
+        "prod-max": "4"
+      }
+    ]
+  },
+  {
+    "cat-code": "gpu",
+    "cat-name": "Κάρτα Γραφικών",
+    "cat-desc": "Το πιο σημαντικό κομμάτι του Gaming συστήματός σας, επιλέξτε πιο δυνατό μοντέλο για καλύτερα frame rates και υποστήριξη οθονών με αναλύσεις μέχρι και 4K.",
+    "init-prod": "gpu0",
+    "product-list": [
+      {
+        "prod-code": "gpu0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς κάρτα Γραφικών"
+      },
+      {
+        "prod-code": "gpu1",
+        "prod-erp": "001-51785",
+        "prod-price": "29900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Asus GeForce GTX 1650 TUF 4GB D6",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "prod-code": "gpu2",
+        "prod-erp": "001-45582",
+        "prod-price": "44900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Gigabyte GeForce GTX 1660 SUPER OC 6G",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "prod-code": "gpu3",
+        "prod-erp": "001-42726",
+        "prod-price": "47900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Gigabyte GeForce GTX 1660 OC 6G",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "prod-code": "gpu4",
+        "prod-erp": "001-46520",
+        "prod-price": "49900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Asus GeForce GTX 1660 SUPER TUF Gaming 6GB",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "prod-code": "gpu5",
+        "prod-erp": "001-49652",
+        "prod-price": "49900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Asus GeForce GTX 1660 SUPER TUF Gaming OC 6GB",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "prod-code": "gpu6",
+        "prod-erp": "001-45422",
+        "prod-price": "49900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Asus GeForce GTX 1660 SUPER Dual EVO OC 6GB",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "prod-code": "gpu7",
+        "prod-erp": "001-41910",
+        "prod-price": "55900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Gigabyte GeForce RTX 2060 OC 6G",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "1",
+          "1",
+          "1",
+          "1",
+          "1"
+        ]
+      },
+      {
+        "prod-code": "gpu8",
+        "prod-erp": "001-51385",
+        "prod-price": "69900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Gigabyte AORUS GeForce RTX 3060 Elite 12GB",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "2",
+          "2",
+          "2",
+          "2",
+          "2"
+        ]
+      },
+      {
+        "prod-code": "gpu9",
+        "prod-erp": "001-51297",
+        "prod-price": "89900",
+        "prod-av": "Μη διαθέσιμο",
+        "prod-name": "Gigabyte Radeon RX 6700 XT Eagle 12GB",
+        "prod-min": "1",
+        "prod-max": "2",
+        "perf-index": [
+          "lol-game",
+          "fortnite_game",
+          "control_game",
+          "fs2020_game",
+          "sottr_game"
+        ],
+        "perf-data": [
+          "3",
+          "3",
+          "3",
+          "3",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "cat-code": "psu",
+    "cat-name": "Τροφοδοτικό",
+    "cat-desc": "Το τροφοδοτικό αναλαμβάνει την σταθερή παροχή ρεύματος σε όλα τα μέρη του συστήματος. Επιλέξτε καλύτερο μοντέλο για χαμηλότερη κατανάλωση, θόρυβο και θερμοκρασία.",
+    "init-prod": "psu0",
+    "product-list": [
+      {
+        "prod-code": "psu0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς τροφοδοτικό"
+      },
+      {
+        "prod-code": "psu1",
+        "prod-erp": "001-37982",
+        "prod-price": "4390",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Cooler Master Elite V3 500W"
+      },
+      {
+        "prod-code": "psu2",
+        "prod-erp": "001-50665",
+        "prod-price": "4750",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Cooler Master MWE 500W V2 Bronze Rated Power Supply - Bulk"
+      },
+      {
+        "prod-code": "psu3",
+        "prod-erp": "001-47075",
+        "prod-price": "4990",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair CV Series CV550 550W Bronze Rated Power Supply"
+      },
+      {
+        "prod-code": "psu4",
+        "prod-erp": "001-44606",
+        "prod-price": "5090",
+        "prod-av": "Μικρή διαθεσιμότητα",
+        "prod-name": "Cooler Master MWE 500 V2 White Rated Power Supply"
+      },
+      {
+        "prod-code": "psu5",
+        "prod-erp": "001-48186",
+        "prod-price": "5450",
+        "prod-av": "1-3 εργάσιμες",
+        "prod-name": "Gigabyte Power Supply GP-P550B 550W 80+ Bronze"
+      },
+      {
+        "prod-code": "psu6",
+        "prod-erp": "001-50108",
+        "prod-price": "5590",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Corsair CV Series CV650 650W Bronze Rated Power Supply"
+      },
+      {
+        "prod-code": "psu7",
+        "prod-erp": "001-50669",
+        "prod-price": "5600",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Cooler Master MWE 600W V2 Bronze Rated Power Supply - Bulk"
+      },
+      {
+        "prod-code": "psu8",
+        "prod-erp": "001-37983",
+        "prod-price": "5690",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Cooler Master Elite V3 600W"
+      },
+      {
+        "prod-code": "psu9",
+        "prod-erp": "001-49364",
+        "prod-price": "5900",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Force Power Supply 850W - 80plus Bronze"
+      },
+      {
+        "prod-code": "psu10",
+        "prod-erp": "001-40247",
+        "prod-price": "6070",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Gigabyte Power Supply GP-P650B 650W 80+ Bronze"
+      }
+    ]
+  },
+  {
+    "cat-code": "m2ssd",
+    "cat-name": "Δίσκος SSD M.2",
+    "cat-desc": "Η τελευταία τεχνολογία των δίσκων SSD, η επικοινωνία γίνεται μέσω των γρήγορων PCIe lanes αντί των θυρών SATA με αποτέλεσμα πολύ υψηλότερες ταχύτητες ανάγνωσης και εγγραφής.",
+    "multi-sel": "0",
+    "init-prod": "m2ssd0",
+    "product-list": [
+      {
+        "prod-code": "m2ssd0",
+        "emptyval": "emptyval",
+        "prod-price": "0000",
+        "prod-av": "",
+        "prod-name": "Χωρίς Δίσκο SSD M.2"
+      },
+      {
+        "prod-code": "m2ssd1",
+        "prod-erp": "001-47240",
+        "prod-price": "4150",
+        "prod-av": "1-2 εργάσιμες",
+        "prod-name": "Kingston 250GB KC2500 NVMe M.2 PCI-Express SSD"
+      },
+      {
+        "prod-code": "m2ssd2",
+        "prod-erp": "001-45387",
+        "prod-price": "4490",
+        "prod-av": "Μικρή διαθεσιμότητα",
+        "prod-name": "Gigabyte 256GB M.2 PCIe NVMe SSD"
+      },
+      {
+        "prod-code": "m2ssd3",
+        "prod-erp": "001-49274",
+        "prod-price": "4690",
+        "prod-av": "10-15 εργάσιμες",
+        "prod-name": "Western Digital Blue SN550 M.2 250GB NVMe SSD"
+      },
+      {
+        "prod-code": "m2ssd4",
+        "prod-erp": "001-51445",
+        "prod-price": "5050",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Samsung 250GB NVMe SSD 980 Series M.2 PCI-Express"
+      },
+      {
+        "prod-code": "m2ssd5",
+        "prod-erp": "001-51631",
+        "prod-price": "5270",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Kingston 500GB NV1 NVMe M.2 PCI-Express SSD"
+      },
+      {
+        "prod-code": "m2ssd6",
+        "prod-erp": "001-48155",
+        "prod-price": "5590",
+        "prod-av": "10-15 εργάσιμες",
+        "prod-name": "Corsair Force Series MP510 240GB NVMe M.2 PCI-Express SSD"
+      },
+      {
+        "prod-code": "m2ssd7",
+        "prod-erp": "001-42920",
+        "prod-price": "6150",
+        "prod-av": "Άμεσα διαθέσιμο",
+        "prod-name": "Samsung 250GB NVMe SSD 970 Evo Plus Series M.2 PCI-Express"
+      },
+      {
+        "prod-code": "m2ssd8",
+        "prod-erp": "001-48953",
+        "prod-price": "6200",
+        "prod-av": "10-15 εργάσιμες",
+        "prod-name": "Western Digital Blue SN550 M.2 500GB NVMe SSD"
+      },
+      {
+        "prod-code": "m2ssd9",
+        "prod-erp": "001-43489",
+        "prod-price": "6490",
+        "prod-av": "5-10 εργάσιμες",
+        "prod-name": "Western Digital SN750 Black M.2 250GB PCIe NVMe SSD"
+      }
+    ]
+  }
 ]
